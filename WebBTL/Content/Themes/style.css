@@ -1,0 +1,192 @@
+﻿*{
+    box-sizing:border-box;  
+}
+
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+   
+}
+
+.bgtop1 {
+    background-color: #303030;
+    color:white;
+}
+
+.bgtop2 {
+    background-color: #fdcc0d;
+}
+
+.thumuc:hover{
+    color:#fff;
+}
+/*.centerMenu a{
+    color:#000;
+    font-size:23px;
+}
+
+.centerMenu a:hover{
+    color:white;
+}*/
+/* Ẩn dropdown menu mặc định */
+.dropdown-menu {
+    display: none; /* Ẩn menu */
+    position: absolute; /* Định vị tuyệt đối */
+    background-color: #343a40; /* Màu nền cho menu */
+    border-radius: 0.25rem; /* Bo góc */
+    z-index: 1000; /* Đảm bảo menu nằm trên cùng */
+}
+
+ /*Hiển thị dropdown khi hover*/ 
+.nav-item:hover .dropdown-menu {
+    display: block;  Hiển thị dropdown khi hover 
+}
+
+/*.dropdown-item1 {
+    color: #000;*/ /* Màu chữ cho các mục trong dropdown */
+/*}
+
+    .dropdown-item1:hover {
+        color: yellow;*/ /* Chuyển màu chữ thành vàng khi hover */
+        /*background-color: transparent;*/ /* Đảm bảo màu nền không thay đổi */
+    /*}*/
+
+.carousel-item a {
+    position: relative;
+    z-index: 10; /* Đảm bảo rằng liên kết nằm ở trên */
+    display: block; /* Đảm bảo thẻ a bao quanh toàn bộ hình ảnh */
+}
+
+.carousel-item img {
+    pointer-events: auto; /* Đảm bảo ảnh không chặn sự kiện click */
+}
+
+.bgmid {
+    background-color: #fdcc0d;
+}
+
+/* Định dạng cơ bản cho nút */
+.btn-more {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fdcc0d; /* Màu nền mặc định */
+    color: white;
+    border: 2px solid transparent; /* Bỏ đường viền mặc định */
+    text-decoration: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Hiệu ứng chuyển đổi */
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+    /* Hiệu ứng hover khi di chuột vào nút */
+    .btn-more:hover {
+        background-color: transparent; /* Nền trong suốt */
+        border-color: #007bff; /* Đổi màu viền khi hover */
+        color: #000; /* Đổi màu chữ */
+    }
+
+    /* Hiệu ứng trên icon */
+    .btn-more i {
+        margin-left: 5px;
+        transition: transform 0.3s ease; /* Hiệu ứng cho icon */
+    }
+
+    /* Khi hover vào nút, icon sẽ dịch chuyển */
+    .btn-more:hover i {
+        transform: translateX(5px); /* Dịch chuyển icon sang phải 5px */
+    }
+
+.card-link{
+    text-decoration:none;
+    color:#000;
+}
+
+    .card-link:hover {
+        color: #fdcc0d;
+    }
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bóng mờ nhẹ ở trạng thái ban đầu */
+}
+
+    .card:hover {
+        transform: translateY(-10px); /* Nâng card lên 10px khi hover */
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* Tăng độ mạnh của bóng mờ khi hover */
+    }
+
+.productFooter {
+    text-decoration: none;
+    color: #FFF;
+    font-size:20px;
+}
+
+    .productFooter:hover {
+        color:yellow;
+    }
+
+.footerMenuNav{
+    list-style-type:none;
+}
+
+.footer-menu-nav{
+    list-style-type:none;
+    padding:0;
+}
+
+.footer-widget {
+    
+    padding: 20px; /* Khoảng cách bên trong */
+    border-radius: 5px; /* Bo góc */
+    color: #ffffff; /* Màu chữ */
+}
+
+.footer-widget-title {
+    font-size: 24px; /* Kích thước chữ tiêu đề */
+    margin-bottom: 15px; /* Khoảng cách dưới tiêu đề */
+    font-weight: bold; /* Đậm chữ */
+}
+
+.footer-subscribe-box {
+    display: flex; /* Hiển thị dạng flex cho input và button */
+    margin-bottom: 15px; /* Khoảng cách dưới form */
+}
+
+.default-search-style-input-box {
+    flex: 1; /* Để input chiếm toàn bộ không gian còn lại */
+    padding: 10px; /* Khoảng cách bên trong */
+    border: 1px solid #ced4da; /* Đường viền input */
+    border-radius: 5px 0 0 5px; /* Bo góc cho bên trái */
+    outline: none; /* Bỏ viền khi input được chọn */
+}
+
+.default-search-style-input-btn {
+    padding: 10px 20px; /* Khoảng cách bên trong cho button */
+    border: none; /* Bỏ viền */
+    background-color: #007bff; /* Màu nền cho button */
+    color: #ffffff; /* Màu chữ cho button */
+    border-radius: 0 5px 5px 0; /* Bo góc cho bên phải */
+    cursor: pointer; /* Hiển thị con trỏ khi di chuột qua button */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu nền khi hover */
+}
+
+    .default-search-style-input-btn:hover {
+        background-color: #0056b3; /* Màu nền khi hover */
+    }
+
+#thanks {
+    margin-top: 10px; /* Khoảng cách trên cho thông báo */
+    color: #28a745; /* Màu chữ cho thông báo */
+    font-weight: bold; /* Đậm chữ */
+}
+
+.ttbct {
+    display: block; /* Hiển thị hình ảnh dưới dạng block */
+    margin-top: 15px; /* Khoảng cách trên cho hình ảnh */
+}
+
+    .ttbct img {
+        max-width: 100%; /* Đảm bảo hình ảnh không vượt quá chiều rộng của phần chứa */
+        height: auto; /* Giữ tỉ lệ khung hình */
+    }
