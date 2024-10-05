@@ -1,0 +1,103 @@
+CREATE TABLE Categories
+(
+	CategoryID INT PRIMARY KEY IDENTITY(1,1),
+    CategoryName NVARCHAR(255) NOT NULL,
+);
+
+CREATE TABLE Products
+(
+	ProductID INT PRIMARY KEY IDENTITY(1,1),
+    ProductName NVARCHAR(255) NOT NULL,
+    ProductDescription NVARCHAR(MAX),
+    Price DECIMAL(18,0) NOT NULL,
+    Stock INT NOT NULL,
+    CategoryID INT,
+    ImageURL NVARCHAR(500),
+
+    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
+);
+
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY IDENTITY(1,1),
+    FirstName NVARCHAR(255) NOT NULL,
+    LastName NVARCHAR(255) NOT NULL,
+    Email NVARCHAR(255) NOT NULL,
+    Phone NVARCHAR(20),
+    CustomerAddress NVARCHAR(500),
+    City NVARCHAR(255),
+    Country NVARCHAR(255),
+    CreatedDate DATETIME DEFAULT GETDATE()
+);
+
+ALTER TABLE Customers
+ADD CONSTRAINT Phone CHECK(LEN(Phone) = 11 AND PATINDEX('%[^0-9]%', Phone) = 0);
+
+ALTER TABLE Customers
+ADD CONSTRAINT Email CHECK(Email LIKE '%_@__%.__%');
+
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY IDENTITY(1,1),
+    CustomerID INT NOT NULL,
+    OrderDate DATETIME DEFAULT GETDATE(),
+    Status NVARCHAR(50) DEFAULT 'Pending', -- Trang thai don hang
+    TotalAmount DECIMAL(18,2) NOT NULL,
+    ShippingAddress NVARCHAR(500),
+    City NVARCHAR(255),
+    Country NVARCHAR(255),
+    PostalCode NVARCHAR(20),
+
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+CREATE TABLE OrderDetails (
+    OrderDetailID INT PRIMARY KEY IDENTITY(1,1),
+    OrderID INT NOT NULL,
+    ProductID INT NOT NULL,
+    Quantity INT NOT NULL,
+    UnitPrice DECIMAL(18,2) NOT NULL,
+
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
+CREATE TABLE ShoppingCart (
+    CartID INT PRIMARY KEY IDENTITY(1,1),
+    CustomerID INT NOT NULL,
+    ProductID INT NOT NULL,
+    Quantity INT NOT NULL,
+    DateAdded DATETIME DEFAULT GETDATE(),
+
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
+CREATE TABLE Payments (
+    PaymentID INT PRIMARY KEY IDENTITY(1,1),
+    OrderID INT NOT NULL,
+    PaymentDate DATETIME DEFAULT GETDATE(),
+    Amount DECIMAL(18,2) NOT NULL,
+    PaymentMethod NVARCHAR(50), 
+    Status NVARCHAR(50) DEFAULT 'Pending',
+	
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+);
+
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY IDENTITY(1,1),
+    Username NVARCHAR(255) NOT NULL,
+    UserPassword NVARCHAR(255) NOT NULL,
+    Role NVARCHAR(50) NOT NULL DEFAULT 'Customer', -- 'Customer' or 'Admin'
+    CreatedDate DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE Reviews (
+    ReviewID INT PRIMARY KEY IDENTITY(1,1),
+    ProductID INT NOT NULL,
+    CustomerID INT NOT NULL,
+    Rating INT CHECK (Rating >= 1 AND Rating <= 5),
+    ReviewText NVARCHAR(MAX),
+    ReviewDate DATETIME DEFAULT GETDATE(),
+
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
