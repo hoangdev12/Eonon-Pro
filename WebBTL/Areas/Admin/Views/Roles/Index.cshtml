@@ -1,18 +1,24 @@
 ﻿@model IEnumerable<WebBTL.Models.Role>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Quản lý quyền truy cập";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container">
-    <h2>Index</h2>
-
+    <h2>Quản lý quyền truy cập</h2>
+    <br />
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+
     </p>
+
+  
     <table class="table ">
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleID)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.RoleName)
             </th>
@@ -26,15 +32,19 @@
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.RoleID)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.RoleName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.RoleID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.RoleID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.RoleID })
+                    <button type="button" class="btn btn-outline-primary">@Html.ActionLink("Edit", "Edit", new { id = item.RoleID })   </button>
+                    <button type="button" class="btn btn-outline-success">@Html.ActionLink("Details", "Details", new { id = item.RoleID }) </button>
+                    <button type="button" class="btn btn-outline-warning">@Html.ActionLink("Delete", "Delete", new { id = item.RoleID })</button>
+
                 </td>
             </tr>
         }
