@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Eonon_ProModelStoreContainer" CdmEntityContainer="Eonon_ProEntities">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="Eonon_ProModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="Eonon_ProModel.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="CatID" ColumnName="CatID" />
+          <ScalarProperty Name="CatName" ColumnName="CatName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="Leveks" ColumnName="Leveks" />
+          <ScalarProperty Name="Ordering" ColumnName="Ordering" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+          <ScalarProperty Name="Thumb" ColumnName="Thumb" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="MetaDesc" ColumnName="MetaDesc" />
+          <ScalarProperty Name="MetaKey" ColumnName="MetaKey" />
+          <ScalarProperty Name="Cover" ColumnName="Cover" />
+          <ScalarProperty Name="SchemaMarkup" ColumnName="SchemaMarkup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="Eonon_ProModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Ward" ColumnName="Ward" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="Eonon_ProModel.Location">
+        <MappingFragment StoreEntitySet="Locations">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Slug" ColumnName="Slug" />
+          <ScalarProperty Name="NameWithType" ColumnName="NameWithType" />
+          <ScalarProperty Name="PathWithType" ColumnName="PathWithType" />
+          <ScalarProperty Name="ParentCode" ColumnName="ParentCode" />
+          <ScalarProperty Name="Levels" ColumnName="Levels" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="Eonon_ProModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="Eonon_ProModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Orderdate" ColumnName="Orderdate" />
+          <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
+          <ScalarProperty Name="TransactStatusID" ColumnName="TransactStatusID" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pages">
+      <EntityTypeMapping TypeName="Eonon_ProModel.Page">
+        <MappingFragment StoreEntitySet="Pages">
+          <ScalarProperty Name="PageID" ColumnName="PageID" />
+          <ScalarProperty Name="PageName" ColumnName="PageName" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Thumb" ColumnName="Thumb" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="MetaDesc" ColumnName="MetaDesc" />
+          <ScalarProperty Name="MetaKey" ColumnName="MetaKey" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Ordering" ColumnName="Ordering" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="Eonon_ProModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CatID" ColumnName="CatID" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Thumb" ColumnName="Thumb" />
+          <ScalarProperty Name="Video" ColumnName="Video" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Datemodified" ColumnName="Datemodified" />
+          <ScalarProperty Name="BestSellers" ColumnName="BestSellers" />
+          <ScalarProperty Name="HomeFlag" ColumnName="HomeFlag" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
+          <ScalarProperty Name="Titles" ColumnName="Titles" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="MetaDesc" ColumnName="MetaDesc" />
+          <ScalarProperty Name="MetaKey" ColumnName="MetaKey" />
+          <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="Eonon_ProModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shippers">
+      <EntityTypeMapping TypeName="Eonon_ProModel.Shipper">
+        <MappingFragment StoreEntitySet="Shippers">
+          <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
+          <ScalarProperty Name="ShipperName" ColumnName="ShipperName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="ShipeDate" ColumnName="ShipeDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Eonon_ProModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTinTucs">
+      <EntityTypeMapping TypeName="Eonon_ProModel.tblTinTuc">
+        <MappingFragment StoreEntitySet="tblTinTucs">
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SContents" ColumnName="SContents" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Thumb" ColumnName="Thumb" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
+          <ScalarProperty Name="CatID" ColumnName="CatID" />
+          <ScalarProperty Name="isHot" ColumnName="isHot" />
+          <ScalarProperty Name="isNewFeed" ColumnName="isNewFeed" />
+          <ScalarProperty Name="MetaKey" ColumnName="MetaKey" />
+          <ScalarProperty Name="MetaDesc" ColumnName="MetaDesc" />
+          <ScalarProperty Name="Views" ColumnName="Views" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactStatus">
+      <EntityTypeMapping TypeName="Eonon_ProModel.TransactStatu">
+        <MappingFragment StoreEntitySet="TransactStatus">
+          <ScalarProperty Name="TransactStatusID" ColumnName="TransactStatusID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
