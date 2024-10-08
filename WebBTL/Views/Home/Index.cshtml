@@ -1,4 +1,140 @@
-﻿<section>
+﻿@section navbar{
+    <div class="container-fluid bgtop2 p-xxl-4">
+        @*<div class="container">
+                <div class="row ">
+                    <div class="col-md-2">
+                        <a class="navbar-brand" href="#"><img src="~/Content/images/logo.png" alt="Bootstrap" width="150">  </a>
+                    </div>
+
+                    <div class="col-md-8 text-center mt-4">
+                        <nav class="navbar navbar-expand-lg navbar-dark bgmid">
+                            <div class="container-fluid">
+
+            <button class="navbar-toggler border-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item p-lg-3">
+                                                <a class="nav-link active thumuc" aria-current="page" href="#" style="font-size:23px;"><i class="fas fa-home fa-sm" style="color: #FFF;"></i>TRANG CHỦ</a>
+                                            </li>
+                                            <li class="nav-item dropdown p-lg-3">
+                                                <a class="nav-link dropdown-toggle text-black thumuc" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:23px;">
+                                                    SẢN PHẨM
+                                                </a>
+                                                <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+                                                    <li><a class="dropdown-item" href="/Products/Index">Action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                </ul>
+                                            </li>
+
+                                            <li class="nav-item p-lg-3">
+                                                <a class="nav-link thumuc text-black" href="#" style="font-size:23px;">GIỚI THIỆU</a>
+                                            </li>
+                                            <li class="nav-item p-lg-3">
+                                                <a class="nav-link thumuc text-black" href="#" style="font-size:23px;">LIÊN HỆ</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+
+                        </div>
+
+                        <div class="col-md-2 mt-5 ">
+                            <ul class="nav justify-content-end">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-search" style="color: #FFF;font-size:23px;"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><i class="fas fa-user" style="color: #FFF; font-size:23px;"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><i class="fas fa-shopping-bag" style="color: #FFF; font-size:23px;"></i></a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>*@
+
+        @* navbar new *@
+        <nav class="navbar navbar-expand-lg bg-warning  fixed-top">
+            <div class="container">
+                <a class="navbar-brand " href="#">Offcanvas navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header bg-warning">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body  bg-warning">
+                        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Products/Index">Product</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Service</a>
+                            </li>
+
+                        </ul>
+                        <div class="d-flex justify-content-center align-items-center gap-3">
+                            <a href="#" class="text-decoration-none text-black">Login</a>
+                            <a href="#" class="text-decoration-none px-3 py-1 rounded-4 text-black" style="background-color:blue;">Sign up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- slide banner -->
+
+    <section>
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a href="#" style="display: block; position: relative;"><img src="~/Content/images/slide1.jpg" class="d-block w-100" alt="..." style="width: 100%; height: auto; object-fit: cover; "> </a>
+
+                </div>
+                <div class="carousel-item">
+                    <a href="#"><img src="~/Content/images/slide2.jpg" class="d-block w-100" alt="..." style="width: 100%; height: auto; object-fit: cover; "></a>
+
+
+                </div>
+                <div class="carousel-item">
+                    <a href="#"><img src="~/Content/images/slide3.jpg" class="d-block w-100" alt="..." style="width: 100%; height: auto; object-fit: cover; "></a>
+
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev" style=" position: absolute; z-index: 10;">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next" style=" position: absolute; z-index: 10;">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+    </section>
+}
+
+
+<section>
     <div class="container">
         <div class="row">
             <div class=" col-md-6 mt-sm-5  ">

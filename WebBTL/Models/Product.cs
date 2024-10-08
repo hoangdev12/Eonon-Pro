@@ -36,5 +36,6 @@ namespace WebBTL.Models
         public Nullable<int> UnitsInStock { get; set; }
     
         public virtual Category Category { get; set; }
+        public object Cat { get; internal set; }
     }
 }
