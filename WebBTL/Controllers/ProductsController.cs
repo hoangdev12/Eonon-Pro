@@ -29,7 +29,6 @@ namespace WebBTL.Controllers
         {
 
 
-
             var product = _context.Products.Include(x => x.Category).FirstOrDefault(x => x.ProductID == id);
             if (product == null)
             {
