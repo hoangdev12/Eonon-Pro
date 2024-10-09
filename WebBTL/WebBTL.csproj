@@ -568,6 +568,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminAccountsController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminCustomersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\RolesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2760,6 +2761,11 @@
     <Content Include="Areas\Admin\Views\AdminCustomers\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCustomers\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCustomers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProducts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProducts\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProducts\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProducts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProducts\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

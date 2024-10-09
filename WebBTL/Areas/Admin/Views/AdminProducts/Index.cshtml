@@ -1,0 +1,95 @@
+﻿@model PagedList.IPagedList<WebBTL.Models.Product>
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].ProductID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].ProductName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Discount)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model[0].UnitsInStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Category.CatName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitsInStock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CatName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div aria-label="Page navigation example">
+        <ul class="pagination d-flex justify-content-end" style="margin-top: 20px;">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+                new PagedListRenderOptions
+                {
+
+                    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+
+                    DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+
+
+
+                    LinkToPreviousPageFormat = "<button class='btn btn-secondary mr-3'>Previous</button>",
+                    LinkToNextPageFormat = "<button class='btn btn-secondary ml-3'>Next</button>",
+
+
+                })
+        </ul>
+    </div>
+</div>

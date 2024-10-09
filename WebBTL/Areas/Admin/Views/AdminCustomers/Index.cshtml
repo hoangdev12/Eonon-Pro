@@ -5,46 +5,61 @@
     ViewBag.Title = "Danh sách khách hàng";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 <div class="container">
     <h2>Khách hàng</h2>
 
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
+    <form method="post" class="row">
+        <div class="form-group mr-3">
+
+            @Html.DropDownList("CategoryId", (SelectList)ViewData["TheLoai"], "Chọn thể loại", new { @class = "custom-select", @style = "min-width: 180px; max-width: 30%", id = "CategoryId" })
+
+        </div>
+        <div class="form-group">
+
+            @Html.DropDownList("TrangThai", (IEnumerable<SelectListItem>)ViewData["IsTrangThai"], "Chọn trạng thái", new { @class = "custom-select", @style = "min-width: 180px; max-width: 30%", id = "trangThai" })
+
+        </div>
+    </form>
     <table class="table">
         <tr>
+            <th>@Html.DisplayNameFor(model => model[0].CustomerID)</th>
             <th>@Html.DisplayNameFor(model => model[0].FullName)</th>
-            <th>@Html.DisplayNameFor(model => model[0].Birthday)</th>
+            @*<th>@Html.DisplayNameFor(model => model[0].Birthday)</th>
             <th>@Html.DisplayNameFor(model => model[0].Avatar)</th>
             <th>@Html.DisplayNameFor(model => model[0].Address)</th>
             <th>@Html.DisplayNameFor(model => model[0].Email)</th>
-            <th>@Html.DisplayNameFor(model => model[0].Phone)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Phone)</th>*@
             <th>@Html.DisplayNameFor(model => model[0].District)</th>
-            <th>@Html.DisplayNameFor(model => model[0].Ward)</th>
-            <th>@Html.DisplayNameFor(model => model[0].CreateDate)</th>
+            @*<th>@Html.DisplayNameFor(model => model[0].Ward)</th>*@
+            @*<th>@Html.DisplayNameFor(model => model[0].CreateDate)</th>
             <th>@Html.DisplayNameFor(model => model[0].Password)</th>
-            <th>@Html.DisplayNameFor(model => model[0].Salt)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Salt)</th>*@
             <th>@Html.DisplayNameFor(model => model[0].LastLogin)</th>
-            <th>@Html.DisplayNameFor(model => model[0].Active)</th>
+            @*<th>@Html.DisplayNameFor(model => model[0].Active)</th>*@
             <th></th>
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
+                <td>@Html.DisplayFor(modelItem => item.CustomerID)</td>
                 <td>@Html.DisplayFor(modelItem => item.FullName)</td>
-                <td>@Html.DisplayFor(modelItem => item.Birthday)</td>
+                @*<td>@Html.DisplayFor(modelItem => item.Birthday)</td>
                 <td>@Html.DisplayFor(modelItem => item.Avatar)</td>
                 <td>@Html.DisplayFor(modelItem => item.Address)</td>
                 <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                <td>@Html.DisplayFor(modelItem => item.Phone)</td>*@
                 <td>@Html.DisplayFor(modelItem => item.District)</td>
-                <td>@Html.DisplayFor(modelItem => item.Ward)</td>
+                @*<td>@Html.DisplayFor(modelItem => item.Ward)</td>
                 <td>@Html.DisplayFor(modelItem => item.CreateDate)</td>
                 <td>@Html.DisplayFor(modelItem => item.Password)</td>
-                <td>@Html.DisplayFor(modelItem => item.Salt)</td>
+                <td>@Html.DisplayFor(modelItem => item.Salt)</td>*@
                 <td>@Html.DisplayFor(modelItem => item.LastLogin)</td>
-                <td>@Html.DisplayFor(modelItem => item.Active)</td>
+                @*<td>@Html.DisplayFor(modelItem => item.Active)</td>*@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) |
                     @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
@@ -58,19 +73,19 @@
             @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
                 new PagedListRenderOptions
                 {
-                  
+
                     DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
                     DisplayLinkToNextPage = PagedListDisplayMode.Always,
-                    
+
                     DisplayEllipsesWhenNotShowingAllPageNumbers = true,
 
-                       
-                   
+
+
                     LinkToPreviousPageFormat = "<button class='btn btn-secondary mr-3'>Previous</button>",
                     LinkToNextPageFormat = "<button class='btn btn-secondary ml-3'>Next</button>",
-                   
-                    
-                    
+
+
+
                 })
         </ul>
     </div>

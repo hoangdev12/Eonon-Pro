@@ -258,29 +258,19 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="../../index.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        
                                         <p>Danh mục</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../index2.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Sản phẩm</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../widgets.html" class="nav-link">
-                                        <i class="nav-icon fas fa-th"></i>
-                                        <p>
-                                            Cấu hình hệ thống
+                                    @Html.ActionLink("Sản phẩm", "Index", "AdminProducts", null, new { @class = "nav-link" })
 
-                                        </p>
-                                    </a>
                                 </li>
+                               
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/AdminCustomers/Index" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Quản lý khách hàng
@@ -289,10 +279,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="AdminCustomers/Index" class="nav-link">
-                                        
-                                        <p>Danh sách khách hàng</p>
-                                    </a>
+                                    @Html.ActionLink("Danh sách khách hàng", "Index", "AdminCustomers", null, new { @class = "nav-link" })
                                 </li>
                                 <li class="nav-item">
                                     <a href="../../index2.html" class="nav-link">
@@ -345,10 +332,7 @@
                             </a>
                             <ul class="nav nav-treeview ">
                                 <li class="nav-item">
-                                    <a href="AdminAccounts/Index" class="nav-link">
-
-                                        <p>Tài khoản</p>
-                                    </a>
+                                    @Html.ActionLink("Tài khoản", "Index", "AdminAccounts", null, new { @class = "nav-link" })
                                 </li>
                                 <li class="nav-item">
                                     <a href="../../index2.html" class="nav-link">
@@ -357,14 +341,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="Roles/Index" class="nav-link" 
->
-
-                                        
-                                            Quyền truy cập
-
-                                       
-                                    </a>
+                                    @Html.ActionLink("Quyền truy cập", "Index", "Roles", null, new { @class = "nav-link" })
                                 </li>
                                 <li class="nav-item">
                                     <a href="../widgets.html" class="nav-link">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,23 +8,21 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebBTL.Models;
-using PagedList; 
-
 
 namespace WebBTL.Areas.Admin.Controllers
 {
-    public class AdminCustomersController : Controller
+    public class AdminProductsController : Controller
     {
         
 
         private readonly Eonon_ProEntities1 _context;
 
-        public AdminCustomersController()
+        public AdminProductsController()
         {
             _context = new Eonon_ProEntities1();
         }
 
-        // GET: Admin/AdminCustomers
+        // GET: Admin/AdminProducts
         public ActionResult Index(int page = 1, int pageSize = 10)
         {
 
@@ -35,108 +34,108 @@ namespace WebBTL.Areas.Admin.Controllers
             IsTrangThai.Add(new SelectListItem() { Text = "Block", Value = "0" });
             ViewData["IsTrangThai"] = IsTrangThai;
 
-            var customers = _context.Customers.Include(c => c.Location).ToList();
+            var products = _context.Products.Include(c => c.Category).ToList();
 
-            var pagedCustomers = customers.ToPagedList(page, pageSize);
+            var pagedProducts = products.ToPagedList(page, pageSize);
 
-            return View(pagedCustomers);
+            return View(pagedProducts);
         }
 
-        // GET: Admin/AdminCustomers/Details/5
+        // GET: Admin/AdminProducts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = _context.Customers.Find(id);
-            if (customer == null)
+            Product product = _context.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(product);
         }
 
-        // GET: Admin/AdminCustomers/Create
+        // GET: Admin/AdminProducts/Create
         public ActionResult Create()
         {
-            ViewBag.LocationID = new SelectList(_context.Locations, "LocationID", "Name");
+            ViewBag.CatID = new SelectList(_context.Categories, "CatID", "CatName");
             return View();
         }
 
-        // POST: Admin/AdminCustomers/Create
+        // POST: Admin/AdminProducts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustomerID,FullName,Birthday,Avatar,Address,Email,Phone,LocationID,District,Ward,CreateDate,Password,Salt,LastLogin,Active")] Customer customer)
+        public ActionResult Create([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product)
         {
             if (ModelState.IsValid)
             {
-                _context.Customers.Add(customer);
+                _context.Products.Add(product);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.LocationID = new SelectList(_context.Locations, "LocationID", "Name", customer.LocationID);
-            return View(customer);
+            ViewBag.CatID = new SelectList(_context.Categories, "CatID", "CatName", product.CatID);
+            return View(product);
         }
 
-        // GET: Admin/AdminCustomers/Edit/5
+        // GET: Admin/AdminProducts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = _context.Customers.Find(id);
-            if (customer == null)
+            Product product = _context.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.LocationID = new SelectList(_context.Locations, "LocationID", "Name", customer.LocationID);
-            return View(customer);
+            ViewBag.CatID = new SelectList(_context.Categories, "CatID", "CatName", product.CatID);
+            return View(product);
         }
 
-        // POST: Admin/AdminCustomers/Edit/5
+        // POST: Admin/AdminProducts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerID,FullName,Birthday,Avatar,Address,Email,Phone,LocationID,District,Ward,CreateDate,Password,Salt,LastLogin,Active")] Customer customer)
+        public ActionResult Edit([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product)
         {
             if (ModelState.IsValid)
             {
-                _context.Entry(customer).State = EntityState.Modified;
+                _context.Entry(product).State = EntityState.Modified;
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.LocationID = new SelectList(_context.Locations, "LocationID", "Name", customer.LocationID);
-            return View(customer);
+            ViewBag.CatID = new SelectList(_context.Categories, "CatID", "CatName", product.CatID);
+            return View(product);
         }
 
-        // GET: Admin/AdminCustomers/Delete/5
+        // GET: Admin/AdminProducts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = _context.Customers.Find(id);
-            if (customer == null)
+            Product product = _context.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(product);
         }
 
-        // POST: Admin/AdminCustomers/Delete/5
+        // POST: Admin/AdminProducts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customer customer = _context.Customers.Find(id);
-            _context.Customers.Remove(customer);
+            Product product = _context.Products.Find(id);
+            _context.Products.Remove(product);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
