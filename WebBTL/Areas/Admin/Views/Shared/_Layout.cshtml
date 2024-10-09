@@ -258,7 +258,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="../../index.html" class="nav-link">
-                                        
+
                                         <p>Danh mục</p>
                                     </a>
                                 </li>
@@ -266,7 +266,7 @@
                                     @Html.ActionLink("Sản phẩm", "Index", "AdminProducts", null, new { @class = "nav-link" })
 
                                 </li>
-                               
+
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -283,11 +283,11 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="../../index2.html" class="nav-link">
-                                        
+
                                         <p>Tìm kiếm khách hàng</p>
                                     </a>
                                 </li>
-                               
+
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -347,7 +347,7 @@
                                     <a href="../widgets.html" class="nav-link">
 
                                         <p>
-                                           Quản lý tỉnh thành
+                                            Quản lý tỉnh thành
                                         </p>
                                     </a>
                                 </li>
@@ -362,31 +362,14 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../../index.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Danh mục</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../../index2.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Sản phẩm</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../widgets.html" class="nav-link">
-                                        <i class="nav-icon fas fa-th"></i>
-                                        <p>
-                                            Cấu hình hệ thống
+                               <li class="nav-item">
+                                @Html.ActionLink("Danh sách tin tức", "Index", "AdmintblTinTucs", null, new { @class = "nav-link" })
+                        </li>
 
-                                        </p>
-                                    </a>
-                                </li>
-                            </ul>
+                    </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Pages
@@ -395,26 +378,9 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="../../index.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Danh mục</p>
-                                    </a>
+                                    @Html.ActionLink("Danh sách Page", "Index", "AdminPages", null, new { @class = "nav-link" })
                                 </li>
-                                <li class="nav-item">
-                                    <a href="../../index2.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Sản phẩm</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../widgets.html" class="nav-link">
-                                        <i class="nav-icon fas fa-th"></i>
-                                        <p>
-                                            Cấu hình hệ thống
-
-                                        </p>
-                                    </a>
-                                </li>
+                                
                             </ul>
                         </li>
                     </ul>

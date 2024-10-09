@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebBTL.Models;
 
 namespace WebBTL.Areas.Admin.Controllers
@@ -21,7 +22,7 @@ namespace WebBTL.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminAccounts
-        public ActionResult Index()
+        public ActionResult Index(int? RoleId = null)
         {
 
             ViewData["QuyenTruyCap"] = new SelectList(_context.Roles, "RoleId", "RoleName");
@@ -31,7 +32,15 @@ namespace WebBTL.Areas.Admin.Controllers
             IsTrangThai.Add(new SelectListItem() { Text = "Block", Value = "0" });
             ViewData["IsTrangThai"] = IsTrangThai;
 
-            var accounts = _context.Accounts.Include(a => a.Role);
+            var accounts = _context.Accounts.Include(a => a.Role).AsQueryable();
+
+            // Lọc theo quyền truy cập nếu có giá trị
+            if (RoleId.HasValue)
+            {
+                accounts = accounts.Where(a => a.RoleID == RoleId);
+            }
+
+
             return View(accounts.ToList());
         }
 

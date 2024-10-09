@@ -568,7 +568,9 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminAccountsController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminCustomersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminPagesController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminProductsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdmintblTinTucsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\RolesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2766,6 +2768,16 @@
     <Content Include="Areas\Admin\Views\AdminProducts\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProducts\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProducts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPages\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPages\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPages\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPages\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPages\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdmintblTinTucs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdmintblTinTucs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdmintblTinTucs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdmintblTinTucs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdmintblTinTucs\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

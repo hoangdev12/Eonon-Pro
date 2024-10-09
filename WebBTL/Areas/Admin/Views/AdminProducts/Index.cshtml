@@ -19,12 +19,14 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Lọc</button>
             </div>
-        </form>
 
+        </form>
+        <div class="d-flex justify-content-end">
+            @Html.ActionLink("Create New", "Create",null, new {@class = "btn btn-primary"})
+        </div>
     </form>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
+    
+    <br />
     <table class="table">
         <tr>
             <th>

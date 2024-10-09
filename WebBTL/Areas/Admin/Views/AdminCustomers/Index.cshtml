@@ -9,21 +9,10 @@
 <div class="container">
     <h2>Khách hàng</h2>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <form method="post" class="row">
-        <div class="form-group mr-3">
-
-            @Html.DropDownList("CategoryId", (SelectList)ViewData["TheLoai"], "Chọn thể loại", new { @class = "custom-select", @style = "min-width: 180px; max-width: 30%", id = "CategoryId" })
-
-        </div>
-        <div class="form-group">
-
-            @Html.DropDownList("TrangThai", (IEnumerable<SelectListItem>)ViewData["IsTrangThai"], "Chọn trạng thái", new { @class = "custom-select", @style = "min-width: 180px; max-width: 30%", id = "trangThai" })
-
-        </div>
-    </form>
+    <div class="d-flex justify-content-end">
+        @Html.ActionLink("Create New", "Create",null, new {@class = "btn btn-primary"})
+    </div>
+    <br />
     <table class="table">
         <tr>
             <th>@Html.DisplayNameFor(model => model[0].CustomerID)</th>

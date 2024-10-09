@@ -1,0 +1,91 @@
+﻿@model PagedList.IPagedList<WebBTL.Models.tblTinTuc>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Index</h2>
+
+    <div class=" d-flex justify-content-end">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+    <br />
+    <table class="table ">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].PostID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Title)
+            </th>
+            <th>
+                Trạng Thái
+            </th>
+            <th>#</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                </td>
+                @if (item.isHot == true)
+                {
+
+                    <div class="d-flex align-items-center">
+                        <div class="badge badge-success badge-dot mr-5"> </div>
+                        <div>Hot</div>
+
+                    </div>
+
+                }
+                else if (item.isNewFeed == true)
+                {
+                    <div class="d-flex align-items-center">
+                        <div class="badge badge-success badge-dot mr-5">   </div>
+                        <div>New Feed</div>
+
+                    </div>
+                }
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PostID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PostID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PostID })
+                </td>
+            </tr>
+        }
+
+
+    </table>
+
+    <div aria-label="Page navigation example">
+        <ul class="pagination d-flex justify-content-end" style="margin-top: 20px;">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+                new PagedListRenderOptions
+                {
+
+                    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+
+                    DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+
+
+
+                    LinkToPreviousPageFormat = "<button class='btn btn-secondary mr-3'>Previous</button>",
+                    LinkToNextPageFormat = "<button class='btn btn-secondary ml-3'>Next</button>",
+
+
+
+                })
+        </ul>
+    </div>
+</div>
