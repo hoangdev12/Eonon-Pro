@@ -23,23 +23,45 @@ namespace WebBTL.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminProducts
-        public ActionResult Index(int page = 1, int pageSize = 10)
+        public ActionResult Index(int page = 1, int pageSize = 10, int? CategoryId = null, int? TrangThai = null)
         {
+            // Lấy danh sách các thể loại để hiển thị trong dropdown
+            ViewData["DanhMuc"] = new SelectList(_context.Categories, "CatID", "CatName");
 
-
-            ViewData["TheLoai"] = new SelectList(_context.Categories, "CatID", "CatName");
-
+            // Lấy trạng thái sản phẩm (InStock và OutStock)
             List<SelectListItem> IsTrangThai = new List<SelectListItem>();
-            IsTrangThai.Add(new SelectListItem() { Text = "Active", Value = "1" });
-            IsTrangThai.Add(new SelectListItem() { Text = "Block", Value = "0" });
+            IsTrangThai.Add(new SelectListItem() { Text = "In stock", Value = "1" });
+            IsTrangThai.Add(new SelectListItem() { Text = "Out Stock", Value = "0" });
             ViewData["IsTrangThai"] = IsTrangThai;
 
-            var products = _context.Products.Include(c => c.Category).ToList();
+            // Lấy danh sách sản phẩm từ CSDL
+            var products = _context.Products.Include(c => c.Category).AsQueryable();
 
-            var pagedProducts = products.ToPagedList(page, pageSize);
+            // Lọc theo CategoryId nếu có giá trị
+            if (CategoryId.HasValue && CategoryId != 0)
+            {
+                products = products.Where(p => p.CatID == CategoryId);
+            }
+
+            // Lọc theo trạng thái (UnitsInStock > 0 là InStock)
+            if (TrangThai.HasValue)
+            {
+                if (TrangThai == 1) // InStock
+                {
+                    products = products.Where(p => p.UnitsInStock > 0);
+                }
+                else if (TrangThai == 0) // OutStock
+                {
+                    products = products.Where(p => p.UnitsInStock == 0);
+                }
+            }
+
+            // Phân trang
+            var pagedProducts = products.ToList().ToPagedList(page, pageSize);
 
             return View(pagedProducts);
         }
+
 
         // GET: Admin/AdminProducts/Details/5
         public ActionResult Details(int? id)

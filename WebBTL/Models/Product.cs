@@ -14,6 +14,12 @@ namespace WebBTL.Models
     
     public partial class Product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Product()
+        {
+            this.OrderDetails = new HashSet<OrderDetail>();
+        }
+    
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public string ShortDesc { get; set; }
@@ -36,6 +42,7 @@ namespace WebBTL.Models
         public Nullable<int> UnitsInStock { get; set; }
     
         public virtual Category Category { get; set; }
-        public object Cat { get; internal set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

@@ -46,7 +46,7 @@
     <Property Name="Email" Type="nchar" MaxLength="150" />
     <Property Name="Phone" Type="varchar" MaxLength="12" />
     <Property Name="LocationID" Type="int" />
-    <Property Name="District" Type="int" />
+    <Property Name="District" Type="nvarchar" MaxLength="255" />
     <Property Name="Ward" Type="int" />
     <Property Name="CreateDate" Type="datetime" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" />
@@ -230,6 +230,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_OrderDetails_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Orders_Customer">
     <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
@@ -290,6 +302,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_OrderDetails_Orders" Association="Self.FK_OrderDetails_Orders">
       <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Products" Association="Self.FK_OrderDetails_Products">
+      <End Role="Products" EntitySet="Products" />
       <End Role="OrderDetails" EntitySet="OrderDetails" />
     </AssociationSet>
     <AssociationSet Name="FK_Orders_Customer" Association="Self.FK_Orders_Customer">

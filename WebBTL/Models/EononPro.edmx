@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Eonon_ProModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Eonon_ProModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="AccountID" />
@@ -51,7 +51,7 @@
           <Property Name="Email" Type="nchar" MaxLength="150" />
           <Property Name="Phone" Type="varchar" MaxLength="12" />
           <Property Name="LocationID" Type="int" />
-          <Property Name="District" Type="int" />
+          <Property Name="District" Type="nvarchar" MaxLength="255" />
           <Property Name="Ward" Type="int" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
@@ -235,6 +235,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_OrderDetails_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Orders_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
@@ -297,6 +309,10 @@
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Products" Association="Self.FK_OrderDetails_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_Orders_Customer" Association="Self.FK_Orders_Customer">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Orders" EntitySet="Orders" />
@@ -310,8 +326,7 @@
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Eonon_ProModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -363,7 +378,7 @@
           <Property Name="Email" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="LocationID" Type="Int32" />
-          <Property Name="District" Type="Int32" />
+          <Property Name="District" Type="String" />
           <Property Name="Ward" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -400,6 +415,7 @@
           <Property Name="Total" Type="Int32" />
           <Property Name="ShipDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Orders" FromRole="OrderDetails" ToRole="Orders" />
+          <NavigationProperty Name="Product" Relationship="Eonon_ProModel.FK_OrderDetails_Products" FromRole="OrderDetail" ToRole="Product" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -460,6 +476,7 @@
           <Property Name="MetaKey" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="UnitsInStock" Type="Int32" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+          <NavigationProperty Name="OrderDetails" Relationship="Eonon_ProModel.FK_OrderDetails_Products" FromRole="Product" ToRole="OrderDetail" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -631,7 +648,23 @@
             <End Role="TransactStatus" EntitySet="TransactStatus" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Products" Association="Eonon_ProModel.FK_OrderDetails_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_OrderDetails_Products">
+          <End Type="Eonon_ProModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="Eonon_ProModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

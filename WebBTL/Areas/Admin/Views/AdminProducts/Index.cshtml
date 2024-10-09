@@ -7,8 +7,21 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
-    <h2>Index</h2>
+    <h2>Product</h2>
+    <form method="post" class="row">
+        <form method="get" class="row">
+            <div class="form-group mr-3">
+                @Html.DropDownList("CategoryId", (SelectList)ViewData["DanhMuc"], "Chọn thể loại", new { @class = "custom-select", @style = "min-width: 180px; max-width: 30%", id = "CategoryId" })
+            </div>
+            <div class="form-group mr-3">
+                @Html.DropDownList("TrangThai", (IEnumerable<SelectListItem>)ViewData["IsTrangThai"], "Chọn trạng thái", new { @class = "custom-select", @style = "min-width: 180px; max-width: 30%", id = "TrangThai" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Lọc</button>
+            </div>
+        </form>
 
+    </form>
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
@@ -20,17 +33,17 @@
             <th>
                 @Html.DisplayNameFor(model => model[0].ProductName)
             </th>
-
             <th>
                 @Html.DisplayNameFor(model => model[0].Price)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model[0].Discount)
             </th>
-
-
             <th>
                 @Html.DisplayNameFor(model => model[0].UnitsInStock)
+            </th>
+            <th>
+                Trạng thái
             </th>
             <th>
                 @Html.DisplayNameFor(model => model[0].Category.CatName)
@@ -47,17 +60,24 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.ProductName)
                 </td>
-
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Discount)
                 </td>
-
-
                 <td>
                     @Html.DisplayFor(modelItem => item.UnitsInStock)
+                </td>
+                <td>
+                    @if (item.UnitsInStock > 0)
+                    {
+                        <span class="badge badge-success">InStock</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-danger">OutStock</span>
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Category.CatName)
@@ -69,27 +89,20 @@
                 </td>
             </tr>
         }
-
     </table>
 
     <div aria-label="Page navigation example">
         <ul class="pagination d-flex justify-content-end" style="margin-top: 20px;">
-            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = 10, CategoryId = Request["CategoryId"], TrangThai = Request["TrangThai"] }),
                 new PagedListRenderOptions
                 {
-
                     DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
                     DisplayLinkToNextPage = PagedListDisplayMode.Always,
-
                     DisplayEllipsesWhenNotShowingAllPageNumbers = true,
-
-
-
                     LinkToPreviousPageFormat = "<button class='btn btn-secondary mr-3'>Previous</button>",
                     LinkToNextPageFormat = "<button class='btn btn-secondary ml-3'>Next</button>",
-
-
                 })
         </ul>
     </div>
+
 </div>

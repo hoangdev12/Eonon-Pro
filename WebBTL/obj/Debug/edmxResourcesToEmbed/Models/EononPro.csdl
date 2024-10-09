@@ -48,7 +48,7 @@
     <Property Name="Email" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
     <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
     <Property Name="LocationID" Type="Int32" />
-    <Property Name="District" Type="Int32" />
+    <Property Name="District" Type="String" />
     <Property Name="Ward" Type="Int32" />
     <Property Name="CreateDate" Type="DateTime" Precision="3" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -85,6 +85,7 @@
     <Property Name="Total" Type="Int32" />
     <Property Name="ShipDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Orders" FromRole="OrderDetails" ToRole="Orders" />
+    <NavigationProperty Name="Product" Relationship="Eonon_ProModel.FK_OrderDetails_Products" FromRole="OrderDetail" ToRole="Product" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -145,6 +146,7 @@
     <Property Name="MetaKey" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="UnitsInStock" Type="Int32" />
     <NavigationProperty Name="Category" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+    <NavigationProperty Name="OrderDetails" Relationship="Eonon_ProModel.FK_OrderDetails_Products" FromRole="Product" ToRole="OrderDetail" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -316,5 +318,21 @@
       <End Role="TransactStatus" EntitySet="TransactStatus" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Products" Association="Eonon_ProModel.FK_OrderDetails_Products">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK_OrderDetails_Products">
+    <End Type="Eonon_ProModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="Eonon_ProModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

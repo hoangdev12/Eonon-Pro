@@ -28,7 +28,7 @@ namespace WebBTL.Models
         public string Email { get; set; }
         public string Phone { get; set; }
         public Nullable<int> LocationID { get; set; }
-        public Nullable<int> District { get; set; }
+        public string District { get; set; }
         public Nullable<int> Ward { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public string Password { get; set; }

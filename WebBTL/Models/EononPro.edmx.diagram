@@ -24,6 +24,7 @@
         <AssociationConnector Association="Eonon_ProModel.FK_Orders_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="Eonon_ProModel.FK_OrderDetails_Orders" ManuallyRouted="false" />
         <AssociationConnector Association="Eonon_ProModel.FK_Orders_TransactStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Eonon_ProModel.FK_OrderDetails_Products" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
