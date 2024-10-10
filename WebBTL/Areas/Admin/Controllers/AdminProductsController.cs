@@ -23,7 +23,7 @@ namespace WebBTL.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminProducts
-        public ActionResult Index(int page = 1, int pageSize = 10, int? CategoryId = null, int? TrangThai = null)
+        public ActionResult Index(string searchTerm, int page = 1, int pageSize = 10, int? CategoryId = null, int? TrangThai = null )
         {
             // Lấy danh sách các thể loại để hiển thị trong dropdown
             ViewData["DanhMuc"] = new SelectList(_context.Categories, "CatID", "CatName");
@@ -35,7 +35,11 @@ namespace WebBTL.Areas.Admin.Controllers
             ViewData["IsTrangThai"] = IsTrangThai;
 
             // Lấy danh sách sản phẩm từ CSDL
-            var products = _context.Products.Include(c => c.Category).AsQueryable();
+            var products = _context.Products
+            .Include(c => c.Category)
+            .OrderBy(p => p.ProductID) 
+            .AsQueryable();
+
 
             // Lọc theo CategoryId nếu có giá trị
             if (CategoryId.HasValue && CategoryId != 0)
@@ -55,7 +59,13 @@ namespace WebBTL.Areas.Admin.Controllers
                     products = products.Where(p => p.UnitsInStock == 0);
                 }
             }
+         
+            if (!String.IsNullOrEmpty(searchTerm))
+            {
+                products = products.Where(x => x.ProductName.Contains(searchTerm));
+            }
 
+            ViewBag.SearchTerm = searchTerm;
             // Phân trang
             var pagedProducts = products.ToList().ToPagedList(page, pageSize);
 
@@ -161,6 +171,7 @@ namespace WebBTL.Areas.Admin.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {

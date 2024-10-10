@@ -575,9 +575,14 @@
     <Compile Include="Areas\Admin\Controllers\RolesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Enums\CacheKey.cs" />
+    <Compile Include="Extension\Extension.cs" />
+    <Compile Include="Extension\HashMD5.cs" />
+    <Compile Include="Extension\IdentityExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Utilities.cs" />
     <Compile Include="Models\Account.cs">
       <DependentUpon>EononPro.tt</DependentUpon>
     </Compile>

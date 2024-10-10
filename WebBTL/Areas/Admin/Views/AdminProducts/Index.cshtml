@@ -16,6 +16,10 @@
             <div class="form-group mr-3">
                 @Html.DropDownList("TrangThai", (IEnumerable<SelectListItem>)ViewData["IsTrangThai"], "Chọn trạng thái", new { @class = "custom-select", @style = "min-width: 180px; max-width: 30%", id = "TrangThai" })
             </div>
+            <div class="form-group mr-3">
+                <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control" placeholder="Search by title" />
+            </div>
+            <br />
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Lọc</button>
             </div>
@@ -30,27 +34,27 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model[0].ProductID)
+                Product ID
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].ProductName)
+               Product Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].Price)
+                Price
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].Discount)
+                Discount
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].UnitsInStock)
+                UnitsInStock
             </th>
             <th>
-                Trạng thái
+                Active
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].Category.CatName)
+                Cat Name
             </th>
-            <th></th>
+            <th class="text-center">#</th>
         </tr>
 
         @foreach (var item in Model)
@@ -63,10 +67,11 @@
                     @Html.DisplayFor(modelItem => item.ProductName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    @String.Format("{0:N0} VND", item.Price)
                 </td>
+
                 <td>
-                    @Html.DisplayFor(modelItem => item.Discount)
+                    @String.Format("{0:N0} VND", item.Discount)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.UnitsInStock)
@@ -85,9 +90,10 @@
                     @Html.DisplayFor(modelItem => item.Category.CatName)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductID }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID }, new { @class = "btn btn-primary" })
+
                 </td>
             </tr>
         }
