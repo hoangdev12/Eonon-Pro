@@ -6,6 +6,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 <div class="container-fluid">
     <div class="ml-5">
         <h2>Product</h2>
@@ -16,7 +17,7 @@
                     @Html.DropDownList("TrangThai", (IEnumerable<SelectListItem>)ViewData["IsTrangThai"], " Trạng thái", new { @class = "form-control", @style = "min-width: 180px; max-width: 30%", id = "TrangThai" })
                 </div>
                 <div class="form-group mr-3">
-                    <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control" placeholder="Tên sản phẩm" />
+                    <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control" placeholder="Tìm tên sản phẩm" />
                 </div>
                 <br />
                 <div class="form-group">
@@ -96,8 +97,8 @@
     </table>
 
     <div aria-label="Page navigation example">
-        <ul class="pagination d-flex justify-content-end" style="margin-top: 20px;">
-            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = 10, CategoryId = Request["CategoryId"], TrangThai = Request["TrangThai"] }),
+        <ul class="pagination d-flex justify-content-end " style="margin-top: 20px;">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = 10, CategoryId = Request["CategoryId"], TrangThai = Request["TrangThai"], searchTerm = ViewBag.SearchTerm }),
                 new PagedListRenderOptions
                 {
                     DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
@@ -105,8 +106,15 @@
                     DisplayEllipsesWhenNotShowingAllPageNumbers = true,
                     LinkToPreviousPageFormat = "<button class='btn btn-secondary mr-3'>Previous</button>",
                     LinkToNextPageFormat = "<button class='btn btn-secondary ml-3'>Next</button>",
+                    
                 })
         </ul>
     </div>
 
 </div>
+
+<style>
+    .pagination li{
+        margin:0 10px;
+    }
+</style>

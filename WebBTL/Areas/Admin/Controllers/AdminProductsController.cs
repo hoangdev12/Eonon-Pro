@@ -65,7 +65,11 @@ namespace WebBTL.Areas.Admin.Controllers
                 products = products.Where(x => x.ProductName.Contains(searchTerm));
             }
 
-            ViewBag.SearchTerm = searchTerm;
+
+            ViewBag.SearchTerm = searchTerm;           
+            ViewBag.TrangThai = TrangThai;
+            
+
             // Phân trang
             var pagedProducts = products.ToList().ToPagedList(page, pageSize);
 
@@ -171,7 +175,6 @@ namespace WebBTL.Areas.Admin.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
-
 
         protected override void Dispose(bool disposing)
         {

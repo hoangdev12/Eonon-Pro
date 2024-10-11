@@ -62,17 +62,17 @@
                     <td>@Html.DisplayFor(modelItem => item.Salt)</td>*@
                 <td>@Html.DisplayFor(modelItem => item.LastLogin)</td>
                 @*<td>@Html.DisplayFor(modelItem => item.Active)</td>*@
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
-                </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }, new { @class = "btn btn-outline-primary" })
+                @Html.ActionLink("Details", "Details", new { id = item.CustomerID }, new { @class = "btn btn-outline-info" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID }, new { @class = "btn btn-outline-warning" })
+            </td>
             </tr>
         }
     </table>
     <div aria-label="Page navigation example">
         <ul class="pagination d-flex justify-content-end" style="margin-top: 20px;">
-            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchTerm = ViewBag.SearchTerm }),
                 new PagedListRenderOptions
                 {
 
@@ -96,3 +96,9 @@
 
 
 </div>
+
+<style>
+    .pagination li{
+        margin:0 10px;
+    }
+</style>

@@ -87,9 +87,9 @@
                     @Html.DisplayFor(modelItem => item.Role.RoleName)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.AccountID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.AccountID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.AccountID })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AccountID }, new { @class = "btn btn-outline-primary" })
+                    @Html.ActionLink("Details", "Details", new { id = item.AccountID }, new { @class = "btn btn-outline-info" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AccountID }, new { @class = "btn btn-outline-warning" })
                 </td>
             </tr>
         }

@@ -41,10 +41,9 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.RoleID }, new {@class = "btn btn-primary"})   
-                    @Html.ActionLink("Details", "Details", new { id = item.RoleID }, new { @class = "btn btn-primary" }) 
-                    @Html.ActionLink("Delete", "Delete", new { id = item.RoleID }, new { @class = "btn btn-primary" })
-
+                    @Html.ActionLink("Edit", "Edit", new { id = item.RoleID }, new { @class = "btn btn-outline-primary" })
+                    @Html.ActionLink("Details", "Details", new { id = item.RoleID }, new { @class = "btn btn-outline-info" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.RoleID }, new { @class = "btn btn-outline-warning" })
                 </td>
             </tr>
         }

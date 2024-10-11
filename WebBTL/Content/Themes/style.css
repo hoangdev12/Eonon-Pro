@@ -190,3 +190,7 @@ html, body{
         max-width: 100%; /* Đảm bảo hình ảnh không vượt quá chiều rộng của phần chứa */
         height: auto; /* Giữ tỉ lệ khung hình */
     }
+
+.pagination li{
+    margin: 0 10px;
+}
