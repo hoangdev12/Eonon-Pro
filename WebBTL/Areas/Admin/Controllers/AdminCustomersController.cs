@@ -24,7 +24,7 @@ namespace WebBTL.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminCustomers
-        public ActionResult Index(int page = 1, int pageSize = 10)
+        public ActionResult Index(string searchTerm, int page = 1, int pageSize = 10)
         {
 
 
@@ -35,7 +35,13 @@ namespace WebBTL.Areas.Admin.Controllers
             IsTrangThai.Add(new SelectListItem() { Text = "Block", Value = "0" });
             ViewData["IsTrangThai"] = IsTrangThai;
 
-            var customers = _context.Customers.Include(c => c.Location).ToList();
+            var customers = _context.Customers.Include(c => c.Location).OrderByDescending(c => c.CustomerID).AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchTerm))
+            {
+                customers = customers.Where(x => x.FullName.Contains(searchTerm));
+            }
+            ViewBag.SearchTerm = searchTerm;
 
             var pagedCustomers = customers.ToPagedList(page, pageSize);
 

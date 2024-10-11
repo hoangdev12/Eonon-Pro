@@ -7,26 +7,39 @@
 }
 
 <div class="container">
+    <br />
     <h2>Khách hàng</h2>
+    <form method="get">
+        <div class="row">
+            <div class="d-flex justify-content-end mr-3">
+                <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control" placeholder="Tim kiem theo" />
+            </div>
 
-    <div class="d-flex justify-content-end">
-        @Html.ActionLink("Create New", "Create",null, new {@class = "btn btn-primary"})
-    </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Lọc</button>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        </div>
+    </form>
+   
+   
     <br />
     <table class="table">
         <tr>
             <th>@Html.DisplayNameFor(model => model[0].CustomerID)</th>
             <th>@Html.DisplayNameFor(model => model[0].FullName)</th>
             @*<th>@Html.DisplayNameFor(model => model[0].Birthday)</th>
-            <th>@Html.DisplayNameFor(model => model[0].Avatar)</th>
-            <th>@Html.DisplayNameFor(model => model[0].Address)</th>
-            <th>@Html.DisplayNameFor(model => model[0].Email)</th>
-            <th>@Html.DisplayNameFor(model => model[0].Phone)</th>*@
+                <th>@Html.DisplayNameFor(model => model[0].Avatar)</th>
+                <th>@Html.DisplayNameFor(model => model[0].Address)</th>
+                <th>@Html.DisplayNameFor(model => model[0].Email)</th>
+                <th>@Html.DisplayNameFor(model => model[0].Phone)</th>*@
             <th>@Html.DisplayNameFor(model => model[0].District)</th>
             @*<th>@Html.DisplayNameFor(model => model[0].Ward)</th>*@
             @*<th>@Html.DisplayNameFor(model => model[0].CreateDate)</th>
-            <th>@Html.DisplayNameFor(model => model[0].Password)</th>
-            <th>@Html.DisplayNameFor(model => model[0].Salt)</th>*@
+                <th>@Html.DisplayNameFor(model => model[0].Password)</th>
+                <th>@Html.DisplayNameFor(model => model[0].Salt)</th>*@
             <th>@Html.DisplayNameFor(model => model[0].LastLogin)</th>
             @*<th>@Html.DisplayNameFor(model => model[0].Active)</th>*@
             <th></th>
@@ -38,15 +51,15 @@
                 <td>@Html.DisplayFor(modelItem => item.CustomerID)</td>
                 <td>@Html.DisplayFor(modelItem => item.FullName)</td>
                 @*<td>@Html.DisplayFor(modelItem => item.Birthday)</td>
-                <td>@Html.DisplayFor(modelItem => item.Avatar)</td>
-                <td>@Html.DisplayFor(modelItem => item.Address)</td>
-                <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                <td>@Html.DisplayFor(modelItem => item.Phone)</td>*@
+                    <td>@Html.DisplayFor(modelItem => item.Avatar)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Phone)</td>*@
                 <td>@Html.DisplayFor(modelItem => item.District)</td>
                 @*<td>@Html.DisplayFor(modelItem => item.Ward)</td>
-                <td>@Html.DisplayFor(modelItem => item.CreateDate)</td>
-                <td>@Html.DisplayFor(modelItem => item.Password)</td>
-                <td>@Html.DisplayFor(modelItem => item.Salt)</td>*@
+                    <td>@Html.DisplayFor(modelItem => item.CreateDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Password)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Salt)</td>*@
                 <td>@Html.DisplayFor(modelItem => item.LastLogin)</td>
                 @*<td>@Html.DisplayFor(modelItem => item.Active)</td>*@
                 <td>

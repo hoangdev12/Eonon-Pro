@@ -2,15 +2,19 @@
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Page";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container">
     <h2>Index</h2>
 
+
+    <br />
     <div class="d-flex justify-content-end">
-        @Html.ActionLink("Create New", "Create",null, new {@class = "btn btn-primary"})
+
+
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
     </div>
     <br />
     @if (Model != null && Model.Count() > 0)
@@ -72,6 +76,8 @@
         <p>No data available</p>
     }
 
+
+
     <div aria-label="Page navigation example">
         <ul class="pagination d-flex justify-content-end" style="margin-top: 20px;">
             @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
@@ -95,3 +101,4 @@
     </div>
 
 </div>
+
