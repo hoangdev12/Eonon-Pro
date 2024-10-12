@@ -10,17 +10,17 @@ using WebBTL.Models;
 
 namespace WebBTL.Areas.Admin.Controllers
 {
-    public class RolesController : Controller
+    public class AdminRolesController : Controller
     {
         private Eonon_ProEntities1 db = new Eonon_ProEntities1();
 
-        // GET: Admin/Roles
+        // GET: Admin/AdminRoles
         public ActionResult Index()
         {
             return View(db.Roles.ToList());
         }
 
-        // GET: Admin/Roles/Details/5
+        // GET: Admin/AdminRoles/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,13 +35,13 @@ namespace WebBTL.Areas.Admin.Controllers
             return View(role);
         }
 
-        // GET: Admin/Roles/Create
+        // GET: Admin/AdminRoles/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Roles/Create
+        // POST: Admin/AdminRoles/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -58,7 +58,7 @@ namespace WebBTL.Areas.Admin.Controllers
             return View(role);
         }
 
-        // GET: Admin/Roles/Edit/5
+        // GET: Admin/AdminRoles/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace WebBTL.Areas.Admin.Controllers
             return View(role);
         }
 
-        // POST: Admin/Roles/Edit/5
+        // POST: Admin/AdminRoles/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -89,7 +89,7 @@ namespace WebBTL.Areas.Admin.Controllers
             return View(role);
         }
 
-        // GET: Admin/Roles/Delete/5
+        // GET: Admin/AdminRoles/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,15 +104,22 @@ namespace WebBTL.Areas.Admin.Controllers
             return View(role);
         }
 
-        // POST: Admin/Roles/Delete/5
+        // POST: Admin/AdminRoles/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+      
         public ActionResult DeleteConfirmed(int id)
         {
-            Role role = db.Roles.Find(id);
-            db.Roles.Remove(role);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+
+            var role = db.Roles.Find(id);
+
+            if (role != null)
+            {
+                db.Roles.Remove(role);
+                db.SaveChanges();
+                return Json(new { success = true });
+            }
+
+            return Json(new { success = false });
         }
 
         protected override void Dispose(bool disposing)

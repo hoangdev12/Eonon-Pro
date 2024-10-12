@@ -106,38 +106,19 @@ namespace WebBTL.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminPages/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Page page = _context.Pages.Find(id);
-            if (page == null)
-            {
-                return HttpNotFound();
-            }
-            return View(page);
-        }
+            var page = _context.Pages.Find(id);
 
-        // POST: Admin/AdminPages/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Page page = _context.Pages.Find(id);
-            _context.Pages.Remove(page);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            if (page != null)
             {
-                _context.Dispose();
+                _context.Pages.Remove(page);
+                _context.SaveChanges();
+                return Json(new { success = true });
             }
-            base.Dispose(disposing);
+
+            return Json(new { success = false });
         }
     }
 }

@@ -9,14 +9,14 @@
     <h2>Accounts</h2>
 
     <div class="d-flex justify-content-end">
-        @Html.ActionLink("Create New", "Create",null, new {@class = "btn btn-primary"})
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
     </div>
     <br />
     <form method="get" class="row">
         <div class="form-group mr-3">
             @Html.DropDownList("RoleId", (SelectList)ViewData["QuyenTruyCap"], "Chọn quyền truy cập", new { @class = "custom-select", @style = "min-width: 180px; max-width: 30%", id = "RoleId" })
         </div>
-        
+
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Lọc</button>
         </div>
@@ -58,7 +58,7 @@
 
         @foreach (var item in Model)
         {
-            <tr>
+            <tr id="trow_@item.AccountID">
                 <td>
                     @Html.DisplayFor(modelItem => item.Phone)
                 </td>
@@ -89,10 +89,49 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.AccountID }, new { @class = "btn btn-outline-primary" })
                     @Html.ActionLink("Details", "Details", new { id = item.AccountID }, new { @class = "btn btn-outline-info" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.AccountID }, new { @class = "btn btn-outline-warning" })
+                       <a href="#" data-id="@item.AccountID" class="btn btn-outline-warning btnDelete">Delete</a>
                 </td>
             </tr>
         }
 
     </table>
 </div>
+
+@section scripts {
+    <script>
+
+        $(document).ready(function () {
+
+            $('body').on('click', '.btnDelete', function () {
+
+                var id = $(this).data('id');
+
+
+                var conf = confirm('Bạn có muốn xóa sản phẩm này không?');
+                if (conf === true) {
+
+                    $.ajax({
+                        url: '/Admin/AdminAccounts/Delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (response) {
+                            if (response.success) {
+
+                                $('#trow_' + id).remove();
+                                alert('Xóa tài khoản thành công');
+                            } else {
+
+                                alert('Không thể xóa tài khoản. Vui lòng thử lại.');
+                            }
+                        },
+                        error: function (xhr, status, error) {
+
+                            console.error('Error occurred:', error);
+                            alert('Có lỗi xảy ra: ' + xhr.responseText);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

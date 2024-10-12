@@ -35,7 +35,7 @@
 
             @foreach (var item in Model)
             {
-                <tr>
+                <tr id="trow_@item.PageID">
                     <td>
                         @Html.DisplayFor(modelItem => item.PageID)
                     </td>
@@ -63,9 +63,9 @@
                         }
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.PageID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.PageID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.PageID })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PageID }, new { @class = "btn btn-outline-primary" }) 
+                        @Html.ActionLink("Details", "Details", new { id = item.PageID }, new { @class = "btn btn-outline-info" })
+                        <a href="#" data-id="@item.PageID" class="btn btn-outline-danger btnDelete">Delete</a>
                     </td>
                 </tr>
             }
@@ -102,3 +102,40 @@
 
 </div>
 
+@section scripts {
+    <script>
+        $(document).ready(function () {
+
+            $('body').on('click', '.btnDelete', function () {
+
+                var id = $(this).data('id');
+
+
+                var conf = confirm('Bạn có muốn xóa sản phẩm này không?');
+                if (conf === true) {
+
+                    $.ajax({
+                        url: '/Admin/AdminPages/Delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (response) {
+                            if (response.success) {
+
+                                $('#trow_' + id).remove();
+                                alert('Xóa page thành công');
+                            } else {
+
+                                alert('Không thể xóa page. Vui lòng thử lại.');
+                            }
+                        },
+                        error: function (xhr, status, error) {
+
+                            console.error('Error occurred:', error);
+                            alert('Có lỗi xảy ra: ' + xhr.responseText);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

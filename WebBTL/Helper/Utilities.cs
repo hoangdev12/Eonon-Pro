@@ -110,6 +110,11 @@ namespace WebBTL.Helper
                 return null;
             }
         }
+
+        internal static Task<string> UploadFile(HttpPostedFileBase fThumb, string v1, string v2)
+        {
+            throw new NotImplementedException();
+        }
     }
     
 }

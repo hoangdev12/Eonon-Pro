@@ -60,29 +60,7 @@ namespace WebBTL.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminAccounts/Create
-        public ActionResult Create()
-        {
-            ViewBag.RoleID = new SelectList(_context.Roles, "RoleID", "RoleName");
-            return View();
-        }
-
-        // POST: Admin/AdminAccounts/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AccountID,Phone,Email,Password,Salt,Active,FullName,RoleID,LastLogin,CreateDate")] Account account)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Accounts.Add(account);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.RoleID = new SelectList(_context.Roles, "RoleID", "RoleName", account.RoleID);
-            return View(account);
-        }
+     
 
         // GET: Admin/AdminAccounts/Edit/5
         public ActionResult Edit(int? id)
@@ -118,38 +96,22 @@ namespace WebBTL.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminAccounts/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public ActionResult Delete(int id)
         {
-            if (id == null)
+            var account = _context.Accounts.Find(id);
+
+            if (account != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                _context.Accounts.Remove(account); 
+                _context.SaveChanges();
+                return Json(new { success = true });
             }
-            Account account = _context.Accounts.Find(id);
-            if (account == null)
-            {
-                return HttpNotFound();
-            }
-            return View(account);
+
+            return Json(new { success = false });
         }
 
-        // POST: Admin/AdminAccounts/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Account account = _context.Accounts.Find(id);
-            _context.Accounts.Remove(account);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _context.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+
     }
 }

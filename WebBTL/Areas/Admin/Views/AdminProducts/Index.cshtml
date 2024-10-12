@@ -12,7 +12,7 @@
         <h2>Product</h2>
         <form method="post" class="row">
             <form method="get" class="row">
-               
+
                 <div class="form-group mr-3">
                     @Html.DropDownList("TrangThai", (IEnumerable<SelectListItem>)ViewData["IsTrangThai"], " Trạng thái", new { @class = "form-control", @style = "min-width: 180px; max-width: 30%", id = "TrangThai" })
                 </div>
@@ -52,13 +52,13 @@
             <th>
                 Active
             </th>
-            
+
             <th class="text-center">#</th>
         </tr>
 
         @foreach (var item in Model)
         {
-            <tr>
+            <tr id="trow_@item.ProductID">
                 <td>
                     @Html.DisplayFor(modelItem => item.ProductID)
                 </td>
@@ -78,18 +78,18 @@
                 <td>
                     @if (item.UnitsInStock > 0)
                     {
-                        <span class="badge badge-success" >  Instock</span>
+                        <span class="badge badge-success">  Instock</span>
                     }
-                    else if(item.UnitsInStock == 0)
+                    else if (item.UnitsInStock == 0)
                     {
-                        <span class="badge badge-danger" > Outstock</span>
+                        <span class="badge badge-danger"> Outstock</span>
                     }
                 </td>
-                
+
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }, new { @class = "btn btn-outline-primary" })
                     @Html.ActionLink("Details", "Details", new { id = item.ProductID }, new { @class = "btn btn-outline-info" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID }, new { @class = "btn btn-outline-warning" })
+                    <a href="#" data-id="@item.ProductID" class="btn btn-outline-warning btnDelete">Delete</a>
 
                 </td>
             </tr>
@@ -106,7 +106,7 @@
                     DisplayEllipsesWhenNotShowingAllPageNumbers = true,
                     LinkToPreviousPageFormat = "<button class='btn btn-secondary mr-3'>Previous</button>",
                     LinkToNextPageFormat = "<button class='btn btn-secondary ml-3'>Next</button>",
-                    
+
                 })
         </ul>
     </div>
@@ -114,7 +114,71 @@
 </div>
 
 <style>
-    .pagination li{
-        margin:0 10px;
+    .pagination li {
+        margin: 0 10px;
     }
 </style>
+
+@*@section scripts{
+    <script>
+        console.log('Trying to access element:', document.getElementById('trow_' + id));
+        $(document).ready(function () {
+            $('body').on('click', '.btnDelete', function () {
+                var id = $(this).data('id');
+
+                var conf = confirm('Bạn có muốn xóa sản phẩm này ko');
+                if (conf === true) {
+                    $.ajax({
+                        url: '/Admin/AdminProducts/Delete',
+                        type: 'POST',
+                        data: { ProductID: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                $('#trow_' + id).remove();
+                            }
+                        }
+                    })
+                }
+            });
+        });
+
+    </script>
+}*@
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            
+            $('body').on('click', '.btnDelete', function () {
+               
+                var id = $(this).data('id');
+
+                
+                var conf = confirm('Bạn có muốn xóa sản phẩm này không?');
+                if (conf === true) {
+                    
+                    $.ajax({
+                        url: '/Admin/AdminProducts/Delete', 
+                        type: 'POST',
+                        data: { id: id }, 
+                        success: function (response) {
+                            if (response.success) {
+                                
+                                $('#trow_' + id).remove();
+                                alert('Xóa sản phẩm thành công');
+                            } else {
+                                
+                                alert('Không thể xóa sản phẩm. Vui lòng thử lại.');
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            
+                            console.error('Error occurred:', error);
+                            alert('Có lỗi xảy ra: ' + xhr.responseText);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

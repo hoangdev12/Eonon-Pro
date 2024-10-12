@@ -29,7 +29,7 @@
 
         @foreach (var item in Model)
         {
-            <tr>
+            <tr id="trow_@item.PostID">
                 <td>
                     @Html.DisplayFor(modelItem => item.PostID)
                 </td>
@@ -59,7 +59,7 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.PostID }) |
                     @Html.ActionLink("Details", "Details", new { id = item.PostID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.PostID })
+                    <a href="#" data-id="@item.PostID" class="btn btn-outline-danger btnDelete">Delete</a>
                 </td>
             </tr>
         }
@@ -89,3 +89,41 @@
         </ul>
     </div>
 </div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+
+            $('body').on('click', '.btnDelete', function () {
+
+                var id = $(this).data('id');
+
+
+                var conf = confirm('Bạn có muốn xóa sản phẩm này không?');
+                if (conf === true) {
+
+                    $.ajax({
+                        url: '/Admin/AdmintblTinTucs/Delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (response) {
+                            if (response.success) {
+
+                                $('#trow_' + id).remove();
+                                alert('Xóa page thành công');
+                            } else {
+
+                                alert('Không thể xóa page. Vui lòng thử lại.');
+                            }
+                        },
+                        error: function (xhr, status, error) {
+
+                            console.error('Error occurred:', error);
+                            alert('Có lỗi xảy ra: ' + xhr.responseText);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

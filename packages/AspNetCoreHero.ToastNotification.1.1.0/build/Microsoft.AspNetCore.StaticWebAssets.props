@@ -1,0 +1,32 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAsset Include="$(MSBuildThisFileDirectory)..\staticwebassets\notyf.min.css">
+      <SourceType>Package</SourceType>
+      <SourceId>AspNetCoreHero.ToastNotification</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AspNetCoreHero.ToastNotification</BasePath>
+      <RelativePath>notyf.min.css</RelativePath>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$(MSBuildThisFileDirectory)..\staticwebassets\notyf.min.js">
+      <SourceType>Package</SourceType>
+      <SourceId>AspNetCoreHero.ToastNotification</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AspNetCoreHero.ToastNotification</BasePath>
+      <RelativePath>notyf.min.js</RelativePath>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$(MSBuildThisFileDirectory)..\staticwebassets\toastify.css">
+      <SourceType>Package</SourceType>
+      <SourceId>AspNetCoreHero.ToastNotification</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AspNetCoreHero.ToastNotification</BasePath>
+      <RelativePath>toastify.css</RelativePath>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$(MSBuildThisFileDirectory)..\staticwebassets\toastify.js">
+      <SourceType>Package</SourceType>
+      <SourceId>AspNetCoreHero.ToastNotification</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AspNetCoreHero.ToastNotification</BasePath>
+      <RelativePath>toastify.js</RelativePath>
+    </StaticWebAsset>
+  </ItemGroup>
+</Project>

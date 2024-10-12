@@ -122,38 +122,20 @@ namespace WebBTL.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminCustomers/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public ActionResult Delete(int id)
         {
-            if (id == null)
+            var customer = _context.Customers.Find(id); 
+
+            if (customer != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                _context.Customers.Remove(customer); 
+                _context.SaveChanges();
+                return Json(new { success = true });
             }
-            Customer customer = _context.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customer);
+
+            return Json(new { success = false });
         }
 
-        // POST: Admin/AdminCustomers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Customer customer = _context.Customers.Find(id);
-            _context.Customers.Remove(customer);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _context.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

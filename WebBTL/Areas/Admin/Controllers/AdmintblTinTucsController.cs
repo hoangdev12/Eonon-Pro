@@ -109,38 +109,19 @@ namespace WebBTL.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdmintblTinTucs/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tblTinTuc tblTinTuc = _context.tblTinTucs.Find(id);
-            if (tblTinTuc == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tblTinTuc);
-        }
+            var tltTintuc = _context.tblTinTucs.Find(id);
 
-        // POST: Admin/AdmintblTinTucs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            tblTinTuc tblTinTuc = _context.tblTinTucs.Find(id);
-            _context.tblTinTucs.Remove(tblTinTuc);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            if (tltTintuc != null)
             {
-                _context.Dispose();
+                _context.tblTinTucs.Remove(tltTintuc);
+                _context.SaveChanges();
+                return Json(new { success = true });
             }
-            base.Dispose(disposing);
+
+            return Json(new { success = false });
         }
     }
 }

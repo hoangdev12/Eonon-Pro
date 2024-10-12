@@ -23,8 +23,8 @@
             @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
         </div>
     </form>
-   
-   
+
+
     <br />
     <table class="table">
         <tr>
@@ -47,7 +47,7 @@
 
         @foreach (var item in Model)
         {
-            <tr>
+            <tr id="trow_@item.CustomerID">
                 <td>@Html.DisplayFor(modelItem => item.CustomerID)</td>
                 <td>@Html.DisplayFor(modelItem => item.FullName)</td>
                 @*<td>@Html.DisplayFor(modelItem => item.Birthday)</td>
@@ -65,7 +65,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }, new { @class = "btn btn-outline-primary" })
                 @Html.ActionLink("Details", "Details", new { id = item.CustomerID }, new { @class = "btn btn-outline-info" })
-                @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID }, new { @class = "btn btn-outline-warning" })
+                <a href="#" data-id="@item.CustomerID" class="btn btn-outline-warning btnDelete">Delete</a>
             </td>
             </tr>
         }
@@ -98,7 +98,45 @@
 </div>
 
 <style>
-    .pagination li{
-        margin:0 10px;
+    .pagination li {
+        margin: 0 10px;
     }
 </style>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+
+            $('body').on('click', '.btnDelete', function () {
+
+                var id = $(this).data('id');
+
+
+                var conf = confirm('Bạn có muốn xóa sản phẩm này không?');
+                if (conf === true) {
+
+                    $.ajax({
+                        url: '/Admin/AdminCustomers/Delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (response) {
+                            if (response.success) {
+
+                                $('#trow_' + id).remove();
+                                alert('Xóa khách hàng thành công');
+                            } else {
+
+                                alert('Không thể xóa khách hàng. Vui lòng thử lại.');
+                            }
+                        },
+                        error: function (xhr, status, error) {
+
+                            console.error('Error occurred:', error);
+                            alert('Có lỗi xảy ra: ' + xhr.responseText);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
