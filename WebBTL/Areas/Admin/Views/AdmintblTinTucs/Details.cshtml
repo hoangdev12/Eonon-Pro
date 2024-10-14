@@ -6,142 +6,175 @@
 }
 
 <h2>Details</h2>
+<div class="container">
+    <div>
+        <h4>tblTinTuc</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
 
-<div>
-    <h4>tblTinTuc</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.SContents)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SContents)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.SContents)
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.SContents)
-        </dd>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Contents)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Contents)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Contents)
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Contents)
-        </dd>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Thumb)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Thumb)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    <img src="@Url.Content(@Model.Thumb)" alt="Alternate Text" style="width: 150px;" />
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Thumb)
-        </dd>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Published)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Published)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Published)
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Published)
-        </dd>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Alias)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Alias)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Alias)
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Alias)
-        </dd>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.CreateDate)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.CreateDate)
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreateDate)
-        </dd>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Author)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Author)
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Author)
-        </dd>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.AccountID)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AccountID)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.AccountID)
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.AccountID)
-        </dd>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Tags)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Tags)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Tags)
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Tags)
-        </dd>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.CatID)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CatID)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.CatID)
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.CatID)
-        </dd>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.isHot)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.isHot)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.isHot)
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.isHot)
-        </dd>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.isNewFeed)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.isNewFeed)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.isNewFeed)
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.isNewFeed)
-        </dd>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.MetaKey)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MetaKey)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.MetaKey)
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.MetaKey)
-        </dd>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.MetaDesc)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MetaDesc)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.MetaDesc)
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.MetaDesc)
-        </dd>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Views)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Views)
-        </dt>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Views)
+                </dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Views)
-        </dd>
-
-    </dl>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.PostID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PostID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -1,0 +1,167 @@
+﻿@model PagedList.IPagedList<WebBTL.Models.Category>
+
+@using PagedList.Mvc;
+@using WebBTL.Helper;
+
+@{
+    ViewBag.Title = "Quản lý danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    
+        <form method="get" class="row">
+
+            
+            <div class="form-group mr-3">
+                <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control" placeholder="Tìm tên sản phẩm" />
+            </div>
+            <br />
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Lọc</button>
+            </div>
+
+        </form>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].CatID)
+                </th>
+                <th styl
+                <th>
+                    @Html.DisplayNameFor(model => model[0].CatName)
+                </th>
+                <th style="max-width:100px;">
+                    @Html.DisplayNameFor(model => model[0].Description)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Ordering)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Published)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Thumb)
+                </th>
+
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr id="irow_@item.CatID">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CatID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CatName)
+                    </td>
+                    <td style="max-width:200px">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ordering)
+                    </td>
+                    <td>
+                        @if (item.Published == true)
+                        {
+                            <span class="badge badge-success">public</span>
+                        }
+                        @if (item.Published == false)
+                        {
+                            <span class="badge badge-danger">Non-public</span>
+                        }
+                    </td>
+
+                    <td style="max-width:200px">
+                        @if (!string.IsNullOrEmpty(item.Thumb))
+                        {
+                            <img src="@Url.Content(item.Thumb)" alt="Image" style="max-width:100%; height:auto;" />
+                        }
+                        else
+                        {
+                            <img src="/images/default.png" alt="No Image" style="max-width:100%; height:auto;" />
+                        }
+                    </td>
+
+
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CatID }, new { @class = "btn btn-outline-primary" })
+                        @Html.ActionLink("Details", "Details", new { id = item.CatID }, new { @class = "btn btn-outline-info" })
+                        <a href="#" data-id="@item.CatID" class="btn btn-outline-danger btnDelete">Delete</a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <div aria-label="Page navigation example">
+            <ul class="pagination d-flex justify-content-end " style="margin-top: 20px;">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = 10, CategoryId = Request["CategoryId"], TrangThai = Request["TrangThai"], searchTerm = ViewBag.SearchTerm }),
+                    new PagedListRenderOptions
+                    {
+                        DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                        DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                        DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+                        LinkToPreviousPageFormat = "<button class='btn btn-secondary mr-3'>Previous</button>",
+                        LinkToNextPageFormat = "<button class='btn btn-secondary ml-3'>Next</button>",
+
+                    })
+            </ul>
+        </div>
+</div>
+
+<style>
+    .pagination li {
+        margin: 0 10px;
+    }
+</style>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+
+            $('body').on('click', '.btnDelete', function () {
+
+                var id = $(this).data('id');
+
+
+                var conf = confirm('Bạn có muốn xóa sản phẩm này không?');
+                if (conf === true) {
+
+                    $.ajax({
+                        url: '/Admin/AdminCategories/Delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (response) {
+                            if (response.success) {
+
+                                $('#trow_' + id).remove();
+                                alert('Xóa page thành công');
+                            } else {
+
+                                alert('Không thể xóa page. Vui lòng thử lại.');
+                            }
+                        },
+                        error: function (xhr, status, error) {
+
+                            console.error('Error occurred:', error);
+                            alert('Có lỗi xảy ra: ' + xhr.responseText);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

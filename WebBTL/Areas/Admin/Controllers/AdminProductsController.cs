@@ -158,8 +158,8 @@ namespace WebBTL.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(product);
-        }
+                return View(product);
+            }
 
 
 

@@ -39,7 +39,11 @@
                 </dt>
 
                 <dd class="col-sm-6 col-md-6">
-                    <img src="@Url.Content(@Model.Thumb)" alt="Alternate Text" style="width: 150px;" />
+                    @if(Model.Thumb != null)
+                     {
+                        <img src="@Url.Content(@Model.Thumb)" alt="Alternate Text" style="width: 150px;" />
+                     }
+                   
                 </dd>
             </div>
 

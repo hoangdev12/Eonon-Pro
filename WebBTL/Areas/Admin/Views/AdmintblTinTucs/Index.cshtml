@@ -2,7 +2,7 @@
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Quản lý tin tức";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,6 +13,15 @@
         @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
     </div>
     <br />
+    <form method="get" class="row">
+        <div class="form-group mr-3">
+            <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control" placeholder="Tìm title" />
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Lọc</button>
+        </div>
+    </form>
     <table class="table ">
         <tr>
             <th>
@@ -22,9 +31,9 @@
                 @Html.DisplayNameFor(model => model[0].Title)
             </th>
             <th>
-                Trạng Thái
+                Published
             </th>
-            <th>#</th>
+            <th class="text-center">#</th>
         </tr>
 
         @foreach (var item in Model)
@@ -36,29 +45,21 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
+
                 <td>
+                    @if (item.Published == true)
+                    {
+                        <span class="badge badge-success">public</span>
+                    }
+                    @if (item.Published == false)
+                    {
+                        <span class="badge badge-danger">non-public</span>
+                    }
                 </td>
-                @if (item.isHot == true)
-                {
-
-                    <div class="d-flex align-items-center">
-                        <div class="badge badge-success badge-dot mr-5"> </div>
-                        <div>Hot</div>
-
-                    </div>
-
-                }
-                else if (item.isNewFeed == true)
-                {
-                    <div class="d-flex align-items-center">
-                        <div class="badge badge-success badge-dot mr-5">   </div>
-                        <div>New Feed</div>
-
-                    </div>
-                }
+               
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.PostID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.PostID }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PostID }, new {@class="btn btn-outline-primary"}) 
+                    @Html.ActionLink("Details", "Details", new { id = item.PostID }, new {@class="btn btn-outline-info"}) 
                     <a href="#" data-id="@item.PostID" class="btn btn-outline-danger btnDelete">Delete</a>
                 </td>
             </tr>

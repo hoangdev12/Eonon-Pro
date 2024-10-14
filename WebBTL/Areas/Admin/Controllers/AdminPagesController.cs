@@ -65,6 +65,9 @@ namespace WebBTL.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PageID,PageName,Contents,Thumb,Published,Title,MetaDesc,MetaKey,Alias,CreateDate,Ordering")] Page page)
         {
+
+
+
             if (ModelState.IsValid)
             {
                 _context.Pages.Add(page);

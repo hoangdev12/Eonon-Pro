@@ -1,0 +1,150 @@
+﻿@model WebBTL.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Category</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.CatName)
+                </dt>
+
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.CatName)
+                </dd>
+            </div>
+
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+            </div>
+
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.ParentID)
+                </dt>
+
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.ParentID)
+                </dd>
+            </div>
+
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Leveks)
+                </dt>
+
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Leveks)
+                </dd>
+            </div>
+
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Ordering)
+                </dt>
+
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Ordering)
+                </dd>
+            </div>
+
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Published)
+                </dt>
+
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Published)
+                </dd>
+            </div>
+
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Thumb)
+                </dt>
+
+                <dd class="col-sm-6 col-md-6">
+                    <img src="@Url.Content(@Model.Thumb)" alt="Alternate Text" style="width: 150px;" />
+                </dd>
+            </div>
+
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+            </div>
+
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Alias)
+                </dt>
+
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Alias)
+                </dd>
+            </div>
+
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.MetaDesc)
+                </dt>
+
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.MetaDesc)
+                </dd>
+            </div>
+
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.MetaKey)
+                </dt>
+
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.MetaKey)
+                </dd>
+            </div>
+
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Cover)
+                </dt>
+
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Cover)
+                </dd>
+            </div>
+
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.SchemaMarkup)
+                </dt>
+
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.SchemaMarkup)
+                </dd>
+            </div>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CatID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
