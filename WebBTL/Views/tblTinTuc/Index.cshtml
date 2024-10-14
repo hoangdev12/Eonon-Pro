@@ -1,0 +1,147 @@
+﻿@model PagedList.IPagedList<WebBTL.Models.tblTinTuc>
+
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@section navbar{
+
+    <div class="container-fluid bgtop2 ">
+        <nav class="navbar navbar-expand-lg bg-warning  fixed-top">
+            <div class="container ">
+                <a class="navbar-brand " href="#"><img src="~/Content/images/logo.png" alt="Alternate Text" style="width:100; max-width:100px;" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header bg-warning">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body  bg-warning">
+                        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/Home/Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Products/Index">Product</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Service</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Tin tức</a>
+                            </li>
+                        </ul>
+                        <div class="d-flex justify-content-center align-items-center gap-3">
+                            <a href="#" class="text-decoration-none text-black">Login</a>
+                            <a href="#" class="text-decoration-none px-3 py-1 rounded-4 text-black" style="background-color:blue;">Sign up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+}
+
+@* banner tin tiuc *@
+<section style="margin-top:97px">
+    <div class="bannerTinTuc">
+        <div class="container" style="padding-top:50px">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <span style="color:#FFF; font-size:24px;">TIN TỨC</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br />
+<br />
+
+@* blog section *@
+<section class="blogSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-center" style="flex-wrap:wrap">
+                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right:10px;">ĐÁNH GIÁ XE  </a>
+                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> KINH NGHIỆM LÁI XE </a>
+                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> TRẢI NGHIỆM SẢN PHẨM </a>
+                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> TƯ VẤN LUẬT GIAO THÔNG </a>
+                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> TƯ VẤN BÁN XE </a>
+                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> SỰ KIỆN </a>
+                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> TUYỂN DỤNG </a>
+                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> TIN KHUYẾN MÃI </a>
+                </div>
+            </div>
+
+            <div class="col-12" style="margin-top:50px">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-4 col-md-4 pb-3">
+                            <div class="card h-100 ">
+                                <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })" class="linkTinTuc">
+                                    <img src="@item.Thumb" class="card-img-top" alt="error">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Đăng bởi:
+                                        <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })" style="font-size:14px;text-decoration:none;opacity:0.5;color:black;" class="linkTinTuc">
+                                            @item.Author - @item.CreateDate
+                                        </a>
+                                    </h5>
+                                    <br />
+                                    <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })" style="text-decoration: none; color:black; font-size:20px;" class="linkTinTuc">
+                                        <p class="card-text">@item.Title</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+
+            </div>
+</section>
+
+<div aria-label="Page navigation example">
+    <ul class="pagination d-flex justify-content-end" style="margin-top: 20px;">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+            new PagedListRenderOptions
+            {
+
+                DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                DisplayLinkToNextPage = PagedListDisplayMode.Always,
+
+                DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+
+
+
+                LinkToPreviousPageFormat = "<button class='btn btn-secondary mr-3'>Previous</button>",
+                LinkToNextPageFormat = "<button class='btn btn-secondary ml-3'>Next</button>",
+
+
+
+            })
+    </ul>
+</div>
+
+
+
+
