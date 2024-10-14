@@ -5,95 +5,118 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="container">
+    <h2>Details</h2>
 
-<div>
-    <h4>Page</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PageName)
-        </dt>
+    <div>
+        <h4>Page</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.PageName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PageName)
-        </dd>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.PageName)
+                </dd>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Contents)
-        </dt>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Contents)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Contents)
-        </dd>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Contents)
+                </dd>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Thumb)
-        </dt>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    
+                    @Html.DisplayNameFor(model => model.Thumb)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Thumb)
-        </dd>
+                <dd class="col-sm-6 col-md-6">
+                    <img src="@Url.Content(@Model.Thumb)" alt="Alternate Text" style="width: 150px;" />
+                </dd>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Published)
-        </dt>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Published)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Published)
-        </dd>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Published)
+                </dd>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+            <div class=" row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MetaDesc)
-        </dt>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.MetaDesc)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MetaDesc)
-        </dd>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.MetaDesc)
+                </dd>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MetaKey)
-        </dt>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.MetaKey)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MetaKey)
-        </dd>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.MetaKey)
+                </dd>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Alias)
-        </dt>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Alias)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Alias)
-        </dd>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Alias)
+                </dd>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </dt>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.CreateDate)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreateDate)
-        </dd>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.CreateDate)
+                </dd>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ordering)
-        </dt>
+            <div class="row">
+                <dt class="col-sm-6 col-md-6">
+                    @Html.DisplayNameFor(model => model.Ordering)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ordering)
-        </dd>
+                <dd class="col-sm-6 col-md-6">
+                    @Html.DisplayFor(model => model.Ordering)
+                </dd>
+            </div>
 
-    </dl>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.PageID }, new {@class = "btn btn-primary"}) 
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary"})
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PageID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

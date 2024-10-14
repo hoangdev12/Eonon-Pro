@@ -1,10 +1,16 @@
 ﻿@model WebBTL.Models.Product
-
+@using WebBTL.Helper
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
+
+
+
+
 <div class="container">
+    
     <h2>Details</h2>
 
     <div>
@@ -12,199 +18,198 @@
         <hr />
         <dl class="dl-horizontal">
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.ProductName)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.ProductName)
                 </dd>
             </div>
+
+
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
+
                     @Html.DisplayNameFor(model => model.Thumb)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
-                    @Html.DisplayFor(model => model.Thumb)
+                <dd class="col-sm-6 col-md-6"> 
+
+                    <img src="@Url.Content(@Model.Thumb)" alt="Alternate Text" style="width: 150px;"/>
+
+
+
                 </dd>
             </div>
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.ShortDesc)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.ShortDesc)
                 </dd>
             </div>
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.Description)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.Description)
                 </dd>
             </div>
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.Price)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.Price)
                 </dd>
             </div>
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.Discount)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.Discount)
                 </dd>
             </div>
 
-            <div class="row">
-                <dt class="col-sm-4 col-md-4">
-                    @Html.DisplayNameFor(model => model.Thumb)
-                </dt>
-
-                <dd class="col-sm-4 col-md-4">
-                    @Html.DisplayFor(model => model.Thumb)
-                </dd>
-            </div>
+           
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.Video)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.Video)
                 </dd>
             </div>
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.DateCreated)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.DateCreated)
                 </dd>
             </div>
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.Datemodified)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.Datemodified)
                 </dd>
             </div>
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.BestSellers)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.BestSellers)
                 </dd>
             </div>
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.HomeFlag)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.HomeFlag)
                 </dd>
             </div>
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.Active)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.Active)
                 </dd>
             </div>
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.Tags)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.Tags)
                 </dd>
             </div>
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.Titles)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.Titles)
                 </dd>
             </div>
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.Alias)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.Alias)
                 </dd>
             </div>
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.MetaDesc)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.MetaDesc)
                 </dd>
             </div>
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.MetaKey)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.MetaKey)
                 </dd>
             </div>
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.UnitsInStock)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.UnitsInStock)
                 </dd>
             </div>
 
             <div class="row">
-                <dt class="col-sm-4 col-md-4">
+                <dt class="col-sm-6 col-md-6">
                     @Html.DisplayNameFor(model => model.Category.CatName)
                 </dt>
 
-                <dd class="col-sm-4 col-md-4">
+                <dd class="col-sm-6 col-md-6">
                     @Html.DisplayFor(model => model.Category.CatName)
                 </dd>
             </div>

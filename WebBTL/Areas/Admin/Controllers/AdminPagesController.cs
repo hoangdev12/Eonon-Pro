@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebBTL.Models;
 using PagedList;
+using System.Security.Principal;
 
 namespace WebBTL.Areas.Admin.Controllers
 {
@@ -94,16 +95,72 @@ namespace WebBTL.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PageID,PageName,Contents,Thumb,Published,Title,MetaDesc,MetaKey,Alias,CreateDate,Ordering")] Page page)
+        public ActionResult Edit([Bind(Include = "PageID,PageName,Contents,Thumb,Published,Title,MetaDesc,MetaKey,Alias,CreateDate,Ordering")] Page page, HttpPostedFileBase image)
         {
+            // Retrieve the existing page from the database
+            var existingPage = _context.Pages.Find(page.PageID);
+            if (existingPage == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Check if a new image is uploaded
+            if (image != null && image.ContentLength > 0)
+            {
+                // Get the image name and set path
+                string fileName = System.IO.Path.GetFileName(image.FileName);
+                string filePath = Server.MapPath("~/Content/images/products/" + fileName);
+
+                // Ensure the directory exists
+                string directoryPath = Server.MapPath("~/Content/images/products/");
+                if (!System.IO.Directory.Exists(directoryPath))
+                {
+                    System.IO.Directory.CreateDirectory(directoryPath);
+                }
+
+                // Try to save the new image
+                try
+                {
+                    image.SaveAs(filePath);
+                    // Update the page thumb path with the new image
+                    existingPage.Thumb = Url.Content("~/Content/images/products/" + fileName);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Unable to save image. Please try again. " + ex.Message);
+                    return View(page);
+                }
+            }
+
+            // If no new image is uploaded, keep the existing Thumb value or a default image
+            if (string.IsNullOrEmpty(existingPage.Thumb))
+            {
+                existingPage.Thumb = Url.Content("~/Content/images/default.png");
+            }
+
             if (ModelState.IsValid)
             {
-                _context.Entry(page).State = EntityState.Modified;
+                // Update the existing page properties
+                existingPage.PageName = page.PageName;
+                existingPage.Alias = page.Alias;
+                existingPage.MetaDesc = page.MetaDesc;
+                existingPage.Title = page.Title;
+                existingPage.Contents = page.Contents;
+                existingPage.Published = page.Published;
+                existingPage.Ordering = page.Ordering;
+                existingPage.CreateDate = DateTime.Now; // Update the modified date
+                existingPage.MetaKey = page.MetaKey;
+
+                // Save changes to the database
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
+
+            // Repopulate the dropdown if the model state is invalid
             return View(page);
         }
+
+
 
         // GET: Admin/AdminPages/Delete/5
         [HttpPost]

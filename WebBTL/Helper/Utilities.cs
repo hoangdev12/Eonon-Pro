@@ -10,6 +10,8 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Globalization;
 using System.Text;
+using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace WebBTL.Helper
 {
@@ -84,37 +86,28 @@ namespace WebBTL.Helper
             // Trả về kết quả
             return str;
         }
-        public static async Task<string> UploadFile(Microsoft.AspNetCore.Http.IFormFile file, string sDirectory, string newname)
+
+        public static MvcHtmlString Image(this HtmlHelper html, string imagePath, string className, object htmlAttributes = null)
         {
-            try
+            var builder = new TagBuilder("img");
+            builder.MergeAttribute("class", className);
+            builder.MergeAttributes(new RouteValueDictionary(htmlAttributes));
+
+            // Kiểm tra nếu imagePath là null hoặc rỗng
+            if (!string.IsNullOrEmpty(imagePath))
             {
-                if (newname == null) newname = file.FileName;
-                string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", sDirectory);
-                CreateIfMissing(path);
-                string pathFile = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", sDirectory, newname);
-                var supportedTypes = new[] { "jpg", "jpeg", "png", "gif" };
-                var fileExt = System.IO.Path.GetExtension(file.FileName).Substring(1);
-                if(!supportedTypes.Contains(fileExt.ToLower()))
-                {
-                    return null;
-                }
-                else
-                {
-                    using(var stream = new FileStream(pathFile, FileMode.Create))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
-                    return newname;
-                }
-            } catch (Exception ex) {
-                return null;
+                builder.MergeAttribute("src", html.Encode(imagePath));
             }
+            else
+            {
+                // Thêm giá trị mặc định hoặc không làm gì
+                builder.MergeAttribute("src", "~/Content/images/default-image.jpg"); 
+            }
+
+            return MvcHtmlString.Create(builder.ToString(TagRenderMode.SelfClosing));
         }
 
-        internal static Task<string> UploadFile(HttpPostedFileBase fThumb, string v1, string v2)
-        {
-            throw new NotImplementedException();
-        }
+
     }
-    
+
 }

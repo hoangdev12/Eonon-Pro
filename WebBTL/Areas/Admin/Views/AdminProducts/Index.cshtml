@@ -7,6 +7,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+
 <div class="container-fluid">
     <div class="ml-5">
         <h2>Product</h2>
@@ -120,59 +121,59 @@
 </style>
 
 @*@section scripts{
-    <script>
-        console.log('Trying to access element:', document.getElementById('trow_' + id));
-        $(document).ready(function () {
-            $('body').on('click', '.btnDelete', function () {
-                var id = $(this).data('id');
+        <script>
+            console.log('Trying to access element:', document.getElementById('trow_' + id));
+            $(document).ready(function () {
+                $('body').on('click', '.btnDelete', function () {
+                    var id = $(this).data('id');
 
-                var conf = confirm('Bạn có muốn xóa sản phẩm này ko');
-                if (conf === true) {
-                    $.ajax({
-                        url: '/Admin/AdminProducts/Delete',
-                        type: 'POST',
-                        data: { ProductID: id },
-                        success: function (rs) {
-                            if (rs.success) {
-                                $('#trow_' + id).remove();
+                    var conf = confirm('Bạn có muốn xóa sản phẩm này ko');
+                    if (conf === true) {
+                        $.ajax({
+                            url: '/Admin/AdminProducts/Delete',
+                            type: 'POST',
+                            data: { ProductID: id },
+                            success: function (rs) {
+                                if (rs.success) {
+                                    $('#trow_' + id).remove();
+                                }
                             }
-                        }
-                    })
-                }
+                        })
+                    }
+                });
             });
-        });
 
-    </script>
-}*@
+        </script>
+    }*@
 
 @section scripts {
     <script>
         $(document).ready(function () {
-            
+
             $('body').on('click', '.btnDelete', function () {
-               
+
                 var id = $(this).data('id');
 
-                
+
                 var conf = confirm('Bạn có muốn xóa sản phẩm này không?');
                 if (conf === true) {
-                    
+
                     $.ajax({
-                        url: '/Admin/AdminProducts/Delete', 
+                        url: '/Admin/AdminProducts/Delete',
                         type: 'POST',
-                        data: { id: id }, 
+                        data: { id: id },
                         success: function (response) {
                             if (response.success) {
-                                
+
                                 $('#trow_' + id).remove();
                                 alert('Xóa sản phẩm thành công');
                             } else {
-                                
+
                                 alert('Không thể xóa sản phẩm. Vui lòng thử lại.');
                             }
                         },
                         error: function (xhr, status, error) {
-                            
+
                             console.error('Error occurred:', error);
                             alert('Có lỗi xảy ra: ' + xhr.responseText);
                         }

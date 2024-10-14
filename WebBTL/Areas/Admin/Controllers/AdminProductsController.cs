@@ -113,52 +113,56 @@ namespace WebBTL.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product, HttpPostedFileBase fThumb)
+        public ActionResult Create([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product, HttpPostedFileBase image)
         {
-            
-            if (ModelState.IsValid)
+            var existingProduct = _context.Products.Find(product.ProductID);
+            // Check if a new image is uploaded
+            if (image != null && image.ContentLength > 0)
             {
+                // Get the image name and set path
+                string fileName = System.IO.Path.GetFileName(image.FileName);
+                string filePath = Server.MapPath("~/Content/images/products/" + fileName);
 
-                
-
-                // Handle thumbnail upload
-                if (fThumb != null && fThumb.ContentLength > 0)
+                // Ensure the directory exists
+                string directoryPath = Server.MapPath("~/Content/images/products/");
+                if (!System.IO.Directory.Exists(directoryPath))
                 {
-                    string extension = Path.GetExtension(fThumb.FileName);
-                    string imageName = Utilities.SEOurl(product.ProductName) + extension;
-                    product.Thumb = await Utilities.UploadFile(fThumb, @"products", imageName.ToLower());
+                    System.IO.Directory.CreateDirectory(directoryPath);
                 }
 
-                // Set a default thumbnail if none was uploaded
-                if (string.IsNullOrEmpty(product.Thumb))
-                    product.Thumb = "default.jpg";
-
-                // Add the product to the context
-                _context.Products.Add(product);
-
+                // Try to save the new image
                 try
                 {
-                    // Save changes to the database
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    image.SaveAs(filePath);
+                    // Update the product thumb path with the new image
+                    product.Thumb = Url.Content("~/Content/images/products/" + fileName);
                 }
-                catch (DbEntityValidationException ex)
+                catch (Exception ex)
                 {
-                    // Log validation errors for debugging
-                    foreach (var validationErrors in ex.EntityValidationErrors)
-                    {
-                        foreach (var validationError in validationErrors.ValidationErrors)
-                        {
-                            ModelState.AddModelError(validationError.PropertyName, validationError.ErrorMessage);
-                        }
-                    }
+                    ModelState.AddModelError("", "Unable to save image. Please try again. " + ex.Message);
+                    var Categories = _context.Categories.ToList();
+                    ViewBag.CatID = new SelectList(Categories, "CategoryID", "CategoryName", product.CatID);
+                    return View(product);
                 }
             }
+            else
+            {
+                // If no new image is uploaded, keep the existing Thumb value or a default image
+                product.Thumb = string.IsNullOrEmpty(existingProduct.Thumb) ? Url.Content("~/Content/images/default.png") : existingProduct.Thumb;
+            }
 
-            // If we got this far, something failed; redisplay the form
-            ViewBag.CatID = new SelectList(_context.Categories, "CatID", "CatName", product.CatID);
+            if (ModelState.IsValid)
+            {
+                _context.Products.Add(product);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
             return View(product);
         }
+
+
+
 
 
 
@@ -169,57 +173,67 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Product product = _context.Products.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
             }
+
             ViewBag.CatID = new SelectList(_context.Categories, "CatID", "CatName", product.CatID);
             return View(product);
         }
 
         // POST: Admin/AdminProducts/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product, HttpPostedFileBase fThumb)
+        public ActionResult Edit([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product, HttpPostedFileBase image)
         {
+            // Retrieve the existing product from the database
+            var existingProduct = _context.Products.Find(product.ProductID);
+            if (existingProduct == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Check if a new image is uploaded
+            if (image != null && image.ContentLength > 0)
+            {
+                // Get the image name and set path
+                string fileName = System.IO.Path.GetFileName(image.FileName);
+                string filePath = Server.MapPath("~/Content/images/products/" + fileName);
+
+                // Ensure the directory exists
+                string directoryPath = Server.MapPath("~/Content/images/products/");
+                if (!System.IO.Directory.Exists(directoryPath))
+                {
+                    System.IO.Directory.CreateDirectory(directoryPath);
+                }
+
+                // Try to save the new image
+                try
+                {
+                    image.SaveAs(filePath);
+                    // Update the product thumb path with the new image
+                    product.Thumb = Url.Content("~/Content/images/products/" + fileName);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Unable to save image. Please try again. " + ex.Message);
+                    var Categories = _context.Categories.ToList();
+                    ViewBag.CatID = new SelectList(Categories, "CategoryID", "CategoryName", product.CatID);
+                    return View(product);
+                }
+            }
+            else
+            {
+                // If no new image is uploaded, keep the existing Thumb value or a default image
+                product.Thumb = string.IsNullOrEmpty(existingProduct.Thumb) ? Url.Content("~/Content/images/default.png") : existingProduct.Thumb;
+            }
+
             if (ModelState.IsValid)
             {
-                // Retrieve the existing product from the database
-                var existingProduct = await _context.Products.FindAsync(product.ProductID);
-
-                if (existingProduct == null)
-                {
-                    return HttpNotFound(); 
-                }
-
-                // Handle thumbnail upload
-                if (fThumb != null && fThumb.ContentLength > 0)
-                {
-                    // If a new thumbnail is uploaded, delete the old one
-                    if (!string.IsNullOrEmpty(existingProduct.Thumb) && existingProduct.Thumb != "default.jpg")
-                    {
-                        var oldImagePath = Path.Combine(Server.MapPath("~/products"), existingProduct.Thumb);
-                        if (System.IO.File.Exists(oldImagePath))
-                        {
-                            System.IO.File.Delete(oldImagePath); // Delete the old file
-                        }
-                    }
-
-                    // Upload the new thumbnail
-                    string extension = Path.GetExtension(fThumb.FileName);
-                    string imageName = Utilities.SEOurl(product.ProductName) + extension;
-                    product.Thumb = await Utilities.UploadFile(fThumb, @"products", imageName.ToLower());
-                }
-                else
-                {
-                    // If no new thumbnail is uploaded, keep the existing one
-                    product.Thumb = existingProduct.Thumb;
-                }
-
-                // Update properties from the product being edited
+                // Update the existing product properties
                 existingProduct.ProductName = product.ProductName;
                 existingProduct.ShortDesc = product.ShortDesc;
                 existingProduct.Description = product.Description;
@@ -227,7 +241,7 @@ namespace WebBTL.Areas.Admin.Controllers
                 existingProduct.Price = product.Price;
                 existingProduct.Discount = product.Discount;
                 existingProduct.Video = product.Video;
-                existingProduct.DateCreated = existingProduct.DateCreated; // Keep the original creation date
+                existingProduct.DateCreated = product.DateCreated;
                 existingProduct.Datemodified = DateTime.Now; // Update the modified date
                 existingProduct.BestSellers = product.BestSellers;
                 existingProduct.HomeFlag = product.HomeFlag;
@@ -238,35 +252,19 @@ namespace WebBTL.Areas.Admin.Controllers
                 existingProduct.MetaDesc = product.MetaDesc;
                 existingProduct.MetaKey = product.MetaKey;
                 existingProduct.UnitsInStock = product.UnitsInStock;
+                existingProduct.Thumb = product.Thumb;  // Update image
 
-                // Mark the entity as modified and save changes
-                _context.Entry(existingProduct).State = EntityState.Modified;
-
-                try
-                {
-                    // Save changes to the database
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (DbEntityValidationException ex)
-                {
-                    // Log validation errors for debugging
-                    foreach (var validationErrors in ex.EntityValidationErrors)
-                    {
-                        foreach (var validationError in validationErrors.ValidationErrors)
-                        {
-                            ModelState.AddModelError(validationError.PropertyName, validationError.ErrorMessage);
-                        }
-                    }
-                }
+                // Save changes to the database
+                _context.SaveChanges();
+                return RedirectToAction("Index");
             }
 
-            // Re-populate the category select list if model state is invalid
-            ViewBag.CatID = new SelectList(_context.Categories, "CatID", "CatName", product.CatID);
-
-            // Return the same view with the product model to show validation errors
+            // Repopulate the dropdown if the model state is invalid
+            var categories = _context.Categories.ToList();
+            ViewBag.CatID = new SelectList(categories, "CategoryID", "CategoryName", product.CatID);
             return View(product);
         }
+
 
         // GET: Admin/AdminProducts/Delete/5
         [HttpPost]

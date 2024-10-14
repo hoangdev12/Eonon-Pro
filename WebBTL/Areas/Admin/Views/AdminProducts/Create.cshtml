@@ -4,10 +4,12 @@
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
+
 <div class="container">
     <h2>Create</h2>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create", "AdminProducts", FormMethod.Post, new {enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
@@ -121,7 +123,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Thumb, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <input type="file" name="fThumb" class="form-control-file" accept="image/*" style="width:auto;" />
+            <input type="file" name="image" id="image" class="form-control-file" accept="image/*" style="width:auto;" />
             @Html.ValidationMessageFor(model => model.Thumb, "", new { @class = "text-danger" })
         </div>
     </div>
