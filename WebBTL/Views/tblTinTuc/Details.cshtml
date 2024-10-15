@@ -76,9 +76,47 @@
             <img src="@Model.Thumb" class="img-fluid" alt="Image">
             <hr />
             <div class="content">
-                @Model.Contents
+                @Html.Raw(@Model.Contents)
             </div>
         </div>
     </div>
+    <h2>Bài viết liên quan</h2>
+    
+        @if (ViewBag.lsBaiVietLienQuan != null && ViewBag.lsBaiVietLienQuan.Count > 0)
+        {
+
+            <div class="row">
+                @foreach (var item in ViewBag.lsBaiVietLienQuan)
+                {
+
+                    <div class="col-sm-4 col-md-4 pb-3">
+                        <div class="card h-100 ">
+                            <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })">
+                                <img src="@item.Thumb" class="card-img-top" alt="error">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    Đăng bởi:
+                                    <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })" style="font-size:14px;text-decoration:none;opacity:0.5;color:black;" class="linkTinTuc">
+                                        @item.Author - @item.CreateDate
+                                    </a>
+                                </h5>
+                                <br />
+                                <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })" style="text-decoration: none; color:black; font-size:20px;" class="linkTinTuc">
+                                    <p class="card-text">@item.Title</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        }
+        else
+        {
+            <li>Không có bài viết liên quan nào.</li>
+        }
+    
 </div>
 
