@@ -42,7 +42,7 @@
                                 <a class="nav-link" href="#">Service</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Tin tức</a>
+                                <a class="nav-link" href="/tblTinTuc/Index">Tin tức</a>
                             </li>
                         </ul>
                         <div class="d-flex justify-content-center align-items-center gap-3">
@@ -78,14 +78,14 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-center" style="flex-wrap:wrap">
-                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right:10px;">ĐÁNH GIÁ XE  </a>
-                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> KINH NGHIỆM LÁI XE </a>
-                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> TRẢI NGHIỆM SẢN PHẨM </a>
-                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> TƯ VẤN LUẬT GIAO THÔNG </a>
-                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> TƯ VẤN BÁN XE </a>
-                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> SỰ KIỆN </a>
-                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> TUYỂN DỤNG </a>
-                    <a href="#" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> TIN KHUYẾN MÃI </a>
+                    <a href="@Url.Action("Index", "tblTinTuc", new { tag = "Đánh giá xe" })" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right:10px;">ĐÁNH GIÁ XE  </a>
+                    <a href="@Url.Action("Index", "tblTinTuc", new { tag = "Kinh nghiệm lái xe" })" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> KINH NGHIỆM LÁI XE </a>
+                    <a href="@Url.Action("Index", "tblTinTuc", new { tag = "Trải nghiệm sản phẩm" })" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> TRẢI NGHIỆM SẢN PHẨM </a>
+                    <a href="@Url.Action("Index", "tblTinTuc", new { tag = "Tư vấn luật giao thông" })" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> TƯ VẤN LUẬT GIAO THÔNG </a>
+                    <a href="@Url.Action("Index", "tblTinTuc", new { tag = "Đánh giá xe" })" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> TƯ VẤN BÁN XE </a>
+                    <a href="@Url.Action("Index", "tblTinTuc", new { tag = "Sự kiện" })" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> SỰ KIỆN </a>
+                    <a href="@Url.Action("Index", "tblTinTuc", new { tag = "Tuyển dụng" })" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> TUYỂN DỤNG </a>
+                    <a href="@Url.Action("Index", "tblTinTuc", new { tag = "Tin khuyến mãi" })" class="mb-2 px-4 btn btn-secondary" style="border-radius: 20px; margin-right: 10px;"> TIN KHUYẾN MÃI </a>
                 </div>
             </div>
 
@@ -93,27 +93,27 @@
                 <div class="row">
                     @foreach (var item in Model)
                     {
-                        
-                            <div class="col-sm-4 col-md-4 pb-3">
-                                <div class="card h-100 ">
-                                    <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })" class="linkTinTuc">
-                                        <img src="@item.Thumb" class="card-img-top" alt="error">
-                                    </a>
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            Đăng bởi:
-                                            <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })" style="font-size:14px;text-decoration:none;opacity:0.5;color:black;" class="linkTinTuc">
-                                                @item.Author - @item.CreateDate
-                                            </a>
-                                        </h5>
-                                        <br />
-                                        <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })" style="text-decoration: none; color:black; font-size:20px;" class="linkTinTuc">
-                                            <p class="card-text">@item.Title</p>
+
+                        <div class="col-sm-4 col-md-4 pb-3">
+                            <div class="card h-100 ">
+                                <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })" class="linkTinTuc">
+                                    <img src="@item.Thumb" class="card-img-top" alt="error">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Đăng bởi:
+                                        <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })" style="font-size:14px;text-decoration:none;opacity:0.5;color:black;" class="linkTinTuc">
+                                            @item.Author - @item.CreateDate
                                         </a>
-                                    </div>
+                                    </h5>
+                                    <br />
+                                    <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })" style="text-decoration: none; color:black; font-size:20px;" class="linkTinTuc">
+                                        <p class="card-text">@item.Title</p>
+                                    </a>
                                 </div>
                             </div>
-                        
+                        </div>
+
                     }
 
                 </div>

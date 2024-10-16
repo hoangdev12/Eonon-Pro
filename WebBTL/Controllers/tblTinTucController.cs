@@ -20,13 +20,18 @@ namespace WebBTL.Controllers
             
         }
         // GET: tblTinTuc
-        public ActionResult Index(int? page)
+        public ActionResult Index(string tag, int? page)
         {
+           
             var pageNumber = page == null || page <= 0 ? 1 : page.Value;
             var pageSize = 20;
             var lsPages = _context.tblTinTucs
                 .AsNoTracking()
                 .OrderBy(x => x.PostID);
+            if (!string.IsNullOrEmpty(tag))
+            {
+                lsPages = (IOrderedQueryable<tblTinTuc>)lsPages.Where(x => x.Tags.Contains(tag));
+            }
 
             PagedList<tblTinTuc> models = new PagedList<tblTinTuc>(lsPages, pageNumber, pageSize);
 

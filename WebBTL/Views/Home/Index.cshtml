@@ -1,10 +1,8 @@
 ﻿@section navbar{
-    <div class="container-fluid bgtop2 p-xxl-4">
-       
 
-        @* navbar new *@
+    <div class="container-fluid bgtop2 ">
         <nav class="navbar navbar-expand-lg bg-warning  fixed-top">
-            <div class="container">
+            <div class="container ">
                 <a class="navbar-brand " href="#"><img src="~/Content/images/logo.png" alt="Alternate Text" style="width:100; max-width:100px;" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -17,7 +15,7 @@
                     <div class="offcanvas-body  bg-warning">
                         <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link active" aria-current="page" href="/Home/Index">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">About</a>
@@ -44,38 +42,38 @@
             </div>
         </nav>
     </div>
+}
+<!-- slide banner -->
 
-    <!-- slide banner -->
+<section style="margin-top:48px">
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="#" style="display: block; position: relative;"><img src="~/Content/images/slide1.jpg" class="d-block w-100" alt="..." style="width: 100%; height: auto; object-fit: cover; "> </a>
 
-    <section style="margin-top:48px">
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <a href="#" style="display: block; position: relative;"><img src="~/Content/images/slide1.jpg" class="d-block w-100" alt="..." style="width: 100%; height: auto; object-fit: cover; "> </a>
-
-                </div>
-                <div class="carousel-item">
-                    <a href="#"><img src="~/Content/images/slide2.jpg" class="d-block w-100" alt="..." style="width: 100%; height: auto; object-fit: cover; "></a>
-
-
-                </div>
-                <div class="carousel-item">
-                    <a href="#"><img src="~/Content/images/slide3.jpg" class="d-block w-100" alt="..." style="width: 100%; height: auto; object-fit: cover; "></a>
-
-                </div>
             </div>
+            <div class="carousel-item">
+                <a href="#"><img src="~/Content/images/slide2.jpg" class="d-block w-100" alt="..." style="width: 100%; height: auto; object-fit: cover; "></a>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev" style=" position: absolute; z-index: 10;">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next" style=" position: absolute; z-index: 10;">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+
+            </div>
+            <div class="carousel-item">
+                <a href="#"><img src="~/Content/images/slide3.jpg" class="d-block w-100" alt="..." style="width: 100%; height: auto; object-fit: cover; "></a>
+
+            </div>
         </div>
 
-    </section>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev" style=" position: absolute; z-index: 10;">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next" style=" position: absolute; z-index: 10;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+</section>
 }
 
 
