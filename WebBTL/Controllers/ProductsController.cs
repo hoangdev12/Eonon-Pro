@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -20,9 +21,19 @@ namespace WebBTL.Controllers
 
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(string tag, int? page)
         {
-            return View();
+            var pageNumber = page == null || page <= 0 ? 1 : page.Value;
+            var pageSize = 20;
+            var lsPages = _context.Products
+                .AsNoTracking()
+                .OrderBy(x => x.ProductID);
+           
+
+            PagedList<Product> models = new PagedList<Product>((IQueryable<Product>)lsPages, pageNumber, pageSize);
+
+            ViewBag.CurrentPage = pageNumber;
+            return View(models);
         }
 
         public ActionResult Details(int id)
@@ -30,11 +41,14 @@ namespace WebBTL.Controllers
 
 
             var product = _context.Products.Include(x => x.Category).FirstOrDefault(x => x.ProductID == id);
+
             if (product == null)
             {
                 return RedirectToAction("Index");
             }
+
             var productsList = new List<Product> { product };
+
             return View(productsList);
         }
                 

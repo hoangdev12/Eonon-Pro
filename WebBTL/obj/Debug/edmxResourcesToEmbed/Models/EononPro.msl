@@ -208,5 +208,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ContentBlocks">
+      <EntityTypeMapping TypeName="Eonon_ProModel.ContentBlock">
+        <MappingFragment StoreEntitySet="ContentBlocks">
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="content_type" ColumnName="content_type" />
+          <ScalarProperty Name="NameId" ColumnName="NameId" />
+          <ScalarProperty Name="NameParentId" ColumnName="NameParentId" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Parentid" ColumnName="Parentid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

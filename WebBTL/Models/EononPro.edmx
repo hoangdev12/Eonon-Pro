@@ -39,6 +39,18 @@
           <Property Name="Cover" Type="nvarchar" MaxLength="250" />
           <Property Name="SchemaMarkup" Type="nvarchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="ContentBlocks">
+          <Key>
+            <PropertyRef Name="Parentid" />
+          </Key>
+          <Property Name="Parentid" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" />
+          <Property Name="PostID" Type="int" Nullable="false" />
+          <Property Name="NameParentId" Type="nvarchar(max)" />
+          <Property Name="NameId" Type="nvarchar(max)" />
+          <Property Name="content_type" Type="varchar(max)" />
+          <Property Name="content" Type="text" />
+        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerID" />
@@ -199,6 +211,18 @@
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nvarchar(max)" />
         </EntityType>
+        <Association Name="FK__ContentBl__PostI__787EE5A0">
+          <End Role="tblTinTucs" Type="Self.tblTinTucs" Multiplicity="1" />
+          <End Role="ContentBlocks" Type="Self.ContentBlocks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTinTucs">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="ContentBlocks">
+              <PropertyRef Name="PostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Account_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
           <End Role="Account" Type="Self.Account" Multiplicity="*" />
@@ -286,6 +310,7 @@
         <EntityContainer Name="Eonon_ProModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContentBlocks" EntityType="Self.ContentBlocks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
@@ -297,6 +322,10 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTinTucs" EntityType="Self.tblTinTucs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransactStatus" EntityType="Self.TransactStatus" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ContentBl__PostI__787EE5A0" Association="Self.FK__ContentBl__PostI__787EE5A0">
+            <End Role="tblTinTucs" EntitySet="tblTinTucs" />
+            <End Role="ContentBlocks" EntitySet="ContentBlocks" />
+          </AssociationSet>
           <AssociationSet Name="FK_Account_Roles" Association="Self.FK_Account_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Account" EntitySet="Account" />
@@ -378,7 +407,7 @@
           <Property Name="Email" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="LocationID" Type="Int32" />
-          <Property Name="District" Type="String" />
+          <Property Name="District" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Ward" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -528,6 +557,7 @@
           <Property Name="MetaKey" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="MetaDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Views" Type="Int32" />
+          <NavigationProperty Name="ContentBlocks" Relationship="Eonon_ProModel.FK__ContentBl__PostI__787EE5A0" FromRole="tblTinTuc" ToRole="ContentBlock" />
         </EntityType>
         <EntityType Name="TransactStatu">
           <Key>
@@ -652,6 +682,11 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
           </AssociationSet>
+          <EntitySet Name="ContentBlocks" EntityType="Eonon_ProModel.ContentBlock" />
+          <AssociationSet Name="FK__ContentBl__PostI__787EE5A0" Association="Eonon_ProModel.FK__ContentBl__PostI__787EE5A0">
+            <End Role="tblTinTuc" EntitySet="tblTinTucs" />
+            <End Role="ContentBlock" EntitySet="ContentBlocks" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_OrderDetails_Products">
           <End Type="Eonon_ProModel.Product" Role="Product" Multiplicity="0..1" />
@@ -662,6 +697,31 @@
             </Principal>
             <Dependent Role="OrderDetail">
               <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContentBlock">
+          <Key>
+            <PropertyRef Name="Parentid" />
+          </Key>
+          <Property Name="Parentid" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" />
+          <Property Name="PostID" Type="Int32" Nullable="false" />
+          <Property Name="NameParentId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="content_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblTinTuc" Relationship="Eonon_ProModel.FK__ContentBl__PostI__787EE5A0" FromRole="ContentBlock" ToRole="tblTinTuc" />
+        </EntityType>
+        <Association Name="FK__ContentBl__PostI__787EE5A0">
+          <End Type="Eonon_ProModel.tblTinTuc" Role="tblTinTuc" Multiplicity="1" />
+          <End Type="Eonon_ProModel.ContentBlock" Role="ContentBlock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTinTuc">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="ContentBlock">
+              <PropertyRef Name="PostID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -875,6 +935,19 @@
                 <ScalarProperty Name="TransactStatusID" ColumnName="TransactStatusID" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContentBlocks">
+            <EntityTypeMapping TypeName="Eonon_ProModel.ContentBlock">
+              <MappingFragment StoreEntitySet="ContentBlocks">
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="content_type" ColumnName="content_type" />
+                <ScalarProperty Name="NameId" ColumnName="NameId" />
+                <ScalarProperty Name="NameParentId" ColumnName="NameParentId" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Parentid" ColumnName="Parentid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

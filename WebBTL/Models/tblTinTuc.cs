@@ -14,6 +14,12 @@ namespace WebBTL.Models
     
     public partial class tblTinTuc
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblTinTuc()
+        {
+            this.ContentBlocks = new HashSet<ContentBlock>();
+        }
+    
         public int PostID { get; set; }
         public string Title { get; set; }
         public string SContents { get; set; }
@@ -31,5 +37,8 @@ namespace WebBTL.Models
         public string MetaKey { get; set; }
         public string MetaDesc { get; set; }
         public Nullable<int> Views { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContentBlock> ContentBlocks { get; set; }
     }
 }

@@ -5,7 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section navbar{
+
+
+
+<@section navbar{
 
     <div class="container-fluid bgtop2 ">
         <nav class="navbar navbar-expand-lg bg-warning  fixed-top">
@@ -25,7 +28,7 @@
                                 <a class="nav-link active" aria-current="page" href="/Home/Index">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
+                                <a class="nav-link" href="/Pages/About">About</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/Products/Index">Product</a>
@@ -37,7 +40,7 @@
                                 <a class="nav-link" href="#">Service</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Tin tức</a>
+                                <a class="nav-link" href="/tblTinTuc/Index">Tin tức</a>
                             </li>
                         </ul>
                         <div class="d-flex justify-content-center align-items-center gap-3">
@@ -52,7 +55,7 @@
 }
 
 @* banner tin tiuc *@
-<section style="margin-top:97px">
+<section style="margin-top:70px">
     <div class="bannerTinTuc">
         <div class="container" style="padding-top:50px">
             <div class="row">
@@ -70,7 +73,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <h1>@Model.Title</h1>
             <p class="text-muted">Đăng bởi: @Model.Author - @Model.CreateDate</p>
             <img src="@Model.Thumb" class="img-fluid" alt="Image">
@@ -81,42 +84,42 @@
         </div>
     </div>
     <h2>Bài viết liên quan</h2>
-    
-        @if (ViewBag.lsBaiVietLienQuan != null && ViewBag.lsBaiVietLienQuan.Count > 0)
-        {
 
-            <div class="row">
-                @foreach (var item in ViewBag.lsBaiVietLienQuan)
-                {
+    @if (ViewBag.lsBaiVietLienQuan != null && ViewBag.lsBaiVietLienQuan.Count > 0)
+    {
 
-                    <div class="col-sm-4 col-md-4 pb-3">
-                        <div class="card h-100 ">
-                            <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })">
-                                <img src="@item.Thumb" class="card-img-top" alt="error">
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    Đăng bởi:
-                                    <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })" style="font-size:14px;text-decoration:none;opacity:0.5;color:black;" class="linkTinTuc">
-                                        @item.Author - @item.CreateDate
-                                    </a>
-                                </h5>
-                                <br />
-                                <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })" style="text-decoration: none; color:black; font-size:20px;" class="linkTinTuc">
-                                    <p class="card-text">@item.Title</p>
+        <div class="row">
+            @foreach (var item in ViewBag.lsBaiVietLienQuan)
+            {
+
+                <div class="col-sm-4 col-md-4 pb-3">
+                    <div class="card h-100 ">
+                        <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })">
+                            <img src="@item.Thumb" class="card-img-top" alt="error">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Đăng bởi:
+                                <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })" style="font-size:14px;text-decoration:none;opacity:0.5;color:black;" class="linkTinTuc">
+                                    @item.Author - @item.CreateDate
                                 </a>
-                            </div>
+                            </h5>
+                            <br />
+                            <a href="@Url.Action("Details", "tblTinTuc", new { id = item.PostID })" style="text-decoration: none; color:black; font-size:20px;" class="linkTinTuc">
+                                <p class="card-text">@item.Title</p>
+                            </a>
                         </div>
                     </div>
+                </div>
 
-                }
+            }
 
-            </div>
-        }
-        else
-        {
-            <li>Không có bài viết liên quan nào.</li>
-        }
-    
+        </div>
+    }
+    else
+    {
+        <li>Không có bài viết liên quan nào.</li>
+    }
+
 </div>
 

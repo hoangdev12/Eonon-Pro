@@ -34,6 +34,18 @@
     <Property Name="Cover" Type="nvarchar" MaxLength="250" />
     <Property Name="SchemaMarkup" Type="nvarchar" MaxLength="250" />
   </EntityType>
+  <EntityType Name="ContentBlocks">
+    <Key>
+      <PropertyRef Name="Parentid" />
+    </Key>
+    <Property Name="Parentid" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" />
+    <Property Name="PostID" Type="int" Nullable="false" />
+    <Property Name="NameParentId" Type="nvarchar(max)" />
+    <Property Name="NameId" Type="nvarchar(max)" />
+    <Property Name="content_type" Type="varchar(max)" />
+    <Property Name="content" Type="text" />
+  </EntityType>
   <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="CustomerID" />
@@ -194,6 +206,18 @@
     <Property Name="Status" Type="nvarchar" MaxLength="50" />
     <Property Name="Description" Type="nvarchar(max)" />
   </EntityType>
+  <Association Name="FK__ContentBl__PostI__787EE5A0">
+    <End Role="tblTinTucs" Type="Self.tblTinTucs" Multiplicity="1" />
+    <End Role="ContentBlocks" Type="Self.ContentBlocks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTinTucs">
+        <PropertyRef Name="PostID" />
+      </Principal>
+      <Dependent Role="ContentBlocks">
+        <PropertyRef Name="PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Account_Roles">
     <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
     <End Role="Account" Type="Self.Account" Multiplicity="*" />
@@ -281,6 +305,7 @@
   <EntityContainer Name="Eonon_ProModelStoreContainer">
     <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContentBlocks" EntityType="Self.ContentBlocks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
@@ -292,6 +317,10 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblTinTucs" EntityType="Self.tblTinTucs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransactStatus" EntityType="Self.TransactStatus" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ContentBl__PostI__787EE5A0" Association="Self.FK__ContentBl__PostI__787EE5A0">
+      <End Role="tblTinTucs" EntitySet="tblTinTucs" />
+      <End Role="ContentBlocks" EntitySet="ContentBlocks" />
+    </AssociationSet>
     <AssociationSet Name="FK_Account_Roles" Association="Self.FK_Account_Roles">
       <End Role="Roles" EntitySet="Roles" />
       <End Role="Account" EntitySet="Account" />

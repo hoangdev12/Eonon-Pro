@@ -1,5 +1,120 @@
 ﻿@model IEnumerable<WebBTL.Models.Product>
 
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,300;1,900&display=swap"
+      rel="stylesheet">
+<!-- ::::::::::::::Favicon icon::::::::::::::-->
+<link rel="shortcut icon" href="https://eononpro.vn/storage/images/3c5fdb5b61765367266114381254ea3b.png" type="image/png">
+
+<!-- ::::::::::::::All CSS Files here :::::::::::::: -->
+<!-- Vendor CSS -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://eononpro.vn/assets/css/vendor/plaza-icon.css">
+<link rel="stylesheet" href="https://eononpro.vn/assets/css/vendor/jquery-ui.min.css">
+
+<!-- Plugin CSS -->
+<link rel="stylesheet" href="https://eononpro.vn/assets/css/plugins/slick.css">
+<link rel="stylesheet" href="https://eononpro.vn/assets/css/plugins/animate.min.css">
+<link rel="stylesheet" href="https://eononpro.vn/assets/css/plugins/nice-select.css">
+<link rel="stylesheet" href="https://eononpro.vn/assets/css/plugins/venobox.min.css">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="https://eononpro.vn/assets/css/style.css">
+<link rel="stylesheet" href="https://eononpro.vn/assets/css/app.css">
+<link rel="stylesheet" href="https://eononpro.vn/assets/css/custom.css">
+<style>
+    .blog-image-video img {
+        height: auto;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .footer-logo img {
+        height: auto;
+        width: 80%;
+        margin: 0 0 20px;
+    }
+
+    #specification table {
+        max-width: 100% !important;
+    }
+
+
+
+    .blog-single-wrapper ul, .blog-single-wrapper ol {
+        list-style: inherit;
+        margin: auto;
+        padding: revert-layer;
+    }
+
+    .blog-single-wrapper a {
+        color: #0D6EFD;
+    }
+
+    form.form--search--mb {
+        display: flex;
+        flex: 0 0 100%;
+    }
+
+    button.btn-search, .close--search {
+        width: 50px;
+        height: 67px;
+    }
+
+    a.close--search {
+        color: #fff;
+        width: 50px;
+        flex-shrink: 1;
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        background: #000000;
+    }
+
+    button.btn-search {
+        background: #ffc107;
+        color: #fff;
+        flex-shrink: 1;
+        flex-grow: 1;
+        width: 66px;
+    }
+
+    .search--mb {
+        display: none;
+    }
+
+    form.form--search--mb input.form-control {
+        border-radius: 0;
+    }
+</style>
+<script src="https://eononpro.vn/assets/js/vendor/modernizr-3.11.2.min.js"></script>
+
+<script src="https://eononpro.vn/assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+<script src="https://eononpro.vn/assets/js/vendor/bootstrap.bundle.min.js"></script>
+<script src="https://eononpro.vn/assets/js/vendor/jquery-ui.min.js"></script>
+
+<!--Plugins JS-->
+<script src="https://eononpro.vn/assets/js/plugins/slick.min.js"></script>
+<script src="https://eononpro.vn/assets/js/plugins/material-scrolltop.js"></script>
+<script src="https://eononpro.vn/assets/js/plugins/jquery.nice-select.min.js"></script>
+<script src="https://eononpro.vn/assets/js/plugins/jquery.zoom.min.js"></script>
+<script src="https://eononpro.vn/assets/js/plugins/venobox.min.js"></script>
+
+<script src="https://eononpro.vn/assets/js/jquery.matchHeight.js"></script>
+<script src="https://eononpro.vn/assets/js/plugins.min.js"></script>
+<!-- Main JS -->
+<script src="https://eononpro.vn/assets/js/main.js"></script>
+<script src="https://eononpro.vn/assets/js/post.js"></script>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KP9WZQ5"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+
+
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,8 +124,8 @@
 
     <div class="container-fluid bgtop2 ">
         <nav class="navbar navbar-expand-lg bg-warning  fixed-top">
-            <div class="container">
-                <a class="navbar-brand " href="#">Offcanvas navbar</a>
+            <div class="container ">
+                <a class="navbar-brand " href="#"><img src="~/Content/images/logo.png" alt="Alternate Text" style="width:100; max-width:100px;" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -22,10 +137,10 @@
                     <div class="offcanvas-body  bg-warning">
                         <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link active" aria-current="page" href="/Home/Index">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
+                                <a class="nav-link" href="/Pages/About">About</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/Products/Index">Product</a>
@@ -36,7 +151,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Service</a>
                             </li>
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="/tblTinTuc/Index">Tin tức</a>
+                            </li>
                         </ul>
                         <div class="d-flex justify-content-center align-items-center gap-3">
                             <a href="#" class="text-decoration-none text-black">Login</a>
@@ -47,4 +164,11 @@
             </div>
         </nav>
     </div>
-} 
+}
+
+<section style="margin-top:300px">
+@foreach (var product in Model)
+{
+    @Html.Raw(product.Description)
+}
+    </ section >

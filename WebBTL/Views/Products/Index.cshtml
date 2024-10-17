@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebBTL.Models.Product>
+﻿@model PagedList.IPagedList<WebBTL.Models.Product>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Product";
@@ -25,7 +26,7 @@
                                 <a class="nav-link active" aria-current="page" href="/Home/Index">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
+                                <a class="nav-link" href="/Pages/About">About</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/Products/Index">Product</a>
@@ -51,96 +52,83 @@
     </div>
 }
 
-<section style="margin-top:150px">
+<section style="margin-top:97px">
+    <div class="bannerTinTuc">
+        <div class="container" style="padding-top:50px">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <span style="color:#FFF; font-size:24px;">SẢN PHẨM</span>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="~/Content/images/v20.png" />
-                    <div class="card-body">
-                        <a href="#" class="card-link"><h6>Màn hình Android EONON PRO V20</h6></a>
-                        <span style="color: rgba(0, 0, 0, 0.5); ">
-
-                            3.999.000₫
-
-
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="~/Content/images/v20.png" />
-                    <div class="card-body">
-                        <a href="#" class="card-link"><h6>Màn hình Android EONON PRO V20</h6></a>
-                        <span style="color: rgba(0, 0, 0, 0.5); ">
-
-                            3.999.000₫
-
-
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="~/Content/images/v20.png" />
-                    <div class="card-body">
-                        <a href="#" class="card-link"><h6>Màn hình Android EONON PRO V20</h6></a>
-                        <span style="color: rgba(0, 0, 0, 0.5); ">
-
-                            3.999.000₫
-
-
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="~/Content/images/v20.png" />
-                    <div class="card-body">
-                        <a href="#" class="card-link"><h6>Màn hình Android EONON PRO V20</h6></a>
-                        <span style="color: rgba(0, 0, 0, 0.5); ">
-
-                            3.999.000₫
-
-
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="~/Content/images/v20.png" />
-                    <div class="card-body">
-                        <a href="#" class="card-link"><h6>Màn hình Android EONON PRO V20</h6></a>
-                        <span style="color: rgba(0, 0, 0, 0.5); ">
-
-                            3.999.000₫
-
-
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="~/Content/images/v20.png" />
-                    <div class="card-body">
-                        <a href="#" class="card-link"><h6>Màn hình Android EONON PRO V20</h6></a>
-                        <span style="color: rgba(0, 0, 0, 0.5); ">
-
-                            3.999.000₫
-
-
-                        </span>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<br />
+<br />
+
+
+@* list product *@
+<section>
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-4 col-md-4">
+                    <div class="card border-warning mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <a href="@Url.Action("Details", "Products", new { id = item.ProductID})">
+                                <img src="..." class="img-fluid rounded-start" alt="...">
+                                </a>
+                               
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">@item.ProductName</h5>
+                                    <h6 class="text-warning">
+                                        @(item.Price.HasValue ? item.Price.Value.ToString("C", new System.Globalization.CultureInfo("vi-VN")) : "N/A")
+                                    </h6>
+
+                                    <p>@item.ShortDesc</p>
+                                    <div class="row">
+                                        <a href="@Url.Action("Details", "Products", new { id = item.ProductID})" class="btn btn-warning col-sm-4 col-md-4" style="margin-right:10px; max-height:40px">Chi tiết</a>                                      
+                                        <a href="#" class="btn btn-outline-warning col-sm-6 col-md-6 text-black" style="max-height:40px;"><i class="fas fa-shopping-cart" style="color: #000;"></i>Mua hàng</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+
+        </div>
+    </div>
+</section>
+
+
+@* phan trang  *@
+<div aria-label="Page navigation example">
+    <ul class="pagination d-flex justify-content-end" style="margin-top: 20px;">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+            new PagedListRenderOptions
+            {
+
+                DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                DisplayLinkToNextPage = PagedListDisplayMode.Always,
+
+                DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+
+
+
+                LinkToPreviousPageFormat = "<button class='btn btn-secondary mr-3'>Previous</button>",
+                LinkToNextPageFormat = "<button class='btn btn-secondary ml-3'>Next</button>",
+
+
+
+            })
+    </ul>
+</div>

@@ -25,6 +25,8 @@
         <AssociationConnector Association="Eonon_ProModel.FK_OrderDetails_Orders" ManuallyRouted="false" />
         <AssociationConnector Association="Eonon_ProModel.FK_Orders_TransactStatus" ManuallyRouted="false" />
         <AssociationConnector Association="Eonon_ProModel.FK_OrderDetails_Products" />
+        <EntityTypeShape EntityType="Eonon_ProModel.ContentBlock" Width="1.5" PointX="9" PointY="11.75" />
+        <AssociationConnector Association="Eonon_ProModel.FK__ContentBl__PostI__787EE5A0" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

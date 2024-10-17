@@ -576,6 +576,7 @@
     <Compile Include="Areas\Admin\Controllers\AdmintblTinTucsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PagesController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\tblTinTucController.cs" />
     <Compile Include="Enums\CacheKey.cs" />
@@ -591,6 +592,9 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs">
+      <DependentUpon>EononPro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContentBlock.cs">
       <DependentUpon>EononPro.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs">
@@ -2906,11 +2910,11 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\tblTinTuc\Index.cshtml" />
     <Content Include="Views\tblTinTuc\Details.cshtml" />
+    <Content Include="Views\Pages\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Views\tblTinTucs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

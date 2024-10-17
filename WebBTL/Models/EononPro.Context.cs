@@ -38,5 +38,6 @@ namespace WebBTL.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tblTinTuc> tblTinTucs { get; set; }
         public virtual DbSet<TransactStatu> TransactStatus { get; set; }
+        public virtual DbSet<ContentBlock> ContentBlocks { get; set; }
     }
 }
