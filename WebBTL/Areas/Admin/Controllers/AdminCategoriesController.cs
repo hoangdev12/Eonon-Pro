@@ -90,10 +90,10 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 // Get the image name and set path
                 string fileName = System.IO.Path.GetFileName(image.FileName);
-                string filePath = Server.MapPath("~/Content/images/products/" + fileName);
+                string filePath = Server.MapPath("~/Content/images/Categories/" + fileName);
 
                 // Ensure the directory exists
-                string directoryPath = Server.MapPath("~/Content/images/products/");
+                string directoryPath = Server.MapPath("~/Content/images/Categories/");
                 if (!System.IO.Directory.Exists(directoryPath))
                 {
                     System.IO.Directory.CreateDirectory(directoryPath);
@@ -104,7 +104,7 @@ namespace WebBTL.Areas.Admin.Controllers
                 {
                     image.SaveAs(filePath);
                     // Update the product thumb path with the new image
-                    category.Thumb = Url.Content("~/Content/images/products/" + fileName);
+                    category.Thumb = Url.Content("~/Content/images/Categories/" + fileName);
                 }
                 catch (Exception ex)
                 {
@@ -164,10 +164,10 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 // Get the image name and set path
                 string fileName = System.IO.Path.GetFileName(image.FileName);
-                string filePath = Server.MapPath("~/Content/images/products/" + fileName);
+                string filePath = Server.MapPath("~/Content/images/Categories/" + fileName);
 
                 // Ensure the directory exists
-                string directoryPath = Server.MapPath("~/Content/images/products/");
+                string directoryPath = Server.MapPath("~/Content/images/Categories/");
                 if (!System.IO.Directory.Exists(directoryPath))
                 {
                     System.IO.Directory.CreateDirectory(directoryPath);
@@ -178,7 +178,7 @@ namespace WebBTL.Areas.Admin.Controllers
                 {
                     image.SaveAs(filePath);
                     // Update the product thumb path with the new image
-                    category.Thumb = Url.Content("~/Content/images/products/" + fileName);
+                    category.Thumb = Url.Content("~/Content/images/Categories/" + fileName);
                 }
                 catch (Exception ex)
                 {

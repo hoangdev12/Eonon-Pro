@@ -21,14 +21,23 @@ namespace WebBTL.Controllers
 
 
         // GET: Products
-        public ActionResult Index(string tag, int? page)
+        public ActionResult Index(string searchTerm, string tag, int? page, int? id)
         {
             var pageNumber = page == null || page <= 0 ? 1 : page.Value;
             var pageSize = 20;
-            var lsPages = _context.Products
+            var lsPages = _context.Products.Where(x => x.CatID == id)
                 .AsNoTracking()
                 .OrderBy(x => x.ProductID);
-           
+
+            var products = _context.Products.Include(c => c.Category).OrderBy(p => p.ProductID).AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchTerm))
+            {
+                products = products.Where(x => x.ProductName.Contains(searchTerm));
+            }
+
+
+            ViewBag.SearchTerm = searchTerm;
 
             PagedList<Product> models = new PagedList<Product>((IQueryable<Product>)lsPages, pageNumber, pageSize);
 

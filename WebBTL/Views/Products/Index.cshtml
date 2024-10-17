@@ -6,6 +6,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    .logo-container {
+        margin: 10px; /* Khoảng cách giữa các logo */
+        border: 2px solid #ddd; /* Viền màu xám nhạt */
+        border-radius: 10px; /* Bo tròn góc thẻ div */
+        padding: 10px; /* Khoảng cách bên trong thẻ div */
+        width: 160px; /* Chiều rộng cố định của thẻ div */
+        height: 160px; /* Chiều cao cố định của thẻ div */
+        display: flex; /* Sử dụng flexbox */
+        align-items: center; /* Căn giữa theo chiều dọc */
+        justify-content: center; /* Căn giữa theo chiều ngang */
+    }
+
+        .logo-container img {
+            max-width: 100%; /* Đảm bảo hình ảnh không vượt quá kích thước thẻ div */
+            height: auto; /* Duy trì tỷ lệ hình ảnh */
+            border-radius: 5px; /* Bo tròn góc ảnh */
+        }
+
+</style>
+
 @section navbar{
 
     <div class="container-fluid bgtop2 ">
@@ -52,6 +73,8 @@
     </div>
 }
 
+
+
 <section style="margin-top:97px">
     <div class="bannerTinTuc">
         <div class="container" style="padding-top:50px">
@@ -67,68 +90,176 @@
 <br />
 <br />
 
-
-@* list product *@
-<section>
+<section class="pb-5">
     <div class="container">
         <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-sm-4 col-md-4">
-                    <div class="card border-warning mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <a href="@Url.Action("Details", "Products", new { id = item.ProductID})">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
-                                </a>
-                               
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">@item.ProductName</h5>
-                                    <h6 class="text-warning">
-                                        @(item.Price.HasValue ? item.Price.Value.ToString("C", new System.Globalization.CultureInfo("vi-VN")) : "N/A")
-                                    </h6>
+            <div class="col-12">
+                <div class="d-flex justify-content-center" style="flex-wrap:wrap">
+                    <div class="logo-container">
+                        <a href="@Url.Action("Index", "Products", new { id = 14})">
+                            <img src="~/Content/images/Categories/isuzuDmax.png" class="img-thumbnail" alt="Isuzu D-Max">
+                        </a>
+                    </div>
 
-                                    <p>@item.ShortDesc</p>
-                                    <div class="row">
-                                        <a href="@Url.Action("Details", "Products", new { id = item.ProductID})" class="btn btn-warning col-sm-4 col-md-4" style="margin-right:10px; max-height:40px">Chi tiết</a>                                      
-                                        <a href="#" class="btn btn-outline-warning col-sm-6 col-md-6 text-black" style="max-height:40px;"><i class="fas fa-shopping-cart" style="color: #000;"></i>Mua hàng</a>
+                    <div class="logo-container">
+                        <a href="@Url.Action("Index", "Products", new { id = 13})">
+                            <img src="~/Content/images/Categories/Audi.png" class="img-thumbnail" alt="Audi">
+                        </a>
+                    </div>
+
+                    <div class="logo-container">
+                        <a href="@Url.Action("Index", "Products", new { id = 12})">
+                            <img src="~/Content/images/Categories/bmw.png" class="img-thumbnail" alt="BMW">
+                        </a>
+                    </div>
+
+                    <div class="logo-container">
+                        <a href="@Url.Action("Index", "Products", new { id = 11})">
+                            <img src="~/Content/images/Categories/vinfast.png" class="img-thumbnail" alt="Vinfast">
+                        </a>
+                    </div>
+
+                    <div class="logo-container">
+                        <a href="@Url.Action("Index", "Products", new { id = 10})">
+                            <img src="~/Content/images/Categories/ford.png" class="img-thumbnail" alt="Ford">
+                        </a>
+                    </div>
+
+                    <div class="logo-container">
+                        <a href="@Url.Action("Index", "Products", new { id = 9})">
+                            <img src="~/Content/images/Categories/honda.png" class="img-thumbnail" alt="Honda">
+                        </a>
+                    </div>
+
+                    <div class="logo-container">
+                        <a href="@Url.Action("Index", "Products", new { id = 8})">
+                            <img src="~/Content/images/Categories/hyundai.png" class="img-thumbnail" alt="Hyundai">
+                        </a>
+                    </div>
+
+                    <div class="logo-container">
+                        <a href="@Url.Action("Index", "Products", new { id = 7})">
+                            <img src="~/Content/images/Categories/kia.png" class="img-thumbnail" alt="Kia">
+                        </a>
+                    </div>
+
+                    <div class="logo-container">
+                        <a href="@Url.Action("Index", "Products", new { id = 6})">
+                            <img src="~/Content/images/Categories/mazda.png" class="img-thumbnail" alt="Mazda">
+                        </a>
+                    </div>
+
+                    <div class="logo-container">
+                        <a href="@Url.Action("Index", "Products", new { id = 5})">
+                            <img src="~/Content/images/Categories/mitsubishi.png" class="img-thumbnail" alt="Mitsubishi">
+                        </a>
+                    </div>
+
+                    <div class="logo-container">
+                        <a href="@Url.Action("Index", "Products", new { id = 4})">
+                            <img src="~/Content/images/Categories/nissan.png" class="img-thumbnail" alt="Nissan">
+                        </a>
+                    </div>
+
+                    <div class="logo-container">
+                        <a href="@Url.Action("Index", "Products", new { id = 3})">
+                            <img src="~/Content/images/Categories/suzuki.png" class="img-thumbnail" alt="Suzuki">
+                        </a>
+                    </div>
+
+                    <div class="logo-container">
+                        <a href="@Url.Action("Index", "Products", new { id = 2})">
+                            <img src="~/Content/images/Categories/toyota.png" class="img-thumbnail" alt="Toyota">
+                        </a>
+                    </div>
+
+                    <div class="logo-container">
+                        <a href="@Url.Action("Index", "Products", new { id = 1})">
+                            <img src="~/Content/images/Categories/chevrolet.gif" class="img-thumbnail" alt="Chevrolet">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="container" style="margin-bottom:30px;">
+    <form method="get" class="row">
+        <div class="form-group mr-3 col-sm-10 col-md-10">
+            <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control" placeholder="Tìm tên sản phẩm" />
+        </div>
+
+        <div class="form-group col-sm-2 col-md-2">
+            <button type="submit" class="btn btn-primary">Lọc</button>
+        </div>
+
+    </form>
+</div>
+
+
+    @* list product *@
+    <section>
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-6 col-md-6">
+                        <div class="card border-warning mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID})">
+                                        <img src="..." class="img-fluid rounded-start" alt="...">
+                                    </a>
+
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@item.ProductName</h5>
+                                        <h6 class="text-warning">
+                                            @(item.Price.HasValue ? item.Price.Value.ToString("C", new System.Globalization.CultureInfo("vi-VN")) : "N/A")
+                                        </h6>
+
+                                        <p>@item.ShortDesc</p>
+                                        <div class="row">
+                                            <a href="@Url.Action("Details", "Products", new { id = item.ProductID})" class="btn btn-warning col-sm-4 col-md-4" style="margin-right:10px; max-height:40px">Chi tiết</a>
+                                            <a href="#" class="btn btn-outline-warning col-sm-6 col-md-6 text-black" style="max-height:40px;"><i class="fas fa-shopping-cart" style="color: #000;"></i>Mua hàng</a>
+                                        </div>
+
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-            }
+                }
 
+            </div>
         </div>
+    </section>
+
+
+    @* phan trang  *@
+    <div aria-label="Page navigation example">
+        <ul class="pagination d-flex justify-content-end" style="margin-top: 20px;">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+                new PagedListRenderOptions
+                {
+
+                    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+
+                    DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+
+
+
+                    LinkToPreviousPageFormat = "<button class='btn btn-secondary mr-3'>Previous</button>",
+                    LinkToNextPageFormat = "<button class='btn btn-secondary ml-3'>Next</button>",
+
+
+
+                })
+        </ul>
     </div>
-</section>
-
-
-@* phan trang  *@
-<div aria-label="Page navigation example">
-    <ul class="pagination d-flex justify-content-end" style="margin-top: 20px;">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
-            new PagedListRenderOptions
-            {
-
-                DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
-                DisplayLinkToNextPage = PagedListDisplayMode.Always,
-
-                DisplayEllipsesWhenNotShowingAllPageNumbers = true,
-
-
-
-                LinkToPreviousPageFormat = "<button class='btn btn-secondary mr-3'>Previous</button>",
-                LinkToNextPageFormat = "<button class='btn btn-secondary ml-3'>Next</button>",
-
-
-
-            })
-    </ul>
-</div>
