@@ -5,36 +5,39 @@
       <PropertyRef Name="AccountID" />
     </Key>
     <Property Name="AccountID" Type="Int32" Nullable="false" />
-    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Salt" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="Active" Type="Boolean" Nullable="false" />
-    <Property Name="FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Salt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="RoleID" Type="Int32" />
     <Property Name="LastLogin" Type="DateTime" Precision="3" />
     <Property Name="CreateDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Role" Relationship="Self.FK_Account_Roles" FromRole="Account" ToRole="Roles" />
+    <NavigationProperty Name="tblTinTucs" Relationship="Eonon_ProModel.FK__tblTinTuc__Accou__5BE2A6F2" FromRole="Account" ToRole="tblTinTuc" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
       <PropertyRef Name="CatID" />
     </Key>
     <Property Name="CatID" Type="Int32" Nullable="false" />
-    <Property Name="CatName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="CatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ParentID" Type="Int32" />
     <Property Name="Leveks" Type="Int32" />
     <Property Name="Ordering" Type="Int32" />
-    <Property Name="Published" Type="Boolean" Nullable="false" />
-    <Property Name="Thumb" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Alias" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="MetaDesc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="MetaKey" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Cover" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="SchemaMarkup" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Published" Type="Boolean" />
+    <Property Name="Thumb" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Alias" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MetaKey" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Cover" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SchemaMarkup" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Products" Relationship="Self.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
+    <Property Name="Levels" Type="Int32" />
+    <NavigationProperty Name="tblTinTucs" Relationship="Eonon_ProModel.FK__tblTinTuc__CatID__5CD6CB2B" FromRole="Category" ToRole="tblTinTuc" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -42,17 +45,17 @@
     </Key>
     <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="Birthday" Type="DateTime" Precision="3" />
-    <Property Name="Avatar" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
-    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="Avatar" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="LocationID" Type="Int32" />
-    <Property Name="District" Type="String" />
+    <Property Name="District" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
     <Property Name="Ward" Type="Int32" />
     <Property Name="CreateDate" Type="DateTime" Precision="3" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Salt" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Salt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="LastLogin" Type="DateTime" Precision="3" />
     <Property Name="Active" Type="Boolean" />
     <NavigationProperty Name="Location" Relationship="Self.FK_Customer_Locations" FromRole="Customer" ToRole="Locations" />
@@ -63,9 +66,9 @@
       <PropertyRef Name="LocationID" />
     </Key>
     <Property Name="LocationID" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="Slug" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Slug" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="NameWithType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="PathWithType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="ParentCode" Type="Int32" />
@@ -77,10 +80,10 @@
       <PropertyRef Name="OrderDetailID" />
     </Key>
     <Property Name="OrderDetailID" Type="Int32" Nullable="false" />
-    <Property Name="OrderID" Type="Int32" />
-    <Property Name="ProductID" Type="Int32" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
     <Property Name="OrderNumber" Type="Int32" />
-    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
     <Property Name="Discount" Type="Int32" />
     <Property Name="Total" Type="Int32" />
     <Property Name="ShipDate" Type="DateTime" Precision="3" />
@@ -92,7 +95,7 @@
       <PropertyRef Name="OrderID" />
     </Key>
     <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
     <Property Name="Orderdate" Type="DateTime" Precision="3" />
     <Property Name="ShipDate" Type="DateTime" Precision="3" />
     <Property Name="TransactStatusID" Type="Int32" />
@@ -104,20 +107,21 @@
     <NavigationProperty Name="Customer" Relationship="Self.FK_Orders_Customer" FromRole="Orders" ToRole="Customer" />
     <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
     <NavigationProperty Name="TransactStatu" Relationship="Self.FK_Orders_TransactStatus" FromRole="Orders" ToRole="TransactStatus" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="Page">
     <Key>
       <PropertyRef Name="PageID" />
     </Key>
     <Property Name="PageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PageName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PageName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Thumb" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Published" Type="Boolean" Nullable="false" />
-    <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="MetaDesc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="MetaKey" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Alias" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Thumb" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Published" Type="Boolean" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MetaKey" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Alias" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="CreateDate" Type="DateTime" Precision="3" />
     <Property Name="Ordering" Type="Int32" />
   </EntityType>
@@ -126,35 +130,36 @@
       <PropertyRef Name="ProductID" />
     </Key>
     <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProductName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ShortDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProductName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ShortDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="CatID" Type="Int32" />
-    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Discount" Type="Int32" />
-    <Property Name="Thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="Video" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Thumb" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Video" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="DateCreated" Type="DateTime" Precision="3" />
     <Property Name="Datemodified" Type="DateTime" Precision="3" />
-    <Property Name="BestSellers" Type="Boolean" Nullable="false" />
-    <Property Name="HomeFlag" Type="Boolean" Nullable="false" />
-    <Property Name="Active" Type="Boolean" Nullable="false" />
-    <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Titles" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="BestSellers" Type="Boolean" />
+    <Property Name="HomeFlag" Type="Boolean" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Tags" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Titles" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Alias" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="MetaDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="MetaKey" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MetaKey" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="UnitsInStock" Type="Int32" />
     <NavigationProperty Name="Category" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
     <NavigationProperty Name="OrderDetails" Relationship="Eonon_ProModel.FK_OrderDetails_Products" FromRole="Product" ToRole="OrderDetail" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="RoleID" />
     </Key>
     <Property Name="RoleID" Type="Int32" Nullable="false" />
-    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Roles" FromRole="Roles" ToRole="Account" />
   </EntityType>
   <EntityType Name="Shipper">
@@ -163,9 +168,11 @@
     </Key>
     <Property Name="ShipperID" Type="Int32" Nullable="false" />
     <Property Name="ShipperName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="Company" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Company" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="ShipeDate" Type="DateTime" Precision="3" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ShipDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -185,19 +192,22 @@
     <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="SContents" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="Published" Type="Boolean" Nullable="false" />
+    <Property Name="Thumb" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Published" Type="Boolean" />
     <Property Name="Alias" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="CreateDate" Type="DateTime" Precision="3" />
     <Property Name="Author" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="AccountID" Type="Int32" />
-    <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Tags" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="CatID" Type="Int32" />
     <Property Name="isHot" Type="Boolean" />
     <Property Name="isNewFeed" Type="Boolean" />
-    <Property Name="MetaKey" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="MetaDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MetaKey" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Views" Type="Int32" />
+    <Property Name="sContents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Account" Relationship="Eonon_ProModel.FK__tblTinTuc__Accou__5BE2A6F2" FromRole="tblTinTuc" ToRole="Account" />
+    <NavigationProperty Name="Category" Relationship="Eonon_ProModel.FK__tblTinTuc__CatID__5CD6CB2B" FromRole="tblTinTuc" ToRole="Category" />
   </EntityType>
   <EntityType Name="TransactStatu">
     <Key>
@@ -322,6 +332,14 @@
       <End Role="Product" EntitySet="Products" />
       <End Role="OrderDetail" EntitySet="OrderDetails" />
     </AssociationSet>
+    <AssociationSet Name="FK__tblTinTuc__Accou__5BE2A6F2" Association="Eonon_ProModel.FK__tblTinTuc__Accou__5BE2A6F2">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="tblTinTuc" EntitySet="tblTinTucs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTinTuc__CatID__5CD6CB2B" Association="Eonon_ProModel.FK__tblTinTuc__CatID__5CD6CB2B">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="tblTinTuc" EntitySet="tblTinTucs" />
+    </AssociationSet>
   </EntityContainer>
   <Association Name="FK_OrderDetails_Products">
     <End Type="Eonon_ProModel.Product" Role="Product" Multiplicity="0..1" />
@@ -332,6 +350,30 @@
       </Principal>
       <Dependent Role="OrderDetail">
         <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTinTuc__Accou__5BE2A6F2">
+    <End Type="Eonon_ProModel.Account" Role="Account" Multiplicity="0..1" />
+    <End Type="Eonon_ProModel.tblTinTuc" Role="tblTinTuc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountID" />
+      </Principal>
+      <Dependent Role="tblTinTuc">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTinTuc__CatID__5CD6CB2B">
+    <End Type="Eonon_ProModel.Category" Role="Category" Multiplicity="0..1" />
+    <End Type="Eonon_ProModel.tblTinTuc" Role="tblTinTuc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CatID" />
+      </Principal>
+      <Dependent Role="tblTinTuc">
+        <PropertyRef Name="CatID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

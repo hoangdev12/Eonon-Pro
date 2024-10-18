@@ -14,11 +14,11 @@ namespace WebBTL.Areas.Admin.Controllers
     public class AdminAccountsController : Controller
     {
 
-        private readonly Eonon_ProEntities1 _context;
+        private readonly Eonon_ProEntities _context;
 
         public AdminAccountsController()
         {
-            _context = new Eonon_ProEntities1();
+            _context = new Eonon_ProEntities();
         }
 
         // GET: Admin/AdminAccounts
@@ -32,7 +32,7 @@ namespace WebBTL.Areas.Admin.Controllers
             IsTrangThai.Add(new SelectListItem() { Text = "Block", Value = "0" });
             ViewData["IsTrangThai"] = IsTrangThai;
 
-            var accounts = _context.Accounts.Include(a => a.Role).AsQueryable();
+            var accounts = _context.Account.Include(a => a.Roles).AsQueryable();
 
             // Lọc theo quyền truy cập nếu có giá trị
             if (RoleId.HasValue)
@@ -51,7 +51,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = _context.Accounts.Find(id);
+            Account account = _context.Account.Find(id);
             if (account == null)
             {
                 return HttpNotFound();
@@ -69,7 +69,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = _context.Accounts.Find(id);
+            Account account = _context.Account.Find(id);
             if (account == null)
             {
                 return HttpNotFound();
@@ -99,11 +99,11 @@ namespace WebBTL.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            var account = _context.Accounts.Find(id);
+            var account = _context.Account.Find(id);
 
             if (account != null)
             {
-                _context.Accounts.Remove(account); 
+                _context.Account.Remove(account); 
                 _context.SaveChanges();
                 return Json(new { success = true });
             }

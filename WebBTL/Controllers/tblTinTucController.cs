@@ -12,11 +12,11 @@ namespace WebBTL.Controllers
     public class tblTinTucController : Controller
     {
 
-        private readonly Eonon_ProEntities1 _context;
+        private readonly Eonon_ProEntities _context;
 
         public tblTinTucController()
         {
-            _context = new Eonon_ProEntities1();
+            _context = new Eonon_ProEntities();
             
         }
         // GET: tblTinTuc
@@ -30,10 +30,10 @@ namespace WebBTL.Controllers
                 .OrderBy(x => x.PostID);
             if (!string.IsNullOrEmpty(tag))
             {
-                lsPages = (IOrderedQueryable<tblTinTuc>)lsPages.Where(x => x.Tags.Contains(tag));
+                lsPages = (IOrderedQueryable<tblTinTucs>)lsPages.Where(x => x.Tags.Contains(tag));
             }
 
-            PagedList<tblTinTuc> models = new PagedList<tblTinTuc>(lsPages, pageNumber, pageSize);
+            PagedList<tblTinTucs> models = new PagedList<tblTinTucs>(lsPages, pageNumber, pageSize);
 
             ViewBag.CurrentPage = pageNumber;
             return View(models);

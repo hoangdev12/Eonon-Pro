@@ -10,11 +10,11 @@ namespace WebBTL.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly Eonon_ProEntities1 _context;
+        private readonly Eonon_ProEntities _context;
 
         public ProductsController()
         {
-            _context = new Eonon_ProEntities1();
+            _context = new Eonon_ProEntities();
         }
 
 
@@ -29,12 +29,12 @@ namespace WebBTL.Controllers
         {
 
 
-            var product = _context.Products.Include(x => x.Category).FirstOrDefault(x => x.ProductID == id);
+            var product = _context.Products.Include(x => x.Categories).FirstOrDefault(x => x.ProductID == id);
             if (product == null)
             {
                 return RedirectToAction("Index");
             }
-            var productsList = new List<Product> { product };
+            var productsList = new List<Products> { product };
             return View(productsList);
         }
                 

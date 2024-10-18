@@ -4,13 +4,13 @@
     <Key>
       <PropertyRef Name="AccountID" />
     </Key>
-    <Property Name="AccountID" Type="int" Nullable="false" />
-    <Property Name="Phone" Type="varchar" MaxLength="12" />
-    <Property Name="Email" Type="nvarchar" MaxLength="150" />
-    <Property Name="Password" Type="nvarchar" MaxLength="50" />
-    <Property Name="Salt" Type="nchar" MaxLength="10" />
-    <Property Name="Active" Type="bit" Nullable="false" />
-    <Property Name="FullName" Type="nvarchar" MaxLength="150" />
+    <Property Name="AccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Salt" Type="nvarchar" MaxLength="255" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="255" />
     <Property Name="RoleID" Type="int" />
     <Property Name="LastLogin" Type="datetime" />
     <Property Name="CreateDate" Type="datetime" />
@@ -19,20 +19,20 @@
     <Key>
       <PropertyRef Name="CatID" />
     </Key>
-    <Property Name="CatID" Type="int" Nullable="false" />
-    <Property Name="CatName" Type="nvarchar" MaxLength="25" />
+    <Property Name="CatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CatName" Type="nvarchar" MaxLength="255" />
     <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="ParentID" Type="int" />
-    <Property Name="Leveks" Type="int" />
+    <Property Name="Levels" Type="int" />
     <Property Name="Ordering" Type="int" />
-    <Property Name="Published" Type="bit" Nullable="false" />
-    <Property Name="Thumb" Type="nvarchar" MaxLength="250" />
-    <Property Name="Title" Type="nvarchar" MaxLength="250" />
-    <Property Name="Alias" Type="nvarchar" MaxLength="250" />
-    <Property Name="MetaDesc" Type="nvarchar" MaxLength="250" />
-    <Property Name="MetaKey" Type="nvarchar" MaxLength="250" />
-    <Property Name="Cover" Type="nvarchar" MaxLength="250" />
-    <Property Name="SchemaMarkup" Type="nvarchar" MaxLength="250" />
+    <Property Name="Published" Type="bit" />
+    <Property Name="Thumb" Type="nvarchar" MaxLength="500" />
+    <Property Name="Title" Type="nvarchar" MaxLength="255" />
+    <Property Name="Alias" Type="nvarchar" MaxLength="255" />
+    <Property Name="MetaDesc" Type="nvarchar" MaxLength="500" />
+    <Property Name="MetaKey" Type="nvarchar" MaxLength="500" />
+    <Property Name="Cover" Type="nvarchar" MaxLength="500" />
+    <Property Name="SchemaMarkup" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -40,17 +40,17 @@
     </Key>
     <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FullName" Type="nvarchar" MaxLength="255" />
-    <Property Name="Birthday" Type="datetime" />
-    <Property Name="Avatar" Type="nvarchar" MaxLength="255" />
-    <Property Name="Address" Type="nvarchar" MaxLength="255" />
-    <Property Name="Email" Type="nchar" MaxLength="150" />
-    <Property Name="Phone" Type="varchar" MaxLength="12" />
+    <Property Name="Birthday" Type="date" />
+    <Property Name="Avatar" Type="nvarchar" MaxLength="500" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
     <Property Name="LocationID" Type="int" />
     <Property Name="District" Type="nvarchar" MaxLength="255" />
-    <Property Name="Ward" Type="int" />
+    <Property Name="Ward" Type="nvarchar" MaxLength="255" />
     <Property Name="CreateDate" Type="datetime" />
-    <Property Name="Password" Type="nvarchar" MaxLength="50" />
-    <Property Name="Salt" Type="nchar" MaxLength="10" />
+    <Property Name="Password" Type="nvarchar" MaxLength="255" />
+    <Property Name="Salt" Type="nvarchar" MaxLength="255" />
     <Property Name="LastLogin" Type="datetime" />
     <Property Name="Active" Type="bit" />
   </EntityType>
@@ -58,26 +58,26 @@
     <Key>
       <PropertyRef Name="LocationID" />
     </Key>
-    <Property Name="LocationID" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="100" />
-    <Property Name="Type" Type="nvarchar" MaxLength="20" />
-    <Property Name="Slug" Type="nvarchar" MaxLength="100" />
+    <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Slug" Type="nvarchar" MaxLength="255" />
     <Property Name="NameWithType" Type="nvarchar" MaxLength="255" />
     <Property Name="PathWithType" Type="nvarchar" MaxLength="255" />
-    <Property Name="ParentCode" Type="int" />
+    <Property Name="ParentCode" Type="nvarchar" MaxLength="50" />
     <Property Name="Levels" Type="int" />
   </EntityType>
   <EntityType Name="OrderDetails">
     <Key>
       <PropertyRef Name="OrderDetailID" />
     </Key>
-    <Property Name="OrderDetailID" Type="int" Nullable="false" />
-    <Property Name="OrderID" Type="int" />
-    <Property Name="ProductID" Type="int" />
-    <Property Name="OrderNumber" Type="int" />
-    <Property Name="Quantity" Type="int" />
-    <Property Name="Discount" Type="int" />
-    <Property Name="Total" Type="int" />
+    <Property Name="OrderDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="OrderNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="2" />
     <Property Name="ShipDate" Type="datetime" />
   </EntityType>
   <EntityType Name="Orders">
@@ -85,14 +85,14 @@
       <PropertyRef Name="OrderID" />
     </Key>
     <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CustomerID" Type="int" />
-    <Property Name="Orderdate" Type="datetime" />
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" />
     <Property Name="ShipDate" Type="datetime" />
     <Property Name="TransactStatusID" Type="int" />
     <Property Name="Deleted" Type="bit" />
     <Property Name="Paid" Type="bit" />
     <Property Name="PaymentDate" Type="datetime" />
-    <Property Name="PaymentID" Type="int" />
+    <Property Name="PaymentID" Type="nvarchar" MaxLength="50" />
     <Property Name="Note" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Pages">
@@ -100,14 +100,14 @@
       <PropertyRef Name="PageID" />
     </Key>
     <Property Name="PageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PageName" Type="nvarchar" MaxLength="250" />
+    <Property Name="PageName" Type="nvarchar" MaxLength="255" />
     <Property Name="Contents" Type="nvarchar(max)" />
-    <Property Name="Thumb" Type="nvarchar" MaxLength="250" />
-    <Property Name="Published" Type="bit" Nullable="false" />
-    <Property Name="Title" Type="nvarchar" MaxLength="250" />
-    <Property Name="MetaDesc" Type="nvarchar" MaxLength="250" />
-    <Property Name="MetaKey" Type="nvarchar" MaxLength="250" />
-    <Property Name="Alias" Type="nvarchar" MaxLength="250" />
+    <Property Name="Thumb" Type="nvarchar" MaxLength="500" />
+    <Property Name="Published" Type="bit" />
+    <Property Name="Title" Type="nvarchar" MaxLength="255" />
+    <Property Name="MetaDesc" Type="nvarchar" MaxLength="500" />
+    <Property Name="MetaKey" Type="nvarchar" MaxLength="500" />
+    <Property Name="Alias" Type="nvarchar" MaxLength="255" />
     <Property Name="CreateDate" Type="datetime" />
     <Property Name="Ordering" Type="int" />
   </EntityType>
@@ -116,85 +116,74 @@
       <PropertyRef Name="ProductID" />
     </Key>
     <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProductName" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="ShortDesc" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="255" />
+    <Property Name="ShortDesc" Type="nvarchar" MaxLength="500" />
     <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="CatID" Type="int" />
-    <Property Name="Price" Type="money" />
-    <Property Name="Discount" Type="int" />
-    <Property Name="Thumb" Type="nvarchar" MaxLength="255" />
-    <Property Name="Video" Type="nvarchar" MaxLength="255" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Thumb" Type="nvarchar" MaxLength="500" />
+    <Property Name="Video" Type="nvarchar" MaxLength="500" />
     <Property Name="DateCreated" Type="datetime" />
-    <Property Name="Datemodified" Type="datetime" />
-    <Property Name="BestSellers" Type="bit" Nullable="false" />
-    <Property Name="HomeFlag" Type="bit" Nullable="false" />
-    <Property Name="Active" Type="bit" Nullable="false" />
-    <Property Name="Tags" Type="nvarchar(max)" />
-    <Property Name="Titles" Type="nvarchar" MaxLength="255" />
+    <Property Name="DateModified" Type="datetime" />
+    <Property Name="BestSellers" Type="bit" />
+    <Property Name="HomeFlag" Type="bit" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="Tags" Type="nvarchar" MaxLength="500" />
+    <Property Name="Titles" Type="nvarchar" MaxLength="500" />
     <Property Name="Alias" Type="nvarchar" MaxLength="255" />
-    <Property Name="MetaDesc" Type="nvarchar" MaxLength="255" />
-    <Property Name="MetaKey" Type="nvarchar" MaxLength="255" />
-    <Property Name="UnitsInStock" Type="int" />
+    <Property Name="MetaDesc" Type="nvarchar" MaxLength="500" />
+    <Property Name="MetaKey" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>
       <PropertyRef Name="RoleID" />
     </Key>
-    <Property Name="RoleID" Type="int" Nullable="false" />
-    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
-    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Shippers">
     <Key>
       <PropertyRef Name="ShipperID" />
     </Key>
-    <Property Name="ShipperID" Type="int" Nullable="false" />
-    <Property Name="ShipperName" Type="nvarchar" MaxLength="150" />
-    <Property Name="Phone" Type="nchar" MaxLength="10" />
-    <Property Name="Company" Type="nvarchar" MaxLength="150" />
-    <Property Name="ShipeDate" Type="datetime" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
+    <Property Name="ShipperID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Company" Type="nvarchar" MaxLength="255" />
+    <Property Name="ShipDate" Type="datetime" />
   </EntityType>
   <EntityType Name="tblTinTucs">
     <Key>
       <PropertyRef Name="PostID" />
     </Key>
-    <Property Name="PostID" Type="int" Nullable="false" />
+    <Property Name="PostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nvarchar" MaxLength="255" />
-    <Property Name="SContents" Type="nvarchar" MaxLength="255" />
+    <Property Name="sContents" Type="nvarchar(max)" />
     <Property Name="Contents" Type="nvarchar(max)" />
-    <Property Name="Thumb" Type="nvarchar" MaxLength="255" />
-    <Property Name="Published" Type="bit" Nullable="false" />
+    <Property Name="Thumb" Type="nvarchar" MaxLength="500" />
+    <Property Name="Published" Type="bit" />
     <Property Name="Alias" Type="nvarchar" MaxLength="255" />
     <Property Name="CreateDate" Type="datetime" />
     <Property Name="Author" Type="nvarchar" MaxLength="255" />
     <Property Name="AccountID" Type="int" />
-    <Property Name="Tags" Type="nvarchar(max)" />
+    <Property Name="Tags" Type="nvarchar" MaxLength="500" />
     <Property Name="CatID" Type="int" />
     <Property Name="isHot" Type="bit" />
     <Property Name="isNewFeed" Type="bit" />
-    <Property Name="MetaKey" Type="nvarchar" MaxLength="255" />
-    <Property Name="MetaDesc" Type="nvarchar" MaxLength="255" />
+    <Property Name="MetaKey" Type="nvarchar" MaxLength="500" />
+    <Property Name="MetaDesc" Type="nvarchar" MaxLength="500" />
     <Property Name="Views" Type="int" />
   </EntityType>
   <EntityType Name="TransactStatus">
     <Key>
       <PropertyRef Name="TransactStatusID" />
     </Key>
-    <Property Name="TransactStatusID" Type="int" Nullable="false" />
+    <Property Name="TransactStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Status" Type="nvarchar" MaxLength="50" />
     <Property Name="Description" Type="nvarchar(max)" />
   </EntityType>
-  <Association Name="FK_Account_Roles">
+  <Association Name="FK__Account__RoleID__5812160E">
     <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
     <End Role="Account" Type="Self.Account" Multiplicity="*" />
     <ReferentialConstraint>
@@ -206,7 +195,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Customer_Locations">
+  <Association Name="FK__Customer__Locati__3C69FB99">
     <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
     <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
     <ReferentialConstraint>
@@ -218,8 +207,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_OrderDetails_Orders">
-    <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+  <Association Name="FK__OrderDeta__Order__4D94879B">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
     <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Orders">
@@ -230,8 +219,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_OrderDetails_Products">
-    <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+  <Association Name="FK__OrderDeta__Produ__4E88ABD4">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
     <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Products">
@@ -242,8 +231,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Orders_Customer">
-    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+  <Association Name="FK__Orders__Customer__49C3F6B7">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Customer">
@@ -254,7 +243,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Orders_TransactStatus">
+  <Association Name="FK__Orders__Transact__4AB81AF0">
     <End Role="TransactStatus" Type="Self.TransactStatus" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -266,7 +255,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Products_Categories">
+  <Association Name="FK__Products__CatID__4222D4EF">
     <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
     <End Role="Products" Type="Self.Products" Multiplicity="*" />
     <ReferentialConstraint>
@@ -274,6 +263,30 @@
         <PropertyRef Name="CatID" />
       </Principal>
       <Dependent Role="Products">
+        <PropertyRef Name="CatID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTinTuc__Accou__5BE2A6F2">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="tblTinTucs" Type="Self.tblTinTucs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountID" />
+      </Principal>
+      <Dependent Role="tblTinTucs">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTinTuc__CatID__5CD6CB2B">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+    <End Role="tblTinTucs" Type="Self.tblTinTucs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CatID" />
+      </Principal>
+      <Dependent Role="tblTinTucs">
         <PropertyRef Name="CatID" />
       </Dependent>
     </ReferentialConstraint>
@@ -289,36 +302,43 @@
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Shippers" EntityType="Self.Shippers" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblTinTucs" EntityType="Self.tblTinTucs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransactStatus" EntityType="Self.TransactStatus" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Account_Roles" Association="Self.FK_Account_Roles">
+    <AssociationSet Name="FK__Account__RoleID__5812160E" Association="Self.FK__Account__RoleID__5812160E">
       <End Role="Roles" EntitySet="Roles" />
       <End Role="Account" EntitySet="Account" />
     </AssociationSet>
-    <AssociationSet Name="FK_Customer_Locations" Association="Self.FK_Customer_Locations">
+    <AssociationSet Name="FK__Customer__Locati__3C69FB99" Association="Self.FK__Customer__Locati__3C69FB99">
       <End Role="Locations" EntitySet="Locations" />
       <End Role="Customer" EntitySet="Customer" />
     </AssociationSet>
-    <AssociationSet Name="FK_OrderDetails_Orders" Association="Self.FK_OrderDetails_Orders">
+    <AssociationSet Name="FK__OrderDeta__Order__4D94879B" Association="Self.FK__OrderDeta__Order__4D94879B">
       <End Role="Orders" EntitySet="Orders" />
       <End Role="OrderDetails" EntitySet="OrderDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK_OrderDetails_Products" Association="Self.FK_OrderDetails_Products">
+    <AssociationSet Name="FK__OrderDeta__Produ__4E88ABD4" Association="Self.FK__OrderDeta__Produ__4E88ABD4">
       <End Role="Products" EntitySet="Products" />
       <End Role="OrderDetails" EntitySet="OrderDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_Customer" Association="Self.FK_Orders_Customer">
+    <AssociationSet Name="FK__Orders__Customer__49C3F6B7" Association="Self.FK__Orders__Customer__49C3F6B7">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_TransactStatus" Association="Self.FK_Orders_TransactStatus">
+    <AssociationSet Name="FK__Orders__Transact__4AB81AF0" Association="Self.FK__Orders__Transact__4AB81AF0">
       <End Role="TransactStatus" EntitySet="TransactStatus" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
+    <AssociationSet Name="FK__Products__CatID__4222D4EF" Association="Self.FK__Products__CatID__4222D4EF">
       <End Role="Categories" EntitySet="Categories" />
       <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTinTuc__Accou__5BE2A6F2" Association="Self.FK__tblTinTuc__Accou__5BE2A6F2">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="tblTinTucs" EntitySet="tblTinTucs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTinTuc__CatID__5CD6CB2B" Association="Self.FK__tblTinTuc__CatID__5CD6CB2B">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="tblTinTucs" EntitySet="tblTinTucs" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

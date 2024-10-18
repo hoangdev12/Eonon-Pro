@@ -17,11 +17,11 @@ namespace WebBTL.Areas.Admin.Controllers
 
         // GET: Admin/AdmintblTinTucs
         
-             private readonly Eonon_ProEntities1 _context;
+             private readonly Eonon_ProEntities _context;
 
         public AdmintblTinTucsController()
         {
-            _context = new Eonon_ProEntities1();
+            _context = new Eonon_ProEntities();
         }
 
         // GET: Admin/AdminPages
@@ -37,10 +37,10 @@ namespace WebBTL.Areas.Admin.Controllers
             if (!String.IsNullOrEmpty(searchTerm))
             {
                 // Lọc các mục có CatName chứa searchTerm
-                lsTintuc = (IOrderedQueryable<tblTinTuc>)lsTintuc.Where(x => x.Title.Contains(searchTerm));
+                lsTintuc = (IOrderedQueryable<tblTinTucs>)lsTintuc.Where(x => x.Title.Contains(searchTerm));
             }
 
-            PagedList<tblTinTuc> models = new PagedList<tblTinTuc>(lsTintuc, tintucNumber, tintucSize);
+            PagedList<tblTinTucs> models = new PagedList<tblTinTucs>(lsTintuc, tintucNumber, tintucSize);
 
             ViewBag.CurrentPage = tintucNumber;
             ViewBag.SearchTerm = searchTerm;
@@ -54,7 +54,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tblTinTuc tblTinTuc = _context.tblTinTucs.Find(id);
+            tblTinTucs tblTinTuc = _context.tblTinTucs.Find(id);
             if (tblTinTuc == null)
             {
                 return HttpNotFound();
@@ -73,10 +73,10 @@ namespace WebBTL.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PostID,Title,SContents,Contents,Thumb,Published,Alias,CreateDate,Author,AccountID,Tags,CatID,isHot,isNewFeed,MetaKey,MetaDesc,Views")] tblTinTuc tblTinTuc, HttpPostedFileBase image)
+        public ActionResult Create([Bind(Include = "PostID,Title,SContents,Contents,Thumb,Published,Alias,CreateDate,Author,AccountID,Tags,CatID,isHot,isNewFeed,MetaKey,MetaDesc,Views")] tblTinTucs tblTinTucs, HttpPostedFileBase image)
         {
 
-            var existingTblTinTuc = _context.tblTinTucs.Find(tblTinTuc.PostID);
+            var existingTblTinTuc = _context.tblTinTucs.Find(tblTinTucs.PostID);
             // Check if a new image is uploaded
             if (image != null && image.ContentLength > 0)
             {
@@ -96,30 +96,30 @@ namespace WebBTL.Areas.Admin.Controllers
                 {
                     image.SaveAs(filePath);
                     // Update the product thumb path with the new image
-                    tblTinTuc.Thumb = Url.Content("~/Content/images/products/" + fileName);
+                    tblTinTucs.Thumb = Url.Content("~/Content/images/products/" + fileName);
                 }
                 catch (Exception ex)
                 {
                     ModelState.AddModelError("", "Unable to save image. Please try again. " + ex.Message);
                     var Categories = _context.Categories.ToList();
-                    ViewBag.CatID = new SelectList(Categories, "CategoryID", "CategoryName", tblTinTuc.CatID);
-                    return View(tblTinTuc);
+                    ViewBag.CatID = new SelectList(Categories, "CategoryID", "CategoryName", tblTinTucs.CatID);
+                    return View(tblTinTucs);
                 }
             }
             else
             {
                 // If no new image is uploaded, keep the existing Thumb value or a default image
-                tblTinTuc.Thumb = string.IsNullOrEmpty(existingTblTinTuc.Thumb) ? Url.Content("~/Content/images/default.png") : existingTblTinTuc.Thumb;
+                tblTinTucs.Thumb = string.IsNullOrEmpty(existingTblTinTuc.Thumb) ? Url.Content("~/Content/images/default.png") : existingTblTinTuc.Thumb;
             }
 
             if (ModelState.IsValid)
             {
-                _context.tblTinTucs.Add(tblTinTuc);
+                _context.tblTinTucs.Add(tblTinTucs);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(tblTinTuc);
+            return View(tblTinTucs);
         }
 
         // GET: Admin/AdmintblTinTucs/Edit/5
@@ -129,7 +129,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tblTinTuc tblTinTuc = _context.tblTinTucs.Find(id);
+            tblTinTucs tblTinTuc = _context.tblTinTucs.Find(id);
             if (tblTinTuc == null)
             {
                 return HttpNotFound();
@@ -142,9 +142,9 @@ namespace WebBTL.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PostID,Title,SContents,Contents,Thumb,Published,Alias,CreateDate,Author,AccountID,Tags,CatID,isHot,isNewFeed,MetaKey,MetaDesc,Views")] tblTinTuc tblTinTuc, HttpPostedFileBase image)
+        public ActionResult Edit([Bind(Include = "PostID,Title,SContents,Contents,Thumb,Published,Alias,CreateDate,Author,AccountID,Tags,CatID,isHot,isNewFeed,MetaKey,MetaDesc,Views")] tblTinTucs tblTinTuc, HttpPostedFileBase image)
         {
-            var existingtblTinTuc = _context.tblTinTucs.Find(tblTinTuc.PostID);
+            var existingtblTinTuc = _context.tblTinTucs.Find(tblTinTuc);
 
             if (existingtblTinTuc == null)
             {
@@ -192,7 +192,7 @@ namespace WebBTL.Areas.Admin.Controllers
                 // Update the existing product properties
                 existingtblTinTuc.PostID = tblTinTuc.PostID;
                 existingtblTinTuc.Title = tblTinTuc.Title;
-                existingtblTinTuc.SContents = tblTinTuc.SContents;
+                existingtblTinTuc.sContents = tblTinTuc.sContents;
                 existingtblTinTuc.Contents = tblTinTuc.Contents;
                 existingtblTinTuc.Thumb = tblTinTuc.Thumb;
                 existingtblTinTuc.Published = tblTinTuc.Published;

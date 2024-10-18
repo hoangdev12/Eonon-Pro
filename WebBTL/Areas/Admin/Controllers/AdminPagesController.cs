@@ -14,11 +14,11 @@ namespace WebBTL.Areas.Admin.Controllers
 {
     public class AdminPagesController : Controller
     {
-        private readonly Eonon_ProEntities1 _context;
+        private readonly Eonon_ProEntities _context;
 
         public AdminPagesController()
         {
-            _context = new Eonon_ProEntities1();
+            _context = new Eonon_ProEntities();
         }
 
         // GET: Admin/AdminPages
@@ -30,7 +30,7 @@ namespace WebBTL.Areas.Admin.Controllers
                 .AsNoTracking()
                 .OrderByDescending(x => x.PageID);
 
-            PagedList<Page> models = new PagedList<Page>(lsPages, pageNumber, pageSize);
+            PagedList<Pages> models = new PagedList<Pages>(lsPages, pageNumber, pageSize);
 
             ViewBag.CurrentPage = pageNumber;
             return View(models);
@@ -44,7 +44,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Page page = _context.Pages.Find(id);
+            Pages page = _context.Pages.Find(id);
             if (page == null)
             {
                 return HttpNotFound();
@@ -63,7 +63,7 @@ namespace WebBTL.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PageID,PageName,Contents,Thumb,Published,Title,MetaDesc,MetaKey,Alias,CreateDate,Ordering")] Page page)
+        public ActionResult Create([Bind(Include = "PageID,PageName,Contents,Thumb,Published,Title,MetaDesc,MetaKey,Alias,CreateDate,Ordering")] Pages page)
         {
 
 
@@ -85,7 +85,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Page page = _context.Pages.Find(id);
+            Pages page = _context.Pages.Find(id);
             if (page == null)
             {
                 return HttpNotFound();
@@ -98,7 +98,7 @@ namespace WebBTL.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PageID,PageName,Contents,Thumb,Published,Title,MetaDesc,MetaKey,Alias,CreateDate,Ordering")] Page page, HttpPostedFileBase image)
+        public ActionResult Edit([Bind(Include = "PageID,PageName,Contents,Thumb,Published,Title,MetaDesc,MetaKey,Alias,CreateDate,Ordering")] Pages page, HttpPostedFileBase image)
         {
             // Retrieve the existing page from the database
             var existingPage = _context.Pages.Find(page.PageID);

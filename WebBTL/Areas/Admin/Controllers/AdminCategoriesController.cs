@@ -14,11 +14,11 @@ namespace WebBTL.Areas.Admin.Controllers
 {
     public class AdminCategoriesController : Controller
     {
-        private readonly Eonon_ProEntities1 _context;
+        private readonly Eonon_ProEntities _context;
 
         public AdminCategoriesController()
         {
-            _context = new Eonon_ProEntities1();
+            _context = new Eonon_ProEntities();
         }
 
         // GET: Admin/AdminCategories
@@ -39,7 +39,7 @@ namespace WebBTL.Areas.Admin.Controllers
             if (!String.IsNullOrEmpty(searchTerm))
             {
                 // Lọc các mục có CatName chứa searchTerm
-                lsCategories = (IOrderedQueryable<Category>)lsCategories.Where(x => x.CatName.Contains(searchTerm));
+                lsCategories = (IOrderedQueryable<Categories>)lsCategories.Where(x => x.CatName.Contains(searchTerm));
             }
 
             // Phân trang sau khi đã tìm kiếm
@@ -62,7 +62,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = _context.Categories.Find(id);
+            Categories category = _context.Categories.Find(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -81,7 +81,7 @@ namespace WebBTL.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CatID,CatName,Description,ParentID,Leveks,Ordering,Published,Thumb,Title,Alias,MetaDesc,MetaKey,Cover,SchemaMarkup")] Category category, HttpPostedFileBase image)
+        public ActionResult Create([Bind(Include = "CatID,CatName,Description,ParentID,Leveks,Ordering,Published,Thumb,Title,Alias,MetaDesc,MetaKey,Cover,SchemaMarkup")] Categories category, HttpPostedFileBase image)
         {
 
             var existingProduct = _context.Products.Find(category.CatID);
@@ -137,7 +137,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = _context.Categories.Find(id);
+            Categories category = _context.Categories.Find(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -150,7 +150,7 @@ namespace WebBTL.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CatID,CatName,Description,ParentID,Leveks,Ordering,Published,Thumb,Title,Alias,MetaDesc,MetaKey,Cover,SchemaMarkup")] Category category, HttpPostedFileBase image)
+        public ActionResult Edit([Bind(Include = "CatID,CatName,Description,ParentID,Leveks,Ordering,Published,Thumb,Title,Alias,MetaDesc,MetaKey,Cover,SchemaMarkup")] Categories category, HttpPostedFileBase image)
         {
             var existingCategory = _context.Categories.Find(category.CatID);
 
@@ -201,7 +201,7 @@ namespace WebBTL.Areas.Admin.Controllers
                 existingCategory.CatID = category.CatID;
                 existingCategory.CatName = category.CatName;
                 existingCategory.Cover = category.Cover;
-                existingCategory.Leveks = category.Leveks;
+                existingCategory.Levels = category.Levels;
                 existingCategory.SchemaMarkup = category.SchemaMarkup;
                 existingCategory.Ordering = category.Ordering;
                 existingCategory.Alias = category.Alias;

@@ -48,9 +48,11 @@ namespace WebBTL.Models
 
     public class LoginViewModel
     {
+        [Key]
+
         [Required]
         [Display(Name = "Email")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Email không hợp lệ.")]
         public string Email { get; set; }
 
         [Required]
@@ -64,6 +66,8 @@ namespace WebBTL.Models
 
     public class RegisterViewModel
     {
+        [Key]
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

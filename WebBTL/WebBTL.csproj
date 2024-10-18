@@ -575,6 +575,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminRolesController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdmintblTinTucsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\tblTinTucController.cs" />
@@ -587,61 +588,61 @@
     </Compile>
     <Compile Include="Helper\Utilities.cs" />
     <Compile Include="Models\Account.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Eonon_ProEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Category.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+    <Compile Include="Models\Categories.cs">
+      <DependentUpon>Eonon_ProEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Eonon_ProEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EononPro.Context.cs">
+    <Compile Include="Models\Eonon_ProEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EononPro.Context.tt</DependentUpon>
+      <DependentUpon>Eonon_ProEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EononPro.cs">
+    <Compile Include="Models\Eonon_ProEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Eonon_ProEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EononPro.Designer.cs">
+    <Compile Include="Models\Eonon_ProEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EononPro.edmx</DependentUpon>
+      <DependentUpon>Eonon_ProEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Location.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+    <Compile Include="Models\Locations.cs">
+      <DependentUpon>Eonon_ProEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Order.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+    <Compile Include="Models\OrderDetails.cs">
+      <DependentUpon>Eonon_ProEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\OrderDetail.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+    <Compile Include="Models\Orders.cs">
+      <DependentUpon>Eonon_ProEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Page.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+    <Compile Include="Models\Pages.cs">
+      <DependentUpon>Eonon_ProEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Product.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+    <Compile Include="Models\Products.cs">
+      <DependentUpon>Eonon_ProEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Role.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+    <Compile Include="Models\Roles.cs">
+      <DependentUpon>Eonon_ProEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Shipper.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+    <Compile Include="Models\Shippers.cs">
+      <DependentUpon>Eonon_ProEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Eonon_ProEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tblTinTuc.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+    <Compile Include="Models\tblTinTucs.cs">
+      <DependentUpon>Eonon_ProEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TransactStatu.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+    <Compile Include="Models\TransactStatus.cs">
+      <DependentUpon>Eonon_ProEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -2685,15 +2686,15 @@
     <Content Include="Content\images\slide3.jpg" />
     <Content Include="Content\images\slide4.jpg" />
     <Content Include="Content\images\v20.png" />
-    <Content Include="Models\EononPro.Context.tt">
+    <Content Include="Models\Eonon_ProEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EononPro.edmx</DependentUpon>
-      <LastGenOutput>EononPro.Context.cs</LastGenOutput>
+      <DependentUpon>Eonon_ProEntities.edmx</DependentUpon>
+      <LastGenOutput>Eonon_ProEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\EononPro.tt">
+    <Content Include="Models\Eonon_ProEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EononPro.edmx</DependentUpon>
-      <LastGenOutput>EononPro.cs</LastGenOutput>
+      <DependentUpon>Eonon_ProEntities.edmx</DependentUpon>
+      <LastGenOutput>Eonon_ProEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -2837,13 +2838,6 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <EntityDeploy Include="Models\EononPro.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EononPro.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\EononPro.edmx.diagram">
-      <DependentUpon>EononPro.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\AdminAccounts\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AdminAccounts\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminAccounts\Edit.cshtml" />
@@ -2874,6 +2868,13 @@
     <Content Include="Areas\Admin\Views\AdminCategories\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCategories\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCategories\Index.cshtml" />
+    <EntityDeploy Include="Models\Eonon_ProEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Eonon_ProEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Eonon_ProEntities.edmx.diagram">
+      <DependentUpon>Eonon_ProEntities.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2906,6 +2907,8 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\tblTinTuc\Index.cshtml" />
     <Content Include="Views\tblTinTuc\Details.cshtml" />
+    <Content Include="Views\Accounts\Login.cshtml" />
+    <Content Include="Views\Accounts\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

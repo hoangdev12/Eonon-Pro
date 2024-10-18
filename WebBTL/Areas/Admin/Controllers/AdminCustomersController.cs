@@ -16,11 +16,11 @@ namespace WebBTL.Areas.Admin.Controllers
     {
         
 
-        private readonly Eonon_ProEntities1 _context;
+        private readonly Eonon_ProEntities _context;
 
         public AdminCustomersController()
         {
-            _context = new Eonon_ProEntities1();
+            _context = new Eonon_ProEntities();
         }
 
         // GET: Admin/AdminCustomers
@@ -35,7 +35,7 @@ namespace WebBTL.Areas.Admin.Controllers
             IsTrangThai.Add(new SelectListItem() { Text = "Block", Value = "0" });
             ViewData["IsTrangThai"] = IsTrangThai;
 
-            var customers = _context.Customers.Include(c => c.Location).OrderByDescending(c => c.CustomerID).AsQueryable();
+            var customers = _context.Customer.Include(c => c.LocationID).OrderByDescending(c => c.CustomerID).AsQueryable();
 
             if (!String.IsNullOrEmpty(searchTerm))
             {
@@ -55,7 +55,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = _context.Customers.Find(id);
+            Customer customer = _context.Customer.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace WebBTL.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Customers.Add(customer);
+                _context.Customer.Add(customer);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -95,7 +95,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = _context.Customers.Find(id);
+            Customer customer = _context.Customer.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -125,11 +125,11 @@ namespace WebBTL.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            var customer = _context.Customers.Find(id); 
+            var customer = _context.Customer.Find(id); 
 
             if (customer != null)
             {
-                _context.Customers.Remove(customer); 
+                _context.Customer.Remove(customer); 
                 _context.SaveChanges();
                 return Json(new { success = true });
             }

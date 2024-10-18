@@ -12,7 +12,7 @@ namespace WebBTL.Areas.Admin.Controllers
 {
     public class AdminRolesController : Controller
     {
-        private Eonon_ProEntities1 db = new Eonon_ProEntities1();
+        private Eonon_ProEntities db = new Eonon_ProEntities();
 
         // GET: Admin/AdminRoles
         public ActionResult Index()
@@ -27,7 +27,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Roles.Find(id);
+            Roles role = db.Roles.Find(id);
             if (role == null)
             {
                 return HttpNotFound();
@@ -46,7 +46,7 @@ namespace WebBTL.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RoleID,RoleName,Description")] Role role)
+        public ActionResult Create([Bind(Include = "RoleID,RoleName,Description")] Roles role)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Roles.Find(id);
+            Roles role = db.Roles.Find(id);
             if (role == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace WebBTL.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RoleID,RoleName,Description")] Role role)
+        public ActionResult Edit([Bind(Include = "RoleID,RoleName,Description")] Roles role)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Roles.Find(id);
+            Roles role = db.Roles.Find(id);
             if (role == null)
             {
                 return HttpNotFound();

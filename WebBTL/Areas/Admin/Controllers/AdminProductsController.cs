@@ -21,11 +21,11 @@ namespace WebBTL.Areas.Admin.Controllers
     {
         
 
-        private readonly Eonon_ProEntities1 _context;
+        private readonly Eonon_ProEntities _context;
         
         public AdminProductsController()
         {
-            _context = new Eonon_ProEntities1();
+            _context = new Eonon_ProEntities();
           
         }
 
@@ -43,7 +43,7 @@ namespace WebBTL.Areas.Admin.Controllers
 
             // Lấy danh sách sản phẩm từ CSDL
             var products = _context.Products
-            .Include(c => c.Category)
+            .Include(c => c.Categories)
             .OrderBy(p => p.ProductID) 
             .AsQueryable();
 
@@ -93,7 +93,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = _context.Products.Find(id);
+            Products product = _context.Products.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -113,7 +113,7 @@ namespace WebBTL.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product, HttpPostedFileBase image)
+        public ActionResult Create([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Products product, HttpPostedFileBase image)
         {
             var existingProduct = _context.Products.Find(product.ProductID);
             // Check if a new image is uploaded
@@ -174,7 +174,7 @@ namespace WebBTL.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Product product = _context.Products.Find(id);
+            Products product = _context.Products.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -187,7 +187,7 @@ namespace WebBTL.Areas.Admin.Controllers
         // POST: Admin/AdminProducts/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product, HttpPostedFileBase image)
+        public ActionResult Edit([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Products product, HttpPostedFileBase image)
         {
             // Retrieve the existing product from the database
             var existingProduct = _context.Products.Find(product.ProductID);
@@ -242,7 +242,7 @@ namespace WebBTL.Areas.Admin.Controllers
                 existingProduct.Discount = product.Discount;
                 existingProduct.Video = product.Video;
                 existingProduct.DateCreated = product.DateCreated;
-                existingProduct.Datemodified = DateTime.Now; // Update the modified date
+                existingProduct.DateModified = DateTime.Now; // Update the modified date
                 existingProduct.BestSellers = product.BestSellers;
                 existingProduct.HomeFlag = product.HomeFlag;
                 existingProduct.Active = product.Active;

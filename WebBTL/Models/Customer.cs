@@ -17,7 +17,7 @@ namespace WebBTL.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
-            this.Orders = new HashSet<Order>();
+            this.Orders = new HashSet<Orders>();
         }
     
         public int CustomerID { get; set; }
@@ -29,15 +29,15 @@ namespace WebBTL.Models
         public string Phone { get; set; }
         public Nullable<int> LocationID { get; set; }
         public string District { get; set; }
-        public Nullable<int> Ward { get; set; }
+        public string Ward { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public string Password { get; set; }
         public string Salt { get; set; }
         public Nullable<System.DateTime> LastLogin { get; set; }
         public Nullable<bool> Active { get; set; }
     
-        public virtual Location Location { get; set; }
+        public virtual Locations Locations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Orders> Orders { get; set; }
     }
 }

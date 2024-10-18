@@ -14,17 +14,25 @@ namespace WebBTL.Models
     
     public partial class Account
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Account()
+        {
+            this.tblTinTucs = new HashSet<tblTinTucs>();
+        }
+    
         public int AccountID { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Salt { get; set; }
-        public bool Active { get; set; }
+        public Nullable<bool> Active { get; set; }
         public string FullName { get; set; }
         public Nullable<int> RoleID { get; set; }
         public Nullable<System.DateTime> LastLogin { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
     
-        public virtual Role Role { get; set; }
+        public virtual Roles Roles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblTinTucs> tblTinTucs { get; set; }
     }
 }

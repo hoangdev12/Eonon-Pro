@@ -27,6 +27,25 @@ namespace WebBTL.Helper
                 Directory.CreateDirectory(path);
             }
         }
+
+        public static bool IsValidEmail(string email)
+        {
+            var trimmedEmail = email.Trim();
+
+            if (trimmedEmail.EndsWith("."))
+            {
+                return false; // suggested by @TK-421
+            }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public static string ToTitleCase(string str)
         {
             // Kiểm tra nếu chuỗi rỗng hoặc null
