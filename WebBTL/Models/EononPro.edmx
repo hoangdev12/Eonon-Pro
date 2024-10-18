@@ -9,12 +9,12 @@
           <Key>
             <PropertyRef Name="AccountID" />
           </Key>
-          <Property Name="AccountID" Type="int" Nullable="false" />
+          <Property Name="AccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="12" />
           <Property Name="Email" Type="nvarchar" MaxLength="150" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="Salt" Type="nchar" MaxLength="10" />
-          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Active" Type="bit" />
           <Property Name="FullName" Type="nvarchar" MaxLength="150" />
           <Property Name="RoleID" Type="int" />
           <Property Name="LastLogin" Type="datetime" />
@@ -223,7 +223,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Account_Roles">
+        <Association Name="FK_Accounts_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
           <End Role="Account" Type="Self.Account" Multiplicity="*" />
           <ReferentialConstraint>
@@ -326,7 +326,7 @@
             <End Role="tblTinTucs" EntitySet="tblTinTucs" />
             <End Role="ContentBlocks" EntitySet="ContentBlocks" />
           </AssociationSet>
-          <AssociationSet Name="FK_Account_Roles" Association="Self.FK_Account_Roles">
+          <AssociationSet Name="FK_Accounts_Roles" Association="Self.FK_Accounts_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Account" EntitySet="Account" />
           </AssociationSet>
@@ -368,7 +368,7 @@
           <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Salt" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
           <Property Name="FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="RoleID" Type="Int32" />
           <Property Name="LastLogin" Type="DateTime" Precision="3" />

@@ -19,7 +19,7 @@ namespace WebBTL.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public string Salt { get; set; }
-        public bool Active { get; set; }
+        public Nullable<bool> Active { get; set; }
         public string FullName { get; set; }
         public Nullable<int> RoleID { get; set; }
         public Nullable<System.DateTime> LastLogin { get; set; }
