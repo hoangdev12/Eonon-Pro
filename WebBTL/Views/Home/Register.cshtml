@@ -1,37 +1,142 @@
-﻿@model WebBTL.Models.Account
+﻿@model WebBTL.Models.RegisterViewModel
 
 @{
     ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Register</h2>
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<style>
+    body {
+        background-color: #e9ecef;
+    }
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    .container-fluid {
+        position: relative;
+        overflow: hidden;
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email)
-        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-    </div>
+    .registration-container {
+        max-width: 400px;
+        margin: 5% auto;
+        padding: 30px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+       
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password)
-        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-    </div>
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #343a40;
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Phone)
-        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
-    </div>
-    
+    .form-group label {
+        font-weight: bold;
+        color: #495057;
+    }
 
-    <button type="submit" class="btn btn-primary">Register</button>
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        transition: background-color 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .video-background {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: cover;
+        z-index: -1;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+
+@section navbar{
+
+    <div class="container-fluid bgtop2 ">
+        <nav class="navbar navbar-expand-lg bg-warning  fixed-top">
+            <div class="container ">
+                <a class="navbar-brand tr" href="#"><img src="~/Content/images/logo.png" alt="Alternate Text" style="width:100px; max-width:100px;" /></a>
+                <a href="#" class="d-flex justify-content-end" style="text-decoration:none;color:#000;">Bạn cần giúp đỡ ?</a>
+            </div>
+
+        </nav>
+     </div>
+          
+        
+  
 }
+
+<br />
+<br />
+<br />
+
+<div class="container-fluid">
+    <video autoplay muted loop class="video-background">
+        <source src="~/Content/video/y2mate.com - Màn hình EononPro Ultra 2K_480p.mp4" type="video/mp4">
+        Trình duyệt của bạn không hỗ trợ thẻ video.
+    </video>
+
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-sm-6 col-md-6 d-flex flex-column justify-content-center align-items-center">
+                <img src="/Content/images/logo.png" alt="Alternate Text" style="max-width:300px;">
+                <p class="mt-2" style="font-size: 24px; color: #ffc107;"><strong>EONON PRO</strong></p>
+                <p style="font-size: 20px; color: #ffc107;"><strong> Thương hiệu hàng đầu về màn hình giải trí ô tô thông minh</strong></p>
+            </div>
+
+
+
+            <div class="registration-container col-sm-6 col-md-6">
+
+                <h2>Register</h2>
+
+                @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ConfirmPassword)
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confim Password" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "badge badge-danger" })
+                    </div>
+
+
+
+                    <br />
+
+                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    @Html.ActionLink("Login", "Login", "Home", null, new { @class = "btn btn-outline-primary" })
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

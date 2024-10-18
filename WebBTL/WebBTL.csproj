@@ -2694,6 +2694,7 @@
     <Content Include="Content\images\Tintuc\cách-sửa-chửa-tintuc.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Themes\TintucStyle.css" />
+    <Content Include="Content\video\y2mate.com - Màn hình EononPro Ultra 2K_480p.mp4" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -2926,6 +2927,7 @@
     <Content Include="Views\tblTinTuc\Details.cshtml" />
     <Content Include="Views\Pages\About.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

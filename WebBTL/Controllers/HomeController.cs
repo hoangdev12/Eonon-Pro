@@ -6,6 +6,7 @@ using System.Text;
 using System.Web.Mvc;
 using WebBTL.Models;
 using WebBTL.Extension;
+using WebBTL.Helper;
 
 namespace WebBTL.Controllers
 {
@@ -37,6 +38,7 @@ namespace WebBTL.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Register()
         {
             return View();
@@ -44,51 +46,73 @@ namespace WebBTL.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(Account account)
+        public ActionResult Register(RegisterViewModel account)
         {
-            // Check if the model state is valid
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                // In ra lỗi để kiểm tra
-                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                string salt = Utilities.GetRandomKey();
+                Customer khachhang = new Customer
                 {
-                    Console.WriteLine(error.ErrorMessage); // Log hoặc in ra
-                }
-                return View(account); // Trả về cùng một view với lỗi xác thực
+                    Email = account.Email.Trim().ToLower(),
+                    Password = (account.Password + salt.Trim()).ToMD5(),
+                    Active = true,
+                    Salt = salt.Trim(),
+                    CreateDate = DateTime.Now
+
+                };
+
+                _context.Customers.Add(khachhang);
+                _context.SaveChanges();
+
+                return RedirectToAction("Login");
             }
-
-            // Check if the account already exists
-            var existingAccount = _context.Accounts.FirstOrDefault(s => s.Email == account.Email);
-            if (existingAccount != null)
+            else
             {
-                ModelState.AddModelError("Email", "Email is already in use.");
-                return View(account); // Return the same view with an error
-            }
-
-            // Hash the password using MD5 (or preferably a more secure method)
-            account.Password = account.Password.ToMD5(); // Cân nhắc đổi sang phương pháp bảo mật hơn
-
-            account.CreateDate = DateTime.Now;
-
-            try
-            {
-                // Save the new account to the database
-                _context.Accounts.Add(account);
-                _context.SaveChanges(); // Entity Framework sẽ tự động gán giá trị cho khóa chính
-
-                // Thêm thông báo thành công vào ViewBag
-                ViewBag.SuccessMessage = "Registration successful!";
-                return RedirectToAction("Index", "Home");
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", "Error while saving account. Please try again.");
-                // Log error if needed (ex.Message)
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
                 return View(account);
             }
         }
 
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult Login(LoginViewModel customer)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                foreach (var error in errors)
+                {
+                    Console.WriteLine(error.ErrorMessage);
+                }
+                return View(customer);
+            }
+
+            var user = _context.Accounts.FirstOrDefault(s => s.Email.Equals(customer.Email));
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Không thể tìm thấy tài khoản của bạn. Vui lòng đăng ký");
+                return View(customer); // Trở về trang đăng nhập với thông báo lỗi
+            }
+
+            var enteredPassword = (customer.Password.Trim().ToLower()).ToMD5(); // Thay đổi sang mã hóa an toàn
+            var dbPassword = user.Password.Trim().ToLower();
+
+            if (enteredPassword.Equals(dbPassword))
+            {
+                Session["Email"] = user.Email;
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Email hoặc Mật khẩu không hợp lệ");
+                return View(customer); 
+            }
+        }
 
 
 
