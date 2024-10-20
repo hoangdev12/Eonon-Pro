@@ -40,6 +40,7 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="Eonon_ProModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="Birthday" ColumnName="Birthday" />
@@ -75,6 +76,7 @@
     <EntitySetMapping Name="OrderDetails">
       <EntityTypeMapping TypeName="Eonon_ProModel.OrderDetail">
         <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
@@ -89,6 +91,7 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="Eonon_ProModel.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="Orderdate" ColumnName="Orderdate" />

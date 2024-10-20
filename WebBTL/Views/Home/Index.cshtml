@@ -34,8 +34,18 @@
                             </li>
                         </ul>
                         <div class="d-flex justify-content-center align-items-center gap-3">
-                            <a href="/Home/Login" class="text-decoration-none text-black">Login</a>
-                            <a href="/Home/Registter" class="text-decoration-none px-3 py-1 rounded-4 text-black" style="background-color:blue;">Sign up</a>
+                            @if (Session["Email"] != null)
+                            {
+                             <a href=""><i class="fas fa-user fa-lg"></i></a>                              
+                             <a href=""><i class="fas fa-shopping-cart fa-lg"></i></a>
+                             <a href="@Url.Action("Logout", "Home")"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                                   }
+                                   else
+                                   {
+                                   <a href="/Home/Login" class="text-decoration-none text-black">Login</a>
+                                   <a href="/Home/Register" class="text-decoration-none px-3 py-1 rounded-4 text-black" style="background-color:blue;">Sign up</a>
+                                   }
+
                         </div>
                     </div>
                 </div>

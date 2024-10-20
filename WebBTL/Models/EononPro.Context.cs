@@ -39,5 +39,6 @@ namespace WebBTL.Models
         public virtual DbSet<tblTinTuc> tblTinTucs { get; set; }
         public virtual DbSet<TransactStatu> TransactStatus { get; set; }
         public virtual DbSet<ContentBlock> ContentBlocks { get; set; }
+        public object Account { get; internal set; }
     }
 }

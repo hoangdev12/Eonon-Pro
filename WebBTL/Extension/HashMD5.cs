@@ -12,17 +12,20 @@ namespace WebBTL.Extension
     {
         public static string ToMD5(this string str)
         {
-            using (var md5 = MD5.Create())
+            using (MD5 md5 = MD5.Create())
             {
-                // Băm chuỗi thành mảng byte
-                var hashBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(str));
+                // Chuyển đổi chuỗi đầu vào thành mảng byte
+                byte[] inputBytes = Encoding.UTF8.GetBytes(str);
+                // Tính toán giá trị băm
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
 
-                var sb = new StringBuilder(hashBytes.Length * 2);
-                // Chuyển đổi từng byte thành chuỗi hex
-                foreach (var b in hashBytes)
-                    sb.AppendFormat("{0:x2}", b); // Định dạng từng byte thành hex
-
-                return sb.ToString(); // Trả về chuỗi băm MD5
+                // Chuyển đổi mảng byte thành chuỗi hex
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in hashBytes)
+                {
+                    sb.Append(b.ToString("x2")); 
+                }
+                return sb.ToString();
             }
         }
 

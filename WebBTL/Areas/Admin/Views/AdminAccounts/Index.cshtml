@@ -27,29 +27,28 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Phone)
+                @Html.DisplayNameFor(model => model.AccountID)
             </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Password)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Salt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Active)
-            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Salt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.FullName)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastLogin)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateDate)
-            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.LastLogin)
+        </th>*@
+            
             <th>
                 @Html.DisplayNameFor(model => model.Role.RoleName)
             </th>
@@ -60,36 +59,35 @@
         {
             <tr id="trow_@item.AccountID">
                 <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
+                    @Html.DisplayFor(modelItem => item.AccountID)
                 </td>
+                
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Password)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Salt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Active)
-                </td>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.Salt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.FullName)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastLogin)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreateDate)
-                </td>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.LastLogin)
+        </td>*@
+               
                 <td>
                     @Html.DisplayFor(modelItem => item.Role.RoleName)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.AccountID }, new { @class = "btn btn-outline-primary" })
                     @Html.ActionLink("Details", "Details", new { id = item.AccountID }, new { @class = "btn btn-outline-info" })
-                       <a href="#" data-id="@item.AccountID" class="btn btn-outline-warning btnDelete">Delete</a>
+                    <a href="#" data-id="@item.AccountID" class="btn btn-outline-warning btnDelete">Delete</a>
                 </td>
             </tr>
         }

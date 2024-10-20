@@ -35,6 +35,7 @@ namespace WebBTL.Models
         public string Salt { get; set; }
         public Nullable<System.DateTime> LastLogin { get; set; }
         public Nullable<bool> Active { get; set; }
+        public Nullable<int> AccountID { get; set; }
     
         public virtual Location Location { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

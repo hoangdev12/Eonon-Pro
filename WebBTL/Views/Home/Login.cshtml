@@ -101,7 +101,6 @@
 
 
             <div class="registration-container col-sm-6 col-md-6">
-
                 <h2>Register</h2>
 
                 @using (Html.BeginForm("Login", "Home", FormMethod.Post))
@@ -112,13 +111,13 @@
 
                     <div class="form-group">
                         @Html.LabelFor(m => m.Email)
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", autocomplete = "email" }) 
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(m => m.Password)
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", autocomplete = "current-password" }) 
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
 
@@ -126,11 +125,10 @@
 
                     <button type="submit" class="btn btn-primary btn-block" style="margin-right:10px;">Log in</button>
                     @Html.ActionLink("Register", "Register", "Home", null, new { @class = "btn btn-outline-primary" })
-
-
                 }
-
             </div>
+
+        </div>
         </div>
     </div>
-</div>
+

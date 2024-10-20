@@ -65,6 +65,7 @@
     <Property Name="Salt" Type="nchar" MaxLength="10" />
     <Property Name="LastLogin" Type="datetime" />
     <Property Name="Active" Type="bit" />
+    <Property Name="AccountID" Type="int" />
   </EntityType>
   <EntityType Name="Locations">
     <Key>
@@ -91,6 +92,7 @@
     <Property Name="Discount" Type="int" />
     <Property Name="Total" Type="int" />
     <Property Name="ShipDate" Type="datetime" />
+    <Property Name="Price" Type="money" />
   </EntityType>
   <EntityType Name="Orders">
     <Key>
@@ -106,6 +108,7 @@
     <Property Name="PaymentDate" Type="datetime" />
     <Property Name="PaymentID" Type="int" />
     <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="TotalAmount" Type="money" />
   </EntityType>
   <EntityType Name="Pages">
     <Key>

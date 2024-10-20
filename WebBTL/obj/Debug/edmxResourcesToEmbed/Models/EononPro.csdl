@@ -57,6 +57,7 @@
     <Property Name="Active" Type="Boolean" />
     <NavigationProperty Name="Location" Relationship="Self.FK_Customer_Locations" FromRole="Customer" ToRole="Locations" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Customer" FromRole="Customer" ToRole="Orders" />
+    <Property Name="AccountID" Type="Int32" />
   </EntityType>
   <EntityType Name="Location">
     <Key>
@@ -86,6 +87,7 @@
     <Property Name="ShipDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Orders" FromRole="OrderDetails" ToRole="Orders" />
     <NavigationProperty Name="Product" Relationship="Eonon_ProModel.FK_OrderDetails_Products" FromRole="OrderDetail" ToRole="Product" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -104,6 +106,7 @@
     <NavigationProperty Name="Customer" Relationship="Self.FK_Orders_Customer" FromRole="Orders" ToRole="Customer" />
     <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
     <NavigationProperty Name="TransactStatu" Relationship="Self.FK_Orders_TransactStatus" FromRole="Orders" ToRole="TransactStatus" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" />
   </EntityType>
   <EntityType Name="Page">
     <Key>

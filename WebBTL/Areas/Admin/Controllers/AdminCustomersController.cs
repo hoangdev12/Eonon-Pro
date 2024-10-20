@@ -41,6 +41,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 customers = customers.Where(x => x.FullName.Contains(searchTerm));
             }
+
             ViewBag.SearchTerm = searchTerm;
 
             var pagedCustomers = customers.ToPagedList(page, pageSize);

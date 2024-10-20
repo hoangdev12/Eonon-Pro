@@ -70,6 +70,7 @@
           <Property Name="Salt" Type="nchar" MaxLength="10" />
           <Property Name="LastLogin" Type="datetime" />
           <Property Name="Active" Type="bit" />
+          <Property Name="AccountID" Type="int" />
         </EntityType>
         <EntityType Name="Locations">
           <Key>
@@ -96,6 +97,7 @@
           <Property Name="Discount" Type="int" />
           <Property Name="Total" Type="int" />
           <Property Name="ShipDate" Type="datetime" />
+          <Property Name="Price" Type="money" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -111,6 +113,7 @@
           <Property Name="PaymentDate" Type="datetime" />
           <Property Name="PaymentID" Type="int" />
           <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="TotalAmount" Type="money" />
         </EntityType>
         <EntityType Name="Pages">
           <Key>
@@ -416,6 +419,7 @@
           <Property Name="Active" Type="Boolean" />
           <NavigationProperty Name="Location" Relationship="Self.FK_Customer_Locations" FromRole="Customer" ToRole="Locations" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Customer" FromRole="Customer" ToRole="Orders" />
+          <Property Name="AccountID" Type="Int32" />
         </EntityType>
         <EntityType Name="Location">
           <Key>
@@ -445,6 +449,7 @@
           <Property Name="ShipDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Orders" FromRole="OrderDetails" ToRole="Orders" />
           <NavigationProperty Name="Product" Relationship="Eonon_ProModel.FK_OrderDetails_Products" FromRole="OrderDetail" ToRole="Product" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -463,6 +468,7 @@
           <NavigationProperty Name="Customer" Relationship="Self.FK_Orders_Customer" FromRole="Orders" ToRole="Customer" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
           <NavigationProperty Name="TransactStatu" Relationship="Self.FK_Orders_TransactStatus" FromRole="Orders" ToRole="TransactStatus" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="Page">
           <Key>
@@ -770,6 +776,7 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="Eonon_ProModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
@@ -805,6 +812,7 @@
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="Eonon_ProModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
@@ -819,6 +827,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="Eonon_ProModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="Orderdate" ColumnName="Orderdate" />

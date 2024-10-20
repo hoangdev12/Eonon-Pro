@@ -30,6 +30,7 @@ namespace WebBTL.Models
         public Nullable<System.DateTime> PaymentDate { get; set; }
         public Nullable<int> PaymentID { get; set; }
         public string Note { get; set; }
+        public Nullable<decimal> TotalAmount { get; set; }
     
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
