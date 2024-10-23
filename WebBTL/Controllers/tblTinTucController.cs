@@ -30,10 +30,10 @@ namespace WebBTL.Controllers
                 .OrderBy(x => x.PostID);
             if (!string.IsNullOrEmpty(tag))
             {
-                lsPages = (IOrderedQueryable<tblTinTuc>)lsPages.Where(x => x.Tags.Contains(tag));
+                lsPages = (IOrderedQueryable<tblTinTucs>)lsPages.Where(x => x.Tags.Contains(tag));
             }
 
-            PagedList<tblTinTuc> models = new PagedList<tblTinTuc>(lsPages, pageNumber, pageSize);
+            PagedList<tblTinTucs> models = new PagedList<tblTinTucs>(lsPages, pageNumber, pageSize);
 
             ViewBag.CurrentPage = pageNumber;
             return View(models);

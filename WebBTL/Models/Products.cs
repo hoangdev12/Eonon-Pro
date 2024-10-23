@@ -12,12 +12,12 @@ namespace WebBTL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class Products
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
+        public Products()
         {
-            this.OrderDetails = new HashSet<OrderDetail>();
+            this.OrderDetails = new HashSet<OrderDetails>();
         }
     
         public int ProductID { get; set; }
@@ -26,14 +26,14 @@ namespace WebBTL.Models
         public string Description { get; set; }
         public Nullable<int> CatID { get; set; }
         public Nullable<decimal> Price { get; set; }
-        public Nullable<int> Discount { get; set; }
+        public Nullable<decimal> Discount { get; set; }
         public string Thumb { get; set; }
         public string Video { get; set; }
         public Nullable<System.DateTime> DateCreated { get; set; }
-        public Nullable<System.DateTime> Datemodified { get; set; }
-        public bool BestSellers { get; set; }
-        public bool HomeFlag { get; set; }
-        public bool Active { get; set; }
+        public Nullable<System.DateTime> DateModified { get; set; }
+        public Nullable<bool> BestSellers { get; set; }
+        public Nullable<bool> HomeFlag { get; set; }
+        public Nullable<bool> Active { get; set; }
         public string Tags { get; set; }
         public string Titles { get; set; }
         public string Alias { get; set; }
@@ -41,8 +41,9 @@ namespace WebBTL.Models
         public string MetaKey { get; set; }
         public Nullable<int> UnitsInStock { get; set; }
     
-        public virtual Category Category { get; set; }
+        public virtual Categories Categories { get; set; }
+        public virtual Categories Categories1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
     }
 }

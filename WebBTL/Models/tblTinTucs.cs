@@ -12,20 +12,14 @@ namespace WebBTL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblTinTuc
+    public partial class tblTinTucs
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblTinTuc()
-        {
-            this.ContentBlocks = new HashSet<ContentBlock>();
-        }
-    
         public int PostID { get; set; }
         public string Title { get; set; }
-        public string SContents { get; set; }
+        public string sContents { get; set; }
         public string Contents { get; set; }
         public string Thumb { get; set; }
-        public bool Published { get; set; }
+        public Nullable<bool> Published { get; set; }
         public string Alias { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public string Author { get; set; }
@@ -38,7 +32,7 @@ namespace WebBTL.Models
         public string MetaDesc { get; set; }
         public Nullable<int> Views { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ContentBlock> ContentBlocks { get; set; }
+        public virtual Account Account { get; set; }
+        public virtual Categories Categories { get; set; }
     }
 }

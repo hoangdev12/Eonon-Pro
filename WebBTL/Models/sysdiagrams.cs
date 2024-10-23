@@ -12,12 +12,12 @@ namespace WebBTL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Shipper
+    public partial class sysdiagrams
     {
-        public int ShipperID { get; set; }
-        public string ShipperName { get; set; }
-        public string Phone { get; set; }
-        public string Company { get; set; }
-        public Nullable<System.DateTime> ShipeDate { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

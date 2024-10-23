@@ -12,29 +12,28 @@ namespace WebBTL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class Orders
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
+        public Orders()
         {
-            this.OrderDetails = new HashSet<OrderDetail>();
+            this.OrderDetails = new HashSet<OrderDetails>();
         }
     
         public int OrderID { get; set; }
-        public Nullable<int> CustomerID { get; set; }
-        public Nullable<System.DateTime> Orderdate { get; set; }
+        public int CustomerID { get; set; }
+        public Nullable<System.DateTime> OrderDate { get; set; }
         public Nullable<System.DateTime> ShipDate { get; set; }
         public Nullable<int> TransactStatusID { get; set; }
         public Nullable<bool> Deleted { get; set; }
         public Nullable<bool> Paid { get; set; }
         public Nullable<System.DateTime> PaymentDate { get; set; }
-        public Nullable<int> PaymentID { get; set; }
+        public string PaymentID { get; set; }
         public string Note { get; set; }
-        public Nullable<decimal> TotalAmount { get; set; }
     
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        public virtual TransactStatu TransactStatu { get; set; }
+        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+        public virtual TransactStatus TransactStatus { get; set; }
     }
 }

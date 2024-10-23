@@ -12,13 +12,13 @@ namespace WebBTL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Page
+    public partial class Pages
     {
         public int PageID { get; set; }
         public string PageName { get; set; }
         public string Contents { get; set; }
         public string Thumb { get; set; }
-        public bool Published { get; set; }
+        public Nullable<bool> Published { get; set; }
         public string Title { get; set; }
         public string MetaDesc { get; set; }
         public string MetaKey { get; set; }

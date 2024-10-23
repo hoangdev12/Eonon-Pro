@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="AccountID" />
     </Key>
-    <Property Name="AccountID" Type="Int32" Nullable="false" />
+    <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
@@ -14,19 +14,19 @@
     <Property Name="RoleID" Type="Int32" />
     <Property Name="LastLogin" Type="DateTime" Precision="3" />
     <Property Name="CreateDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Role" Relationship="Self.FK_Account_Roles" FromRole="Account" ToRole="Roles" />
-    <NavigationProperty Name="tblTinTucs" Relationship="Eonon_ProModel.FK__tblTinTuc__Accou__5BE2A6F2" FromRole="Account" ToRole="tblTinTuc" />
-    <NavigationProperty Name="Customers" Relationship="Eonon_ProModel.FK_Customer_Account" FromRole="Account" ToRole="Customer" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK__Account__RoleID__5812160E" FromRole="Account" ToRole="Roles" />
+    <NavigationProperty Name="tblTinTucs" Relationship="Self.FK__tblTinTuc__Accou__5BE2A6F2" FromRole="Account" ToRole="tblTinTucs" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_Account" FromRole="Account" ToRole="Customer" />
   </EntityType>
-  <EntityType Name="Category">
+  <EntityType Name="Categories">
     <Key>
       <PropertyRef Name="CatID" />
     </Key>
-    <Property Name="CatID" Type="Int32" Nullable="false" />
+    <Property Name="CatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ParentID" Type="Int32" />
-    <Property Name="Leveks" Type="Int32" />
+    <Property Name="Levels" Type="Int32" />
     <Property Name="Ordering" Type="Int32" />
     <Property Name="Published" Type="Boolean" />
     <Property Name="Thumb" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -36,9 +36,9 @@
     <Property Name="MetaKey" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Cover" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="SchemaMarkup" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Products" Relationship="Self.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
-    <Property Name="Levels" Type="Int32" />
-    <NavigationProperty Name="tblTinTucs" Relationship="Eonon_ProModel.FK__tblTinTuc__CatID__5CD6CB2B" FromRole="Category" ToRole="tblTinTuc" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Products__CatID__4222D4EF" FromRole="Categories" ToRole="Products" />
+    <NavigationProperty Name="tblTinTucs" Relationship="Self.FK__tblTinTuc__CatID__5CD6CB2B" FromRole="Categories" ToRole="tblTinTucs" />
+    <NavigationProperty Name="Products1" Relationship="Self.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -52,69 +52,66 @@
     <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="LocationID" Type="Int32" />
-    <Property Name="District" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-    <Property Name="Ward" Type="Int32" />
+    <Property Name="District" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Ward" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="CreateDate" Type="DateTime" Precision="3" />
     <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Salt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="LastLogin" Type="DateTime" Precision="3" />
     <Property Name="Active" Type="Boolean" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Customer_Locations" FromRole="Customer" ToRole="Locations" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Customer" FromRole="Customer" ToRole="Orders" />
     <Property Name="AccountID" Type="Int32" />
-    <NavigationProperty Name="Account" Relationship="Eonon_ProModel.FK_Customer_Account" FromRole="Customer" ToRole="Account" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Customer_Account" FromRole="Customer" ToRole="Account" />
+    <NavigationProperty Name="Locations" Relationship="Self.FK__Customer__Locati__3C69FB99" FromRole="Customer" ToRole="Locations" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Customer__49C3F6B7" FromRole="Customer" ToRole="Orders" />
   </EntityType>
-  <EntityType Name="Location">
+  <EntityType Name="Locations">
     <Key>
       <PropertyRef Name="LocationID" />
     </Key>
-    <Property Name="LocationID" Type="Int32" Nullable="false" />
+    <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Slug" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="NameWithType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="PathWithType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="ParentCode" Type="Int32" />
+    <Property Name="ParentCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Levels" Type="Int32" />
-    <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Locations" FromRole="Locations" ToRole="Customer" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Customer__Locati__3C69FB99" FromRole="Locations" ToRole="Customer" />
   </EntityType>
-  <EntityType Name="OrderDetail">
+  <EntityType Name="OrderDetails">
     <Key>
       <PropertyRef Name="OrderDetailID" />
     </Key>
-    <Property Name="OrderDetailID" Type="Int32" Nullable="false" />
+    <Property Name="OrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="OrderID" Type="Int32" Nullable="false" />
     <Property Name="ProductID" Type="Int32" Nullable="false" />
-    <Property Name="OrderNumber" Type="Int32" />
+    <Property Name="OrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Quantity" Type="Int32" Nullable="false" />
-    <Property Name="Discount" Type="Int32" />
-    <Property Name="Total" Type="Int32" />
+    <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="ShipDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Orders" FromRole="OrderDetails" ToRole="Orders" />
-    <NavigationProperty Name="Product" Relationship="Eonon_ProModel.FK_OrderDetails_Products" FromRole="OrderDetail" ToRole="Product" />
-    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__OrderDeta__Order__4D94879B" FromRole="OrderDetails" ToRole="Orders" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__OrderDeta__Produ__4E88ABD4" FromRole="OrderDetails" ToRole="Products" />
   </EntityType>
-  <EntityType Name="Order">
+  <EntityType Name="Orders">
     <Key>
       <PropertyRef Name="OrderID" />
     </Key>
     <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CustomerID" Type="Int32" Nullable="false" />
-    <Property Name="Orderdate" Type="DateTime" Precision="3" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
     <Property Name="ShipDate" Type="DateTime" Precision="3" />
     <Property Name="TransactStatusID" Type="Int32" />
     <Property Name="Deleted" Type="Boolean" />
     <Property Name="Paid" Type="Boolean" />
     <Property Name="PaymentDate" Type="DateTime" Precision="3" />
-    <Property Name="PaymentID" Type="Int32" />
+    <Property Name="PaymentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Customer" Relationship="Self.FK_Orders_Customer" FromRole="Orders" ToRole="Customer" />
-    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
-    <NavigationProperty Name="TransactStatu" Relationship="Self.FK_Orders_TransactStatus" FromRole="Orders" ToRole="TransactStatus" />
-    <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Orders__Customer__49C3F6B7" FromRole="Orders" ToRole="Customer" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Order__4D94879B" FromRole="Orders" ToRole="OrderDetails" />
+    <NavigationProperty Name="TransactStatus" Relationship="Self.FK__Orders__Transact__4AB81AF0" FromRole="Orders" ToRole="TransactStatus" />
   </EntityType>
-  <EntityType Name="Page">
+  <EntityType Name="Pages">
     <Key>
       <PropertyRef Name="PageID" />
     </Key>
@@ -130,7 +127,7 @@
     <Property Name="CreateDate" Type="DateTime" Precision="3" />
     <Property Name="Ordering" Type="Int32" />
   </EntityType>
-  <EntityType Name="Product">
+  <EntityType Name="Products">
     <Key>
       <PropertyRef Name="ProductID" />
     </Key>
@@ -140,11 +137,11 @@
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="CatID" Type="Int32" />
     <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="Discount" Type="Int32" />
+    <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Thumb" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Video" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="DateCreated" Type="DateTime" Precision="3" />
-    <Property Name="Datemodified" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
     <Property Name="BestSellers" Type="Boolean" />
     <Property Name="HomeFlag" Type="Boolean" />
     <Property Name="Active" Type="Boolean" />
@@ -154,32 +151,30 @@
     <Property Name="MetaDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="MetaKey" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="UnitsInStock" Type="Int32" />
-    <NavigationProperty Name="Category" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
-    <NavigationProperty Name="OrderDetails" Relationship="Eonon_ProModel.FK_OrderDetails_Products" FromRole="Product" ToRole="OrderDetail" />
-    <Property Name="DateModified" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Categories" Relationship="Self.FK__Products__CatID__4222D4EF" FromRole="Products" ToRole="Categories" />
+    <NavigationProperty Name="Categories1" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Produ__4E88ABD4" FromRole="Products" ToRole="OrderDetails" />
   </EntityType>
-  <EntityType Name="Role">
+  <EntityType Name="Roles">
     <Key>
       <PropertyRef Name="RoleID" />
     </Key>
-    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="RoleName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Roles" FromRole="Roles" ToRole="Account" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Account__RoleID__5812160E" FromRole="Roles" ToRole="Account" />
   </EntityType>
-  <EntityType Name="Shipper">
+  <EntityType Name="Shippers">
     <Key>
       <PropertyRef Name="ShipperID" />
     </Key>
-    <Property Name="ShipperID" Type="Int32" Nullable="false" />
-    <Property Name="ShipperName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ShipperID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="Company" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="ShipeDate" Type="DateTime" Precision="3" />
-    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="ShipDate" Type="DateTime" Precision="3" />
   </EntityType>
-  <EntityType Name="sysdiagram">
+  <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
@@ -189,13 +184,13 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <EntityType Name="tblTinTuc">
+  <EntityType Name="tblTinTucs">
     <Key>
       <PropertyRef Name="PostID" />
     </Key>
-    <Property Name="PostID" Type="Int32" Nullable="false" />
+    <Property Name="PostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="SContents" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sContents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Thumb" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Published" Type="Boolean" />
@@ -210,22 +205,20 @@
     <Property Name="MetaKey" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="MetaDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Views" Type="Int32" />
-    <NavigationProperty Name="ContentBlocks" Relationship="Eonon_ProModel.FK__ContentBl__PostI__787EE5A0" FromRole="tblTinTuc" ToRole="ContentBlock" />
-    <Property Name="sContents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Account" Relationship="Eonon_ProModel.FK__tblTinTuc__Accou__5BE2A6F2" FromRole="tblTinTuc" ToRole="Account" />
-    <NavigationProperty Name="Category" Relationship="Eonon_ProModel.FK__tblTinTuc__CatID__5CD6CB2B" FromRole="tblTinTuc" ToRole="Category" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__tblTinTuc__Accou__5BE2A6F2" FromRole="tblTinTucs" ToRole="Account" />
+    <NavigationProperty Name="Categories" Relationship="Self.FK__tblTinTuc__CatID__5CD6CB2B" FromRole="tblTinTucs" ToRole="Categories" />
   </EntityType>
-  <EntityType Name="TransactStatu">
+  <EntityType Name="TransactStatus">
     <Key>
       <PropertyRef Name="TransactStatusID" />
     </Key>
-    <Property Name="TransactStatusID" Type="Int32" Nullable="false" />
+    <Property Name="TransactStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_TransactStatus" FromRole="TransactStatus" ToRole="Orders" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Transact__4AB81AF0" FromRole="TransactStatus" ToRole="Orders" />
   </EntityType>
-  <Association Name="FK_Account_Roles">
-    <End Role="Roles" Type="Self.Role" Multiplicity="0..1" />
+  <Association Name="FK__Account__RoleID__5812160E">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
     <End Role="Account" Type="Self.Account" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Roles">
@@ -236,9 +229,33 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Products_Categories">
-    <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
-    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+  <Association Name="FK__tblTinTuc__Accou__5BE2A6F2">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="tblTinTucs" Type="Self.tblTinTucs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountID" />
+      </Principal>
+      <Dependent Role="tblTinTucs">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__CatID__4222D4EF">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Categories">
         <PropertyRef Name="CatID" />
@@ -248,8 +265,32 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Customer_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
+  <Association Name="FK__tblTinTuc__CatID__5CD6CB2B">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+    <End Role="tblTinTucs" Type="Self.tblTinTucs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CatID" />
+      </Principal>
+      <Dependent Role="tblTinTucs">
+        <PropertyRef Name="CatID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Categories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CatID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CatID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customer__Locati__3C69FB99">
+    <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
     <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Locations">
@@ -260,9 +301,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Orders_Customer">
-    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+  <Association Name="FK__Orders__Customer__49C3F6B7">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Customer">
         <PropertyRef Name="CustomerID" />
@@ -272,9 +313,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_OrderDetails_Orders">
-    <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
-    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+  <Association Name="FK__OrderDeta__Order__4D94879B">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Orders">
         <PropertyRef Name="OrderID" />
@@ -284,9 +325,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Orders_TransactStatus">
-    <End Role="TransactStatus" Type="Self.TransactStatu" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+  <Association Name="FK__OrderDeta__Produ__4E88ABD4">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__Transact__4AB81AF0">
+    <End Role="TransactStatus" Type="Self.TransactStatus" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TransactStatus">
         <PropertyRef Name="TransactStatusID" />
@@ -297,136 +350,62 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="Eonon_ProEntities1" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Accounts" EntityType="Self.Account" />
-    <EntitySet Name="Categories" EntityType="Self.Category" />
-    <EntitySet Name="Customers" EntityType="Self.Customer" />
-    <EntitySet Name="Locations" EntityType="Self.Location" />
-    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
-    <EntitySet Name="Orders" EntityType="Self.Order" />
-    <EntitySet Name="Pages" EntityType="Self.Page" />
-    <EntitySet Name="Products" EntityType="Self.Product" />
-    <EntitySet Name="Roles" EntityType="Self.Role" />
-    <EntitySet Name="Shippers" EntityType="Self.Shipper" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-    <EntitySet Name="tblTinTucs" EntityType="Self.tblTinTuc" />
-    <EntitySet Name="TransactStatus" EntityType="Self.TransactStatu" />
-    <AssociationSet Name="FK_Account_Roles" Association="Self.FK_Account_Roles">
+    <EntitySet Name="Account" EntityType="Self.Account" />
+    <EntitySet Name="Categories" EntityType="Self.Categories" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" />
+    <EntitySet Name="Locations" EntityType="Self.Locations" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" />
+    <EntitySet Name="Pages" EntityType="Self.Pages" />
+    <EntitySet Name="Products" EntityType="Self.Products" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="Shippers" EntityType="Self.Shippers" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tblTinTucs" EntityType="Self.tblTinTucs" />
+    <EntitySet Name="TransactStatus" EntityType="Self.TransactStatus" />
+    <AssociationSet Name="FK__Account__RoleID__5812160E" Association="Self.FK__Account__RoleID__5812160E">
       <End Role="Roles" EntitySet="Roles" />
-      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTinTuc__Accou__5BE2A6F2" Association="Self.FK__tblTinTuc__Accou__5BE2A6F2">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="tblTinTucs" EntitySet="tblTinTucs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_Account" Association="Self.FK_Customer_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__CatID__4222D4EF" Association="Self.FK__Products__CatID__4222D4EF">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTinTuc__CatID__5CD6CB2B" Association="Self.FK__tblTinTuc__CatID__5CD6CB2B">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="tblTinTucs" EntitySet="tblTinTucs" />
     </AssociationSet>
     <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
       <End Role="Categories" EntitySet="Categories" />
       <End Role="Products" EntitySet="Products" />
     </AssociationSet>
-    <AssociationSet Name="FK_Customer_Locations" Association="Self.FK_Customer_Locations">
+    <AssociationSet Name="FK__Customer__Locati__3C69FB99" Association="Self.FK__Customer__Locati__3C69FB99">
       <End Role="Locations" EntitySet="Locations" />
-      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Customer" EntitySet="Customer" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_Customer" Association="Self.FK_Orders_Customer">
-      <End Role="Customer" EntitySet="Customers" />
+    <AssociationSet Name="FK__Orders__Customer__49C3F6B7" Association="Self.FK__Orders__Customer__49C3F6B7">
+      <End Role="Customer" EntitySet="Customer" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK_OrderDetails_Orders" Association="Self.FK_OrderDetails_Orders">
+    <AssociationSet Name="FK__OrderDeta__Order__4D94879B" Association="Self.FK__OrderDeta__Order__4D94879B">
       <End Role="Orders" EntitySet="Orders" />
       <End Role="OrderDetails" EntitySet="OrderDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_TransactStatus" Association="Self.FK_Orders_TransactStatus">
+    <AssociationSet Name="FK__OrderDeta__Produ__4E88ABD4" Association="Self.FK__OrderDeta__Produ__4E88ABD4">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__Transact__4AB81AF0" Association="Self.FK__Orders__Transact__4AB81AF0">
       <End Role="TransactStatus" EntitySet="TransactStatus" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK_OrderDetails_Products" Association="Eonon_ProModel.FK_OrderDetails_Products">
-      <End Role="Product" EntitySet="Products" />
-      <End Role="OrderDetail" EntitySet="OrderDetails" />
-    </AssociationSet>
-    <EntitySet Name="ContentBlocks" EntityType="Eonon_ProModel.ContentBlock" />
-    <AssociationSet Name="FK__ContentBl__PostI__787EE5A0" Association="Eonon_ProModel.FK__ContentBl__PostI__787EE5A0">
-      <End Role="tblTinTuc" EntitySet="tblTinTucs" />
-      <End Role="ContentBlock" EntitySet="ContentBlocks" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tblTinTuc__Accou__5BE2A6F2" Association="Eonon_ProModel.FK__tblTinTuc__Accou__5BE2A6F2">
-      <End Role="Account" EntitySet="Accounts" />
-      <End Role="tblTinTuc" EntitySet="tblTinTucs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Customer_Account" Association="Eonon_ProModel.FK_Customer_Account">
-      <End Role="Account" EntitySet="Accounts" />
-      <End Role="Customer" EntitySet="Customers" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tblTinTuc__CatID__5CD6CB2B" Association="Eonon_ProModel.FK__tblTinTuc__CatID__5CD6CB2B">
-      <End Role="Category" EntitySet="Categories" />
-      <End Role="tblTinTuc" EntitySet="tblTinTucs" />
-    </AssociationSet>
   </EntityContainer>
-  <Association Name="FK_OrderDetails_Products">
-    <End Type="Eonon_ProModel.Product" Role="Product" Multiplicity="0..1" />
-    <End Type="Eonon_ProModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="ProductID" />
-      </Principal>
-      <Dependent Role="OrderDetail">
-        <PropertyRef Name="ProductID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="ContentBlock">
-    <Key>
-      <PropertyRef Name="Parentid" />
-    </Key>
-    <Property Name="Parentid" Type="Int32" Nullable="false" />
-    <Property Name="Id" Type="Int32" />
-    <Property Name="PostID" Type="Int32" Nullable="false" />
-    <Property Name="NameParentId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="NameId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="content_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tblTinTuc" Relationship="Eonon_ProModel.FK__ContentBl__PostI__787EE5A0" FromRole="ContentBlock" ToRole="tblTinTuc" />
-  </EntityType>
-  <Association Name="FK__ContentBl__PostI__787EE5A0">
-    <End Type="Eonon_ProModel.tblTinTuc" Role="tblTinTuc" Multiplicity="1" />
-    <End Type="Eonon_ProModel.ContentBlock" Role="ContentBlock" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblTinTuc">
-        <PropertyRef Name="PostID" />
-      </Principal>
-      <Dependent Role="ContentBlock">
-        <PropertyRef Name="PostID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__tblTinTuc__Accou__5BE2A6F2">
-    <End Type="Eonon_ProModel.Account" Role="Account" Multiplicity="0..1" />
-    <End Type="Eonon_ProModel.tblTinTuc" Role="tblTinTuc" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="AccountID" />
-      </Principal>
-      <Dependent Role="tblTinTuc">
-        <PropertyRef Name="AccountID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Customer_Account">
-    <End Type="Eonon_ProModel.Account" Role="Account" Multiplicity="0..1" />
-    <End Type="Eonon_ProModel.Customer" Role="Customer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="AccountID" />
-      </Principal>
-      <Dependent Role="Customer">
-        <PropertyRef Name="AccountID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__tblTinTuc__CatID__5CD6CB2B">
-    <End Type="Eonon_ProModel.Category" Role="Category" Multiplicity="0..1" />
-    <End Type="Eonon_ProModel.tblTinTuc" Role="tblTinTuc" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="CatID" />
-      </Principal>
-      <Dependent Role="tblTinTuc">
-        <PropertyRef Name="CatID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

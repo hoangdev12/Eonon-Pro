@@ -12,24 +12,19 @@ namespace WebBTL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Location
+    public partial class Roles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Location()
+        public Roles()
         {
-            this.Customers = new HashSet<Customer>();
+            this.Account = new HashSet<Account>();
         }
     
-        public int LocationID { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public string Slug { get; set; }
-        public string NameWithType { get; set; }
-        public string PathWithType { get; set; }
-        public Nullable<int> ParentCode { get; set; }
-        public Nullable<int> Levels { get; set; }
+        public int RoleID { get; set; }
+        public string RoleName { get; set; }
+        public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual ICollection<Account> Account { get; set; }
     }
 }

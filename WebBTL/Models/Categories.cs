@@ -12,21 +12,23 @@ namespace WebBTL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Category
+    public partial class Categories
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Category()
+        public Categories()
         {
-            this.Products = new HashSet<Product>();
+            this.Products = new HashSet<Products>();
+            this.tblTinTucs = new HashSet<tblTinTucs>();
+            this.Products1 = new HashSet<Products>();
         }
     
         public int CatID { get; set; }
         public string CatName { get; set; }
         public string Description { get; set; }
         public Nullable<int> ParentID { get; set; }
-        public Nullable<int> Leveks { get; set; }
+        public Nullable<int> Levels { get; set; }
         public Nullable<int> Ordering { get; set; }
-        public bool Published { get; set; }
+        public Nullable<bool> Published { get; set; }
         public string Thumb { get; set; }
         public string Title { get; set; }
         public string Alias { get; set; }
@@ -36,6 +38,10 @@ namespace WebBTL.Models
         public string SchemaMarkup { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Products> Products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblTinTucs> tblTinTucs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Products> Products1 { get; set; }
     }
 }

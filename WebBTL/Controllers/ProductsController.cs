@@ -29,7 +29,7 @@ namespace WebBTL.Controllers
                 .AsNoTracking()
                 .OrderBy(x => x.ProductID);
 
-            var products = _context.Products.Include(c => c.Category).OrderBy(p => p.ProductID).AsQueryable();
+            var products = _context.Products.Include(c => c.Categories).OrderBy(p => p.ProductID).AsQueryable();
 
             if (!String.IsNullOrEmpty(searchTerm))
             {
@@ -39,7 +39,7 @@ namespace WebBTL.Controllers
 
             ViewBag.SearchTerm = searchTerm;
 
-            PagedList<Product> models = new PagedList<Product>((IQueryable<Product>)lsPages, pageNumber, pageSize);
+            PagedList<Products> models = new PagedList<Products>((IQueryable<Products>)lsPages, pageNumber, pageSize);
 
             ViewBag.CurrentPage = pageNumber;
             return View(models);
@@ -49,14 +49,14 @@ namespace WebBTL.Controllers
         {
 
 
-            var product = _context.Products.Include(x => x.Category).FirstOrDefault(x => x.ProductID == id);
+            var product = _context.Products.Include(x => x.Categories).FirstOrDefault(x => x.ProductID == id);
 
             if (product == null)
             {
                 return RedirectToAction("Index");
             }
 
-            var productsList = new List<Product> { product };
+            var productsList = new List<Products> { product };
 
             return View(productsList);
         }

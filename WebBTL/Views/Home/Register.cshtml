@@ -127,12 +127,19 @@
                         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confim Password" })
                         @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "badge badge-danger" })
                     </div>
-                   
+
 
                     <br />
 
                     <button type="submit" class="btn btn-primary btn-block">Register</button>
-                    @Html.ActionLink("Login", "Login", "Home", null, new { @class = "btn btn-outline-primary" })
+
+                    <br />
+
+                    @Html.ActionLink("Have an account? Login here.", "Login", "Home", null, new { @class = "" })
+
+                    <br />
+
+                    @Html.ActionLink("Forget Password? Click here.", "ForgotPassword", "Home", null, new { @class = "" })
                 }
 
             </div>

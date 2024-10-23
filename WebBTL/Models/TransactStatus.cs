@@ -12,12 +12,12 @@ namespace WebBTL.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TransactStatu
+    public partial class TransactStatus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TransactStatu()
+        public TransactStatus()
         {
-            this.Orders = new HashSet<Order>();
+            this.Orders = new HashSet<Orders>();
         }
     
         public int TransactStatusID { get; set; }
@@ -25,6 +25,6 @@ namespace WebBTL.Models
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Orders> Orders { get; set; }
     }
 }
