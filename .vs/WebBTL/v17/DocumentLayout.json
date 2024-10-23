@@ -7,12 +7,8 @@
       "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|D:\\Study\\Eono_Pro\\webbtl\\models\\accountviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\models\\accountviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|D:\\Study\\Eono_Pro\\webbtl\\views\\accounts\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\accounts\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|D:\\Study\\Eono_Pro\\WebBTL\\Models\\AccountViewModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:WebBTL\\Models\\AccountViewModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,25 +50,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "D:\\Study\\Eono_Pro\\WebBTL\\Views\\Accounts\\Login.cshtml",
-              "RelativeDocumentMoniker": "WebBTL\\Views\\Accounts\\Login.cshtml",
-              "ToolTip": "D:\\Study\\Eono_Pro\\WebBTL\\Views\\Accounts\\Login.cshtml",
-              "RelativeToolTip": "WebBTL\\Views\\Accounts\\Login.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-17T16:44:20.803Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "AccountViewModels.cs",
               "DocumentMoniker": "D:\\Study\\Eono_Pro\\WebBTL\\Models\\AccountViewModels.cs",
               "RelativeDocumentMoniker": "WebBTL\\Models\\AccountViewModels.cs",
               "ToolTip": "D:\\Study\\Eono_Pro\\WebBTL\\Models\\AccountViewModels.cs",
               "RelativeToolTip": "WebBTL\\Models\\AccountViewModels.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAADYAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-18T06:47:19.647Z"
             },
@@ -84,7 +68,7 @@
               "RelativeDocumentMoniker": "WebBTL\\Controllers\\AccountsController.cs",
               "ToolTip": "D:\\Study\\Eono_Pro\\WebBTL\\Controllers\\AccountsController.cs",
               "RelativeToolTip": "WebBTL\\Controllers\\AccountsController.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwCYAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-17T16:29:00.858Z",
               "EditorCaption": ""
