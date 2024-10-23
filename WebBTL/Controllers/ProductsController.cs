@@ -36,14 +36,13 @@ namespace WebBTL.Controllers
                 products = products.Where(x => x.ProductName.Contains(searchTerm));
             }
 
-
-            ViewBag.SearchTerm = searchTerm;
-
             PagedList<Product> models = new PagedList<Product>((IQueryable<Product>)lsPages, pageNumber, pageSize);
 
+            ViewBag.SearchTerm = searchTerm;
             ViewBag.CurrentPage = pageNumber;
             return View(models);
         }
+
 
         public ActionResult Details(int id)
         {
@@ -58,9 +57,16 @@ namespace WebBTL.Controllers
 
             var productsList = new List<Product> { product };
 
+            var lsSanPhamLienQuan = _context.Products
+             .AsNoTracking().Include(x => x.Category)
+             .Where(x => x.Active == true && x.CatID == product.CatID && x.ProductID != id)
+             .Take(3)
+            .ToList();
+
+
+            ViewBag.lsSanPhamLienQuan = lsSanPhamLienQuan;
             return View(productsList);
         }
                 
-
     }
 }

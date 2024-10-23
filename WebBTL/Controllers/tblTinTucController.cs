@@ -39,14 +39,14 @@ namespace WebBTL.Controllers
             return View(models);
             
         }
-
+         
         public ActionResult Details(int id)
         {
 
 
             var tintuc = _context.tblTinTucs.FirstOrDefault(x => x.PostID == id);
 
-            if (tintuc == null)
+            if (tintuc == null) 
             {
                 return RedirectToAction("Index");
             }

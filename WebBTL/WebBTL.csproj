@@ -578,6 +578,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminRolesController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdmintblTinTucsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PagesController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -591,64 +592,65 @@
     </Compile>
     <Compile Include="Helper\Utilities.cs" />
     <Compile Include="Models\Account.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ContentBlock.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EononPro.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EononPro.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EononPro.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EononPro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EononPro.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EononPro.edmx</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Order.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderDetail.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Page.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Role.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Shipper.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblTinTuc.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TransactStatu.cs">
-      <DependentUpon>EononPro.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -2610,7 +2612,26 @@
     <Content Include="Content\images\Categories\toyota.png" />
     <Content Include="Content\images\Categories\vinfast.png" />
     <Content Include="Content\images\logoFooter.png" />
-    <Content Include="Content\images\products\goku-black-super-3840x2160-13399.jpg" />
+    <Content Include="Content\images\products\CAMERA A20.jpg" />
+    <Content Include="Content\images\products\nota ambient air.jpg" />
+    <Content Include="Content\images\products\PRO-MAX-33.png" />
+    <Content Include="Content\images\products\PROMAX-22s-SP.jpg" />
+    <Content Include="Content\images\products\PROMAX365.png" />
+    <Content Include="Content\images\products\SUB ALPINE SWE-1080.jpg" />
+    <Content Include="Content\images\products\SUB PIONEER 120A.jpg" />
+    <Content Include="Content\images\products\SUB PIONEER 130DA.jpg" />
+    <Content Include="Content\images\products\V2.png" />
+    <Content Include="Content\images\products\v20 %282%29.png" />
+    <Content Include="Content\images\products\V30.png" />
+    <Content Include="Content\images\products\v900AIR.png" />
+    <Content Include="Content\images\products\v900plus.png" />
+    <Content Include="Content\images\products\v900pre.png" />
+    <Content Include="Content\images\products\v90new.png" />
+    <Content Include="Content\images\products\v9950smax.png" />
+    <Content Include="Content\images\products\ẢNH BÌA SP FINAL-28.png" />
+    <Content Include="Content\images\products\ẢNH BÌA SP FINAL-29.png" />
+    <Content Include="Content\images\products\ẢNH BÌA SP FINAL-30.png" />
+    <Content Include="Content\images\products\ẢNH-BÌA-SP-FINAL-31.png" />
     <Content Include="Content\images\tintucs\0612aaca01ac0b9fc0f6ab12e27287a5.png" />
     <Content Include="Content\images\tintucs\0b30d289ddac5dee1369f1d35c1ffe28.jpg" />
     <Content Include="Content\images\tintucs\1.jpg" />
@@ -2708,15 +2729,15 @@
     <Content Include="Content\images\slide3.jpg" />
     <Content Include="Content\images\slide4.jpg" />
     <Content Include="Content\images\v20.png" />
-    <Content Include="Models\EononPro.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EononPro.edmx</DependentUpon>
-      <LastGenOutput>EononPro.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\EononPro.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EononPro.edmx</DependentUpon>
-      <LastGenOutput>EononPro.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -2860,13 +2881,6 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <EntityDeploy Include="Models\EononPro.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EononPro.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\EononPro.edmx.diagram">
-      <DependentUpon>EononPro.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\AdminAccounts\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AdminAccounts\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminAccounts\Edit.cshtml" />
@@ -2897,6 +2911,13 @@
     <Content Include="Areas\Admin\Views\AdminCategories\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCategories\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCategories\Index.cshtml" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2933,6 +2954,9 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Profiles.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Cart\OrderConfirmation.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

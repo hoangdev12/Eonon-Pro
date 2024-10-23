@@ -166,9 +166,131 @@
     </div>
 }
 
-<section style="margin-top:300px">
-@foreach (var product in Model)
-{
-    @Html.Raw(product.Description)
-}
-    </ section >
+
+
+<section>
+
+    @foreach (var product in Model)
+    {
+        @* banner tin tiuc *@
+        <section style="margin-top:70px">
+            <div class="bannerTinTuc">
+                <div class="container" style="padding-top:50px">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center align-items-center">
+                            <span style="color:#FFF; font-size:24px;">@product.ProductName</span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <br />
+        <br />
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-md-4">
+                    <img src="@product.Thumb" alt="Alternate Text" style="max-width:400px;max-height:500px;" />
+                </div>
+                <div class="col-sm-4 col-md-4">
+                    <h3>@product.ProductName</h3>
+                    <h4 style="color: #fdcc0d">@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:C0}", product.Price)</h4>
+                    <p>@Html.Raw(product.ShortDesc)</p>
+                </div>
+                <div class="side col-sm-4 col-md-4">
+                    <div class="box-visao">
+                        <h2>VÌ SAO CHỌN EONON PRO ?</h2>
+                        <div class="d-flex align-items-baseline mb-2">
+                            <div class="lo">
+                                <img src="https://eononpro.vn/assets/images/ii/chinh-hang.png" alt="">
+                            </div>
+                            <div class="pl-5">
+                                <h3>Sản phẩm chính hãng</h3>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-baseline mb-2">
+                            <div class="lo">
+                                <img src="https://eononpro.vn/assets/images/ii/bao-hanh.png" alt="">
+                            </div>
+                            <div class="pl-5">
+                                <h3>Trên 200 Ðại lý toàn quốc</h3>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-baseline mb-2">
+                            <div class="lo">
+                                <img src="https://eononpro.vn/assets/images/ii/hh2.png" alt="">
+                            </div>
+                            <div class="pl-5">
+                                <h3>Màn hình công nghệ QLED</h3>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-baseline mb-2">
+                            <div class="lo">
+                                <img src="https://eononpro.vn/assets/images/ii/hh1.png" alt="">
+                            </div>
+                            <div class="pl-5">
+                                <h3>Bảo hành lên tới 2 nam</h3>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-baseline mb-2">
+                            <div class="lo">
+                                <img src="https://eononpro.vn/assets/images/ii/doi-mot.png" alt="">
+                            </div>
+                            <div class="pl-5">
+                                <h3>1 dổi 1 trong vòng 1 nam</h3>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @Html.Raw(product.Description)
+
+        if (ViewBag.lsSanPhamLienQuan != null && ViewBag.lsSanPhamLienQuan.Count > 0)
+        {
+<div class="container">
+    <div class="row">
+        @foreach (var item in ViewBag.lsSanPhamLienQuan)
+        {
+            <div class="col-sm-4 col-md-4 pb-3" >
+                <div class="card h-100 ">
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID })">
+                        <img src="@item.Thumb" class="card-img-top" alt="error">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Đăng bởi:
+                            <a href="@Url.Action("Details", "Products", new { id = item.ProductID })" style="font-size:14px;text-decoration:none;opacity:0.5;color:black;" class="linkTinTuc">
+                                @item.ProductName
+                            </a>
+                        </h5>
+                        <br />
+                        <a href="@Url.Action("Details", "Products", new { id = item.ProductID })" style="text-decoration: none; color:black; font-size:20px;" class="linkTinTuc">
+                            <p class="card-text">
+                                @String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:C0}", item.Price)
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+        }
+        else
+        {
+            <li>Không có bài viết liên quan nào.</li>
+        }
+    }
+
+
+</section>

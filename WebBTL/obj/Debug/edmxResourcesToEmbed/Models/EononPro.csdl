@@ -15,6 +15,7 @@
     <Property Name="LastLogin" Type="DateTime" Precision="3" />
     <Property Name="CreateDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Role" Relationship="Self.FK_Account_Roles" FromRole="Account" ToRole="Roles" />
+    <NavigationProperty Name="Customers" Relationship="Eonon_ProModel.FK_Customer_Account" FromRole="Account" ToRole="Customer" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -58,6 +59,9 @@
     <NavigationProperty Name="Location" Relationship="Self.FK_Customer_Locations" FromRole="Customer" ToRole="Locations" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Customer" FromRole="Customer" ToRole="Orders" />
     <Property Name="AccountID" Type="Int32" />
+    <Property Name="RoleID" Type="Int32" />
+    <NavigationProperty Name="Account" Relationship="Eonon_ProModel.FK_Customer_Account" FromRole="Customer" ToRole="Account" />
+    <NavigationProperty Name="Role" Relationship="Eonon_ProModel.FK_Customer_Roles" FromRole="Customer" ToRole="Role" />
   </EntityType>
   <EntityType Name="Location">
     <Key>
@@ -88,6 +92,11 @@
     <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Orders" FromRole="OrderDetails" ToRole="Orders" />
     <NavigationProperty Name="Product" Relationship="Eonon_ProModel.FK_OrderDetails_Products" FromRole="OrderDetail" ToRole="Product" />
     <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="OrderNumber1" Type="Int32" />
+    <Property Name="Discount1" Type="Int32" />
+    <Property Name="Total1" Type="Int32" />
+    <Property Name="ShipDate1" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -130,7 +139,7 @@
     </Key>
     <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ProductName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ShortDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ShortDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="CatID" Type="Int32" />
     <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
@@ -159,6 +168,7 @@
     <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Roles" FromRole="Roles" ToRole="Account" />
+    <NavigationProperty Name="Customers" Relationship="Eonon_ProModel.FK_Customer_Roles" FromRole="Role" ToRole="Customer" />
   </EntityType>
   <EntityType Name="Shipper">
     <Key>
@@ -331,6 +341,14 @@
       <End Role="tblTinTuc" EntitySet="tblTinTucs" />
       <End Role="ContentBlock" EntitySet="ContentBlocks" />
     </AssociationSet>
+    <AssociationSet Name="FK_Customer_Account" Association="Eonon_ProModel.FK_Customer_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_Roles" Association="Eonon_ProModel.FK_Customer_Roles">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
   </EntityContainer>
   <Association Name="FK_OrderDetails_Products">
     <End Type="Eonon_ProModel.Product" Role="Product" Multiplicity="0..1" />
@@ -366,6 +384,30 @@
       </Principal>
       <Dependent Role="ContentBlock">
         <PropertyRef Name="PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_Account">
+    <End Type="Eonon_ProModel.Account" Role="Account" Multiplicity="0..1" />
+    <End Type="Eonon_ProModel.Customer" Role="Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_Roles">
+    <End Type="Eonon_ProModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="Eonon_ProModel.Customer" Role="Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="RoleID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

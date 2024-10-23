@@ -1,0 +1,137 @@
+﻿@model List<WebBTL.Models.CartItem>
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section navbar {
+    <div class="container-fluid bgtop2">
+        <nav class="navbar navbar-expand-lg bg-warning fixed-top">
+            <div class="container">
+                <a class="navbar-brand tr" href="@Url.Action("Index", "Home")" style="font-size: 38px;">
+                    <img src="~/Content/images/logo.png" alt="Alternate Text" style="width: 100px; max-width: 100px;" />
+                    <span style="border-left: 1px solid #000; margin: 0 15px; color: white;"></span>CART
+                </a>
+                <a href="#" class="d-flex justify-content-end" style="text-decoration: none; color: #000;">Bạn cần giúp đỡ?</a>
+            </div>
+        </nav>
+    </div>
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container mt-5">
+    <h2 class="text-center">Giỏ Hàng</h2>
+
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info text-center" role="alert">
+            Giỏ hàng của bạn trống.
+        </div>
+    }
+    else
+    {
+        <table class="table table-hover table-striped">
+           
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        <input type="checkbox" id="selectAll" />
+                    </th>
+                    <th>Product Name</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            
+                            <input type="checkbox" class="product-checkbox" data-unit-price="@item.UnitPrice" data-quantity="@item.Quantity" />
+                        </td>
+
+                        <td>
+                            <img src="@item.thumb" alt="Alternate Text" style="max-width:80px; max-height:80px;" />
+                            @item.ProductName
+                        </td>
+                        <td>@(item.UnitPrice?.ToString("C0", new System.Globalization.CultureInfo("vi-VN")))</td>
+                        <td>
+                            <input type="number" name="quantities[@item.ProductID]" value="@item.Quantity" min="1" class="form-control quantity-input" data-unit-price="@item.UnitPrice" style="width: 70px;" />
+                        </td>
+                        <td class="total-price" data-product-id="@item.ProductID">
+                            @(item.TotalPrice.ToString("C0", new System.Globalization.CultureInfo("vi-VN")))
+                        </td>
+                        <td>
+                            @Html.ActionLink("Remove", "RemoveFromCart", new { productId = item.ProductID }, new { @class = "btn btn-danger btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+        <h3 class="d-flex justify-content-end">Total: <span id="cartTotal">@Model.Sum(i => i.TotalPrice).ToString("C0", new System.Globalization.CultureInfo("vi-VN"))</span></h3>
+        <a href="@Url.Action("Checkout", "Cart")" class="btn btn-primary">Thanh toán</a>
+    }
+
+</div>
+
+@section scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const quantityInputs = document.querySelectorAll('.quantity-input');
+            const productCheckboxes = document.querySelectorAll('.product-checkbox');
+            const cartTotalElement = document.getElementById('cartTotal');
+
+            function updateTotalForItem(checkbox) {
+                const unitPrice = parseFloat(checkbox.getAttribute('data-unit-price'));
+                const quantity = parseInt(checkbox.closest('tr').querySelector('.quantity-input').value) || 0;
+                return checkbox.checked ? unitPrice * quantity : 0;
+            }
+
+            function updateCartTotal() {
+                let grandTotal = 0;
+
+                productCheckboxes.forEach(checkbox => {
+                    grandTotal += updateTotalForItem(checkbox);
+                });
+
+                cartTotalElement.textContent = grandTotal.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+            }
+
+            quantityInputs.forEach(input => {
+                input.addEventListener('input', function () {
+                    const totalPriceElement = this.closest('tr').querySelector('.total-price');
+                    const checkbox = this.closest('tr').querySelector('.product-checkbox');
+                    totalPriceElement.textContent = (parseFloat(this.value) * parseFloat(this.getAttribute('data-unit-price'))).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+                    updateCartTotal();
+                });
+            });
+
+            productCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    updateCartTotal();
+                });
+            });
+
+            // Select all checkbox
+            const selectAllCheckbox = document.getElementById('selectAll');
+            selectAllCheckbox.addEventListener('change', function () {
+                productCheckboxes.forEach(checkbox => {
+                    checkbox.checked = selectAllCheckbox.checked;
+                    updateCartTotal();
+                });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,104 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\webbtl\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\hoang\\onedrive\\desktop\\btlweb\\eonon-pro\\webbtl\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\hoang\\onedrive\\desktop\\btlweb\\eonon-pro\\webbtl\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\hoang\\onedrive\\desktop\\btlweb\\eonon-pro\\webbtl\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\hoang\\onedrive\\desktop\\btlweb\\eonon-pro\\webbtl\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrderDetail.cs",
+              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Models\\OrderDetail.cs",
+              "RelativeDocumentMoniker": "WebBTL\\Models\\OrderDetail.cs",
+              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Models\\OrderDetail.cs",
+              "RelativeToolTip": "WebBTL\\Models\\OrderDetail.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T08:34:43.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CartItem.cs",
+              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Models\\CartItem.cs",
+              "RelativeDocumentMoniker": "WebBTL\\Models\\CartItem.cs",
+              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Models\\CartItem.cs",
+              "RelativeToolTip": "WebBTL\\Models\\CartItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T08:34:27.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Model1.edmx [Diagram1]",
+              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Models\\Model1.edmx",
+              "RelativeDocumentMoniker": "WebBTL\\Models\\Model1.edmx",
+              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Models\\Model1.edmx [Diagram1]",
+              "RelativeToolTip": "WebBTL\\Models\\Model1.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2024-10-23T08:33:25.613Z",
+              "EditorCaption": " [Diagram1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Web.config",
+              "RelativeDocumentMoniker": "WebBTL\\Web.config",
+              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Web.config",
+              "RelativeToolTip": "WebBTL\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGwAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-10-23T08:29:26.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "WebBTL\\Controllers\\CartController.cs",
+              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Controllers\\CartController.cs",
+              "RelativeToolTip": "WebBTL\\Controllers\\CartController.cs",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAEwJQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T08:23:31.48Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -549,7 +549,6 @@ C:\Users\hoang\OneDrive\Desktop\BTLWEB\Eonon-Pro\WebBTL\bin\Microsoft.Owin.Secur
 C:\Users\hoang\OneDrive\Desktop\BTLWEB\Eonon-Pro\WebBTL\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\hoang\OneDrive\Desktop\BTLWEB\Eonon-Pro\WebBTL\obj\Debug\WebBTL.csproj.AssemblyReference.cache
 C:\Users\hoang\OneDrive\Desktop\BTLWEB\Eonon-Pro\WebBTL\obj\Debug\WebBTL.csproj.CoreCompileInputs.cache
-C:\Users\hoang\OneDrive\Desktop\BTLWEB\Eonon-Pro\WebBTL\obj\Debug\WebBTL.csproj.CopyComplete
 C:\Users\hoang\OneDrive\Desktop\BTLWEB\Eonon-Pro\WebBTL\obj\Debug\WebBTL.dll
 C:\Users\hoang\OneDrive\Desktop\BTLWEB\Eonon-Pro\WebBTL\obj\Debug\WebBTL.pdb
 C:\Users\hoang\OneDrive\Desktop\BTLWEB\Eonon-Pro\WebBTL\bin\Microsoft.Web.Helpers.dll
@@ -557,3 +556,4 @@ C:\Users\hoang\OneDrive\Desktop\BTLWEB\Eonon-Pro\WebBTL\bin\WebMatrix.Data.dll
 C:\Users\hoang\OneDrive\Desktop\BTLWEB\Eonon-Pro\WebBTL\bin\WebMatrix.WebData.dll
 C:\Users\hoang\OneDrive\Desktop\BTLWEB\Eonon-Pro\WebBTL\bin\WebMatrix.Data.xml
 C:\Users\hoang\OneDrive\Desktop\BTLWEB\Eonon-Pro\WebBTL\bin\WebMatrix.WebData.xml
+C:\Users\hoang\OneDrive\Desktop\BTLWEB\Eonon-Pro\WebBTL\obj\Debug\WebBTL.csproj.Up2Date

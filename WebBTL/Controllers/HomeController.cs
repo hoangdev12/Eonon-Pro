@@ -96,13 +96,24 @@ namespace WebBTL.Controllers
 
                 if (user != null)
                 {
-                    var enteredPassword = customer.Password; 
-                    
+                    var enteredPassword = customer.Password;
 
+                   
                     if (enteredPassword.Equals(user.Password))
                     {
                         Session["Email"] = user.Email;
+                        // Kiểm tra nếu có URL nào đã được lưu trong session trước khi đăng nhập
+                        string returnUrl = Session["ReturnUrl"] as string;
+                        if (!string.IsNullOrEmpty(returnUrl))
+                        {
+                            // Xóa ReturnUrl khỏi Session sau khi sử dụng
+                            Session.Remove("ReturnUrl");
+                            return Redirect(returnUrl); // Chuyển hướng về URL được lưu
+                        }
+
+                        // Nếu không có URL nào được lưu thì chuyển hướng về trang chủ
                         return RedirectToAction("Index", "Home");
+                       
                     }
                     else
                     {
@@ -116,7 +127,7 @@ namespace WebBTL.Controllers
                     return View(customer);
                 }
             }
-
+                      
             // If we got this far, something failed; redisplay form.
             return View(customer); // Return the view with the current model state to show validation errors
         }
@@ -125,8 +136,14 @@ namespace WebBTL.Controllers
 
         public ActionResult Logout()
         {
-            Session.Clear(); 
-            return RedirectToAction("Index", "Home");
+            // Lưu lại URL của trang hiện tại trước khi logout
+            string currentUrl = Request.UrlReferrer != null ? Request.UrlReferrer.ToString() : Url.Action("Index", "Home");
+
+            // Xóa session
+            Session.Clear();
+
+            // Chuyển hướng về trang mà người dùng vừa truy cập (hoặc trang chủ nếu không có)
+            return Redirect(currentUrl);
         }
 
         [HttpGet]

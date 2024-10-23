@@ -39,7 +39,7 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 accounts = accounts.Where(a => a.RoleID == RoleId);
             }
-
+             
 
             return View(accounts.ToList());
         }
