@@ -102,6 +102,7 @@ namespace WebBTL.Controllers
                     if (enteredPassword.Equals(user.Password))
                     {
                         Session["Email"] = user.Email;
+                        Session["AccountId"] = user.AccountID;
                         // Kiểm tra nếu có URL nào đã được lưu trong session trước khi đăng nhập
                         string returnUrl = Session["ReturnUrl"] as string;
                         if (!string.IsNullOrEmpty(returnUrl))
@@ -146,31 +147,41 @@ namespace WebBTL.Controllers
             return Redirect(currentUrl);
         }
 
+        
+
+
         [HttpGet]
         public ActionResult Profiles()
         {
-            
+
             if (Session["Email"] == null)
             {
                 return RedirectToAction("Login", "Home");
             }
 
-            int accountId = Convert.ToInt32(Session["Email"]);
+            int accountId = int.Parse(Session["AccountId"].ToString());
 
-            var customer = _context.Customers.FirstOrDefault(c => c.AccountID == accountId);
-
-            if (customer == null)
+            if (Session["AccountId"] != null)
             {
-                return HttpNotFound("Không tìm thấy thông tin người dùng.");
+                accountId = int.Parse(Session["AccountId"].ToString());
+                var customer = _context.Customers.FirstOrDefault(c => c.AccountID == accountId);
+
+                if (customer == null)
+                {
+                    return HttpNotFound("Không tìm thấy thông tin người dùng.");
+                }
+
+
+
+                return View(customer);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
             }
 
-            ViewBag.FullName = customer.FullName;
-            ViewBag.Email = customer.Email;
-            ViewBag.Phone = customer.Phone;
-            ViewBag.Avatar = customer.Avatar;
-
-            return View(customer); 
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -181,7 +192,7 @@ namespace WebBTL.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            int accountId = Convert.ToInt32(Session["UserID"]);
+            int accountId = int.Parse(Session["UserID"].ToString());
             var customer = _context.Customers.FirstOrDefault(c => c.AccountID == accountId);
 
             if (customer != null)
@@ -189,9 +200,9 @@ namespace WebBTL.Controllers
                 // Cập nhật các thông tin mới
                 customer.FullName = updatedCustomer.FullName;
                 customer.Phone = updatedCustomer.Phone;
-                customer.Avatar = updatedCustomer.Avatar; 
+                customer.Avatar = updatedCustomer.Avatar;
 
-                _context.SaveChanges(); 
+                _context.SaveChanges();
 
                 // Cập nhật Session
                 Session["FullName"] = customer.FullName;
@@ -200,7 +211,104 @@ namespace WebBTL.Controllers
                 return RedirectToAction("Profiles");
             }
 
-            return View("Profiles", updatedCustomer); 
+            return View("Profiles", updatedCustomer);
+        }
+
+        [HttpGet]
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ForgotPassword(ForgotPasswordViewModel forgotPassword)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _context.Accounts.FirstOrDefault(c => c.Email == forgotPassword.Email.Trim().ToLower());
+
+                if (user != null)
+                {
+                    var enteredPassword = forgotPassword.newPassword;
+
+                    if (enteredPassword.Equals(user.Password))
+                    {
+                        ModelState.AddModelError("", "Your password must not be the same as the old password!");
+                        return View(forgotPassword);
+                    }
+                    else
+                    {
+                        user.Password = forgotPassword.newPassword;
+                        _context.SaveChanges();
+                        return RedirectToAction("Login", "Home");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Can't find your account. Please register");
+                    return View(forgotPassword);
+                }
+
+            }
+            else
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                return View(forgotPassword);
+            }
+
+        }
+
+        [HttpGet]
+        public ActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(ResetPasswordViewModel resetPassword)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _context.Accounts.FirstOrDefault(c => c.Password == resetPassword.Password);
+
+                if (user != null)
+                {
+                    var enteredPassword = resetPassword.Password;
+
+                    if (enteredPassword.Equals(user.Password))
+                    {
+                        if (!resetPassword.Equals(user.Password))
+                        {
+                            user.Password = resetPassword.newPassword;
+                            _context.SaveChanges();
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Your password must not be the same as the old password!");
+                            return View(resetPassword);
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Wrong Password!");
+                        return View(resetPassword);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Something went wrong!");
+                    return View(resetPassword);
+                }
+
+            }
+            else
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                return View(resetPassword);
+            }
         }
     }
 }

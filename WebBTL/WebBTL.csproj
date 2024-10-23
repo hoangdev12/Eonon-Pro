@@ -2957,6 +2957,8 @@
     <Content Include="Views\Cart\Cart.cshtml" />
     <Content Include="Views\Cart\OrderConfirmation.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Home\ForgotPassword.cshtml" />
+    <Content Include="Views\Home\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

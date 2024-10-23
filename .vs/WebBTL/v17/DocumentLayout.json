@@ -3,24 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\webbtl\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\hoang\\onedrive\\desktop\\btlweb\\eonon-pro\\webbtl\\models\\accountviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\models\\accountviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\hoang\\onedrive\\desktop\\btlweb\\eonon-pro\\webbtl\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\hoang\\onedrive\\desktop\\btlweb\\eonon-pro\\webbtl\\views\\home\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\hoang\\onedrive\\desktop\\btlweb\\eonon-pro\\webbtl\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\hoang\\onedrive\\desktop\\btlweb\\eonon-pro\\webbtl\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\hoang\\onedrive\\desktop\\btlweb\\eonon-pro\\webbtl\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\hoang\\onedrive\\desktop\\btlweb\\eonon-pro\\webbtl\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\hoang\\onedrive\\desktop\\btlweb\\eonon-pro\\webbtl\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\hoang\\onedrive\\desktop\\btlweb\\eonon-pro\\webbtl\\views\\home\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\hoang\\onedrive\\desktop\\btlweb\\eonon-pro\\webbtl\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\hoang\\onedrive\\desktop\\btlweb\\eonon-pro\\webbtl\\views\\home\\profiles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\profiles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,70 +38,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "OrderDetail.cs",
-              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Models\\OrderDetail.cs",
-              "RelativeDocumentMoniker": "WebBTL\\Models\\OrderDetail.cs",
-              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Models\\OrderDetail.cs",
-              "RelativeToolTip": "WebBTL\\Models\\OrderDetail.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T08:34:43.604Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CartItem.cs",
-              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Models\\CartItem.cs",
-              "RelativeDocumentMoniker": "WebBTL\\Models\\CartItem.cs",
-              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Models\\CartItem.cs",
-              "RelativeToolTip": "WebBTL\\Models\\CartItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T08:34:27.761Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Model1.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Models\\Model1.edmx",
-              "RelativeDocumentMoniker": "WebBTL\\Models\\Model1.edmx",
-              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Models\\Model1.edmx [Diagram1]",
-              "RelativeToolTip": "WebBTL\\Models\\Model1.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2024-10-23T08:33:25.613Z",
-              "EditorCaption": " [Diagram1]"
+              "Title": "ResetPassword.cshtml",
+              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Views\\Home\\ResetPassword.cshtml",
+              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\ResetPassword.cshtml",
+              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Views\\Home\\ResetPassword.cshtml",
+              "RelativeToolTip": "WebBTL\\Views\\Home\\ResetPassword.cshtml",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAIIAAAB2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-23T09:10:45.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Views\\Home\\Login.cshtml",
+              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\Login.cshtml",
+              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Views\\Home\\Login.cshtml",
+              "RelativeToolTip": "WebBTL\\Views\\Home\\Login.cshtml",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAAIEAAAB9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-23T09:08:30.014Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Web.config",
-              "RelativeDocumentMoniker": "WebBTL\\Web.config",
-              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Web.config",
-              "RelativeToolTip": "WebBTL\\Web.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGwAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-10-23T08:29:26.59Z",
+              "Title": "ForgotPassword.cshtml",
+              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Views\\Home\\ForgotPassword.cshtml",
+              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\ForgotPassword.cshtml",
+              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Views\\Home\\ForgotPassword.cshtml",
+              "RelativeToolTip": "WebBTL\\Views\\Home\\ForgotPassword.cshtml",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAWwIAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-23T09:07:12.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "WebBTL\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-23T09:03:25.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Profiles.cshtml",
+              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Views\\Home\\Profiles.cshtml",
+              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\Profiles.cshtml",
+              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Views\\Home\\Profiles.cshtml",
+              "RelativeToolTip": "WebBTL\\Views\\Home\\Profiles.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-23T09:02:49.495Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CartController.cs",
-              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Controllers\\CartController.cs",
-              "RelativeDocumentMoniker": "WebBTL\\Controllers\\CartController.cs",
-              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Controllers\\CartController.cs",
-              "RelativeToolTip": "WebBTL\\Controllers\\CartController.cs",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAEwJ4AAAAAAAAAAAAAAA==",
+              "Title": "AccountViewModels.cs",
+              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Models\\AccountViewModels.cs",
+              "RelativeDocumentMoniker": "WebBTL\\Models\\AccountViewModels.cs",
+              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Models\\AccountViewModels.cs",
+              "RelativeToolTip": "WebBTL\\Models\\AccountViewModels.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAAwEEAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T08:23:31.48Z",
+              "WhenOpened": "2024-10-23T08:59:35.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "WebBTL\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\hoang\\OneDrive\\Desktop\\BTLWEB\\Eonon-Pro\\WebBTL\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "WebBTL\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAPgAAAAAAAAAAAAkwAYBAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T08:58:46.863Z",
               "EditorCaption": ""
             }
           ]
