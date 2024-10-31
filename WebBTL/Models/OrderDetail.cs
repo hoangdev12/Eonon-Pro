@@ -17,14 +17,14 @@ namespace WebBTL.Models
         public int OrderDetailID { get; set; }
         public Nullable<int> OrderID { get; set; }
         public Nullable<int> ProductID { get; set; }
-        public Nullable<int> OrderNumber { get; set; }
-        public Nullable<int> Quantity { get; set; }
+        public string OrderNumber { get; set; }
         public Nullable<int> Discount { get; set; }
-        public Nullable<int> Total { get; set; }
-        public Nullable<System.DateTime> ShipDate { get; set; }
+
         public Nullable<decimal> Price { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public Nullable<System.DateTime> ShipDate { get; set; }
     
-        public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

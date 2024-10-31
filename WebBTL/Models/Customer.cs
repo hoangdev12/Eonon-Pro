@@ -36,8 +36,11 @@ namespace WebBTL.Models
         public Nullable<System.DateTime> LastLogin { get; set; }
         public Nullable<bool> Active { get; set; }
         public Nullable<int> AccountID { get; set; }
+        public Nullable<int> RoleID { get; set; }
     
+        public virtual Account Account { get; set; }
         public virtual Location Location { get; set; }
+        public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
     }
