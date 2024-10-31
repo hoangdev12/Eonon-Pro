@@ -156,8 +156,18 @@
                             </li>
                         </ul>
                         <div class="d-flex justify-content-center align-items-center gap-3">
-                            <a href="#" class="text-decoration-none text-black">Login</a>
-                            <a href="#" class="text-decoration-none px-3 py-1 rounded-4 text-black" style="background-color:blue;">Sign up</a>
+                            @if (Session["Email"] != null)
+                            {
+                                <a href="@Url.Action("Profiles", "Home")"><i class="fas fa-user fa-lg"></i></a>
+                                <a href="@Url.Action("Cart", "Cart")"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                                <a href="@Url.Action("Logout", "Home")" style="color:black;"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                            }
+                            else
+                            {
+                                <a href="/Home/Login" class="text-decoration-none text-black">Login</a>
+                                <a href="/Home/Register" class="text-decoration-none px-3 py-1 rounded-4 text-black" style="background-color:blue;">Sign up</a>
+                            }
+
                         </div>
                     </div>
                 </div>
@@ -165,7 +175,6 @@
         </nav>
     </div>
 }
-
 
 
 <section>
@@ -256,34 +265,34 @@
 
         if (ViewBag.lsSanPhamLienQuan != null && ViewBag.lsSanPhamLienQuan.Count > 0)
         {
-<div class="container">
-    <div class="row">
-        @foreach (var item in ViewBag.lsSanPhamLienQuan)
-        {
-            <div class="col-sm-4 col-md-4 pb-3" >
-                <div class="card h-100 ">
-                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID })">
-                        <img src="@item.Thumb" class="card-img-top" alt="error">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            Đăng bởi:
-                            <a href="@Url.Action("Details", "Products", new { id = item.ProductID })" style="font-size:14px;text-decoration:none;opacity:0.5;color:black;" class="linkTinTuc">
-                                @item.ProductName
-                            </a>
-                        </h5>
-                        <br />
-                        <a href="@Url.Action("Details", "Products", new { id = item.ProductID })" style="text-decoration: none; color:black; font-size:20px;" class="linkTinTuc">
-                            <p class="card-text">
-                                @String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:C0}", item.Price)
-                            </p>
-                        </a>
-                    </div>
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in ViewBag.lsSanPhamLienQuan)
+                    {
+                        <div class="col-sm-4 col-md-4 pb-3">
+                            <div class="card h-100 ">
+                                <a href="@Url.Action("Details", "Products", new { id = item.ProductID })">
+                                    <img src="@item.Thumb" class="card-img-top" alt="error">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Đăng bởi:
+                                        <a href="@Url.Action("Details", "Products", new { id = item.ProductID })" style="font-size:14px;text-decoration:none;opacity:0.5;color:black;" class="linkTinTuc">
+                                            @item.ProductName
+                                        </a>
+                                    </h5>
+                                    <br />
+                                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID })" style="text-decoration: none; color:black; font-size:20px;" class="linkTinTuc">
+                                        <p class="card-text">
+                                            @String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:C0}", item.Price)
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
-        }
-    </div>
-</div>
 
         }
         else

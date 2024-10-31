@@ -7,6 +7,9 @@ using System.Web.Mvc;
 using WebBTL.Models;
 using WebBTL.Extension;
 using WebBTL.Helper;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Web;
 
 namespace WebBTL.Controllers
 {
@@ -21,7 +24,10 @@ namespace WebBTL.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var SPNoiBat = _context.Products.OrderBy(p => p.ProductID).Take(6).ToList();
+            ViewBag.SPNoiBat = SPNoiBat;
+            return View(SPNoiBat);
+            
         }
      
         [HttpGet]
@@ -98,11 +104,26 @@ namespace WebBTL.Controllers
                 {
                     var enteredPassword = customer.Password;
 
-                   
+                    
                     if (enteredPassword.Equals(user.Password))
                     {
                         Session["Email"] = user.Email;
                         Session["AccountId"] = user.AccountID;
+
+                        // Khôi phục giỏ hàng từ cookie nếu có
+                        var cartCookie = Request.Cookies["cart"]?.Value;
+                        if (!string.IsNullOrEmpty(cartCookie))
+                        {
+                            var cart = JsonConvert.DeserializeObject<List<CartItem>>(cartCookie);
+                            Session["Cart"] = cart; // Đặt lại giỏ hàng vào session
+                          // Xóa Cookie sau khi khôi phục
+                            var cookie = new HttpCookie("cart")
+                            {
+                                Expires = DateTime.Now.AddDays(-1) // Xóa cookie
+                            };
+                            Response.Cookies.Add(cookie);
+                        }
+
                         // Kiểm tra nếu có URL nào đã được lưu trong session trước khi đăng nhập
                         string returnUrl = Session["ReturnUrl"] as string;
                         if (!string.IsNullOrEmpty(returnUrl))
@@ -114,12 +135,11 @@ namespace WebBTL.Controllers
 
                         // Nếu không có URL nào được lưu thì chuyển hướng về trang chủ
                         return RedirectToAction("Index", "Home");
-                       
                     }
                     else
                     {
                         ModelState.AddModelError("", "Invalid Email or Password");
-                        return View(customer); 
+                        return View(customer);
                     }
                 }
                 else
@@ -128,10 +148,11 @@ namespace WebBTL.Controllers
                     return View(customer);
                 }
             }
-                      
-            // If we got this far, something failed; redisplay form.
-            return View(customer); // Return the view with the current model state to show validation errors
+
+            // Nếu không hợp lệ, hiển thị lại form
+            return View(customer); // Trả về view với trạng thái model hiện tại để hiển thị lỗi xác thực
         }
+
 
 
 

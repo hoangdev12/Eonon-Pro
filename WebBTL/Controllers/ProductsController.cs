@@ -23,23 +23,29 @@ namespace WebBTL.Controllers
         // GET: Products
         public ActionResult Index(string searchTerm, string tag, int? page, int? id)
         {
-            var pageNumber = page == null || page <= 0 ? 1 : page.Value;
+            var pageNumber = page ?? 1;
             var pageSize = 20;
-            var lsPages = _context.Products.Where(x => x.CatID == id)
+
+            // Bắt đầu với danh sách sản phẩm có CatID cụ thể
+            var products = _context.Products
+                .Include(c => c.Category)
+                .Where(x => x.CatID == id)
                 .AsNoTracking()
-                .OrderBy(x => x.ProductID);
+                .AsQueryable();
 
-            var products = _context.Products.Include(c => c.Category).OrderBy(p => p.ProductID).AsQueryable();
-
-            if (!String.IsNullOrEmpty(searchTerm))
+            // Lọc theo tên sản phẩm nếu searchTerm không rỗng
+            if (!string.IsNullOrEmpty(searchTerm))
             {
                 products = products.Where(x => x.ProductName.Contains(searchTerm));
             }
 
-            PagedList<Product> models = new PagedList<Product>((IQueryable<Product>)lsPages, pageNumber, pageSize);
+            // Thực hiện phân trang trên danh sách sản phẩm đã được lọc
+            var models = new PagedList<Product>(products.OrderBy(p => p.ProductID), pageNumber, pageSize);
 
+            // Lưu giá trị searchTerm để hiển thị lại trên view
             ViewBag.SearchTerm = searchTerm;
             ViewBag.CurrentPage = pageNumber;
+
             return View(models);
         }
 

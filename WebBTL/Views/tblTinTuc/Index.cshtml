@@ -9,7 +9,6 @@
 }
 
 
-
 @section navbar{
 
     <div class="container-fluid bgtop2 ">
@@ -48,8 +47,8 @@
                         <div class="d-flex justify-content-center align-items-center gap-3">
                             @if (Session["Email"] != null)
                             {
-                                <a href=""><i class="fas fa-user fa-lg"></i></a>
-                                <a href=""><i class="fas fa-shopping-cart fa-lg"></i></a>
+                                <a href="@Url.Action("Profiles", "Home")"><i class="fas fa-user fa-lg"></i></a>
+                                <a href="@Url.Action("Cart", "Cart")"><i class="fas fa-shopping-cart fa-lg"></i></a>
                                 <a href="@Url.Action("Logout", "Home")" style="color:black;"><i class="fas fa-sign-out-alt fa-lg"></i></a>
                             }
                             else

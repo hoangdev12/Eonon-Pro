@@ -5,15 +5,57 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section navbar {
-    <div class="container-fluid bgtop2">
-        <nav class="navbar navbar-expand-lg bg-warning fixed-top">
-            <div class="container">
-                <a class="navbar-brand tr" href="@Url.Action("Index", "Home")" style="font-size: 38px;">
-                    <img src="~/Content/images/logo.png" alt="Alternate Text" style="width: 100px; max-width: 100px;" />
-                    <span style="border-left: 1px solid #000; margin: 0 15px; color: white;"></span>CART
-                </a>
-                <a href="#" class="d-flex justify-content-end" style="text-decoration: none; color: #000;">Bạn cần giúp đỡ?</a>
+@section navbar{
+
+    <div class="container-fluid bgtop2 ">
+        <nav class="navbar navbar-expand-lg bg-warning  fixed-top">
+            <div class="container ">
+                <a class="navbar-brand " href="#"><img src="~/Content/images/logo.png" alt="Alternate Text" style="width:100; max-width:100px;" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header bg-warning">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body  bg-warning">
+                        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/Home/Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Pages/About">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Products/Index">Product</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Service</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/tblTinTuc/Index">Tin tức</a>
+                            </li>
+                        </ul>
+                        <div class="d-flex justify-content-center align-items-center gap-3">
+                            @if (Session["Email"] != null)
+                            {
+                                <a href="@Url.Action("Profiles", "Home")"><i class="fas fa-user fa-lg"></i></a>
+                                <a href="@Url.Action("Cart", "Cart")"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                                <a href="@Url.Action("Logout", "Home")" style="color:black;"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                            }
+                            else
+                            {
+                                <a href="/Home/Login" class="text-decoration-none text-black">Login</a>
+                                <a href="/Home/Register" class="text-decoration-none px-3 py-1 rounded-4 text-black" style="background-color:blue;">Sign up</a>
+                            }
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
     </div>
@@ -37,51 +79,50 @@
     }
     else
     {
-        <table class="table table-hover table-striped">
-           
-            <thead class="thead-light">
+<form method="post" action="@Url.Action("UpdateCart", "Cart")">
+    <table class="table table-hover table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th>
+                    <input type="checkbox" id="selectAll" />
+                </th>
+                <th>Product Name</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <th>
-                        <input type="checkbox" id="selectAll" />
-                    </th>
-                    <th>Product Name</th>
-                    <th>Unit Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Action</th>
+                    <td>
+                        <input type="checkbox" class="product-checkbox" name="selectedProducts" value="@item.ProductID" />
+                    </td>
+                    <td>
+                        <img src="@item.thumb" alt="Alternate Text" style="max-width:80px; max-height:80px;" />
+                        @item.ProductName
+                    </td>
+                    <td>@(item.UnitPrice?.ToString("C0", new System.Globalization.CultureInfo("vi-VN")))</td>
+                    <td>
+                        <input type="number" name="quantities[@item.ProductID]" value="@item.Quantity" min="1" class="form-control quantity-input" data-unit-price="@item.UnitPrice" style="width: 70px;" />
+                    </td>
+                    <td class="total-price" data-product-id="@item.ProductID">
+                        @(item.TotalPrice.ToString("C0", new System.Globalization.CultureInfo("vi-VN")))
+                    </td>
+                    <td>
+                        @Html.ActionLink("Remove", "RemoveFromCart", new { productId = item.ProductID }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            
-                            <input type="checkbox" class="product-checkbox" data-unit-price="@item.UnitPrice" data-quantity="@item.Quantity" />
-                        </td>
+            }
+        </tbody>
+    </table>
 
-                        <td>
-                            <img src="@item.thumb" alt="Alternate Text" style="max-width:80px; max-height:80px;" />
-                            @item.ProductName
-                        </td>
-                        <td>@(item.UnitPrice?.ToString("C0", new System.Globalization.CultureInfo("vi-VN")))</td>
-                        <td>
-                            <input type="number" name="quantities[@item.ProductID]" value="@item.Quantity" min="1" class="form-control quantity-input" data-unit-price="@item.UnitPrice" style="width: 70px;" />
-                        </td>
-                        <td class="total-price" data-product-id="@item.ProductID">
-                            @(item.TotalPrice.ToString("C0", new System.Globalization.CultureInfo("vi-VN")))
-                        </td>
-                        <td>
-                            @Html.ActionLink("Remove", "RemoveFromCart", new { productId = item.ProductID }, new { @class = "btn btn-danger btn-sm" })
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-
-
-        <h3 class="d-flex justify-content-end">Total: <span id="cartTotal">@Model.Sum(i => i.TotalPrice).ToString("C0", new System.Globalization.CultureInfo("vi-VN"))</span></h3>
-        <a href="@Url.Action("Checkout", "Cart")" class="btn btn-primary">Thanh toán</a>
+    <h3 class="d-flex justify-content-end">Total: <span id="cartTotal">@Model.Sum(i => i.TotalPrice).ToString("C0", new System.Globalization.CultureInfo("vi-VN"))</span></h3>
+    <button type="submit" class="btn btn-success">Cập nhật giỏ hàng</button>
+    <a href="@Url.Action("Checkout", "Cart")" class="btn btn-primary">Thanh toán</a>
+</form>
     }
 
 </div>
@@ -112,7 +153,6 @@
             quantityInputs.forEach(input => {
                 input.addEventListener('input', function () {
                     const totalPriceElement = this.closest('tr').querySelector('.total-price');
-                    const checkbox = this.closest('tr').querySelector('.product-checkbox');
                     totalPriceElement.textContent = (parseFloat(this.value) * parseFloat(this.getAttribute('data-unit-price'))).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
                     updateCartTotal();
                 });
@@ -129,8 +169,8 @@
             selectAllCheckbox.addEventListener('change', function () {
                 productCheckboxes.forEach(checkbox => {
                     checkbox.checked = selectAllCheckbox.checked;
-                    updateCartTotal();
                 });
+                updateCartTotal();
             });
         });
     </script>
