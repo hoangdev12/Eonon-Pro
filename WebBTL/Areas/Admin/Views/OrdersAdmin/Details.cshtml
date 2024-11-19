@@ -1,0 +1,61 @@
+﻿@model WebBTL.Models.Order
+
+@{
+    ViewBag.Title = "Order Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5 pt-4">
+    <h2 class="text-center mb-4">Order Details</h2>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-warning text-white">
+            <h5>Thông tin đơn hàng</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Mã đơn hàng:</strong> @Model.OrderID</p>
+            <p><strong>Thời gian đặt hàng:</strong> @(Model.Orderdate?.ToString("dd/MM/yyyy") ?? "No information")</p>
+            <p><strong>Tổng tiền:</strong> @String.Format("{0:N0} VND", Model.TotalAmount)</p>
+            <p><strong>Trạng thái:</strong> @(Model.TransactStatu?.Status ?? "Đang xử lý")</p>
+
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-warning text-white">
+            <h5>Order Details</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var detail in Model.OrderDetails)
+                    {
+                        <tr>
+                            <td>@detail.Product.ProductName</td>
+                            <td>@detail.Quantity</td>
+                            <td>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", detail.Discount)</td>
+                            <td>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", detail.Discount * detail.Quantity)</td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="mt-4 d-flex justify-content-end gap-2">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }, new { @class = "btn btn-primary mr-3" })
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+    <br />
+    <br />
+</div>

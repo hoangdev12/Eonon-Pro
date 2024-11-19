@@ -207,6 +207,11 @@
                     <h3>@product.ProductName</h3>
                     <h4 style="color: #fdcc0d">@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:C0}", product.Price)</h4>
                     <p>@Html.Raw(product.ShortDesc)</p>
+                    <br />
+                    <br />
+                    <a href="@Url.Action("AddToCart", "Cart", new { productId = product.ProductID, quantity = 1 })" class="btn btn-outline-warning col-6 text-black" style="max-height:40px;">
+                        <i class="fas fa-shopping-cart" style="color: #000;"></i> Mua hàng
+                    </a>
                 </div>
                 <div class="side col-sm-4 col-md-4">
                     <div class="box-visao">
@@ -261,7 +266,12 @@
             </div>
         </div>
 
+
+
         @Html.Raw(product.Description)
+
+        <h4 class="text-center align-center">SẢN PHẨM LIÊN QUAN</h4>
+        <br />
 
         if (ViewBag.lsSanPhamLienQuan != null && ViewBag.lsSanPhamLienQuan.Count > 0)
         {

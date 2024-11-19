@@ -16,6 +16,7 @@
     <Property Name="CreateDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Role" Relationship="Self.FK_Accounts_Roles" FromRole="Account" ToRole="Roles" />
     <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Account" FromRole="Account" ToRole="Customer" />
+    <Property Name="PasswordResetToken" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Category">
     <Key>

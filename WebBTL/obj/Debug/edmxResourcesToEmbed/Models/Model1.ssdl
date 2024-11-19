@@ -14,6 +14,7 @@
     <Property Name="RoleID" Type="int" />
     <Property Name="LastLogin" Type="datetime" />
     <Property Name="CreateDate" Type="datetime" />
+    <Property Name="PasswordResetToken" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="Categories">
     <Key>

@@ -10,6 +10,8 @@ using WebBTL.Helper;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Web;
+using System.Net.Mail;
+using System.Net;
 
 namespace WebBTL.Controllers
 {
@@ -243,93 +245,111 @@ namespace WebBTL.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ForgotPassword(ForgotPasswordViewModel forgotPassword)
+        public ActionResult ForgotPassword(ForgotPasswordViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = _context.Accounts.FirstOrDefault(c => c.Email == forgotPassword.Email.Trim().ToLower());
+                var user = _context.Accounts.FirstOrDefault(c => c.Email == model.Email.Trim().ToLower());
 
                 if (user != null)
                 {
-                    var enteredPassword = forgotPassword.newPassword;
+                    // Create a reset token
+                    var token = Guid.NewGuid().ToString();
+                    user.PasswordResetToken = token; 
+                    _context.SaveChanges();
 
-                    if (enteredPassword.Equals(user.Password))
+                    // Send the email with the reset token
+                    try
                     {
-                        ModelState.AddModelError("", "Your password must not be the same as the old password!");
-                        return View(forgotPassword);
+                        SendEmail(user.Email, token);
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        user.Password = forgotPassword.newPassword;
-                        _context.SaveChanges();
-                        return RedirectToAction("Login", "Home");
+                        ModelState.AddModelError("", "Error sending email: " + ex.Message);
+                        return View(model);
                     }
+
+                    // Redirect to the ResetPassword action
+                    return RedirectToAction("ResetPassword", new { token = token });
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Can't find your account. Please register");
-                    return View(forgotPassword);
+                    Console.Write("loi");
+                    ModelState.AddModelError("", "Không tìm thấy tài khoản của bạn. Vui lòng đăng ký.");
+                    return View(model);
                 }
-
-            }
-            else
-            {
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
-                return View(forgotPassword);
             }
 
+            return View(model);
         }
 
-        [HttpGet]
-        public ActionResult ResetPassword()
+
+
+
+        public ActionResult ResetPassword(string token)
         {
-            return View();
+            var model = new ResetPasswordViewModel { Token = token };
+            return View(model);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ResetPassword(ResetPasswordViewModel resetPassword)
+        public ActionResult ResetPassword(ResetPasswordViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = _context.Accounts.FirstOrDefault(c => c.Password == resetPassword.Password);
+                var user = _context.Accounts.FirstOrDefault(c => c.PasswordResetToken == model.Token);
 
                 if (user != null)
                 {
-                    var enteredPassword = resetPassword.Password;
+                    // Cập nhật mật khẩu
+                    user.Password = model.NewPassword;
+                    user.PasswordResetToken = null; // Xóa mã sau khi sử dụng
+                    _context.SaveChanges();
 
-                    if (enteredPassword.Equals(user.Password))
-                    {
-                        if (!resetPassword.Equals(user.Password))
-                        {
-                            user.Password = resetPassword.newPassword;
-                            _context.SaveChanges();
-                            return RedirectToAction("Index", "Home");
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("", "Your password must not be the same as the old password!");
-                            return View(resetPassword);
-                        }
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Wrong Password!");
-                        return View(resetPassword);
-                    }
+                    return RedirectToAction("Login", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Something went wrong!");
-                    return View(resetPassword);
+                    ModelState.AddModelError("", "Mã xác nhận không hợp lệ.");
                 }
-
             }
-            else
+
+            return View(model);
+        }
+
+
+        private void SendEmail(string email, string token)
+        {
+            var fromAddress = new MailAddress("your-email@gmail.com", "Your Name");
+            var toAddress = new MailAddress(email);
+            const string fromPassword = "your-email-password"; // Use a secure method to store credentials
+            const string subject = "Mã xác nhận quên mật khẩu";
+            string body = $"Vui lòng sử dụng mã xác nhận sau để đặt lại mật khẩu của bạn: {token}. " +
+                          $"Vui lòng nhấp vào liên kết sau để đặt lại mật khẩu: " +
+                          $"{Url.Action("ResetPassword", "Home", new { token = token }, Request.Url.Scheme)}";
+
+            var smtp = new SmtpClient
             {
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
-                return View(resetPassword);
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
             }
         }
+
+
     }
 }

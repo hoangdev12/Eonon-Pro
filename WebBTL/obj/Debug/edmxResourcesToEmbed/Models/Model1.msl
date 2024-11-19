@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Accounts">
       <EntityTypeMapping TypeName="Eonon_ProModel.Account">
         <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="PasswordResetToken" ColumnName="PasswordResetToken" />
           <ScalarProperty Name="AccountID" ColumnName="AccountID" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Email" ColumnName="Email" />

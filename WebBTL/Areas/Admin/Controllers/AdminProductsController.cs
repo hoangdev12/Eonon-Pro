@@ -111,44 +111,41 @@ namespace WebBTL.Areas.Admin.Controllers
         // POST: Admin/AdminProducts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product, HttpPostedFileBase image)
         {
-            var existingProduct = _context.Products.Find(product.ProductID);
-            // Check if a new image is uploaded
+            // Kiểm tra nếu có ảnh mới được tải lên
             if (image != null && image.ContentLength > 0)
             {
-                // Get the image name and set path
+                // Lấy tên file và đường dẫn lưu ảnh
                 string fileName = System.IO.Path.GetFileName(image.FileName);
                 string filePath = Server.MapPath("~/Content/images/products/" + fileName);
 
-                // Ensure the directory exists
+                // Đảm bảo thư mục lưu ảnh tồn tại
                 string directoryPath = Server.MapPath("~/Content/images/products/");
                 if (!System.IO.Directory.Exists(directoryPath))
                 {
                     System.IO.Directory.CreateDirectory(directoryPath);
                 }
 
-                // Try to save the new image
+                // Cố gắng lưu ảnh vào thư mục
                 try
                 {
                     image.SaveAs(filePath);
-                    // Update the product thumb path with the new image
+                    // Cập nhật đường dẫn ảnh trong sản phẩm
                     product.Thumb = Url.Content("~/Content/images/products/" + fileName);
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Unable to save image. Please try again. " + ex.Message);
-                    var Categories = _context.Categories.ToList();
-                    ViewBag.CatID = new SelectList(Categories, "CategoryID", "CategoryName", product.CatID);
+                    ModelState.AddModelError("", "Không thể lưu ảnh. Vui lòng thử lại. " + ex.Message);
+                    var categories = _context.Categories.ToList();
+                    ViewBag.CatID = new SelectList(categories, "CategoryID", "CategoryName", product.CatID);
                     return View(product);
                 }
             }
             else
             {
-                // If no new image is uploaded, keep the existing Thumb value or a default image
-                product.Thumb = string.IsNullOrEmpty(existingProduct.Thumb) ? Url.Content("~/Content/images/default.png") : existingProduct.Thumb;
+                // Nếu không có ảnh được tải lên, sử dụng ảnh mặc định
+                product.Thumb = Url.Content("~/Content/images/default.png");
             }
 
             if (ModelState.IsValid)
@@ -158,12 +155,11 @@ namespace WebBTL.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-                return View(product);
-            }
-
-
-
-
+            // Trả về view nếu có lỗi trong ModelState
+            var categoriesList = _context.Categories.ToList();
+            ViewBag.CatID = new SelectList(categoriesList, "CategoryID", "CategoryName", product.CatID);
+            return View(product);
+        }
 
 
         // GET: Admin/AdminProducts/Edit/5
@@ -187,53 +183,54 @@ namespace WebBTL.Areas.Admin.Controllers
         // POST: Admin/AdminProducts/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product, HttpPostedFileBase image)
         {
-            // Retrieve the existing product from the database
+            // Lấy sản phẩm hiện tại từ cơ sở dữ liệu
             var existingProduct = _context.Products.Find(product.ProductID);
             if (existingProduct == null)
             {
                 return HttpNotFound();
             }
 
-            // Check if a new image is uploaded
+            // Kiểm tra nếu có ảnh mới được upload
             if (image != null && image.ContentLength > 0)
             {
-                // Get the image name and set path
+                // Lấy tên file và tạo đường dẫn
                 string fileName = System.IO.Path.GetFileName(image.FileName);
                 string filePath = Server.MapPath("~/Content/images/products/" + fileName);
 
-                // Ensure the directory exists
-                string directoryPath = Server.MapPath("~/Content/images/products/");
-                if (!System.IO.Directory.Exists(directoryPath))
+                // Kiểm tra xem file đã tồn tại trong thư mục hay chưa
+                if (!System.IO.File.Exists(filePath))
                 {
-                    System.IO.Directory.CreateDirectory(directoryPath);
-                }
+                    // Nếu file chưa tồn tại, lưu ảnh mới
+                    try
+                    {
+                        // Đảm bảo thư mục lưu ảnh tồn tại
+                        string directoryPath = Server.MapPath("~/Content/images/products/");
+                        if (!System.IO.Directory.Exists(directoryPath))
+                        {
+                            System.IO.Directory.CreateDirectory(directoryPath);
+                        }
 
-                // Try to save the new image
-                try
-                {
-                    image.SaveAs(filePath);
-                    // Update the product thumb path with the new image
-                    product.Thumb = Url.Content("~/Content/images/products/" + fileName);
+                        // Lưu ảnh vào thư mục
+                        image.SaveAs(filePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", "Không thể lưu ảnh. Vui lòng thử lại. " + ex.Message);
+                        var Categories = _context.Categories.ToList();
+                        ViewBag.CatID = new SelectList(Categories, "CategoryID", "CategoryName", product.CatID);
+                        return View(product);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", "Unable to save image. Please try again. " + ex.Message);
-                    var Categories = _context.Categories.ToList();
-                    ViewBag.CatID = new SelectList(Categories, "CategoryID", "CategoryName", product.CatID);
-                    return View(product);
-                }
-            }
-            else
-            {
-                // If no new image is uploaded, keep the existing Thumb value or a default image
-                product.Thumb = string.IsNullOrEmpty(existingProduct.Thumb) ? Url.Content("~/Content/images/default.png") : existingProduct.Thumb;
+                // Dù ảnh đã tồn tại hay vừa lưu mới, cập nhật đường dẫn ảnh
+                existingProduct.Thumb = Url.Content("~/Content/images/products/" + fileName);
             }
 
             if (ModelState.IsValid)
             {
-                // Update the existing product properties
+                // Cập nhật các thuộc tính của sản phẩm hiện tại (bao gồm Thumb)
                 existingProduct.ProductName = product.ProductName;
                 existingProduct.ShortDesc = product.ShortDesc;
                 existingProduct.Description = product.Description;
@@ -242,7 +239,7 @@ namespace WebBTL.Areas.Admin.Controllers
                 existingProduct.Discount = product.Discount;
                 existingProduct.Video = product.Video;
                 existingProduct.DateCreated = product.DateCreated;
-                existingProduct.Datemodified = DateTime.Now; // Update the modified date
+                existingProduct.Datemodified = DateTime.Now;
                 existingProduct.BestSellers = product.BestSellers;
                 existingProduct.HomeFlag = product.HomeFlag;
                 existingProduct.Active = product.Active;
@@ -252,19 +249,17 @@ namespace WebBTL.Areas.Admin.Controllers
                 existingProduct.MetaDesc = product.MetaDesc;
                 existingProduct.MetaKey = product.MetaKey;
                 existingProduct.UnitsInStock = product.UnitsInStock;
-                existingProduct.Thumb = product.Thumb;  // Update image
 
-                // Save changes to the database
+                // Lưu thay đổi vào cơ sở dữ liệu
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            // Repopulate the dropdown if the model state is invalid
+            // Tạo lại dropdown list nếu ModelState không hợp lệ
             var categories = _context.Categories.ToList();
             ViewBag.CatID = new SelectList(categories, "CategoryID", "CategoryName", product.CatID);
             return View(product);
         }
-
 
         // GET: Admin/AdminProducts/Delete/5
         [HttpPost]

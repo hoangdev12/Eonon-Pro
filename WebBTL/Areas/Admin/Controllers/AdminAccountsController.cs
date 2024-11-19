@@ -32,7 +32,7 @@ namespace WebBTL.Areas.Admin.Controllers
             IsTrangThai.Add(new SelectListItem() { Text = "Block", Value = "0" });
             ViewData["IsTrangThai"] = IsTrangThai;
 
-            var accounts = _context.Accounts.Include(a => a.Role).AsQueryable();
+            var accounts = _context.Accounts.Include(a => a.Role).OrderByDescending(a => a.AccountID).AsQueryable();
 
             // Lọc theo quyền truy cập nếu có giá trị
             if (RoleId.HasValue)

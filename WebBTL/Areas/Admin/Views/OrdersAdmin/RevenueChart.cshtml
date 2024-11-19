@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Revenue Chart";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<h2>Doanh thu</h2>
+
+<canvas id="revenueChart" width="400" height="200"></canvas>
+
+<script>
+    // Get the data passed from the Controller via ViewBag
+    var months = @Html.Raw(Json.Encode(ViewBag.Months));
+    var revenue = @Html.Raw(Json.Encode(ViewBag.Revenue));
+
+    // Ensure months and revenue are properly initialized as arrays
+    if (!Array.isArray(months)) {
+        months = [];
+    }
+    if (!Array.isArray(revenue)) {
+        revenue = [];
+    }
+
+    // Prepare the chart data
+    var chartData = {
+        labels: months, // Labels for months
+        datasets: [{
+            label: 'Doanh thu theo tháng',
+            data: revenue, // Revenue values
+            backgroundColor: 'rgba(54, 162, 235, 0.2)', // Light blue color
+            borderColor: 'rgba(54, 162, 235, 1)', // Dark blue border color
+            borderWidth: 1
+        }]
+    };
+
+    // Create the chart
+    var ctx = document.getElementById('revenueChart').getContext('2d');
+    var revenueChart = new Chart(ctx, {
+        type: 'bar', // Chart type (bar = column chart)
+        data: chartData,
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true, // Ensure Y-axis starts from zero
+                    ticks: {
+                        callback: function(value) {
+                            // Format the y-axis ticks as VND currency
+                            return value.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>

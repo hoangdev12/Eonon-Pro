@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace WebBTL.Models
 {
@@ -13,8 +10,16 @@ namespace WebBTL.Models
         public string ProductName { get; set; }
         public Nullable<decimal> UnitPrice { get; set; }
         public int Quantity { get; set; }
+        public string thumb { get; set; }
 
-        public decimal TotalPrice => (decimal)(UnitPrice * Quantity);
-        public string thumb {  get; set; }
+        // Use a default value if UnitPrice is null
+        public decimal TotalPrice
+        {
+            get
+            {
+                // If UnitPrice is null, return 0, otherwise calculate the total price
+                return (UnitPrice ?? 0) * Quantity;
+            }
+        }
     }
 }

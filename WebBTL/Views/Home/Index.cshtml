@@ -36,15 +36,15 @@
                         <div class="d-flex justify-content-center align-items-center gap-3">
                             @if (Session["Email"] != null)
                             {
-                             <a href="@Url.Action("Profiles", "Home")"><i class="fas fa-user fa-lg"></i></a>                              
-                             <a href="@Url.Action("Cart", "Cart")"><i class="fas fa-shopping-cart fa-lg"></i></a>
-                             <a href="@Url.Action("Logout", "Home")" style="color:black;"><i class="fas fa-sign-out-alt fa-lg"></i></a>
-                                   }
-                                   else
-                                   {
-                                   <a href="/Home/Login" class="text-decoration-none text-black">Login</a>
-                                   <a href="/Home/Register" class="text-decoration-none px-3 py-1 rounded-4 text-black" style="background-color:blue;">Sign up</a>
-                                   }
+                                <a href="@Url.Action("Profiles", "Home")"><i class="fas fa-user fa-lg"></i></a>
+                                <a href="@Url.Action("Cart", "Cart")"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                                <a href="@Url.Action("Logout", "Home")" style="color:black;"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                            }
+                            else
+                            {
+                                <a href="/Home/Login" class="text-decoration-none text-black">Login</a>
+                                <a href="/Home/Register" class="text-decoration-none px-3 py-1 rounded-4 text-black" style="background-color:blue;">Sign up</a>
+                            }
 
                         </div>
                     </div>
@@ -145,6 +145,19 @@
                             <p class="card-text" style="color:orange;">
                                 @product.Price.ToString("C", new System.Globalization.CultureInfo("vi-VN"))
                             </p>
+
+                            <!-- Container flex để nút Chi tiết và Mua hàng nằm trên cùng 1 dòng -->
+                            <div class="d-flex">
+                                <!-- Nút Chi tiết -->
+                                <a href="@Url.Action("Details", "Products", new { id = product.ProductID })" class="btn btn-warning col-6" style="margin-right:10px; max-height:40px;">
+                                    Chi tiết
+                                </a>
+
+                                <!-- Nút Mua hàng -->
+                                <a href="@Url.Action("AddToCart", "Cart", new { productId = product.ProductID, quantity = 1 })" class="btn btn-outline-warning col-6 text-black" style="max-height:40px;">
+                                    <i class="fas fa-shopping-cart" style="color: #000;"></i> Mua hàng
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -152,3 +165,5 @@
         </div>
     </div>
 </section>
+
+

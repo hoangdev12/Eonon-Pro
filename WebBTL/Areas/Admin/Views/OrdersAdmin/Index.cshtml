@@ -1,0 +1,63 @@
+﻿@model PagedList.IPagedList<WebBTL.Models.Order>
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .pagination li {
+        margin: 0 10px;
+    }
+</style>
+
+<div class="container">
+    <h2>Index</h2>
+
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model[0].OrderID)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Customer.FullName)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Orderdate)</th>
+            <th>@Html.DisplayNameFor(model => model[0].TotalAmount)</th>
+            <th>@Html.DisplayNameFor(model => model[0].TransactStatu.Status)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Note)</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.OrderID)</td>
+                <td>@Html.DisplayFor(modelItem => item.Customer.FullName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Orderdate)</td>
+                <td>@String.Format("{0:N0} VND", item.TotalAmount)</td>
+                <td>@Html.DisplayFor(modelItem => item.TransactStatu.Status)</td>
+                <td>@Html.DisplayFor(modelItem => item.Note)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OrderID }, new { @class = "btn btn-outline-primary mr-3" })
+                    @Html.ActionLink("Details", "Details", new { id = item.OrderID }, new { @class = "btn btn-outline-info" })                   
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div aria-label="Page navigation example">
+        <ul class="pagination d-flex justify-content-end " style="margin-top: 20px;">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = 10, CategoryId = Request["CategoryId"], TrangThai = Request["TrangThai"], searchTerm = ViewBag.SearchTerm }),
+                new PagedListRenderOptions
+                {
+                    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                    DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+                    LinkToPreviousPageFormat = "<button class='btn btn-secondary mr-3'>Previous</button>",
+                    LinkToNextPageFormat = "<button class='btn btn-secondary ml-3'>Next</button>",
+                })
+        </ul>
+    </div>
+
+</div>
+

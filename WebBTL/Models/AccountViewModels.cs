@@ -95,23 +95,18 @@ namespace WebBTL.Models
 
     public class ResetPasswordViewModel
     {
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Current Password")]
-        public string Password { get; set; }
+        [Required(ErrorMessage = "Mã xác nhận là bắt buộc.")]
+        public string Token { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Mật khẩu mới là bắt buộc.")]
         [DataType(DataType.Password)]
-        [Display(Name = "New Password")]
-        public string newPassword { get; set; }
+        [StringLength(100, ErrorMessage = "Mật khẩu phải có ít nhất {2} ký tự.", MinimumLength = 6)]
+        public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("newPassword", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Xác nhận mật khẩu mới")]
+        [Compare("NewPassword", ErrorMessage = "Mật khẩu và xác nhận mật khẩu không khớp.")]
         public string ConfirmPassword { get; set; }
-
     }
 
     public class ForgotPasswordViewModel

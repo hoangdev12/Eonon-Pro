@@ -26,12 +26,17 @@ namespace WebBTL.Controllers
             var pageNumber = page ?? 1;
             var pageSize = 20;
 
-            // Bắt đầu với danh sách sản phẩm có CatID cụ thể
+            // Bắt đầu với danh sách sản phẩm, nếu có id thì lọc theo CatID, nếu không thì hiển thị tất cả sản phẩm
             var products = _context.Products
                 .Include(c => c.Category)
-                .Where(x => x.CatID == id)
                 .AsNoTracking()
                 .AsQueryable();
+
+            // Nếu id (CatID) có giá trị, lọc theo danh mục sản phẩm
+            if (id.HasValue)
+            {
+                products = products.Where(x => x.CatID == id);
+            }
 
             // Lọc theo tên sản phẩm nếu searchTerm không rỗng
             if (!string.IsNullOrEmpty(searchTerm))
@@ -48,6 +53,7 @@ namespace WebBTL.Controllers
 
             return View(models);
         }
+
 
 
         public ActionResult Details(int id)

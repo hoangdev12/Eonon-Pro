@@ -61,13 +61,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.AccountID)
                 </td>
-                
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Password)
+                    @Html.Raw(item.Password.Length > 20 ? item.Password.Substring(0, 20) + "..." : item.Password)
                 </td>
+
                 @*<td>
             @Html.DisplayFor(modelItem => item.Salt)
         </td>
@@ -80,7 +81,7 @@
                 @*<td>
             @Html.DisplayFor(modelItem => item.LastLogin)
         </td>*@
-               
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Role.RoleName)
                 </td>

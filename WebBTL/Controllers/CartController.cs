@@ -20,6 +20,7 @@ namespace WebBTL.Controllers
             _context = new Eonon_ProEntities1();
         }
 
+        
         private void SetCartToCookie(List<CartItem> cart)
         {
             var cartJson = JsonConvert.SerializeObject(cart);
@@ -95,51 +96,29 @@ namespace WebBTL.Controllers
             return RedirectToAction("Cart");
         }
 
+    
         [HttpPost]
-        public ActionResult UpdateCart(Dictionary<int, int> quantities, int[] selectedProducts)
+        public ActionResult UpdateQuantities(int productId, int quantity)
         {
+            // Retrieve the cart from the session
             var cart = Session["Cart"] as List<CartItem>;
+
             if (cart != null)
             {
-                foreach (var productId in selectedProducts)
+                // Find the corresponding cart item
+                var item = cart.FirstOrDefault(i => i.ProductID == productId);
+                if (item != null)
                 {
-                    if (quantities.ContainsKey(productId))
-                    {
-                        var item = cart.FirstOrDefault(i => i.ProductID == productId);
-                        if (item != null)
-                        {
-                            item.Quantity = quantities[productId];
-                            
-                        }
-                    }
+                    // Update the quantity of the item in the cart
+                    item.Quantity = quantity;
                 }
-            }
-            return RedirectToAction("Cart"); 
-        }
 
-
-        [HttpPost]
-        public ActionResult UpdateQuantities(Dictionary<int, int> quantities, int[] selectedProducts)
-        {
-            var cart = Session["Cart"] as List<CartItem>;
-            if (cart != null)
-            {
-                foreach (var productId in selectedProducts)
-                {
-                    if (quantities.ContainsKey(productId))
-                    {
-                        var item = cart.FirstOrDefault(i => i.ProductID == productId);
-                        if (item != null)
-                        {
-                            item.Quantity = quantities[productId];
-                           
-                        }
-                    }
-                }
-               
+                // Save the updated cart back into the session
                 Session["Cart"] = cart;
             }
-            return RedirectToAction("Index");
+
+            // Redirect back to the Cart view to display the updated cart and prices
+            return RedirectToAction("Cart");
         }
 
 
@@ -236,7 +215,7 @@ namespace WebBTL.Controllers
                     OrderID = item.orderID,
                     ProductID = item.ProductID,
                     Quantity = item.Quantity,
-                    Price = item.UnitPrice
+                    Discount = (int?)item.UnitPrice
                 };
 
                 _context.OrderDetails.Add(orderDetail);
