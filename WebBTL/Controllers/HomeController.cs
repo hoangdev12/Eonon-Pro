@@ -24,6 +24,7 @@ namespace WebBTL.Controllers
             _context = new Eonon_ProEntities1();
         }
 
+       
         public ActionResult Index()
         {
             var SPNoiBat = _context.Products.OrderBy(p => p.ProductID).Take(6).ToList();
@@ -100,17 +101,20 @@ namespace WebBTL.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Tìm người dùng theo email
                 var user = _context.Accounts.FirstOrDefault(s => s.Email.Equals(customer.Email, StringComparison.OrdinalIgnoreCase));
 
                 if (user != null)
                 {
                     var enteredPassword = customer.Password;
 
-                    
+                    // Kiểm tra mật khẩu
                     if (enteredPassword.Equals(user.Password))
                     {
+                        // Lưu thông tin người dùng vào session
                         Session["Email"] = user.Email;
                         Session["AccountId"] = user.AccountID;
+                        Session["Role"] = user.Role.RoleName;
 
                         // Khôi phục giỏ hàng từ cookie nếu có
                         var cartCookie = Request.Cookies["cart"]?.Value;
@@ -118,7 +122,7 @@ namespace WebBTL.Controllers
                         {
                             var cart = JsonConvert.DeserializeObject<List<CartItem>>(cartCookie);
                             Session["Cart"] = cart; // Đặt lại giỏ hàng vào session
-                          // Xóa Cookie sau khi khôi phục
+                                                    // Xóa Cookie sau khi khôi phục
                             var cookie = new HttpCookie("cart")
                             {
                                 Expires = DateTime.Now.AddDays(-1) // Xóa cookie
@@ -135,8 +139,18 @@ namespace WebBTL.Controllers
                             return Redirect(returnUrl); // Chuyển hướng về URL được lưu
                         }
 
-                        // Nếu không có URL nào được lưu thì chuyển hướng về trang chủ
-                        return RedirectToAction("Index", "Home");
+                        // Kiểm tra vai trò người dùng và chuyển hướng đến trang tương ứng
+                        if (user.Role.RoleName == "admin")
+                        {
+                            // Nếu là Admin, chuyển hướng tới trang Admin (Home Controller trong Admin Area)
+                            return RedirectToAction("Index", "Home", new { area = "Admin" });
+                        }
+
+                        else if (user.Role.RoleName == "user")
+                        {
+                            // Nếu là User, chuyển hướng tới trang User (hoặc trang khác của người dùng)
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
                     else
                     {

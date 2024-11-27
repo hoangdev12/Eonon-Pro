@@ -17,7 +17,8 @@
             <p><strong>Thời gian đặt hàng:</strong> @(Model.Orderdate?.ToString("dd/MM/yyyy") ?? "No information")</p>
             <p><strong>Tổng tiền:</strong> @String.Format("{0:N0} VND", Model.TotalAmount)</p>
             <p><strong>Trạng thái:</strong> @(Model.TransactStatu?.Status ?? "Đang xử lý")</p>
-
+            <p><strong>Tên khách hàng:</strong> @(Model.Customer.FullName)</p>
+            <p><strong>SDT khách hàng:</strong> @(Model.Customer.Phone)</p>
         </div>
     </div>
 
@@ -43,6 +44,7 @@
                             <td>@detail.Quantity</td>
                             <td>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", detail.Discount)</td>
                             <td>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", detail.Discount * detail.Quantity)</td>
+                            
 
                         </tr>
                     }

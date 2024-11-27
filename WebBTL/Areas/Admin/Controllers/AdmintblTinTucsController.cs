@@ -25,26 +25,30 @@ namespace WebBTL.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminPages
-        public ActionResult Index(string searchTerm,int? tintuc)
+        // GET: Admin/AdminPages
+        public ActionResult Index(string searchTerm, int? tintuc, int page = 1, int pageSize = 10, int? CategoryId = null, int? TrangThai = null)
         {
-            var tintucNumber = tintuc == null || tintuc <= 0 ? 1 : tintuc.Value;
-            var tintucSize = 20;
-            var lsTintuc = _context.tblTinTucs
-                .AsNoTracking()
-                .OrderBy(x => x.PostID);
+          
 
-            // Nếu có searchTerm, thực hiện tìm kiếm theo CatName
-            if (!String.IsNullOrEmpty(searchTerm))
+            // Lấy danh sách bài viết từ database, sắp xếp theo PostID giảm dần
+            var lsTintuc = _context.tblTinTucs
+                                   .AsNoTracking()
+                                   .OrderByDescending(x => x.PostID); // Sử dụng OrderByDescending mà không cần ép kiểu
+
+            // Nếu có searchTerm, thực hiện tìm kiếm theo tiêu đề bài viết
+            if (!string.IsNullOrEmpty(searchTerm))
             {
-                // Lọc các mục có CatName chứa searchTerm
                 lsTintuc = (IOrderedQueryable<tblTinTuc>)lsTintuc.Where(x => x.Title.Contains(searchTerm));
             }
 
-            PagedList<tblTinTuc> models = new PagedList<tblTinTuc>(lsTintuc, tintucNumber, tintucSize);
+            // Tạo phân trang
+            var pagedProducts = lsTintuc.ToPagedList(page, pageSize);
 
-            ViewBag.CurrentPage = tintucNumber;
+            // Truyền thông tin tìm kiếm vào ViewBag để giữ giá trị khi chuyển trang
             ViewBag.SearchTerm = searchTerm;
-            return View(models);
+            
+
+            return View(pagedProducts); // Trả về view với dữ liệu phân trang
         }
 
         // GET: Admin/AdmintblTinTucs/Details/5
@@ -63,10 +67,18 @@ namespace WebBTL.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdmintblTinTucs/Create
+        [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            var model = new tblTinTuc
+            {
+                Contents = string.Empty,  // Giá trị mặc định
+                SContents = string.Empty // Giá trị mặc định
+            };
+
+            return View(model);
         }
+
 
         // POST: Admin/AdmintblTinTucs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -76,40 +88,38 @@ namespace WebBTL.Areas.Admin.Controllers
         public ActionResult Create([Bind(Include = "PostID,Title,SContents,Contents,Thumb,Published,Alias,CreateDate,Author,AccountID,Tags,CatID,isHot,isNewFeed,MetaKey,MetaDesc,Views")] tblTinTuc tblTinTuc, HttpPostedFileBase image)
         {
 
-            var existingTblTinTuc = _context.tblTinTucs.Find(tblTinTuc.PostID);
-            // Check if a new image is uploaded
+            // Kiểm tra nếu có ảnh mới được tải lên
             if (image != null && image.ContentLength > 0)
             {
-                // Get the image name and set path
+                // Lấy tên file và đường dẫn lưu ảnh
                 string fileName = System.IO.Path.GetFileName(image.FileName);
-                string filePath = Server.MapPath("~/Content/images/products/" + fileName);
+                string filePath = Server.MapPath("~/Content/images/tintucs/" + fileName);
 
-                // Ensure the directory exists
-                string directoryPath = Server.MapPath("~/Content/images/products/");
+                // Đảm bảo thư mục lưu ảnh tồn tại
+                string directoryPath = Server.MapPath("~/Content/images/tintucs/");
                 if (!System.IO.Directory.Exists(directoryPath))
                 {
                     System.IO.Directory.CreateDirectory(directoryPath);
                 }
 
-                // Try to save the new image
+                // Cố gắng lưu ảnh vào thư mục
                 try
                 {
                     image.SaveAs(filePath);
-                    // Update the product thumb path with the new image
-                    tblTinTuc.Thumb = Url.Content("~/Content/images/products/" + fileName);
+                    // Cập nhật đường dẫn ảnh trong sản phẩm
+                    tblTinTuc.Thumb = Url.Content("~/Content/images/tintucs/" + fileName);
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Unable to save image. Please try again. " + ex.Message);
-                    var Categories = _context.Categories.ToList();
-                    ViewBag.CatID = new SelectList(Categories, "CategoryID", "CategoryName", tblTinTuc.CatID);
+                    ModelState.AddModelError("", "Không thể lưu ảnh. Vui lòng thử lại. " + ex.Message);
+                   
                     return View(tblTinTuc);
                 }
             }
             else
             {
-                // If no new image is uploaded, keep the existing Thumb value or a default image
-                tblTinTuc.Thumb = string.IsNullOrEmpty(existingTblTinTuc.Thumb) ? Url.Content("~/Content/images/default.png") : existingTblTinTuc.Thumb;
+                // Nếu không có ảnh được tải lên, sử dụng ảnh mặc định
+                tblTinTuc.Thumb = Url.Content("~/Content/images/default.png");
             }
 
             if (ModelState.IsValid)
@@ -119,6 +129,8 @@ namespace WebBTL.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
+            
+            
             return View(tblTinTuc);
         }
 
@@ -142,6 +154,7 @@ namespace WebBTL.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "PostID,Title,SContents,Contents,Thumb,Published,Alias,CreateDate,Author,AccountID,Tags,CatID,isHot,isNewFeed,MetaKey,MetaDesc,Views")] tblTinTuc tblTinTuc, HttpPostedFileBase image)
         {
             var existingtblTinTuc = _context.tblTinTucs.Find(tblTinTuc.PostID);
@@ -151,39 +164,38 @@ namespace WebBTL.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            // Check if a new image is uploaded
+            // Kiểm tra nếu có ảnh mới được tải lên
             if (image != null && image.ContentLength > 0)
             {
-                // Get the image name and set path
+                // Lấy tên file và đường dẫn lưu ảnh
                 string fileName = System.IO.Path.GetFileName(image.FileName);
-                string filePath = Server.MapPath("~/Content/images/products/" + fileName);
+                string filePath = Server.MapPath("~/Content/images/tintucs/" + fileName);
 
-                // Ensure the directory exists
-                string directoryPath = Server.MapPath("~/Content/images/products/");
+                // Đảm bảo thư mục lưu ảnh tồn tại
+                string directoryPath = Server.MapPath("~/Content/images/tintucs/");
                 if (!System.IO.Directory.Exists(directoryPath))
                 {
                     System.IO.Directory.CreateDirectory(directoryPath);
                 }
 
-                // Try to save the new image
+                // Cố gắng lưu ảnh vào thư mục
                 try
                 {
                     image.SaveAs(filePath);
-                    // Update the product thumb path with the new image
-                    tblTinTuc.Thumb = Url.Content("~/Content/images/products/" + fileName);
+                    // Cập nhật đường dẫn ảnh trong sản phẩm
+                    tblTinTuc.Thumb = Url.Content("~/Content/images/tintucs/" + fileName);
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Unable to save image. Please try again. " + ex.Message);
-                    var Categories = _context.Categories.ToList();
-                    ViewBag.CatID = new SelectList(Categories, "CategoryID", "CategoryName", tblTinTuc.CatID);
+                    ModelState.AddModelError("", "Không thể lưu ảnh. Vui lòng thử lại. " + ex.Message);
+
                     return View(tblTinTuc);
                 }
             }
             else
             {
-                // If no new image is uploaded, keep the existing Thumb value or a default image
-                tblTinTuc.Thumb = string.IsNullOrEmpty(existingtblTinTuc.Thumb) ? Url.Content("~/Content/images/default.png") : existingtblTinTuc.Thumb;
+                // Nếu không có ảnh được tải lên, sử dụng ảnh mặc định
+                tblTinTuc.Thumb = Url.Content("~/Content/images/default.png");
             }
 
 
@@ -210,7 +222,7 @@ namespace WebBTL.Areas.Admin.Controllers
 
                 // Save changes to the database
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","AdmintblTintucs");
             }
 
 

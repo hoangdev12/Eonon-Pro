@@ -102,15 +102,25 @@ namespace WebBTL.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminProducts/Create
+        [HttpGet]
         public ActionResult Create()
         {
             ViewBag.CatID = new SelectList(_context.Categories, "CatID", "CatName");
-            return View();
+            var model = new Product
+            {
+                Description = string.Empty,  // Giá trị mặc định
+                ShortDesc = string.Empty // Giá trị mặc định
+            };
+
+            return View(model);
+            
         }
 
         // POST: Admin/AdminProducts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product, HttpPostedFileBase image)
         {
             // Kiểm tra nếu có ảnh mới được tải lên

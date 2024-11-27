@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\Eonon\\Eonon-Pro\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\areas\\admin\\views\\ordersadmin\\revenuechart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\views\\ordersadmin\\revenuechart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\views\\home\\profiles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\profiles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\areas\\admin\\controllers\\ordersadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\controllers\\ordersadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "RevenueChart.cshtml",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Views\\OrdersAdmin\\RevenueChart.cshtml",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Views\\OrdersAdmin\\RevenueChart.cshtml",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Views\\OrdersAdmin\\RevenueChart.cshtml*",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Views\\OrdersAdmin\\RevenueChart.cshtml*",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAABwAAAApAAAAAAAAAA==",
+              "Title": "Profiles.cshtml",
+              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\Profiles.cshtml",
+              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\Profiles.cshtml",
+              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\Profiles.cshtml*",
+              "RelativeToolTip": "WebBTL\\Views\\Home\\Profiles.cshtml*",
+              "ViewState": "AgIAAFUAAAAAAAAAAADwv5AAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-19T09:12:52.434Z",
+              "WhenOpened": "2024-11-27T05:37:17.167Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "OrdersAdminController.cs",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\OrdersAdminController.cs",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Controllers\\OrdersAdminController.cs",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\OrdersAdminController.cs",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Controllers\\OrdersAdminController.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAkwHQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T09:12:16.486Z",
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "WebBTL\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "WebBTL\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-27T05:34:55.33Z",
               "EditorCaption": ""
             }
           ]

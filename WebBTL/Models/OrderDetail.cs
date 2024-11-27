@@ -21,8 +21,6 @@ namespace WebBTL.Models
         public Nullable<int> Discount { get; set; }
         public Nullable<int> Quantity { get; set; }
         public Nullable<System.DateTime> ShipDate { get; set; }
-
-        public decimal? price { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual Order Order { get; set; }

@@ -1,144 +1,115 @@
 ﻿@model WebBTL.Models.Product
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create Product";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+<div class="container bg-light p-4 rounded shadow-sm">
+    <h2 class="text-primary">Tạo sản phẩm mới</h2>
 
-<div class="container">
-    <h2>Create</h2>
-
-    @using (Html.BeginForm("Create", "AdminProducts", FormMethod.Post, new {enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Create", "AdminProducts", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <h4>Product</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
-        </div>
-    </div>
+        <div class="form-horizontal">
+            <h4 class="text-secondary">Thông tin sản phẩm</h4>
+            <hr />
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.CatID, "CatID", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.CatID, (IEnumerable<SelectListItem>)ViewBag.Categories, " Select Category ", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.CatID, "", new { @class = "text-danger" })
-        </div>
-    </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ShortDesc, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ShortDesc, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ShortDesc, "", new { @class = "text-danger" })
-        </div>
-    </div>
+            <!-- Product Name -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "col-md-3 col-form-label font-weight-bold" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-        </div>
-    </div>
+            <!-- Category -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.CatID, "Danh mục", htmlAttributes: new { @class = "col-md-3 col-form-label font-weight-bold" })
+                <div class="col-md-9">
+                    @Html.DropDownListFor(model => model.CatID, (IEnumerable<SelectListItem>)ViewBag.Categories, "Chọn danh mục", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CatID, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
+            <!-- Short Description -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.ShortDesc, htmlAttributes: new { @class = "col-md-3 col-form-label font-weight-bold" })
+                <div class="col-md-9">
+                    <textarea id="ShortDesc" name="ShortDesc" class="form-control" rows="4">@Model.ShortDesc</textarea>
+                    @Html.ValidationMessageFor(model => model.ShortDesc, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
+            <!-- Full Description -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "col-md-3 col-form-label font-weight-bold" })
+                <div class="col-md-9">
+                    <textarea id="Description" name="Description" class="form-control" rows="6">@Model.Description</textarea>
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-        </div>
-    </div>
+            <!-- Price -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "col-md-3 col-form-label font-weight-bold" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Discount, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })
-        </div>
-    </div>
+            <!-- Discount -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Discount, htmlAttributes: new { @class = "col-md-3 col-form-label font-weight-bold" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ShortDesc, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ShortDesc, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ShortDesc, "", new { @class = "text-danger" })
-        </div>
-    </div>
+            <!-- Product Title -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Titles, htmlAttributes: new { @class = "col-md-3 col-form-label font-weight-bold" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Titles, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Titles, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
+            <!-- Units in Stock -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.UnitsInStock, htmlAttributes: new { @class = "col-md-3 col-form-label font-weight-bold" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.UnitsInStock, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UnitsInStock, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
+            <!-- Product Image -->
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Thumb, htmlAttributes: new { @class = "col-md-3 col-form-label font-weight-bold" })
+                <div class="col-md-9">
+                    <input type="file" name="image" id="image" class="form-control-file" accept="image/*" />
+                    @Html.ValidationMessageFor(model => model.Thumb, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Active, new SelectList(new[] {
-                new { Value = "true", Text = "In Stock" },
-                new { Value = "false", Text = "OutStock" }
-            }, "Value", "Text"), new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.BestSellers, "Best Seller", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.CheckBoxFor(model => model.BestSellers, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.BestSellers, "", new { @class = "text-danger" })
+            <!-- Submit Button -->
+            <div class="form-group row">
+                <div class="col-md-9 offset-md-3">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Tạo sản phẩm
+                    </button>
+                    <a href="@Url.Action("Index", "AdminProducts")" class="btn btn-secondary ml-2">
+                        <i class="fas fa-arrow-left"></i> Quay lại
+                    </a>
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.HomeFlag, "Home Flag", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.CheckBoxFor(model => model.HomeFlag, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.HomeFlag, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Titles, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Titles, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Titles, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.UnitsInStock, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.UnitsInStock, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.UnitsInStock, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Thumb, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input type="file" name="image" id="image" class="form-control-file" accept="image/*" style="width:auto;" />
-            @Html.ValidationMessageFor(model => model.Thumb, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
     }
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
 </div>
