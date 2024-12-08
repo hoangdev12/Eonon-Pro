@@ -7,8 +7,20 @@
       "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\profiles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\views\\home\\updateprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\updateprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\views\\home\\orderhistory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\orderhistory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "WebBTL\\Models\\Order.cs",
+              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Models\\Order.cs",
+              "RelativeToolTip": "WebBTL\\Models\\Order.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T15:17:45.084Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrderHistory.cshtml",
+              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\OrderHistory.cshtml",
+              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\OrderHistory.cshtml",
+              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\OrderHistory.cshtml",
+              "RelativeToolTip": "WebBTL\\Views\\Home\\OrderHistory.cshtml",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAGQAAAB+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-08T15:11:11.306Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UpdateProfile.cshtml",
+              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\UpdateProfile.cshtml",
+              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\UpdateProfile.cshtml",
+              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\UpdateProfile.cshtml*",
+              "RelativeToolTip": "WebBTL\\Views\\Home\\UpdateProfile.cshtml*",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAAAE4AAAB1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-08T14:17:47.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "WebBTL\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "WebBTL\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAIcBAAAAAAAAAAAuwJ8BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T14:14:47.671Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Profiles.cshtml",
               "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\Profiles.cshtml",
               "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\Profiles.cshtml",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\Profiles.cshtml*",
-              "RelativeToolTip": "WebBTL\\Views\\Home\\Profiles.cshtml*",
-              "ViewState": "AgIAAFUAAAAAAAAAAADwv5AAAAAPAAAAAAAAAA==",
+              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\Profiles.cshtml",
+              "RelativeToolTip": "WebBTL\\Views\\Home\\Profiles.cshtml",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAFIAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-27T05:37:17.167Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "WebBTL\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "WebBTL\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-27T05:34:55.33Z",
+              "WhenOpened": "2024-12-08T14:11:43.441Z",
               "EditorCaption": ""
             }
           ]

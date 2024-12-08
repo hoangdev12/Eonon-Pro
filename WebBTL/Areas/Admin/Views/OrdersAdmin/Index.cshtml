@@ -34,11 +34,22 @@
                 <td>@Html.DisplayFor(modelItem => item.Customer.FullName)</td>
                 <td>@Html.DisplayFor(modelItem => item.Orderdate)</td>
                 <td>@String.Format("{0:N0} VND", item.TotalAmount)</td>
-                <td>@Html.DisplayFor(modelItem => item.TransactStatu.Status)</td>
-                <td>@Html.DisplayFor(modelItem => item.Note)</td>
+                <td>
+                    @if (item.TransactStatu.TransactStatusID == 2)
+                    {
+                        <span class="badge bg-warning">@item.TransactStatu.Status</span>
+                    }
+                    else if (item.TransactStatu.TransactStatusID == 1)
+                    {
+                        <span class="badge bg-success">@item.TransactStatu.Status</span>
+                    }
+                   
+                </td>
+
+                
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.OrderID }, new { @class = "btn btn-outline-primary mr-3" })
-                    @Html.ActionLink("Details", "Details", new { id = item.OrderID }, new { @class = "btn btn-outline-info" })                   
+                    @Html.ActionLink("Details", "Details", new { id = item.OrderID }, new { @class = "btn btn-outline-info" })
                 </td>
             </tr>
         }

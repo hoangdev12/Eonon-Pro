@@ -4,89 +4,50 @@
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 <div class="container">
-    <h2>Details</h2>
+    <h2 class="my-4">Account Details</h2>
 
-    <div>
-        <h4>Account</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Phone)
-            </dt>
+    <div class="card">
+        <div class="card-header">
+            <h4>Account Information</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Phone)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Phone)</dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Phone)
-            </dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Email)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Password)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Password)</dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Salt)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Salt)</dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Password)
-            </dt>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Active)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Active)</dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Password)
-            </dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.FullName)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.FullName)</dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Salt)
-            </dt>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.LastLogin)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.LastLogin)</dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Salt)
-            </dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CreateDate)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.CreateDate)</dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Active)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Active)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.FullName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.FullName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.LastLogin)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.LastLogin)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.CreateDate)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.CreateDate)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Role.RoleName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Role.RoleName)
-            </dd>
-
-        </dl>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Role.RoleName)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Role.RoleName)</dd>
+            </dl>
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.AccountID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+
+    <div class="d-flex justify-content-between mt-4">
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.AccountID }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
+        </p>
+    </div>
 </div>

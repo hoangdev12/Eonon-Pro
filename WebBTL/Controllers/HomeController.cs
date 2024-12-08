@@ -12,6 +12,10 @@ using System.Collections.Generic;
 using System.Web;
 using System.Net.Mail;
 using System.Net;
+using System.IO;
+using PagedList;
+using System.Data;
+using System.Data.Entity;
 
 namespace WebBTL.Controllers
 {
@@ -169,9 +173,6 @@ namespace WebBTL.Controllers
             return View(customer); // Trả về view với trạng thái model hiện tại để hiển thị lỗi xác thực
         }
 
-
-
-
         public ActionResult Logout()
         {
             // Lưu lại URL của trang hiện tại trước khi logout
@@ -184,23 +185,17 @@ namespace WebBTL.Controllers
             return Redirect(currentUrl);
         }
 
-        
-
-
         [HttpGet]
         public ActionResult Profiles()
         {
-
             if (Session["Email"] == null)
             {
                 return RedirectToAction("Login", "Home");
             }
 
-            int accountId = int.Parse(Session["AccountId"].ToString());
-
             if (Session["AccountId"] != null)
             {
-                accountId = int.Parse(Session["AccountId"].ToString());
+                int accountId = int.Parse(Session["AccountId"].ToString());
                 var customer = _context.Customers.FirstOrDefault(c => c.AccountID == accountId);
 
                 if (customer == null)
@@ -208,48 +203,103 @@ namespace WebBTL.Controllers
                     return HttpNotFound("Không tìm thấy thông tin người dùng.");
                 }
 
-
-
                 return View(customer);
             }
             else
             {
                 return RedirectToAction("Index", "Home");
             }
-
         }
 
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult UpdateProfile(Customer updatedCustomer)
+        [HttpGet]
+        public ActionResult UpdateProfile()
         {
-            if (Session["UserID"] == null)
+            // Retrieve user data for display
+            if (Session["AccountId"] == null)
             {
                 return RedirectToAction("Login", "Home");
             }
 
-            int accountId = int.Parse(Session["UserID"].ToString());
+            int accountId = int.Parse(Session["AccountId"].ToString());
             var customer = _context.Customers.FirstOrDefault(c => c.AccountID == accountId);
 
-            if (customer != null)
+            if (customer == null)
             {
-                // Cập nhật các thông tin mới
-                customer.FullName = updatedCustomer.FullName;
-                customer.Phone = updatedCustomer.Phone;
-                customer.Avatar = updatedCustomer.Avatar;
+                return HttpNotFound("Không tìm thấy thông tin người dùng.");
+            }
 
-                _context.SaveChanges();
+            return View(customer);
+        }
 
-                // Cập nhật Session
-                Session["FullName"] = customer.FullName;
-                Session["Avatar"] = customer.Avatar;
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateProfile(Customer updatedCustomer, HttpPostedFileBase image)
+        {
+            if (Session["AccountId"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
 
+            int accountId = int.Parse(Session["AccountId"].ToString());
+            var customer = _context.Customers.FirstOrDefault(c => c.AccountID == accountId);
+            if (customer == null)
+            {
+                TempData["Error"] = "Không tìm thấy thông tin tài khoản.";
                 return RedirectToAction("Profiles");
             }
 
-            return View("Profiles", updatedCustomer);
+            if (ModelState.IsValid)
+            {
+                customer.FullName = updatedCustomer.FullName;
+                customer.Phone = updatedCustomer.Phone;
+
+                if (image != null && image.ContentLength > 0)
+                {
+                    var validImageTypes = new[] { "image/gif", "image/jpeg", "image/png" };
+
+                    if (!validImageTypes.Contains(image.ContentType))
+                    {
+                        ModelState.AddModelError("", "Please choose either a GIF, JPG or PNG image.");
+                        return View(customer);
+                    }
+
+                    string fileName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(image.FileName);
+                    string filePath = Server.MapPath("~/Content/images/products/" + fileName);
+
+                    try
+                    {
+                        string directoryPath = Server.MapPath("~/Content/images/products/");
+                        if (!System.IO.Directory.Exists(directoryPath))
+                        {
+                            System.IO.Directory.CreateDirectory(directoryPath);
+                        }
+
+                        image.SaveAs(filePath);
+                        customer.Avatar = Url.Content("~/Content/images/products/" + fileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", "Không thể lưu ảnh. Vui lòng thử lại. " + ex.Message);
+                        return View(customer);
+                    }
+                }
+
+                _context.SaveChanges();
+
+                Session["FullName"] = customer.FullName;
+                Session["Avatar"] = customer.Avatar;
+
+                TempData["Success"] = "Cập nhật thông tin thành công!";
+                return RedirectToAction("Profiles");
+            }
+
+            TempData["Error"] = "Thông tin không hợp lệ.";
+            return View(customer);
         }
+
+
+
+
 
         [HttpGet]
         public ActionResult ForgotPassword()
@@ -362,6 +412,25 @@ namespace WebBTL.Controllers
             {
                 smtp.Send(message);
             }
+        }
+
+        public ActionResult OrderHistory()
+        {
+            // Kiểm tra xem người dùng đã đăng nhập chưa
+            if (Session["AccountId"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
+            int accountId = int.Parse(Session["AccountId"].ToString());
+
+            // Lấy danh sách đơn hàng của người dùng
+            var orders = _context.Orders
+                                 .Where(o => o.Customer.AccountID == accountId)  // Lọc theo tài khoản người dùng
+                                 .OrderByDescending(o => o.Orderdate)    // Sắp xếp theo ngày đặt đơn hàng
+                                 .ToList();
+
+            return View(orders);
         }
 
 

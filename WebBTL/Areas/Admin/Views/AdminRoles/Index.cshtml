@@ -4,47 +4,48 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<div class="container">
+    <h2>Index</h2>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.RoleID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RoleName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr id="trow_@item.RoleID">
-            <td>
-                @Html.DisplayFor(modelItem => item.RoleID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoleName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.RoleID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.RoleID }) |
-                <a href="#" data-id="@item.RoleID" class="btn btn-outline-danger btnDelete">Delete</a>
-            </td>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr id="trow_@item.RoleID">
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.RoleID }, new {@class="btn btn-outline-warning"}) 
+                    @Html.ActionLink("Details", "Details", new { id = item.RoleID },new {@class="btn btn-outline-info"}) 
+                    <a href="#" data-id="@item.RoleID" class="btn btn-outline-danger btnDelete">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
 
 @section scripts {
     <script>
