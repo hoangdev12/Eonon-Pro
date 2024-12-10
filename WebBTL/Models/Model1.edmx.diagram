@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="db8099cc110945c284b6fdf50014b4d9" Name="Diagram1">
+      <Diagram DiagramId="db8099cc110945c284b6fdf50014b4d9" Name="Diagram1" ZoomLevel="72">
         <EntityTypeShape EntityType="Eonon_ProModel.Account" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="Eonon_ProModel.Category" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Eonon_ProModel.Category" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="Eonon_ProModel.ContentBlock" Width="1.5" PointX="12" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="Eonon_ProModel.Customer" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Eonon_ProModel.Location" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Eonon_ProModel.OrderDetail" Width="1.5" PointX="9.75" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Eonon_ProModel.Order" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Eonon_ProModel.Page" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Eonon_ProModel.Product" Width="1.5" PointX="7.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Eonon_ProModel.Page" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Eonon_ProModel.Product" Width="1.5" PointX="7.75" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Eonon_ProModel.Role" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Eonon_ProModel.Shipper" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Eonon_ProModel.sysdiagram" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
