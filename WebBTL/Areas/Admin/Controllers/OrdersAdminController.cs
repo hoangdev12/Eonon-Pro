@@ -8,6 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebBTL.Models;
+using ClosedXML.Excel;
+using System.IO;
 
 namespace WebBTL.Areas.Admin.Controllers
 {
@@ -113,7 +115,7 @@ namespace WebBTL.Areas.Admin.Controllers
 
         public ActionResult RevenueChart()
         {
-            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            int accountId = (int)Session["AccountId"]; 
             var user = db.Customers.FirstOrDefault(u => u.AccountID == accountId);
 
             if (user != null)
@@ -128,24 +130,25 @@ namespace WebBTL.Areas.Admin.Controllers
                 ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
                 ViewBag.FullName = "No Name Available";
             }
+
             // Get the orders with Orderdate and TotalAmount
             var orders = db.Orders
-                .Where(o => o.Orderdate.HasValue) // Filter out orders without a date
+                .Where(o => o.Orderdate.HasValue) 
                 .Select(o => new
                 {
                     Year = o.Orderdate.Value.Year,
                     Month = o.Orderdate.Value.Month,
                     TotalAmount = o.TotalAmount
                 })
-                .ToList(); // Execute the query and retrieve data
+                .ToList(); 
 
             // Group the data by Year and Month
             var revenueData = orders
                 .GroupBy(o => new { o.Year, o.Month })
                 .Select(g => new
                 {
-                    YearMonth = new DateTime(g.Key.Year, g.Key.Month, 1), // Create a DateTime from Year and Month
-                    TotalRevenue = g.Sum(o => o.TotalAmount) // Calculate total revenue for the month
+                    YearMonth = new DateTime(g.Key.Year, g.Key.Month, 1),
+                    TotalRevenue = g.Sum(o => o.TotalAmount) 
                 })
                 .OrderBy(o => o.YearMonth) // Order by Year and Month
                 .ToList();
@@ -157,7 +160,47 @@ namespace WebBTL.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult ExportToExcel()
+        {
+            var orders = db.Orders
+                .Where(o => o.Orderdate.HasValue)
+                .Select(o => new
+                {
+                    Year = o.Orderdate.Value.Year,
+                    Month = o.Orderdate.Value.Month,
+                    TotalAmount = o.TotalAmount
+                })
+                .ToList();
 
+            var revenueData = orders
+                .GroupBy(o => new { o.Year, o.Month })
+                .Select(g => new
+                {
+                    YearMonth = new DateTime(g.Key.Year, g.Key.Month, 1),
+                    TotalRevenue = g.Sum(o => o.TotalAmount)
+                })
+                .OrderBy(o => o.YearMonth)
+                .ToList();
 
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Doanh thu theo tháng");
+                worksheet.Cell(1, 1).Value = "Month";
+                worksheet.Cell(1, 2).Value = "Total Revenue";
+
+                for (int i = 0; i < revenueData.Count; i++)
+                {
+                    worksheet.Cell(i + 2, 1).Value = revenueData[i].YearMonth.ToString("MMM yyyy");
+                    worksheet.Cell(i + 2, 2).Value = revenueData[i].TotalRevenue;
+                }
+
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    var content = stream.ToArray();
+                    return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "RevenueReport.xlsx");
+                }
+            }
+        }
     }
 }

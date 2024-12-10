@@ -12,11 +12,15 @@ using System.Globalization;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Security.Cryptography;
+using Microsoft.AspNet.Identity;
 
 namespace WebBTL.Helper
 {
    public static class Utilities
     {
+
+
         public static int PAGE_SIZE = 20;
         public static void CreateIfMissing(string path)
         {
@@ -52,19 +56,36 @@ namespace WebBTL.Helper
             // Sử dụng int.TryParse để kiểm tra xem chuỗi có phải là số nguyên không
             return int.TryParse(str, out _);
         }
-        public static string GetRandomKey(int length = 5)
+        public static string GetRandomKey(int length = 5) 
         {
-           string parttern = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            string pattern = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             Random rd = new Random();
             StringBuilder sb = new StringBuilder();
 
-            for(int i = 0; i < length; i++)
+            for (int i = 0; i < length; i++)
             {
-                sb.Append(parttern[rd.Next(parttern.Length)]);
+                sb.Append(pattern[rd.Next(pattern.Length)]);
             }
 
             return sb.ToString();
         }
+
+        public static string HashPassword(string password, string salt)
+        {
+            // Combine the password and salt into a single string and hash it
+            string combined = password + salt;
+            using (var sha256 = SHA256.Create())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(combined);
+                byte[] hash = sha256.ComputeHash(bytes);
+                return Convert.ToBase64String(hash);
+            }
+        }
+
+
+
+
+
         public static string SEOurl(string str)
         {
             if (string.IsNullOrEmpty(str))

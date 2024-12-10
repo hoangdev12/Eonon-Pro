@@ -1,0 +1,113 @@
+﻿﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section navbar{
+
+    <div class="container-fluid bgtop2 " style="margin:0;padding:0;">
+        <nav class="navbar navbar-expand-lg bg-warning  fixed-top">
+            <div class="container ">
+                <a class="navbar-brand " href="#"><img src="~/Content/images/logo.png" alt="Alternate Text" style="width:100; max-width:100px;" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header bg-warning">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body  bg-warning">
+                        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/Home/Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Pages/About">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Products/Index">Product</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Pages/Contact">Contact</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/tblTinTuc/Index">Tin tức</a>
+                            </li>
+                        </ul>
+                        <div class="d-flex justify-content-center align-items-center gap-3">
+                            @if (Session["Email"] != null)
+                            {
+                                <a href="@Url.Action("Profiles", "Home")"><i class="fas fa-user fa-lg"></i></a>
+                                <a href="@Url.Action("Cart", "Cart")"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                                <a href="@Url.Action("Logout", "Home")" style="color:black;"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                            }
+                            else
+                            {
+                                <a href="/Home/Login" class="text-decoration-none text-black">Login</a>
+                                <a href="/Home/Register" class="text-decoration-none px-3 py-1 rounded-4 text-black" style="background-color:blue;">Sign up</a>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+}
+
+@*Breadcrumb Section*@
+<div class="bg-image text-center text-white" style="background-image: url('https://eononpro.vn/storage/images/ffc4ae4c129fc7ce7e9008e1f015f654.png'); height: 150px; background-size: cover;">
+    <h1 class="breadcrumb-title display-4">Liên Hệ</h1>
+</div>
+
+@*map*@
+<div class="container my-5">
+    <div class="ratio ratio-16x9">
+        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=759/3C+Hương+Lộ+2,+P.+Bình+Trị+Đông+A,+Q.+Bình+Tân,+TP+Hồ+Chí+Minh&zoom=10&maptype=roadmap" allowfullscreen></iframe>
+    </div>
+</div>
+
+
+@*Contact Form*@
+<div class="container my-5">
+    <h3 class="mb-4">Gửi yêu cầu tư vấn</h3>
+    <form>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Họ tên</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Nhập họ tên">
+            </div>
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Nhập email">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="subject" class="form-label">Chủ đề</label>
+            <input type="text" id="subject" name="subject" class="form-control" placeholder="Nhập chủ đề">
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">Nội dung</label>
+            <textarea id="content" name="content" rows="5" class="form-control" placeholder="Nhập nội dung"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Gửi ngay</button>
+    </form>
+</div>
+
+@*Contact Details*@
+<div class="container my-5">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <i class="fa fa-phone me-3"></i> 090 9999 277
+        </li>
+        <li class="list-group-item">
+            <i class="fa fa-envelope me-3"></i> <a href="mailto:eononpro.vn@gmail.com">eononpro.vn@gmail.com</a>
+        </li>
+        <li class="list-group-item">
+            <i class="fa fa-map-marker-alt me-3"></i> 759/3C Hương Lộ 2, P. Bình Trị Đông A, Q. Bình Tân, TP Hồ Chí Minh
+        </li>
+    </ul>
+</div>

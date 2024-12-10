@@ -41,7 +41,7 @@ namespace WebBTL.Controllers
             return View(SPNoiBat);
             
         }
-     
+
         [HttpGet]
         public ActionResult Register()
         {
@@ -54,7 +54,6 @@ namespace WebBTL.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 var existingCustomer = _context.Customers.FirstOrDefault(c => c.Email == account.Email.Trim().ToLower());
                 if (existingCustomer != null)
                 {
@@ -63,12 +62,17 @@ namespace WebBTL.Controllers
                 }
 
                 string salt = Utilities.GetRandomKey();
+                string hashPassword = Extension.HashMD5.ToMD5(account.Password + salt);
+
+                // Logging salt and hashed password for debugging
+                System.Diagnostics.Debug.WriteLine($"Salt: {salt}");
+                System.Diagnostics.Debug.WriteLine($"Hashed Password: {hashPassword}");
 
                 Account newAccount = new Account
                 {
                     Email = account.Email.Trim().ToLower(),
-                    Password = account.Password ,
-                    Salt = salt.Trim(), 
+                    Password = hashPassword,
+                    Salt = salt,
                     Active = true,
                     CreateDate = DateTime.Now,
                     RoleID = 2
@@ -77,13 +81,12 @@ namespace WebBTL.Controllers
                 _context.Accounts.Add(newAccount);
                 _context.SaveChanges();
 
-
                 Customer khachhang = new Customer
                 {
                     Email = newAccount.Email,
-                    Password = newAccount.Password,
+                    Password = hashPassword,
                     Active = true,
-                    Salt = newAccount.Salt,
+                    Salt = salt,
                     CreateDate = DateTime.Now,
                     AccountID = newAccount.AccountID
                     
@@ -101,6 +104,10 @@ namespace WebBTL.Controllers
             }
         }
 
+
+
+
+
         [HttpGet]
         public ActionResult Login()
         {
@@ -112,54 +119,43 @@ namespace WebBTL.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Tìm người dùng theo email
-                var user = _context.Accounts.FirstOrDefault(s => s.Email.Equals(customer.Email, StringComparison.OrdinalIgnoreCase));
+                var user = _context.Accounts.FirstOrDefault(c => c.Email == customer.Email.Trim().ToLower());
 
                 if (user != null)
                 {
-                    var enteredPassword = customer.Password;
+                    var enteredPassword = Extension.HashMD5.ToMD5(customer.Password.Trim() + user.Salt.Trim());
 
-                    // Kiểm tra mật khẩu
+                    TempData["DebugInfo"] = $"Stored Salt: {user.Salt}, Entered Hashed Password: {enteredPassword}, Stored Hashed Password: {user.Password}";
+
+
                     if (enteredPassword.Equals(user.Password))
                     {
-                        // Lưu thông tin người dùng vào session
                         Session["Email"] = user.Email;
                         Session["AccountId"] = user.AccountID;
                         Session["Role"] = user.Role.RoleName;
 
-                        // Khôi phục giỏ hàng từ cookie nếu có
                         var cartCookie = Request.Cookies["cart"]?.Value;
                         if (!string.IsNullOrEmpty(cartCookie))
                         {
                             var cart = JsonConvert.DeserializeObject<List<CartItem>>(cartCookie);
-                            Session["Cart"] = cart; // Đặt lại giỏ hàng vào session
-                                                    // Xóa Cookie sau khi khôi phục
-                            var cookie = new HttpCookie("cart")
-                            {
-                                Expires = DateTime.Now.AddDays(-1) // Xóa cookie
-                            };
+                            Session["Cart"] = cart;
+                            var cookie = new HttpCookie("cart") { Expires = DateTime.Now.AddDays(-1) };
                             Response.Cookies.Add(cookie);
                         }
 
-                        // Kiểm tra nếu có URL nào đã được lưu trong session trước khi đăng nhập
                         string returnUrl = Session["ReturnUrl"] as string;
                         if (!string.IsNullOrEmpty(returnUrl))
                         {
-                            // Xóa ReturnUrl khỏi Session sau khi sử dụng
                             Session.Remove("ReturnUrl");
-                            return Redirect(returnUrl); // Chuyển hướng về URL được lưu
+                            return Redirect(returnUrl);
                         }
 
-                        // Kiểm tra vai trò người dùng và chuyển hướng đến trang tương ứng
                         if (user.Role.RoleName == "admin")
                         {
-                            // Nếu là Admin, chuyển hướng tới trang Admin (Home Controller trong Admin Area)
                             return RedirectToAction("Index", "Home", new { area = "Admin" });
                         }
-
                         else if (user.Role.RoleName == "user")
                         {
-                            // Nếu là User, chuyển hướng tới trang User (hoặc trang khác của người dùng)
                             return RedirectToAction("Index", "Home");
                         }
                     }
@@ -176,9 +172,13 @@ namespace WebBTL.Controllers
                 }
             }
 
-            // Nếu không hợp lệ, hiển thị lại form
-            return View(customer); // Trả về view với trạng thái model hiện tại để hiển thị lỗi xác thực
+            return View(customer);
         }
+
+
+
+
+
 
         public ActionResult Logout()
         {
@@ -344,105 +344,102 @@ namespace WebBTL.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ForgotPassword(ForgotPasswordViewModel model)
+        public ActionResult ForgotPassword(ForgotPasswordViewModel forgotPassword)
         {
             if (ModelState.IsValid)
             {
-                var user = _context.Accounts.FirstOrDefault(c => c.Email == model.Email.Trim().ToLower());
+                var user = _context.Accounts.FirstOrDefault(c => c.Email == forgotPassword.Email.Trim().ToLower());
 
                 if (user != null)
                 {
-                    // Create a reset token
-                    var token = Guid.NewGuid().ToString();
-                    user.PasswordResetToken = token; 
-                    _context.SaveChanges();
+                    var enteredPassword = forgotPassword.newPassword;
 
-                    // Send the email with the reset token
-                    try
+                    if (enteredPassword.Equals(user.Password))
                     {
-                        SendEmail(user.Email, token);
+                        ModelState.AddModelError("", "Your password must not be the same as the old password!");
+                        return View(forgotPassword);
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        ModelState.AddModelError("", "Error sending email: " + ex.Message);
-                        return View(model);
+                        user.Password = forgotPassword.newPassword;
+                        _context.SaveChanges();
+                        return RedirectToAction("Login", "Home");
                     }
-
-                    // Redirect to the ResetPassword action
-                    return RedirectToAction("ResetPassword", new { token = token });
                 }
                 else
                 {
-                    Console.Write("loi");
-                    ModelState.AddModelError("", "Không tìm thấy tài khoản của bạn. Vui lòng đăng ký.");
-                    return View(model);
+                    ModelState.AddModelError("", "Can't find your account. Please register");
+                    return View(forgotPassword);
                 }
+
+            }
+            else
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                return View(forgotPassword);
             }
 
-            return View(model);
         }
 
-        public ActionResult ResetPassword(string token)
+        //[HttpGet]
+        //public ActionResult ResetPassword()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult ResetPassword(ResetPasswordViewModel resetPassword)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = _context.Accounts.FirstOrDefault(c => c.Password == resetPassword.Password);
+
+        //        if (user != null)
+        //        {
+        //            var enteredPassword = resetPassword.Password;
+
+        //            if (enteredPassword.Equals(user.Password))
+        //            {
+        //                if (!resetPassword.Equals(user.Password))
+        //                {
+        //                    user.Password = resetPassword.newPassword;
+        //                    _context.SaveChanges();
+        //                    return RedirectToAction("Index", "Home");
+        //                }
+        //                else
+        //                {
+        //                    ModelState.AddModelError("", "Your password must not be the same as the old password!");
+        //                    return View(resetPassword);
+        //                }
+        //            }
+        //            else
+        //            {
+        //                ModelState.AddModelError("", "Wrong Password!");
+        //                return View(resetPassword);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError("", "Something went wrong!");
+        //            return View(resetPassword);
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        var errors = ModelState.Values.SelectMany(v => v.Errors);
+        //        return View(resetPassword);
+        //    }
+        //}
+
+        [HttpGet]
+        public ActionResult ExternalLoginConfirmationViewModel(string returnUrl)
         {
-            var model = new ResetPasswordViewModel { Token = token };
-            return View(model);
+            return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ResetPassword(ResetPasswordViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = _context.Accounts.FirstOrDefault(c => c.PasswordResetToken == model.Token);
 
-                if (user != null)
-                {
-                    // Cập nhật mật khẩu
-                    user.Password = model.NewPassword;
-                    user.PasswordResetToken = null; // Xóa mã sau khi sử dụng
-                    _context.SaveChanges();
-
-                    return RedirectToAction("Login", "Home");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Mã xác nhận không hợp lệ.");
-                }
-            }
-
-            return View(model);
-        }
-
-        private void SendEmail(string email, string token)
-        {
-            var fromAddress = new MailAddress("your-email@gmail.com", "Your Name");
-            var toAddress = new MailAddress(email);
-            const string fromPassword = "your-email-password"; // Use a secure method to store credentials
-            const string subject = "Mã xác nhận quên mật khẩu";
-            string body = $"Vui lòng sử dụng mã xác nhận sau để đặt lại mật khẩu của bạn: {token}. " +
-                          $"Vui lòng nhấp vào liên kết sau để đặt lại mật khẩu: " +
-                          $"{Url.Action("ResetPassword", "Home", new { token = token }, Request.Url.Scheme)}";
-
-            var smtp = new SmtpClient
-            {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            };
-
-            using (var message = new MailMessage(fromAddress, toAddress)
-            {
-                Subject = subject,
-                Body = body
-            })
-            {
-                smtp.Send(message);
-            }
-        }
 
         public ActionResult OrderHistory()
         {
@@ -499,7 +496,7 @@ namespace WebBTL.Controllers
             return View(orderViewModel);
         }
 
-
+        
 
     }
 }

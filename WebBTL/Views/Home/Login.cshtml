@@ -87,11 +87,9 @@
                                 <a class="nav-link" href="/Products/Index">Product</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
+                                <a class="nav-link" href="/Pages/Contact">Contact</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Service</a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="/tblTinTuc/Index">Tin tức</a>
                             </li>
@@ -141,7 +139,14 @@
 
 
             <div class="registration-container col-sm-6 col-md-6">
-                <h2>Register</h2>
+                <h2>Login</h2>
+                @if (TempData["DebugInfo"] != null)
+                {
+                    <script>
+                    console.log('@TempData["DebugInfo"]');
+                    </script>
+                }
+
 
                 @using (Html.BeginForm("Login", "Home", FormMethod.Post))
                 {

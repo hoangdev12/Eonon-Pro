@@ -91,7 +91,7 @@ namespace WebBTL.Models
         [Display(Name = "Họ và tên")]
         public string FullName { get; set; }
 
-        public string Role {  get; set; }
+        public string Role { get; set; }
     }
 
 

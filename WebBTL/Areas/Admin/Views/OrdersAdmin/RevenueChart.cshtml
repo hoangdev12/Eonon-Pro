@@ -9,6 +9,12 @@
 
 <canvas id="revenueChart" width="400" height="200"></canvas>
 
+<div class="d-flex justify-content-end mt-3">
+    <a href="@Url.Action("ExportToExcel", "OrdersAdmin")" class="btn btn-success">Xuất Excel</a>
+</div>
+
+
+
 <script>
     // Get the data passed from the Controller via ViewBag
     var months = @Html.Raw(Json.Encode(ViewBag.Months));

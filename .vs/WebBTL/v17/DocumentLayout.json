@@ -3,84 +3,28 @@
   "WorkspaceRootPath": "D:\\Eonon\\Eonon-Pro\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\areas\\admin\\controllers\\ordersadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\controllers\\ordersadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\areas\\admin\\controllers\\adminaccountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\controllers\\adminaccountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\areas\\admin\\controllers\\admincategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\controllers\\admincategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\areas\\admin\\controllers\\admincustomerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\controllers\\admincustomerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\areas\\admin\\controllers\\adminpagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\controllers\\adminpagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\areas\\admin\\controllers\\adminproductscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\controllers\\adminproductscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\areas\\admin\\controllers\\adminrolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\controllers\\adminrolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\areas\\admin\\controllers\\admintbltintucscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\controllers\\admintbltintucscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\areas\\admin\\views\\home\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\views\\home\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\views\\cart\\orderconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\cart\\orderconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\views\\home\\orderhistory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\orderhistory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\models\\accountviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\models\\accountviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\models\\orderdetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\models\\orderdetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\helper\\utilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\helper\\utilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\areas\\admin\\views\\ordersadmin\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\views\\ordersadmin\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\views\\home\\forgotpasswordconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\forgotpasswordconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\views\\home\\orderdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\orderdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|d:\\eonon\\eonon-pro\\webbtl\\views\\home\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -90,266 +34,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AdminAccountsController.cs",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\AdminAccountsController.cs",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Controllers\\AdminAccountsController.cs",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\AdminAccountsController.cs",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Controllers\\AdminAccountsController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAkwB0AAAAdAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Utilities.cs",
+              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Helper\\Utilities.cs",
+              "RelativeDocumentMoniker": "WebBTL\\Helper\\Utilities.cs",
+              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Helper\\Utilities.cs",
+              "RelativeToolTip": "WebBTL\\Helper\\Utilities.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAowEMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T12:39:58.757Z",
+              "WhenOpened": "2024-12-10T16:47:09.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\Login.cshtml",
+              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\Login.cshtml",
+              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\Login.cshtml",
+              "RelativeToolTip": "WebBTL\\Views\\Home\\Login.cshtml",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAAAJAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-10T16:07:57.055Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AdminCategoriesController.cs",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\AdminCategoriesController.cs",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Controllers\\AdminCategoriesController.cs",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\AdminCategoriesController.cs",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Controllers\\AdminCategoriesController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAkwCgAAAANAAAAAAAAAA==",
+              "Title": "AccountViewModels.cs",
+              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Models\\AccountViewModels.cs",
+              "RelativeDocumentMoniker": "WebBTL\\Models\\AccountViewModels.cs",
+              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Models\\AccountViewModels.cs",
+              "RelativeToolTip": "WebBTL\\Models\\AccountViewModels.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAIwIQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T12:39:53.256Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AdminCustomersController.cs",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\AdminCustomersController.cs",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Controllers\\AdminCustomersController.cs",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\AdminCustomersController.cs",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Controllers\\AdminCustomersController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAkwCoAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T12:39:47.882Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AdminPagesController.cs",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\AdminPagesController.cs",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Controllers\\AdminPagesController.cs",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\AdminPagesController.cs",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Controllers\\AdminPagesController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAkwCgAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T12:39:41.258Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "OrdersAdminController.cs",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\OrdersAdminController.cs",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Controllers\\OrdersAdminController.cs",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\OrdersAdminController.cs",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Controllers\\OrdersAdminController.cs",
-              "ViewState": "AgIAAIIAAAAAAAAAAAAAAIEAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T12:38:00.782Z",
+              "WhenOpened": "2024-12-10T15:53:57.835Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "AdminProductsController.cs",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\AdminProductsController.cs",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Controllers\\AdminProductsController.cs",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\AdminProductsController.cs",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Controllers\\AdminProductsController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAwDAAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T12:39:34.389Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AdminRolesController.cs",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\AdminRolesController.cs",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Controllers\\AdminRolesController.cs",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\AdminRolesController.cs",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Controllers\\AdminRolesController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T12:39:13.264Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AdmintblTinTucsController.cs",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\AdmintblTinTucsController.cs",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Controllers\\AdmintblTinTucsController.cs",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\AdmintblTinTucsController.cs",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Controllers\\AdmintblTinTucsController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCwAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T12:39:05.122Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "RouteConfig.cs",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\App_Start\\RouteConfig.cs",
-              "RelativeDocumentMoniker": "WebBTL\\App_Start\\RouteConfig.cs",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\App_Start\\RouteConfig.cs",
-              "RelativeToolTip": "WebBTL\\App_Start\\RouteConfig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T12:31:21.03Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AccessDenied.cshtml",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Views\\Home\\AccessDenied.cshtml",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Views\\Home\\AccessDenied.cshtml",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Views\\Home\\AccessDenied.cshtml",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Views\\Home\\AccessDenied.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEEAAAAGAAAAAAAAAA==",
+              "Title": "ForgotPassword.cshtml",
+              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\ForgotPassword.cshtml",
+              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\ForgotPassword.cshtml",
+              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\ForgotPassword.cshtml",
+              "RelativeToolTip": "WebBTL\\Views\\Home\\ForgotPassword.cshtml",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAuwHEAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-10T12:20:21.21Z",
+              "WhenOpened": "2024-12-10T15:57:39.339Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Web.config",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Web.config",
-              "RelativeDocumentMoniker": "WebBTL\\Web.config",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Web.config",
-              "RelativeToolTip": "WebBTL\\Web.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-12-10T12:07:23.493Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Views\\Home\\Index.cshtml",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "ForgotPasswordConfirmation.cshtml",
+              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\ForgotPasswordConfirmation.cshtml",
+              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\ForgotPasswordConfirmation.cshtml",
+              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\ForgotPasswordConfirmation.cshtml",
+              "RelativeToolTip": "WebBTL\\Views\\Home\\ForgotPasswordConfirmation.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-10T12:03:44.778Z",
+              "WhenOpened": "2024-12-10T15:54:45.059Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwDMAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T11:53:08.023Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAAG8AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-10T11:41:20.641Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "OrderConfirmation.cshtml",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Cart\\OrderConfirmation.cshtml",
-              "RelativeDocumentMoniker": "WebBTL\\Views\\Cart\\OrderConfirmation.cshtml",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Cart\\OrderConfirmation.cshtml",
-              "RelativeToolTip": "WebBTL\\Views\\Cart\\OrderConfirmation.cshtml",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAGYAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-10T11:28:54.476Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "OrderDetailsViewModel.cs",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Models\\OrderDetailsViewModel.cs",
-              "RelativeDocumentMoniker": "WebBTL\\Models\\OrderDetailsViewModel.cs",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Models\\OrderDetailsViewModel.cs",
-              "RelativeToolTip": "WebBTL\\Models\\OrderDetailsViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T11:25:02.756Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Views\\OrdersAdmin\\Details.cshtml",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Views\\OrdersAdmin\\Details.cshtml",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Views\\OrdersAdmin\\Details.cshtml",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Views\\OrdersAdmin\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-10T11:20:42.543Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "OrderHistory.cshtml",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\OrderHistory.cshtml",
-              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\OrderHistory.cshtml",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\OrderHistory.cshtml",
-              "RelativeToolTip": "WebBTL\\Views\\Home\\OrderHistory.cshtml",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAFQAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-10T11:16:49.274Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 0,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "WebBTL\\Controllers\\HomeController.cs",
               "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Controllers\\HomeController.cs",
               "RelativeToolTip": "WebBTL\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAmwKIAAABFAAAAAAAAAA==",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAUwIYAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T10:26:47.158Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "OrderDetails.cshtml",
-              "DocumentMoniker": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\OrderDetails.cshtml",
-              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\OrderDetails.cshtml",
-              "ToolTip": "D:\\Eonon\\Eonon-Pro\\WebBTL\\Views\\Home\\OrderDetails.cshtml",
-              "RelativeToolTip": "WebBTL\\Views\\Home\\OrderDetails.cshtml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAAC0AAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-10T11:20:27.793Z",
+              "WhenOpened": "2024-12-10T15:51:47.317Z",
               "EditorCaption": ""
             }
           ]

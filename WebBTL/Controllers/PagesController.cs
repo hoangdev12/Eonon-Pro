@@ -47,5 +47,10 @@ namespace WebBTL.Controllers
             return View(about);
             
         }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
     }
 }
