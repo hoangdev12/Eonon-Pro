@@ -76,7 +76,15 @@
                 <div class="card mb-4">
                     <div class="card-body text-center">
                         <!-- Display current avatar or default image -->
-                        <img src="@Model.Avatar" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        @if (Model.Avatar != null)
+                        {
+                            <img src="@Model.Avatar" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("~/Content/images/avatar/defaultAvatar.jpg")" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+
+                        }
                         <h5 class="my-3">@Model.FullName</h5>
                     </div>
                 </div>
@@ -102,6 +110,14 @@
                                 <div class="col-sm-9">
                                     @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Enter your email" })
                                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="Adrress" class="col-sm-3 col-form-label">Address</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control", placeholder = "Enter your adrress" })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 

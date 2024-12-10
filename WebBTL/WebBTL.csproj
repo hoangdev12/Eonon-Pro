@@ -633,6 +633,7 @@
     <Compile Include="Models\OrderDetail.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderDetailsViewModel.cs" />
     <Compile Include="Models\Page.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -2597,6 +2598,7 @@
     <Content Include="Content\clients\plugins\uplot\uPlot.iife.min.js" />
     <Content Include="Content\clients\plugins\uplot\uPlot.min.css" />
     <Content Include="Content\images\avatarDefault.png" />
+    <Content Include="Content\images\avatar\defaultAvatar.jpg" />
     <Content Include="Content\images\banner.png" />
     <Content Include="Content\images\bannerLienHe.png" />
     <Content Include="Content\images\Categories\Audi.png" />
@@ -2927,6 +2929,7 @@
     <Content Include="Areas\Admin\Views\OrdersAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\OrdersAdmin\RevenueChart.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\AccessDenied.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3093,11 +3096,11 @@
     <Content Include="tinymce_7.5.1\tinymce\js\tinymce\license.md" />
     <Content Include="Views\Home\UpdateProfile.cshtml" />
     <Content Include="Views\Home\OrderHistory.cshtml" />
+    <Content Include="Views\Home\OrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Content\images\avatar\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

@@ -54,7 +54,7 @@
     </div>
 
     <div class="card shadow-sm mb-4">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header bg-warning text-white">
             <h5>Thông tin đơn hàng</h5>
         </div>
         <div class="card-body">
@@ -65,7 +65,7 @@
     </div>
 
     <div class="card shadow-sm">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header bg-warning text-white">
             <h5>Order Details</h5>
         </div>
         <div class="card-body">
@@ -73,6 +73,7 @@
                 <thead class="table-light">
                     <tr>
                         <th>Product</th>
+                        <th>Image</th>
                         <th>Quantity</th>
                         <th>Unit Price</th>
                         <th>Total</th>
@@ -83,6 +84,10 @@
                     {
                         <tr>
                             <td>@detail.Product.ProductName</td>
+                            <td style="width:100px;height:auto;">
+
+                                <img src="@Url.Content(detail.Product.Thumb)" alt="Product Thumbnail" class="img-fluid" />
+                            </td>
                             <td>@detail.Quantity</td>
                             <td>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", detail.Discount)</td>
                             <td>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", detail.Discount * detail.Quantity)</td>
@@ -96,6 +101,6 @@
 
     <div class="text-center mt-4">
         <p>Bạn có thể xem lại đơn hàng đã đặt trong phần trang cá nhân.</p>
-        <a href="/Home/Index" class="btn btn-success">Quay lại trang chủ</a>
+        <a href="/Home/OrderHistory" class="btn btn-success">Quay lại trang chủ</a>
     </div>
 </div>

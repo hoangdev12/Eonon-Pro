@@ -1,0 +1,61 @@
+﻿@model WebBTL.Models.OrderDetailsViewModel
+
+@{
+    ViewBag.Title = "Chi Tiết Đơn Hàng";
+}
+
+<br />
+<h2 class="text-center mb-4">Chi Tiết Đơn Hàng</h2>
+<div class="container">
+    <!-- Order Information Section -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-warning text-white">
+            <h5 class="mb-0">Thông tin đơn hàng</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Mã đơn hàng:</strong> @Model.Order.OrderID</p>
+            <p><strong>Thời gian đặt hàng:</strong> @(Model.Order.Orderdate?.ToString("dd/MM/yyyy") ?? "No information")</p>
+            <p><strong>Tổng tiền:</strong> @String.Format("{0:N0} VND", Model.Order.TotalAmount)</p>
+        </div>
+    </div>
+
+    <!-- Order Details Table Section -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-warning text-white">
+            <h5 class="mb-0">Chi Tiết Đơn Hàng</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Hình ảnh</th>  
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Tổng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var detail in Model.OrderDetails)
+                    {
+                        <tr>
+                            <td>@detail.Product.ProductName</td>
+                            <td style="width:100px;height:auto;">
+                                
+                                <img src="@Url.Content(detail.Product.Thumb)" alt="Product Thumbnail" class="img-fluid" />
+                            </td>
+                            <td>@detail.Quantity</td>
+                            <td>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", detail.Discount)</td>
+                            <td>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", detail.Discount * detail.Quantity)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Optional: Add Back Button for better UX -->
+<div class="text-center mt-4">
+    <a href="@Url.Action("OrderHistory", "Home")" class="btn btn-secondary">Quay lại lịch sử đơn hàng</a>
+</div>

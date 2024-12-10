@@ -19,17 +19,48 @@ namespace WebBTL.Areas.Admin.Controllers
             _context = new Eonon_ProEntities1();
         }
         // GET: Admin/Home
-
-        public ActionResult Index()
-        {
-            if (Session["AccountId"] == null)
+        
+            [HttpGet]
+            public ActionResult Index()
             {
-                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
-                return RedirectToAction("Login", "Home");
+                // Check if the user is logged in
+                if (Session["AccountId"] == null)
+                {
+                    return RedirectToAction("Login", "Home");
+                }
+
+                // Check if the user is an admin
+                if (Session["Role"] == null || Session["Role"].ToString() != "admin")
+                {
+                    return RedirectToAction("AccessDenied", "Home"); // Redirect to a specific Access Denied page
+                }
+
+                int accountId = (int)Session["AccountId"]; // Get AccountId from session
+                var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+                if (user != null)
+                {
+                    // Check if Avatar and FullName exist, if not, assign default values
+                    ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                    ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+                }
+                else
+                {
+                    // If user not found, assign default values for Avatar and FullName
+                    ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                    ViewBag.FullName = "No Name Available";
+                }
+
+                return View();
             }
 
+
+        [HttpGet]
+        public ActionResult AccessDenied() { 
+            TempData["Error"] = "Bạn không có quyền truy cập vào trang quản trị."; 
             return View();
         }
+
 
         [HttpGet]
         public ActionResult Login()

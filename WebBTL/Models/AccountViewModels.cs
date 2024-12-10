@@ -90,6 +90,8 @@ namespace WebBTL.Models
         [Required(ErrorMessage = "Bạn chưa nhập họ tên đầy đủ.")]
         [Display(Name = "Họ và tên")]
         public string FullName { get; set; }
+
+        public string Role {  get; set; }
     }
 
 

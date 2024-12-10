@@ -14,11 +14,12 @@ namespace WebBTL
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "WebBTL.Controllers" }
-            );
+             name: "Default",
+             url: "{controller}/{action}/{id}",
+             defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, area = "" },
+             namespaces: new[] { "WebBTL.Controllers" }
+             );
+
         }
     }
 }

@@ -31,8 +31,13 @@ namespace WebBTL.Controllers
        
         public ActionResult Index()
         {
+            
+
             var SPNoiBat = _context.Products.OrderBy(p => p.ProductID).Take(6).ToList();
             ViewBag.SPNoiBat = SPNoiBat;
+
+           
+
             return View(SPNoiBat);
             
         }
@@ -65,7 +70,8 @@ namespace WebBTL.Controllers
                     Password = account.Password ,
                     Salt = salt.Trim(), 
                     Active = true,
-                    CreateDate = DateTime.Now
+                    CreateDate = DateTime.Now,
+                    RoleID = 2
                 };
 
                 _context.Accounts.Add(newAccount);
@@ -80,6 +86,7 @@ namespace WebBTL.Controllers
                     Salt = newAccount.Salt,
                     CreateDate = DateTime.Now,
                     AccountID = newAccount.AccountID
+                    
                 };
 
                 _context.Customers.Add(khachhang);
@@ -242,6 +249,7 @@ namespace WebBTL.Controllers
 
             int accountId = int.Parse(Session["AccountId"].ToString());
             var customer = _context.Customers.FirstOrDefault(c => c.AccountID == accountId);
+            var account = _context.Accounts.FirstOrDefault(c => c.AccountID == accountId);
             if (customer == null)
             {
                 TempData["Error"] = "Không tìm thấy thông tin tài khoản.";
@@ -250,8 +258,29 @@ namespace WebBTL.Controllers
 
             if (ModelState.IsValid)
             {
-                customer.FullName = updatedCustomer.FullName;
-                customer.Phone = updatedCustomer.Phone;
+                // Kiểm tra nếu không có thay đổi
+                bool hasChanges = false;
+
+                if (customer.FullName != updatedCustomer.FullName)
+                {
+                    customer.FullName = updatedCustomer.FullName;
+                    account.FullName = updatedCustomer.FullName;
+                    hasChanges = true;
+                }
+
+                if (customer.Phone != updatedCustomer.Phone)
+                {
+                    customer.Phone = updatedCustomer.Phone;
+                    account.Phone = updatedCustomer.Phone;
+                    hasChanges = true;
+                }
+
+                if (customer.Address != updatedCustomer.Address)
+                {
+                    customer.Address = updatedCustomer.Address;
+
+                    hasChanges = true;
+                }
 
                 if (image != null && image.ContentLength > 0)
                 {
@@ -264,18 +293,19 @@ namespace WebBTL.Controllers
                     }
 
                     string fileName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(image.FileName);
-                    string filePath = Server.MapPath("~/Content/images/products/" + fileName);
+                    string filePath = Server.MapPath("~/Content/images/avatar/" + fileName);
 
                     try
                     {
-                        string directoryPath = Server.MapPath("~/Content/images/products/");
+                        string directoryPath = Server.MapPath("~/Content/images/avatar/");
                         if (!System.IO.Directory.Exists(directoryPath))
                         {
                             System.IO.Directory.CreateDirectory(directoryPath);
                         }
 
                         image.SaveAs(filePath);
-                        customer.Avatar = Url.Content("~/Content/images/products/" + fileName);
+                        customer.Avatar = Url.Content("~/Content/images/avatar/" + fileName);
+                        hasChanges = true;
                     }
                     catch (Exception ex)
                     {
@@ -284,8 +314,17 @@ namespace WebBTL.Controllers
                     }
                 }
 
+                // Nếu không có thay đổi, không lưu và hiển thị thông báo
+                if (!hasChanges)
+                {
+                    TempData["Info"] = "Không có thay đổi nào được thực hiện.";
+                    return RedirectToAction("Profiles");
+                }
+
+                // Lưu thay đổi
                 _context.SaveChanges();
 
+                // Cập nhật session
                 Session["FullName"] = customer.FullName;
                 Session["Avatar"] = customer.Avatar;
 
@@ -296,10 +335,6 @@ namespace WebBTL.Controllers
             TempData["Error"] = "Thông tin không hợp lệ.";
             return View(customer);
         }
-
-
-
-
 
         [HttpGet]
         public ActionResult ForgotPassword()
@@ -347,15 +382,11 @@ namespace WebBTL.Controllers
             return View(model);
         }
 
-
-
-
         public ActionResult ResetPassword(string token)
         {
             var model = new ResetPasswordViewModel { Token = token };
             return View(model);
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -382,7 +413,6 @@ namespace WebBTL.Controllers
 
             return View(model);
         }
-
 
         private void SendEmail(string email, string token)
         {
@@ -432,6 +462,43 @@ namespace WebBTL.Controllers
 
             return View(orders);
         }
+
+        public ActionResult OrderDetails(int orderId)
+        {
+            // Kiểm tra xem người dùng đã đăng nhập chưa
+            if (Session["AccountId"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
+            int accountId = int.Parse(Session["AccountId"].ToString());
+
+            // Lấy đơn hàng theo OrderId và AccountId
+            var order = _context.Orders
+                                .Where(o => o.OrderID == orderId && o.Customer.AccountID == accountId)
+                                .FirstOrDefault();
+
+            if (order == null)
+            {
+                TempData["Error"] = "Không tìm thấy đơn hàng hoặc bạn không có quyền truy cập.";
+                return RedirectToAction("OrderHistory"); // Chuyển về trang lịch sử đơn hàng
+            }
+
+            // Lấy chi tiết các sản phẩm trong đơn hàng
+            var orderDetails = _context.OrderDetails
+                                       .Where(od => od.OrderID == orderId)
+                                       .ToList();
+
+            // Tạo ViewModel để chứa thông tin đơn hàng và chi tiết đơn hàng
+            var orderViewModel = new OrderDetailsViewModel
+            {
+                Order = order,
+                OrderDetails = orderDetails
+            };
+
+            return View(orderViewModel);
+        }
+
 
 
     }

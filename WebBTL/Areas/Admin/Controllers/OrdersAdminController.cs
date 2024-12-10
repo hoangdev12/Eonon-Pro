@@ -27,6 +27,22 @@ namespace WebBTL.Areas.Admin.Controllers
             // Paginate the list of orders
             var pagedOrders = orders.ToPagedList(pageNumber, pageSize);
 
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = db.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
+
             return View(pagedOrders);
         }
 
@@ -97,6 +113,21 @@ namespace WebBTL.Areas.Admin.Controllers
 
         public ActionResult RevenueChart()
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = db.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
             // Get the orders with Orderdate and TotalAmount
             var orders = db.Orders
                 .Where(o => o.Orderdate.HasValue) // Filter out orders without a date

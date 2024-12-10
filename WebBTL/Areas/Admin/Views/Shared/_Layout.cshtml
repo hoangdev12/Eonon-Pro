@@ -104,140 +104,159 @@
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="~/Content/clients/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        @if (ViewBag.Avatar != null)
+                        {
+                            <img src="@Url.Content(ViewBag.Avatar.ToString())" class="img-circle elevation-2" alt="User Image">
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("~/Content/images/avatars/default-avatar.jpg")" class="img-circle elevation-2" alt="Default User Image">
+                        }
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Luu Viet Hoang</a>
+                        @if (ViewBag.FullName != null)
+                        {
+                            <a href="#" class="d-block">@ViewBag.FullName</a>
+                        }
+                        else
+                        {
+                            <a href="#" class="d-block">No Name Available</a>
+                        }
+                    </div>
+
+
+
+                </div>
+            
+
+
+            <!-- SidebarSearch Form -->
+            <div class="form-inline">
+                <div class="input-group" data-widget="sidebar-search">
+                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-sidebar">
+                            <i class="fas fa-search fa-fw"></i>
+                        </button>
                     </div>
                 </div>
-
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-
-                                <p>
-                                    Danh mục
-
-                                </p>
-                            </a>
-
-                        </li>
-                        <li class="nav-item">
-                            @Html.ActionLink("Quản lý đơn hàng", "Index", "OrdersAdmin", null, new { @class = "nav-link" })
-
-
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-
-                                <p>
-                                    Quản lý sản phẩm
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                
-                                <li class="nav-item">
-                                    @Html.ActionLink("Sản phẩm", "Index", "AdminProducts", null, new { @class = "nav-link" })
-
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/AdminCustomers/Index" class="nav-link">
-
-                                <p>
-                                    Quản lý khách hàng
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    @Html.ActionLink("Danh sách khách hàng", "Index", "AdminCustomers", null, new { @class = "nav-link" })
-                                </li>
-                                
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                           
-
-                                @Html.ActionLink("Doanh số", "RevenueChart", "OrdersAdmin", null, new { @class = "nav-link" })
-                            
-                           
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link ">
-
-                                <p>
-                                    Quản lý hệ thống
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview ">
-                                <li class="nav-item">
-                                    @Html.ActionLink("Tài khoản", "Index", "AdminAccounts", null, new { @class = "nav-link" })
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Danh mục", "Index", "AdminCategories", null, new { @class = "nav-link" })
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Quyền truy cập", "Index", "AdminRoles", null, new { @class = "nav-link" })
-                                </li>
-                               
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-
-                                <p>
-                                    Quản lý tin tức
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    @Html.ActionLink("Danh sách tin tức", "Index", "AdmintblTinTucs", null, new { @class = "nav-link" })
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-
-                                <p>
-                                    Pages
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    @Html.ActionLink("Danh sách Page", "Index", "AdminPages", null, new { @class = "nav-link" })
-                                </li>
-
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
             </div>
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+            with font-awesome or any other icon font library -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+
+                            <p>
+                                Danh mục
+
+                            </p>
+                        </a>
+
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Quản lý đơn hàng", "Index", "OrdersAdmin", null, new { @class = "nav-link" })
+
+
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+
+                            <p>
+                                Quản lý sản phẩm
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+
+                            <li class="nav-item">
+                                @Html.ActionLink("Sản phẩm", "Index", "AdminProducts", null, new { @class = "nav-link" })
+
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/AdminCustomers/Index" class="nav-link">
+
+                            <p>
+                                Quản lý khách hàng
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                @Html.ActionLink("Danh sách khách hàng", "Index", "AdminCustomers", null, new { @class = "nav-link" })
+                            </li>
+
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+
+
+                        @Html.ActionLink("Doanh số", "RevenueChart", "OrdersAdmin", null, new { @class = "nav-link" })
+
+
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link ">
+
+                            <p>
+                                Quản lý hệ thống
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview ">
+                            <li class="nav-item">
+                                @Html.ActionLink("Tài khoản", "Index", "AdminAccounts", null, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Danh mục", "Index", "AdminCategories", null, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Quyền truy cập", "Index", "AdminRoles", null, new { @class = "nav-link" })
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+
+                            <p>
+                                Quản lý tin tức
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                @Html.ActionLink("Danh sách tin tức", "Index", "AdmintblTinTucs", null, new { @class = "nav-link" })
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+
+                            <p>
+                                Pages
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                @Html.ActionLink("Danh sách Page", "Index", "AdminPages", null, new { @class = "nav-link" })
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+</div>
             <!-- /.sidebar -->
         </aside>
 
