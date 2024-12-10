@@ -2926,6 +2926,7 @@
     <Content Include="Areas\Admin\Views\OrdersAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\OrdersAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\OrdersAdmin\RevenueChart.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3090,10 +3091,13 @@
     <Content Include="tinymce_7.5.1\tinymce\CHANGELOG.md" />
     <Content Include="tinymce_7.5.1\tinymce\js\tinymce\langs\README.md" />
     <Content Include="tinymce_7.5.1\tinymce\js\tinymce\license.md" />
+    <Content Include="Views\Home\UpdateProfile.cshtml" />
+    <Content Include="Views\Home\OrderHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Content\images\avatar\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

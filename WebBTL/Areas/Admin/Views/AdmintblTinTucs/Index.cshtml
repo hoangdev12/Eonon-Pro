@@ -7,9 +7,9 @@
 }
 
 <div class="container">
-    <h2>Index</h2>
+    <h2>Tin Tức</h2>
 
-    <div class=" d-flex justify-content-end">
+    <div class="d-flex justify-content-end">
         @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
     </div>
     <br />
@@ -17,12 +17,13 @@
         <div class="form-group mr-3">
             <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control" placeholder="Tìm title" />
         </div>
-        
+
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Lọc</button>
         </div>
     </form>
-    <table class="table ">
+
+    <table class="table">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model[0].PostID)
@@ -56,36 +57,26 @@
                         <span class="badge badge-danger">non-public</span>
                     }
                 </td>
-               
+
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.PostID }, new {@class="btn btn-outline-primary"}) 
-                    @Html.ActionLink("Details", "Details", new { id = item.PostID }, new {@class="btn btn-outline-info"}) 
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PostID }, new { @class = "btn btn-outline-primary" })
+                    @Html.ActionLink("Details", "Details", new { id = item.PostID }, new { @class = "btn btn-outline-info" })
                     <a href="#" data-id="@item.PostID" class="btn btn-outline-danger btnDelete">Delete</a>
                 </td>
             </tr>
         }
-
-
     </table>
 
     <div aria-label="Page navigation example">
         <ul class="pagination d-flex justify-content-end" style="margin-top: 20px;">
-            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchTerm = ViewBag.SearchTerm }),
                 new PagedListRenderOptions
                 {
-
                     DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
                     DisplayLinkToNextPage = PagedListDisplayMode.Always,
-
                     DisplayEllipsesWhenNotShowingAllPageNumbers = true,
-
-
-
                     LinkToPreviousPageFormat = "<button class='btn btn-secondary mr-3'>Previous</button>",
                     LinkToNextPageFormat = "<button class='btn btn-secondary ml-3'>Next</button>",
-
-
-
                 })
         </ul>
     </div>
@@ -94,31 +85,23 @@
 @section scripts {
     <script>
         $(document).ready(function () {
-
             $('body').on('click', '.btnDelete', function () {
-
                 var id = $(this).data('id');
-
-
                 var conf = confirm('Bạn có muốn xóa sản phẩm này không?');
                 if (conf === true) {
-
                     $.ajax({
                         url: '/Admin/AdmintblTinTucs/Delete',
                         type: 'POST',
                         data: { id: id },
                         success: function (response) {
                             if (response.success) {
-
                                 $('#trow_' + id).remove();
                                 alert('Xóa page thành công');
                             } else {
-
                                 alert('Không thể xóa page. Vui lòng thử lại.');
                             }
                         },
                         error: function (xhr, status, error) {
-
                             console.error('Error occurred:', error);
                             alert('Có lỗi xảy ra: ' + xhr.responseText);
                         }

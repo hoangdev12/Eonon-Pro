@@ -1,19 +1,229 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
 
-    <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
-    </address>
+@section navbar{
 
-    <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
-</main>
+    <div class="container-fluid bgtop2 ">
+        <nav class="navbar navbar-expand-lg bg-warning  fixed-top">
+            <div class="container ">
+                <a class="navbar-brand " href="#"><img src="~/Content/images/logo.png" alt="Alternate Text" style="width:100; max-width:100px;" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header bg-warning">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body  bg-warning">
+                        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/Home/Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Pages/About">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Products/Index">Product</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Service</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/tblTinTuc/Index">Tin tức</a>
+                            </li>
+                        </ul>
+                        <div class="d-flex justify-content-center align-items-center gap-3">
+                            @if (Session["Email"] != null)
+                            {
+                                <a href="@Url.Action("Profiles", "Home")"><i class="fas fa-user fa-lg"></i></a>
+                                <a href="@Url.Action("Cart", "Cart")"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                                <a href="@Url.Action("Logout", "Home")" style="color:black;"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                            }
+                            else
+                            {
+                                <a href="/Home/Login" class="text-decoration-none text-black">Login</a>
+                                <a href="/Home/Register" class="text-decoration-none px-3 py-1 rounded-4 text-black" style="background-color:blue;">Sign up</a>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+}
+
+<div class="breadcrumb-section" style=" margin-top: 100px">
+    <div class="breadcrumb-wrapper" style="background-repeat: no-repeat; height: 150px; background-size: cover; background-image: url('https://eononpro.vn/storage/images/ffc4ae4c129fc7ce7e9008e1f015f654.png'); display: flex; align-items: center; justify-content: center; ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <span class="breadcrumb-title" style="color: white;font-size: 2rem;">
+                        Liên Hệ
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mapswrapper">
+    <iframe width="1430" height="450" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=759/3C+Hương+Lộ+2,+P.+Bình+Trị+Đông+A,+Q.+Bình+Tân,+TP+Hồ+Chí+Minh&zoom=10&maptype=roadmap"></iframe><a href="https://taxinstructions.net/form-2106/">Form 2106 instructions</a>
+</div>
+<div class="contact-details-wrapper">
+    <div class="contact-details">
+        <div class="contact-details-single-item">
+            <div class="contact-details-icon">
+                <a class="fa fa-phone" href="#"></a>
+            </div>
+            <div class="contact-details-content-contact-phone">
+                <a href="#">090 9999 277</a>
+            </div>
+        </div>
+        <div class="contact-details-single-item" style="display:flex">
+            <div class="contact-details-icon">
+                <a class="fa fa-globe" href="#"></a>
+            </div>
+            <div class="contact-details-content-contact-phone">
+                <a href="eononpro.vn@gmail.com">eononpro.vn@gmail.com</a>
+            </div>
+        </div>
+        <div class="contact-details-single-item" style="display:flex">
+            <div class="contact-details-icon">
+                <a class="fa fa-map-marker" href="#"></a>
+            </div>
+            <div class="contact-details-content-contact-phone">
+                <a href="#">759/3C Hương Lộ 2, P. Bình Trị Đông A, Q. Bình Tân, TP Hồ Chí Minh.</a>
+            </div>
+        </div>
+    </div>
+    <div class="info-form">
+        <div>
+            <div>
+                <h3>Gửi yêu cầu tư vấn</h3>
+            </div>
+            <div>
+                <div class="first-row">
+                    <div>
+                        <p>Họ tên</p>
+                        <input type="text" name="name" value="" class="textbox" />
+                    </div>
+                    <div class="infor-email">
+                        <p>Email</p>
+                        <input type="email" name="name" value="" class="textbox" />
+                    </div>
+                </div>
+                <div style="width: 450px">
+                    <p>Chủ đề</p>
+                    <input type="text" name="name" value="" class="textbox" style="width:450px " />
+                </div>
+                <div>
+                    <p>Nội dung</p>
+                    <textarea class="textbox" style="width: 450px; height: 200px"></textarea>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center; margin-top: 20px">
+                    <button class="btn btn-success">Gửi ngay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .mapswrapper {
+        background: #fff;
+        position: relative;
+        margin-top: 20px;
+        margin-left: 50px;
+    }
+
+        .mapswrapper iframe {
+            border: 0;
+            position: relative;
+            z-index: 2
+        }
+
+        .mapswrapper a {
+            color: rgba(0,0,0,0);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 0
+        }
+
+    .contact-details-wrapper {
+        display: flex;
+        margin-top: 50px;
+    }
+
+    .contact-details {
+        margin-top: 20px;
+        width: fit-content;
+        margin-left: 20px;
+    }
+
+    .contact-details-single-item {
+        display: flex;
+        margin-left: 30px;
+        margin-bottom: 20px;
+    }
+
+    .contact-details-icon {
+        margin-right: 5px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: yellow;
+    }
+
+        .contact-details-icon a {
+            margin-left: 5px;
+            margin-top: 5px;
+            color: white;
+            font-size: 30px;
+            text-decoration: none;
+        }
+
+    .contact-details-content-contact-phone a {
+        text-decoration: none;
+        color: black;
+    }
+
+        .contact-details-content-contact-phone a:hover {
+            color: yellow;
+        }
+
+    .info-form {
+        margin-left: 200px;
+    }
+
+    .first-row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .infor-email {
+        margin-left: 20px;
+    }
+
+    .text-box {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 20%;
+        padding: 8px;
+        width: 100%;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        outline: none;
+    }
+
+        .text-box:focus {
+            border-color: rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+</style>
+

@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\asus\\source\\repos\\eonon-pro\\webbtl\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\webbtl\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\webbtl\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\webbtl\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\webbtl\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+      "AbsoluteMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|c:\\users\\asus\\source\\repos\\eonon-pro\\webbtl\\views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3BF1B47C-6514-4C74-A8F3-991516A13B56}|WebBTL\\WebBTL.csproj|solutionrelative:webbtl\\views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -63,63 +47,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "WebBTL\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\WebBTL\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "WebBTL\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAJIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Contact.cshtml",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\WebBTL\\Views\\Home\\Contact.cshtml",
+              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\Contact.cshtml",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\WebBTL\\Views\\Home\\Contact.cshtml",
+              "RelativeToolTip": "WebBTL\\Views\\Home\\Contact.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEEAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-27T04:18:23.654Z",
+              "WhenOpened": "2024-12-10T10:48:27.035Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\WebBTL\\Views\\Home\\Login.cshtml",
-              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\Login.cshtml",
-              "ToolTip": "C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\WebBTL\\Views\\Home\\Login.cshtml",
-              "RelativeToolTip": "WebBTL\\Views\\Home\\Login.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-27T04:15:14.683Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\WebBTL\\Web.config",
-              "RelativeDocumentMoniker": "WebBTL\\Web.config",
-              "ToolTip": "C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\WebBTL\\Web.config",
-              "RelativeToolTip": "WebBTL\\Web.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAADbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-11-20T08:22:07.335Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\WebBTL\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "WebBTL\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\WebBTL\\Views\\Home\\Index.cshtml*",
-              "RelativeToolTip": "WebBTL\\Views\\Home\\Index.cshtml*",
-              "ViewState": "AgIAAHIAAAAAAAAAAAAAAG0AAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-20T08:14:23.458Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Model1.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\WebBTL\\Models\\Model1.edmx",
-              "RelativeDocumentMoniker": "WebBTL\\Models\\Model1.edmx",
-              "ToolTip": "C:\\Users\\Asus\\source\\repos\\Eonon-Pro\\WebBTL\\Models\\Model1.edmx [Diagram1]",
-              "RelativeToolTip": "WebBTL\\Models\\Model1.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2024-11-20T08:10:00.643Z"
             }
           ]
         }

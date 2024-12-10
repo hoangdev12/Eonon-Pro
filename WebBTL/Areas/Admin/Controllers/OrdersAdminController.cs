@@ -52,7 +52,8 @@ namespace WebBTL.Areas.Admin.Controllers
             return View(order);
         }
 
-       // GET: Admin/OrdersAdmin/Edit/5
+        // GET: Admin/OrdersAdmin/Edit/5
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -64,10 +65,12 @@ namespace WebBTL.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            // Đổ dữ liệu cho DropdownList CustomerID
             ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "FullName", order.CustomerID);
             ViewBag.TransactStatusID = new SelectList(db.TransactStatus, "TransactStatusID", "Status", order.TransactStatusID);
             return View(order);
         }
+
 
         // POST: Admin/OrdersAdmin/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -82,10 +85,15 @@ namespace WebBTL.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            
+
+            // Đổ lại dữ liệu cho DropdownList CustomerID và TransactStatusID
+            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "FullName", order.CustomerID);
             ViewBag.TransactStatusID = new SelectList(db.TransactStatus, "TransactStatusID", "Status", order.TransactStatusID);
+
             return View(order);
         }
+
+
 
         public ActionResult RevenueChart()
         {

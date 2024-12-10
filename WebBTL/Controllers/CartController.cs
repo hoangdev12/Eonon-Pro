@@ -199,6 +199,8 @@ namespace WebBTL.Controllers
             order.CustomerID = customer.CustomerID;
             order.Orderdate = DateTime.Now;
             order.TotalAmount = cart.Sum(c => c.Quantity * c.UnitPrice);
+            order.TransactStatusID = 2;
+            
 
             _context.Orders.Add(order);
             _context.SaveChanges();
@@ -216,6 +218,7 @@ namespace WebBTL.Controllers
                     ProductID = item.ProductID,
                     Quantity = item.Quantity,
                     Discount = (int?)item.UnitPrice
+                    
                 };
 
                 _context.OrderDetails.Add(orderDetail);

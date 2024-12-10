@@ -5,176 +5,59 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-<div class="container">
-    <div>
-        <h4>tblTinTuc</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.Title)
-                </dt>
+<h2 class="text-primary">Chi tiết bài viết</h2>
 
-                <dd class="col-sm-6 col-md-6">
-                    @Html.DisplayFor(model => model.Title)
-                </dd>
-            </div>
-
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.SContents)
-                </dt>
-
-                <dd class="col-sm-6 col-md-6">
-                    @Html.DisplayFor(model => model.SContents)
-                </dd>
-            </div>
-
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.Contents)
-                </dt>
-
-                <dd class="col-sm-6 col-md-6">
-                    @Html.DisplayFor(model => model.Contents)
-                </dd>
-            </div>
-
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.Thumb)
-                </dt>
-
-                <dd class="col-sm-6 col-md-6">
-                    <img src="@Url.Content(@Model.Thumb)" alt="Alternate Text" style="width: 150px;" />
-                </dd>
-            </div>
-
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.Published)
-                </dt>
-
-                <dd class="col-sm-6 col-md-6">
-                    @Html.DisplayFor(model => model.Published)
-                </dd>
-            </div>
-
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.Alias)
-                </dt>
-
-                <dd class="col-sm-6 col-md-6">
-                    @Html.DisplayFor(model => model.Alias)
-                </dd>
-            </div>
-
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.CreateDate)
-                </dt>
-
-                <dd class="col-sm-6 col-md-6">
-                    @Html.DisplayFor(model => model.CreateDate)
-                </dd>
-            </div>
-
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.Author)
-                </dt>
-
-                <dd class="col-sm-6 col-md-6">
-                    @Html.DisplayFor(model => model.Author)
-                </dd>
-            </div>
-
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.AccountID)
-                </dt>
-
-                <dd class="col-sm-6 col-md-6">
-                    @Html.DisplayFor(model => model.AccountID)
-                </dd>
-            </div>
-
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.Tags)
-                </dt>
-
-                <dd class="col-sm-6 col-md-6">
-                    @Html.DisplayFor(model => model.Tags)
-                </dd>
-            </div>
-
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.CatID)
-                </dt>
-
-                <dd class="col-sm-6 col-md-6">
-                    @Html.DisplayFor(model => model.CatID)
-                </dd>
-            </div>
-
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.isHot)
-                </dt>
-
-                <dd class="col-sm-6 col-md-6">
-                    @Html.DisplayFor(model => model.isHot)
-                </dd>
-            </div>
-
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.isNewFeed)
-                </dt>
-
-                <dd class="col-sm-6 col-md-6">
-                    @Html.DisplayFor(model => model.isNewFeed)
-                </dd>
-            </div>
-
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.MetaKey)
-                </dt>
-
-                <dd class="col-sm-6 col-md-6">
-                    @Html.DisplayFor(model => model.MetaKey)
-                </dd>
-            </div>
-
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.MetaDesc)
-                </dt>
-
-                <dd class="col-sm-6 col-md-6">
-                    @Html.DisplayFor(model => model.MetaDesc)
-                </dd>
-            </div>
-
-            <div class="row">
-                <dt class="col-sm-6 col-md-6">
-                    @Html.DisplayNameFor(model => model.Views)
-                </dt>
-
-                <dd class="col-sm-6 col-md-6">
-                    @Html.DisplayFor(model => model.Views)
-                </dd>
-            </div>
-
-        </dl>
+<div class="container bg-light p-4 rounded shadow-sm">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h4 class="text-secondary">Thông tin bài viết</h4>
+            <hr />
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.PostID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+
+    <div class="row mb-3">
+        <label class="col-sm-4 col-md-3 font-weight-bold">@Html.DisplayNameFor(model => model.Title):</label>
+        <div class="col-sm-8 col-md-9">
+            <p class="form-control-plaintext">@Html.DisplayFor(model => model.Title)</p>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-4 col-md-3 font-weight-bold">@Html.DisplayNameFor(model => model.Contents):</label>
+        <div class="col-sm-8 col-md-9">
+            <textarea readonly class="form-control" style="min-height: 150px;">@Model.Contents</textarea>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-4 col-md-3 font-weight-bold">@Html.DisplayNameFor(model => model.Thumb):</label>
+        <div class="col-sm-8 col-md-9">
+            <img src="@Url.Content(@Model.Thumb)" alt="Hình ảnh bài viết" class="img-thumbnail" style="max-width: 200px;" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-4 col-md-3 font-weight-bold">@Html.DisplayNameFor(model => model.Author):</label>
+        <div class="col-sm-8 col-md-9">
+            <p class="form-control-plaintext">@Html.DisplayFor(model => model.Author)</p>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-4 col-md-3 font-weight-bold">@Html.DisplayNameFor(model => model.Tags):</label>
+        <div class="col-sm-8 col-md-9">
+            <p class="form-control-plaintext">@Html.DisplayFor(model => model.Tags)</p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12 text-center">
+            <a class="btn btn-primary" href="@Url.Action("Edit", "AdmintblTinTucs", new { id = Model.PostID })">
+                <i class="fas fa-edit"></i> Chỉnh sửa
+            </a>
+            <a class="btn btn-secondary" href="@Url.Action("Index", "AdmintblTinTucs")">
+                <i class="fas fa-arrow-left"></i> Quay lại danh sách
+            </a>
+        </div>
+    </div>
 </div>

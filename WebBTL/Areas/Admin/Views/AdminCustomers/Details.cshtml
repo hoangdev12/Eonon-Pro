@@ -1,131 +1,124 @@
 ﻿@model WebBTL.Models.Customer
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết khách hàng";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="container bg-light p-4 rounded shadow-sm">
+    <h2 class="text-primary">Chi tiết khách hàng</h2>
 
-<div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
+    <div>
+        <h4 class="text-secondary">Thông tin khách hàng</h4>
+        <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
+        <dl class="row">
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.FullName)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Birthday)
-        </dt>
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Birthday)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Birthday)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Birthday)
-        </dd>
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Avatar)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Avatar)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Avatar)
-        </dt>
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Address)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Avatar)
-        </dd>
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.District)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.District)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Ward)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Ward)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.CreateDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Password)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Salt)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Salt)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.District)
-        </dt>
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.LastLogin)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.LastLogin)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.District)
-        </dd>
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Active)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Active)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ward)
-        </dt>
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Location.Name)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Location.Name)
+            </dd>
+        </dl>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ward)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreateDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Salt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Salt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastLogin)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastLogin)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Active)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Location.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Location.Name)
-        </dd>
-
-    </dl>
+    <p>
+        <a href="@Url.Action("Edit", "AdminCustomers", new { id = Model.CustomerID })" class="btn btn-warning">
+            <i class="fas fa-edit"></i> Chỉnh sửa
+        </a> |
+        <a href="@Url.Action("Index", "AdminCustomers")" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Quay lại danh sách
+        </a>
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

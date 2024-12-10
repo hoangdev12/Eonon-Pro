@@ -30,7 +30,7 @@ namespace WebBTL.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminProducts
-        public ActionResult Index(string searchTerm, int page = 1, int pageSize = 10, int? CategoryId = null, int? TrangThai = null )
+        public ActionResult Index(string searchTerm, int page = 1, int pageSize = 10, int? CategoryId = null, int? TrangThai = null)
         {
             // Lấy danh sách các thể loại để hiển thị trong dropdown
             ViewData["DanhMuc"] = new SelectList(_context.Categories, "CatID", "CatName");
@@ -43,11 +43,9 @@ namespace WebBTL.Areas.Admin.Controllers
 
             // Lấy danh sách sản phẩm từ CSDL
             var products = _context.Products
-            .Include(c => c.Category)
-            .OrderBy(p => p.ProductID) 
-            .AsQueryable();
-
-            
+                .Include(c => c.Category)
+                .OrderByDescending(p => p.ProductID)
+                .AsQueryable();
 
             // Lọc theo CategoryId nếu có giá trị
             if (CategoryId.HasValue && CategoryId != 0)
@@ -62,28 +60,28 @@ namespace WebBTL.Areas.Admin.Controllers
                 {
                     products = products.Where(p => p.UnitsInStock > 0);
                 }
-
                 else if (TrangThai == 0) // OutStock
                 {
                     products = products.Where(p => p.UnitsInStock == 0);
                 }
             }
-         
+
+            // Lọc theo từ khóa tìm kiếm (searchTerm)
             if (!String.IsNullOrEmpty(searchTerm))
             {
                 products = products.Where(x => x.ProductName.Contains(searchTerm));
             }
 
+            // Phân trang: Sử dụng Skip và Take để phân trang trên cơ sở dữ liệu
+            var pagedProducts = products.ToPagedList(page, pageSize);
 
-            ViewBag.SearchTerm = searchTerm;           
+            // Trả lại kết quả và các dữ liệu cần thiết cho View
+            ViewBag.SearchTerm = searchTerm;
             ViewBag.TrangThai = TrangThai;
-            
-
-            // Phân trang
-            var pagedProducts = products.ToList().ToPagedList(page, pageSize);
 
             return View(pagedProducts);
         }
+
 
 
         // GET: Admin/AdminProducts/Details/5
@@ -102,15 +100,25 @@ namespace WebBTL.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminProducts/Create
+        [HttpGet]
         public ActionResult Create()
         {
             ViewBag.CatID = new SelectList(_context.Categories, "CatID", "CatName");
-            return View();
+            var model = new Product
+            {
+                Description = string.Empty,  // Giá trị mặc định
+                ShortDesc = string.Empty // Giá trị mặc định
+            };
+
+            return View(model);
+            
         }
 
         // POST: Admin/AdminProducts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product, HttpPostedFileBase image)
         {
             // Kiểm tra nếu có ảnh mới được tải lên
