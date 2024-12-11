@@ -73,6 +73,21 @@ namespace WebBTL.Areas.Admin.Controllers
         // GET: Admin/AdminCategories/Details/5
         public ActionResult Details(int? id)
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -86,6 +101,7 @@ namespace WebBTL.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminCategories/Create
+        
         public ActionResult Create()
         {
             return View();
@@ -96,44 +112,60 @@ namespace WebBTL.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "CatID,CatName,Description,ParentID,Leveks,Ordering,Published,Thumb,Title,Alias,MetaDesc,MetaKey,Cover,SchemaMarkup")] Category category, HttpPostedFileBase image)
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
 
-            var existingProduct = _context.Products.Find(category.CatID);
-            // Check if a new image is uploaded
-            if (image != null && image.ContentLength > 0)
+            if (user != null)
             {
-                // Get the image name and set path
-                string fileName = System.IO.Path.GetFileName(image.FileName);
-                string filePath = Server.MapPath("~/Content/images/Categories/" + fileName);
-
-                // Ensure the directory exists
-                string directoryPath = Server.MapPath("~/Content/images/Categories/");
-                if (!System.IO.Directory.Exists(directoryPath))
-                {
-                    System.IO.Directory.CreateDirectory(directoryPath);
-                }
-
-                // Try to save the new image
-                try
-                {
-                    image.SaveAs(filePath);
-                    // Update the product thumb path with the new image
-                    category.Thumb = Url.Content("~/Content/images/Categories/" + fileName);
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", "Unable to save image. Please try again. " + ex.Message);
-                    var Categories = _context.Categories.ToList();
-                    ViewBag.CatID = new SelectList(Categories, "CategoryID", "CategoryName", category.CatID);
-                    return View(category);
-                }
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
             }
             else
             {
-                // If no new image is uploaded, keep the existing Thumb value or a default image
-                category.Thumb = string.IsNullOrEmpty(existingProduct.Thumb) ? Url.Content("~/Content/images/default.png") : existingProduct.Thumb;
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
             }
+
+            var existingProduct = _context.Products.Find(category.CatID);
+            // Check if a new image is uploaded
+            //if (image != null && image.ContentLength > 0)
+            //{
+            //    // Get the image name and set path
+            //    string fileName = System.IO.Path.GetFileName(image.FileName);
+            //    string filePath = Server.MapPath("~/Content/images/Categories/" + fileName);
+
+            //    // Ensure the directory exists
+            //    string directoryPath = Server.MapPath("~/Content/images/Categories/");
+            //    if (!System.IO.Directory.Exists(directoryPath))
+            //    {
+            //        System.IO.Directory.CreateDirectory(directoryPath);
+            //    }
+
+            //    // Try to save the new image
+            //    try
+            //    {
+            //        image.SaveAs(filePath);
+            //        // Update the product thumb path with the new image
+            //        category.Thumb = Url.Content("~/Content/images/Categories/" + fileName);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        ModelState.AddModelError("", "Unable to save image. Please try again. " + ex.Message);
+            //        var Categories = _context.Categories.ToList();
+            //        ViewBag.CatID = new SelectList(Categories, "CategoryID", "CategoryName", category.CatID);
+            //        return View(category);
+            //    }
+            //}
+            //else
+            //{
+            //    // If no new image is uploaded, keep the existing Thumb value or a default image
+            //    category.Thumb = string.IsNullOrEmpty(existingProduct.Thumb) ? Url.Content("~/Content/images/default.png") : existingProduct.Thumb;
+            //}
 
             if (ModelState.IsValid)
             {
@@ -148,6 +180,21 @@ namespace WebBTL.Areas.Admin.Controllers
         // GET: Admin/AdminCategories/Edit/5
         public ActionResult Edit(int? id)
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -165,8 +212,25 @@ namespace WebBTL.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "CatID,CatName,Description,ParentID,Leveks,Ordering,Published,Thumb,Title,Alias,MetaDesc,MetaKey,Cover,SchemaMarkup")] Category category, HttpPostedFileBase image)
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
+
             var existingCategory = _context.Categories.Find(category.CatID);
 
             if (existingCategory == null)

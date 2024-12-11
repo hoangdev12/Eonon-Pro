@@ -68,6 +68,21 @@ namespace WebBTL.Areas.Admin.Controllers
         // GET: Admin/AdmintblTinTucs/Details/5
         public ActionResult Details(int? id)
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -84,6 +99,21 @@ namespace WebBTL.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
             var model = new tblTinTuc
             {
                 Contents = string.Empty,  // Giá trị mặc định
@@ -101,7 +131,21 @@ namespace WebBTL.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PostID,Title,SContents,Contents,Thumb,Published,Alias,CreateDate,Author,AccountID,Tags,CatID,isHot,isNewFeed,MetaKey,MetaDesc,Views")] tblTinTuc tblTinTuc, HttpPostedFileBase image)
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
 
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
             // Kiểm tra nếu có ảnh mới được tải lên
             if (image != null && image.ContentLength > 0)
             {
@@ -151,6 +195,21 @@ namespace WebBTL.Areas.Admin.Controllers
         // GET: Admin/AdmintblTinTucs/Edit/5
         public ActionResult Edit(int? id)
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -171,6 +230,21 @@ namespace WebBTL.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "PostID,Title,SContents,Contents,Thumb,Published,Alias,CreateDate,Author,AccountID,Tags,CatID,isHot,isNewFeed,MetaKey,MetaDesc,Views")] tblTinTuc tblTinTuc, HttpPostedFileBase image)
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
             var existingtblTinTuc = _context.tblTinTucs.Find(tblTinTuc.PostID);
 
             if (existingtblTinTuc == null)

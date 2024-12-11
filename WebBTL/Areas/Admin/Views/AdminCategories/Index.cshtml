@@ -20,7 +20,7 @@
 
             
             <div class="form-group mr-3">
-                <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control" placeholder="Tìm tên sản phẩm" />
+                <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control" placeholder="Tìm tên thể loại" />
             </div>
             <br />
             <div class="form-group">
@@ -42,15 +42,15 @@
                     @Html.DisplayNameFor(model => model[0].Description)
                 </th>
 
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model[0].Ordering)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model[0].Published)
-                </th>
-                <th>
+                </th>*@
+                @*<th>
                     @Html.DisplayNameFor(model => model[0].Thumb)
-                </th>
+                </th>*@
 
 
                 <th></th>
@@ -69,7 +69,7 @@
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
 
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.Ordering)
                     </td>
                     <td>
@@ -81,9 +81,9 @@
                         {
                             <span class="badge badge-danger">Non-public</span>
                         }
-                    </td>
+                    </td>*@
 
-                    <td style="max-width:200px">
+                    @*<td style="max-width:200px">
                         @if (!string.IsNullOrEmpty(item.Thumb))
                         {
                             <img src="@Url.Content(item.Thumb)" alt="Image" style="max-width:100%; height:auto;" />
@@ -92,7 +92,7 @@
                         {
                             <img src="/images/default.png" alt="No Image" style="max-width:100%; height:auto;" />
                         }
-                    </td>
+                    </td>*@
 
 
 

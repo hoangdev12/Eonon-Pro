@@ -61,6 +61,22 @@ namespace WebBTL.Areas.Admin.Controllers
         // GET: Admin/AdminAccounts/Details/5
         public ActionResult Details(int? id)
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -79,6 +95,22 @@ namespace WebBTL.Areas.Admin.Controllers
         // GET: Admin/AdminAccounts/Edit/5
         public ActionResult Edit(int? id)
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -99,6 +131,22 @@ namespace WebBTL.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "AccountID,Phone,Email,Password,Salt,Active,FullName,RoleID,LastLogin,CreateDate")] Account account)
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Entry(account).State = EntityState.Modified;
@@ -113,6 +161,7 @@ namespace WebBTL.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
+
             var account = _context.Accounts.Find(id);
 
             if (account != null)

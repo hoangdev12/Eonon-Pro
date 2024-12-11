@@ -31,9 +31,9 @@
             <th>
                 @Html.DisplayNameFor(model => model[0].Title)
             </th>
-            <th>
+            @*<th>
                 Published
-            </th>
+            </th>*@
             <th class="text-center">#</th>
         </tr>
 
@@ -47,7 +47,7 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
 
-                <td>
+                @*<td>
                     @if (item.Published == true)
                     {
                         <span class="badge badge-success">public</span>
@@ -56,7 +56,7 @@
                     {
                         <span class="badge badge-danger">non-public</span>
                     }
-                </td>
+                </td>*@
 
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.PostID }, new { @class = "btn btn-outline-primary" })

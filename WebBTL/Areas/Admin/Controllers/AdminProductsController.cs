@@ -102,6 +102,21 @@ namespace WebBTL.Areas.Admin.Controllers
         // GET: Admin/AdminProducts/Details/5
         public ActionResult Details(int? id)
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -118,6 +133,21 @@ namespace WebBTL.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
             ViewBag.CatID = new SelectList(_context.Categories, "CatID", "CatName");
             var model = new Product
             {
@@ -136,6 +166,22 @@ namespace WebBTL.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product, HttpPostedFileBase image)
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
+
             // Kiểm tra nếu có ảnh mới được tải lên
             if (image != null && image.ContentLength > 0)
             {
@@ -188,6 +234,22 @@ namespace WebBTL.Areas.Admin.Controllers
         // GET: Admin/AdminProducts/Edit/5
         public ActionResult Edit(int? id)
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -209,6 +271,22 @@ namespace WebBTL.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "ProductID,ProductName,ShortDesc,Description,CatID,Price,Discount,Thumb,Video,DateCreated,Datemodified,BestSellers,HomeFlag,Active,Tags,Titles,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product, HttpPostedFileBase image)
         {
+            int accountId = (int)Session["AccountId"]; // Get AccountId from session
+            var user = _context.Customers.FirstOrDefault(u => u.AccountID == accountId);
+
+            if (user != null)
+            {
+                // Check if Avatar and FullName exist, if not, assign default values
+                ViewBag.Avatar = string.IsNullOrEmpty(user.Avatar) ? "~/Content/images/avatar/defaultAvatar.jpg" : user.Avatar;
+                ViewBag.FullName = string.IsNullOrEmpty(user.FullName) ? "No Name Available" : user.FullName;
+            }
+            else
+            {
+                // If user not found, assign default values for Avatar and FullName
+                ViewBag.Avatar = "~/Content/images/avatar/defaultAvatar.jpg";
+                ViewBag.FullName = "No Name Available";
+            }
+
             // Lấy sản phẩm hiện tại từ cơ sở dữ liệu
             var existingProduct = _context.Products.Find(product.ProductID);
             if (existingProduct == null)

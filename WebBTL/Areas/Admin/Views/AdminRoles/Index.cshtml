@@ -8,7 +8,7 @@
     <h2>Index</h2>
 
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "Create", null, new {@class="btn btn-primary"})
     </p>
     <table class="table">
         <tr>
@@ -56,7 +56,7 @@
                 var id = $(this).data('id');
 
 
-                var conf = confirm('Bạn có muốn xóa sản phẩm này không?');
+                var conf = confirm('Bạn có muốn xóa quyền truy cập này không?');
                 if (conf === true) {
 
                     $.ajax({
